@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MeasurementSystem.core.comvisu.Command &mdash; Measurement System 0.1.dev38+g7a2a8bf.d20241012 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+
+
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=1e1f024c"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+</head>
+
+<body class="wy-body-for-nav">
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980b9" >
+
+
+
+          <a href="../../../../index.html">
+
+              <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.1.dev38+g7a2a8bf.d20241012
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../reference.html">Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reference.html#module-MeasurementSystem.measurement_server">Measurement Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTask"><code class="docutils literal notranslate"><span class="pre">ControlTask</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTask.SendCommandCallbackType"><code class="docutils literal notranslate"><span class="pre">SendCommandCallbackType</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTask.add_command"><code class="docutils literal notranslate"><span class="pre">add_command()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTask.start"><code class="docutils literal notranslate"><span class="pre">start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTask.stop"><code class="docutils literal notranslate"><span class="pre">stop()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTaskManager"><code class="docutils literal notranslate"><span class="pre">ControlTaskManager</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTaskManager.add_command_to_task"><code class="docutils literal notranslate"><span class="pre">add_command_to_task()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTaskManager.initialize_tasks"><code class="docutils literal notranslate"><span class="pre">initialize_tasks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTaskManager.start_tasks"><code class="docutils literal notranslate"><span class="pre">start_tasks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTaskManager.stop_tasks"><code class="docutils literal notranslate"><span class="pre">stop_tasks()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.HardwareInterface"><code class="docutils literal notranslate"><span class="pre">HardwareInterface</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.HardwareInterface.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.HardwareInterface.from_json"><code class="docutils literal notranslate"><span class="pre">from_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.HardwareInterface.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.HardwareInterface.to_json"><code class="docutils literal notranslate"><span class="pre">to_json()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem"><code class="docutils literal notranslate"><span class="pre">MeasurementSystem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.add_command_to_send_queue"><code class="docutils literal notranslate"><span class="pre">add_command_to_send_queue()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.init_comvisu"><code class="docutils literal notranslate"><span class="pre">init_comvisu()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.printConsole"><code class="docutils literal notranslate"><span class="pre">printConsole()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.process_commands"><code class="docutils literal notranslate"><span class="pre">process_commands()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTask"><code class="docutils literal notranslate"><span class="pre">MeasurementTask</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTask.SendCommandCallbackType_2"><code class="docutils literal notranslate"><span class="pre">SendCommandCallbackType_2</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTask.start"><code class="docutils literal notranslate"><span class="pre">start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTask.stop"><code class="docutils literal notranslate"><span class="pre">stop()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTaskManager"><code class="docutils literal notranslate"><span class="pre">MeasurementTaskManager</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTaskManager.initialize_tasks"><code class="docutils literal notranslate"><span class="pre">initialize_tasks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTaskManager.start_tasks"><code class="docutils literal notranslate"><span class="pre">start_tasks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTaskManager.stop_tasks"><code class="docutils literal notranslate"><span class="pre">stop_tasks()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reference.html#module-MeasurementSystem.core.Utils">Core Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.Utils.OrderedPriorityQueue"><code class="docutils literal notranslate"><span class="pre">OrderedPriorityQueue</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.Utils.OrderedPriorityQueue.get"><code class="docutils literal notranslate"><span class="pre">get()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.Utils.OrderedPriorityQueue.put"><code class="docutils literal notranslate"><span class="pre">put()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reference.html#module-MeasurementSystem.core.driver.Hardware">Hardware Driver</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel"><code class="docutils literal notranslate"><span class="pre">Channel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel.set_model_from_str"><code class="docutils literal notranslate"><span class="pre">set_model_from_str()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.ChannelManager"><code class="docutils literal notranslate"><span class="pre">ChannelManager</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.ChannelManager.add_channels"><code class="docutils literal notranslate"><span class="pre">add_channels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.ChannelManager.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.ChannelManager.get_channels"><code class="docutils literal notranslate"><span class="pre">get_channels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.ChannelManager.get_channels_by_name"><code class="docutils literal notranslate"><span class="pre">get_channels_by_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.ChannelManager.get_channels_by_type"><code class="docutils literal notranslate"><span class="pre">get_channels_by_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.ChannelManager.get_modules"><code class="docutils literal notranslate"><span class="pre">get_modules()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.ChannelProperties"><code class="docutils literal notranslate"><span class="pre">ChannelProperties</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.ChannelProperties.Type"><code class="docutils literal notranslate"><span class="pre">Type</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel_MCC118_VoltageChannel"><code class="docutils literal notranslate"><span class="pre">Channel_MCC118_VoltageChannel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel_MCC118_VoltageChannel.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel_MCC118_VoltageChannel.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel_MCC118_VoltageChannel.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel_MCC118_VoltageChannel.to_dict"><code class="docutils literal notranslate"><span class="pre">to_dict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel_MCC134_ThermocoupleChannel"><code class="docutils literal notranslate"><span class="pre">Channel_MCC134_ThermocoupleChannel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel_MCC134_ThermocoupleChannel.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel_MCC134_ThermocoupleChannel.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel_MCC134_ThermocoupleChannel.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel_MCC134_ThermocoupleChannel.to_dict"><code class="docutils literal notranslate"><span class="pre">to_dict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_BufferedDigitalInput"><code class="docutils literal notranslate"><span class="pre">Channel_RPI_BufferedDigitalInput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_BufferedDigitalInput.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_BufferedDigitalInput.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_BufferedDigitalInput.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_DigitalInput"><code class="docutils literal notranslate"><span class="pre">Channel_RPI_DigitalInput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_DigitalInput.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_DigitalInput.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_DigitalInput.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_DigitalInput.readRaw"><code class="docutils literal notranslate"><span class="pre">readRaw()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_DigitalOutput"><code class="docutils literal notranslate"><span class="pre">Channel_RPI_DigitalOutput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_DigitalOutput.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_DigitalOutput.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_DigitalOutput.write"><code class="docutils literal notranslate"><span class="pre">write()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_FrequencyCounter"><code class="docutils literal notranslate"><span class="pre">Channel_RPI_FrequencyCounter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_FrequencyCounter.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_FrequencyCounter.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_FrequencyCounter.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_InternalTemperature"><code class="docutils literal notranslate"><span class="pre">Channel_RPI_InternalTemperature</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_InternalTemperature.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_InternalTemperature.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_InternalTemperature.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Config"><code class="docutils literal notranslate"><span class="pre">Config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Data"><code class="docutils literal notranslate"><span class="pre">Data</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Data.add_value"><code class="docutils literal notranslate"><span class="pre">add_value()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Data.clear"><code class="docutils literal notranslate"><span class="pre">clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Data.get_all"><code class="docutils literal notranslate"><span class="pre">get_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Data.get_count"><code class="docutils literal notranslate"><span class="pre">get_count()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Data.get_last"><code class="docutils literal notranslate"><span class="pre">get_last()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Hardware"><code class="docutils literal notranslate"><span class="pre">Hardware</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Hardware.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Hardware_DigilentMCC118"><code class="docutils literal notranslate"><span class="pre">Hardware_DigilentMCC118</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Hardware_DigilentMCC118.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Hardware_DigilentMCC118.handle"><code class="docutils literal notranslate"><span class="pre">handle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Hardware_DigilentMCC118.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Hardware_DigilentMCC134"><code class="docutils literal notranslate"><span class="pre">Hardware_DigilentMCC134</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Hardware_DigilentMCC134.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Hardware_DigilentMCC134.handle"><code class="docutils literal notranslate"><span class="pre">handle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Hardware_DigilentMCC134.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Hardware_RaspberryPi"><code class="docutils literal notranslate"><span class="pre">Hardware_RaspberryPi</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Hardware_RaspberryPi.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Hardware_RaspberryPi.handle"><code class="docutils literal notranslate"><span class="pre">handle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Hardware_RaspberryPi.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.InputChannel"><code class="docutils literal notranslate"><span class="pre">InputChannel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.InputChannel.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.InputModule"><code class="docutils literal notranslate"><span class="pre">InputModule</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.InputModule.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.KTYxModel"><code class="docutils literal notranslate"><span class="pre">KTYxModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.KTYxModel.apply"><code class="docutils literal notranslate"><span class="pre">apply()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.KTYxModel.to_string"><code class="docutils literal notranslate"><span class="pre">to_string()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.LinearModel"><code class="docutils literal notranslate"><span class="pre">LinearModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.LinearModel.apply"><code class="docutils literal notranslate"><span class="pre">apply()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.LinearModel.to_string"><code class="docutils literal notranslate"><span class="pre">to_string()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Model"><code class="docutils literal notranslate"><span class="pre">Model</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Model.apply"><code class="docutils literal notranslate"><span class="pre">apply()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Model.parse_model_list"><code class="docutils literal notranslate"><span class="pre">parse_model_list()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Model.to_string"><code class="docutils literal notranslate"><span class="pre">to_string()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.ModelMeta"><code class="docutils literal notranslate"><span class="pre">ModelMeta</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.ModelMeta.model_registry"><code class="docutils literal notranslate"><span class="pre">model_registry</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Module"><code class="docutils literal notranslate"><span class="pre">Module</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Module.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Module.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_ServoMotor"><code class="docutils literal notranslate"><span class="pre">Module_RPI_ServoMotor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_ServoMotor.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_ServoMotor.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_ServoMotor.write"><code class="docutils literal notranslate"><span class="pre">write()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_StepperMotor"><code class="docutils literal notranslate"><span class="pre">Module_RPI_StepperMotor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_StepperMotor.calibrate"><code class="docutils literal notranslate"><span class="pre">calibrate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_StepperMotor.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_StepperMotor.disable_stepper"><code class="docutils literal notranslate"><span class="pre">disable_stepper()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_StepperMotor.enable_stepper"><code class="docutils literal notranslate"><span class="pre">enable_stepper()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_StepperMotor.getPosition"><code class="docutils literal notranslate"><span class="pre">getPosition()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_StepperMotor.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_StepperMotor.setDirection"><code class="docutils literal notranslate"><span class="pre">setDirection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_StepperMotor.write"><code class="docutils literal notranslate"><span class="pre">write()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_WeighScalesHX711"><code class="docutils literal notranslate"><span class="pre">Module_RPI_WeighScalesHX711</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_WeighScalesHX711.ReadType"><code class="docutils literal notranslate"><span class="pre">ReadType</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_WeighScalesHX711.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_WeighScalesHX711.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_WeighScalesHX711.powerDown"><code class="docutils literal notranslate"><span class="pre">powerDown()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_WeighScalesHX711.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_WeighScalesHX711.readAverage"><code class="docutils literal notranslate"><span class="pre">readAverage()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_WeighScalesHX711.readMedian"><code class="docutils literal notranslate"><span class="pre">readMedian()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_WeighScalesHX711.readRaw"><code class="docutils literal notranslate"><span class="pre">readRaw()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_WeighScalesHX711.wakeup"><code class="docutils literal notranslate"><span class="pre">wakeup()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.MultiChannel"><code class="docutils literal notranslate"><span class="pre">MultiChannel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.MultiChannel.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.MultiHardware"><code class="docutils literal notranslate"><span class="pre">MultiHardware</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.MultiHardware.add_hardware"><code class="docutils literal notranslate"><span class="pre">add_hardware()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.MultiHardware.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.MultiHardware.get_channels"><code class="docutils literal notranslate"><span class="pre">get_channels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.MultiHardware.get_channels_by_name"><code class="docutils literal notranslate"><span class="pre">get_channels_by_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.MultiHardware.get_channels_by_type"><code class="docutils literal notranslate"><span class="pre">get_channels_by_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.MultiHardware.get_hardware"><code class="docutils literal notranslate"><span class="pre">get_hardware()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.MultiHardware.get_hardware_by_name"><code class="docutils literal notranslate"><span class="pre">get_hardware_by_name()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.NTCModel"><code class="docutils literal notranslate"><span class="pre">NTCModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.NTCModel.apply"><code class="docutils literal notranslate"><span class="pre">apply()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.NTCModel.to_string"><code class="docutils literal notranslate"><span class="pre">to_string()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.OutputChannel"><code class="docutils literal notranslate"><span class="pre">OutputChannel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.OutputChannel.write"><code class="docutils literal notranslate"><span class="pre">write()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.OutputModule"><code class="docutils literal notranslate"><span class="pre">OutputModule</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.OutputModule.write"><code class="docutils literal notranslate"><span class="pre">write()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.PTxModel"><code class="docutils literal notranslate"><span class="pre">PTxModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.PTxModel.apply"><code class="docutils literal notranslate"><span class="pre">apply()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.PTxModel.to_string"><code class="docutils literal notranslate"><span class="pre">to_string()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Serializable"><code class="docutils literal notranslate"><span class="pre">Serializable</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Serializable.from_dict"><code class="docutils literal notranslate"><span class="pre">from_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.Serializable.to_dict"><code class="docutils literal notranslate"><span class="pre">to_dict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.StackedModel"><code class="docutils literal notranslate"><span class="pre">StackedModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.StackedModel.apply"><code class="docutils literal notranslate"><span class="pre">apply()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Hardware.StackedModel.to_string"><code class="docutils literal notranslate"><span class="pre">to_string()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reference.html#communication-visualization">Communication &amp; Visualization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#module-MeasurementSystem.core.comvisu.Command">Command Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.comvisu.Command.Command"><code class="docutils literal notranslate"><span class="pre">Command</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#module-MeasurementSystem.core.comvisu.ServerUtils">Server Utilities</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.comvisu.ServerUtils.DataQueueThread"><code class="docutils literal notranslate"><span class="pre">DataQueueThread</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.comvisu.ServerUtils.ServerConnection"><code class="docutils literal notranslate"><span class="pre">ServerConnection</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980b9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Measurement System</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">MeasurementSystem.core.comvisu.Command</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+
+  <h1>Source code for MeasurementSystem.core.comvisu.Command</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">overload</span>
+
+
+<div class="viewcode-block" id="Command">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.comvisu.Command.Command">[docs]</a>
+<span class="k">class</span> <span class="nc">Command</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class representing a ComVisu compatible command to be sent to a server.</span>
+
+<span class="sd">    :class:`Command` provides a standardized way to construct and serialize commands for transmission to a server.</span>
+
+<span class="sd">    :Init Option1: :class:`Command()` creates an empty Command instance.</span>
+<span class="sd">    :Init Option2: :class:`Command(cmd_string)` creates a Command instance from a string.</span>
+<span class="sd">    :Init Option3: :class:`Command(channel,type,value)` creates a Command instance from the given arguments.</span>
+<span class="sd">    :Init Option4: :class:`Command(channel=channel,type=type,value=value)` creates a Command instance from the given keyword arguments.</span>
+
+<span class="sd">    :raises ValueError: If the arguments are invalid.</span>
+<span class="sd">    :return: A new instance of the Command class or one of its subclasses.</span>
+<span class="sd">    :rtype: Command</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Command.Type">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.comvisu.Command.Command.Type">[docs]</a>
+    <span class="k">class</span> <span class="nc">Type</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :class:`Type` provides valid data types for Command.Type.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">FLOAT</span> <span class="o">=</span> <span class="s2">&quot;F&quot;</span>
+        <span class="n">F</span> <span class="o">=</span> <span class="n">FLOAT</span>
+        <span class="n">STRING</span> <span class="o">=</span> <span class="s2">&quot;S&quot;</span>
+        <span class="n">S</span> <span class="o">=</span> <span class="n">STRING</span>
+
+<div class="viewcode-block" id="Command.Type.valid_types">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.comvisu.Command.Command.Type.valid_types">[docs]</a>
+        <span class="nd">@classmethod</span>
+        <span class="k">def</span> <span class="nf">valid_types</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+            <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="nb">vars</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">())</span></div>
+
+
+        <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid_types</span><span class="p">()</span></div>
+
+
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">instance</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">Command</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="n">_StringBasedCommand</span><span class="p">)</span>
+            <span class="n">instance</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">instance</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">Command</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="n">_StringBasedCommand</span><span class="p">)</span>
+            <span class="n">instance</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">&quot;channel&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="ow">or</span> <span class="s2">&quot;type&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="ow">or</span> <span class="s2">&quot;value&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;Invalid arguments for ParameterizedCommand: All parameters &#39;channel&#39;, &#39;type&#39;, and &#39;value&#39; must be set (not None)&quot;</span>
+                <span class="p">)</span>
+            <span class="n">instance</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">Command</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="n">_ParameterizedCommand</span><span class="p">)</span>
+            <span class="n">instance</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">args</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;Invalid arguments for ParameterizedCommand: All parameters &#39;channel&#39;, &#39;type&#39;, and &#39;value&#39; must be set (not None)&quot;</span>
+                <span class="p">)</span>
+            <span class="n">instance</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">Command</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="n">_ParameterizedCommand</span><span class="p">)</span>
+            <span class="n">instance</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Invalid argument count for Command: use  &#39;Command()&#39;  OR  &#39;Command(cmd_string)&#39;  OR  Command(channel, type, value)&quot;</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Initialize values</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">channel</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">return</span> <span class="n">instance</span>
+
+    <span class="nd">@overload</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span>
+
+    <span class="nd">@overload</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd_string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span>
+
+    <span class="nd">@overload</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="n">Type</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">_apply_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if the given values are valid for a Command instance and set them accordingly.</span>
+
+<span class="sd">        :param channel: The channel number to use for the command. Must be an integer between 0 and 999.</span>
+<span class="sd">        :type channel: int</span>
+<span class="sd">        :param type: The type of the command. Must be an instance of Type.</span>
+<span class="sd">        :type type: Type</span>
+<span class="sd">        :param value: The value of the command. Must be a string or a number.</span>
+<span class="sd">        :type value: Union[int, float, str]</span>
+<span class="sd">        :raises ValueError: If any value is invalid.</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">channel</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">channel</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">channel</span> <span class="o">&gt;</span> <span class="mi">999</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Wrong channel number: only 0 to 999 is allowed&quot;</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Wrong value for &#39;channel&#39;: only int is allowed&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Wrong value for &#39;type&#39;: only &#39;</span><span class="si">{</span><span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">FLOAT</span><span class="si">}</span><span class="s2">&#39; or &#39;</span><span class="si">{</span><span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">STRING</span><span class="si">}</span><span class="s2">&#39; is allowed&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">FLOAT</span><span class="p">:</span>  <span class="c1"># and not isinstance(value, int) and not isinstance(value, float):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Wrong value for &#39;value&#39;: only int or float is allowed&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">STRING</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="c1"># check for forbidden characters # and ;</span>
+            <span class="k">if</span> <span class="s2">&quot;#&quot;</span> <span class="ow">in</span> <span class="n">value</span> <span class="ow">or</span> <span class="s2">&quot;;&quot;</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Forbidden characters in &#39;value&#39;: &#39;#&#39; or &#39;;&#39; are not allowed&quot;</span><span class="p">)</span>
+
+        <span class="n">cmd_string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;#</span><span class="si">{</span><span class="n">channel</span><span class="si">}{</span><span class="nb">type</span><span class="si">}{</span><span class="n">value</span><span class="si">}</span><span class="s2">;&quot;</span>
+
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="nb">len</span><span class="p">(</span><span class="n">cmd_string</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">255</span>
+        <span class="p">):</span>  <span class="c1"># 256 is max. command length but there is an option to prefix with &#39;/&#39; for a passive command</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Command in total too long: max. 255 characters. Actual </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">cmd_string</span><span class="p">)</span><span class="si">}</span><span class="s2"> characters.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Apply values</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">channel</span> <span class="o">=</span> <span class="n">channel</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="nb">type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="k">def</span> <span class="nf">_parse_command_string</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd_string</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parse a command string to channel, type and value and apply them to the Command instance accordingly.</span>
+
+<span class="sd">        :param cmd_string: The command string to parse.</span>
+<span class="sd">        :type cmd_string: str</span>
+<span class="sd">        :raises ValueError: If the command string is invalid.</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;#(\d{1,3})([FS])(.+);&quot;</span><span class="p">,</span> <span class="n">cmd_string</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+            <span class="n">channel</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+            <span class="nb">type</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">FLOAT</span><span class="p">:</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_apply_values</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid command received&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Command.to_string">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.comvisu.Command.Command.to_string">[docs]</a>
+    <span class="k">def</span> <span class="nf">to_string</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :return: Command representation as a string</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;#</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">channel</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">;&quot;</span></div>
+</div>
+
+
+
+<span class="k">class</span> <span class="nc">_StringBasedCommand</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A base class representing a command with string-based arguments. This class is used by the :class:`Command` class when only a `command string` is provided.</span>
+
+<span class="sd">    :param cmd_string: The command string to parse. If None or empty, the object is initialized with empty fields.</span>
+<span class="sd">    :type cmd_string: str</span>
+
+<span class="sd">    :return: Command object</span>
+<span class="sd">    :rtype: Command</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd_string</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">cmd_string</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">cmd_string</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_parse_command_string</span><span class="p">(</span><span class="n">cmd_string</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">_ParameterizedCommand</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A base class representing a command with parameterized arguments. This class is used by the :class:`Command` class when `channel`, `type` and `value` are provided.</span>
+
+<span class="sd">    :param channel: The channel number to use for the command. Must be an integer between 0 and 999.</span>
+<span class="sd">    :type channel: int</span>
+<span class="sd">    :param type: The type of the command. Must be an instance of Type.</span>
+<span class="sd">    :type type: Type</span>
+<span class="sd">    :param value: The value of the command. Must be a string or a number.</span>
+<span class="sd">    :type value: Union[int, float, str]</span>
+
+<span class="sd">    :return: Command object</span>
+<span class="sd">    :rtype: Command</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_apply_values</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="nf">test__cmd_string</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">expexted_fail</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test: </span><span class="si">{</span><span class="n">cmd</span><span class="si">}</span><span class="s2">         Expected Fail: </span><span class="si">{</span><span class="n">expexted_fail</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">command</span> <span class="o">=</span> <span class="n">Command</span><span class="p">(</span><span class="n">cmd_string</span><span class="o">=</span><span class="n">cmd</span><span class="p">)</span>
+            <span class="n">fail</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">fail</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    Result:&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">expexted_fail</span> <span class="o">==</span> <span class="n">fail</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    PASS&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    FAIL &lt;---- FAIL &lt;---- FAIL&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="c1"># allowed</span>
+    <span class="n">test__cmd_string</span><span class="p">(</span><span class="s2">&quot;#0F12.3;&quot;</span><span class="p">,</span> <span class="n">expexted_fail</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">test__cmd_string</span><span class="p">(</span><span class="s2">&quot;#0S12.3;&quot;</span><span class="p">,</span> <span class="n">expexted_fail</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">test__cmd_string</span><span class="p">(</span><span class="s2">&quot;#0SASDF;&quot;</span><span class="p">,</span> <span class="n">expexted_fail</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">test__cmd_string</span><span class="p">(</span><span class="s2">&quot;#999F12.3;&quot;</span><span class="p">,</span> <span class="n">expexted_fail</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">test__cmd_string</span><span class="p">(</span><span class="s2">&quot;#999S12.3;&quot;</span><span class="p">,</span> <span class="n">expexted_fail</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="n">test__cmd_string</span><span class="p">(</span><span class="s2">&quot;#999SASDF;&quot;</span><span class="p">,</span> <span class="n">expexted_fail</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># not allowed</span>
+    <span class="n">test__cmd_string</span><span class="p">(</span><span class="s2">&quot;#1234X12.3;&quot;</span><span class="p">,</span> <span class="n">expexted_fail</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># No Format found</span>
+    <span class="n">test__cmd_string</span><span class="p">(</span><span class="s2">&quot;#1234F12.3;&quot;</span><span class="p">,</span> <span class="n">expexted_fail</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Unknown channel format</span>
+    <span class="n">test__cmd_string</span><span class="p">(</span><span class="s2">&quot;#xF12.3;&quot;</span><span class="p">,</span> <span class="n">expexted_fail</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Unknown channel format</span>
+    <span class="n">test__cmd_string</span><span class="p">(</span><span class="s2">&quot;#0FASDF;&quot;</span><span class="p">,</span> <span class="n">expexted_fail</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Value Error</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-------------------------------------------------&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test__command_values</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">expexted_fail</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test:  Channel: </span><span class="si">{</span><span class="n">channel</span><span class="si">}</span><span class="s2">, Type: </span><span class="si">{</span><span class="nb">type</span><span class="si">}</span><span class="s2">, Value: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">         Expected Fail: </span><span class="si">{</span><span class="n">expexted_fail</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">cmd</span> <span class="o">=</span> <span class="n">Command</span><span class="p">(</span><span class="n">channel</span><span class="o">=</span><span class="n">channel</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">)</span>
+            <span class="n">fail</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">fail</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    Result:&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">expexted_fail</span> <span class="o">==</span> <span class="n">fail</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    PASS&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    FAIL &lt;---- FAIL &lt;---- FAIL&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="c1"># allowed</span>
+    <span class="n">test__command_values</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">FLOAT</span><span class="p">,</span> <span class="mf">12.3</span><span class="p">,</span> <span class="n">expexted_fail</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">test__command_values</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="mf">12.3</span><span class="p">,</span> <span class="n">expexted_fail</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">test__command_values</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="s2">&quot;asdf&quot;</span><span class="p">,</span> <span class="n">expexted_fail</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">test__command_values</span><span class="p">(</span><span class="mi">999</span><span class="p">,</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">FLOAT</span><span class="p">,</span> <span class="mf">12.3</span><span class="p">,</span> <span class="n">expexted_fail</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">test__command_values</span><span class="p">(</span><span class="mi">999</span><span class="p">,</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="mf">12.3</span><span class="p">,</span> <span class="n">expexted_fail</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">test__command_values</span><span class="p">(</span><span class="s2">&quot;999&quot;</span><span class="p">,</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="s2">&quot;asdf&quot;</span><span class="p">,</span> <span class="n">expexted_fail</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># not allowed</span>
+    <span class="n">test__command_values</span><span class="p">(</span><span class="mi">123</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="mi">123</span><span class="p">,</span> <span class="n">expexted_fail</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># No Format found</span>
+    <span class="n">test__command_values</span><span class="p">(</span><span class="s2">&quot;1234&quot;</span><span class="p">,</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">FLOAT</span><span class="p">,</span> <span class="mf">12.3</span><span class="p">,</span> <span class="n">expexted_fail</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Unknown channel format</span>
+    <span class="n">test__command_values</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">FLOAT</span><span class="p">,</span> <span class="s2">&quot;12.3&quot;</span><span class="p">,</span> <span class="n">expexted_fail</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Unknown channel format</span>
+    <span class="n">test__command_values</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">FLOAT</span><span class="p">,</span> <span class="s2">&quot;asdf&quot;</span><span class="p">,</span> <span class="n">expexted_fail</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Value Error</span>
+    <span class="n">test__command_values</span><span class="p">(</span><span class="mi">123</span><span class="p">,</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="mi">100</span> <span class="o">*</span> <span class="s2">&quot;asdf&quot;</span><span class="p">,</span> <span class="n">expexted_fail</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># String too long</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Alfred Paar.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+</body>
+</html>

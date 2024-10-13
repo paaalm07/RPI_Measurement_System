@@ -1,0 +1,160 @@
+[
+    {
+        "id": 140736018210320,
+        "class": "Module_RPI_StepperMotor",
+        "module": "core.driver.Hardware",
+        "attributes": {
+            "name": "StepperMotor",
+            "step_pin": 24,
+            "dir_pin": 25,
+            "enable_pin": 16,
+            "limitA_pin": 20,
+            "limitB_pin": 21,
+            "sample_rate": 100,
+            "chart_number": -1,
+            "input_channels": [
+                {
+                    "id": 140736018210896,
+                    "class": "Channel_RPI_DigitalInput",
+                    "module": "core.driver.Hardware",
+                    "attributes": {
+                        "name": "LimitAPin",
+                        "pin": 20,
+                        "unit": "High/Low",
+                        "sample_rate": 1,
+                        "chart_number": -1,
+                        "type": "digital_input",
+                        "offset": 0,
+                        "gain": 1
+                    }
+                },
+                {
+                    "id": 140736018211216,
+                    "class": "Channel_RPI_DigitalInput",
+                    "module": "core.driver.Hardware",
+                    "attributes": {
+                        "name": "LimitBPin",
+                        "pin": 21,
+                        "unit": "High/Low",
+                        "sample_rate": 1,
+                        "chart_number": -1,
+                        "type": "digital_input",
+                        "offset": 0,
+                        "gain": 1
+                    }
+                }
+            ],
+            "output_channels": [
+                {
+                    "id": 140736018210576,
+                    "class": "Channel_RPI_DigitalOutput",
+                    "module": "core.driver.Hardware",
+                    "attributes": {
+                        "name": "StepPin",
+                        "pin": 24,
+                        "unit": "High/Low",
+                        "sample_rate": 1,
+                        "chart_number": -1,
+                        "type": "digital_output",
+                        "offset": 0,
+                        "gain": 1
+                    }
+                },
+                {
+                    "id": 140736018210640,
+                    "class": "Channel_RPI_DigitalOutput",
+                    "module": "core.driver.Hardware",
+                    "attributes": {
+                        "name": "DirPin",
+                        "pin": 25,
+                        "unit": "High/Low",
+                        "sample_rate": 1,
+                        "chart_number": -1,
+                        "type": "digital_output",
+                        "offset": 0,
+                        "gain": 1
+                    }
+                },
+                {
+                    "id": 140736018210768,
+                    "class": "Channel_RPI_DigitalOutput",
+                    "module": "core.driver.Hardware",
+                    "attributes": {
+                        "name": "EnablePin",
+                        "pin": 16,
+                        "unit": "High/Low",
+                        "sample_rate": 1,
+                        "chart_number": -1,
+                        "type": "digital_output",
+                        "offset": 0,
+                        "gain": 1
+                    }
+                }
+            ],
+            "multi_channels": []
+        },
+        "parent_hardware": {
+            "id": 140736031581776,
+            "name": "RPI5",
+            "class": "Hardware_RaspberryPi",
+            "module": "core.driver.Hardware"
+        }
+    },
+    {
+        "id": 140736018211792,
+        "class": "Module_RPI_WeighScalesHX711",
+        "module": "core.driver.Hardware",
+        "attributes": {
+            "name": "HX711",
+            "data_pin": 5,
+            "clock_pin": 6,
+            "sample_rate": 1,
+            "chart_number": 745,
+            "input_channels": [
+                {
+                    "id": 140736033858704,
+                    "class": "Channel_RPI_DigitalInput",
+                    "module": "core.driver.Hardware",
+                    "attributes": {
+                        "name": "DATA",
+                        "pin": 5,
+                        "unit": "High/Low",
+                        "sample_rate": 1,
+                        "chart_number": -1,
+                        "type": "digital_input",
+                        "offset": 0,
+                        "gain": 1
+                    }
+                }
+            ],
+            "output_channels": [
+                {
+                    "id": 140736018212176,
+                    "class": "Channel_RPI_DigitalOutput",
+                    "module": "core.driver.Hardware",
+                    "attributes": {
+                        "name": "CLOCK",
+                        "pin": 6,
+                        "unit": "High/Low",
+                        "sample_rate": 1,
+                        "chart_number": -1,
+                        "type": "digital_output",
+                        "offset": 0,
+                        "gain": 1
+                    }
+                }
+            ],
+            "multi_channels": [],
+            "type": "weight",
+            "unit": "kg",
+            "offset": 0,
+            "gain": 1
+        },
+        "parent_hardware": {
+            "id": 140736031581776,
+            "name": "RPI5",
+            "class": "Hardware_RaspberryPi",
+            "module": "core.driver.Hardware"
+        }
+    }
+]

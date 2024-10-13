@@ -1,0 +1,23 @@
+[
+    {
+        "id": 140736031581776,
+        "class": "Hardware_RaspberryPi",
+        "module": "core.driver.Hardware",
+        "attributes": {
+            "name": "RPI5",
+            "gpiochip": 4,
+            "output_channels": []
+        }
+    },
+    {
+        "id": 140736018214352,
+        "class": "Hardware_DigilentMCC118",
+        "module": "core.driver.Hardware",
+        "attributes": {
+            "name": "MCC118",
+            "hat_address": 0,
+            "output_channels": [],
+            "multi_channels": []
+        }
+    }
+]

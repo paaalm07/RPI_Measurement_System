@@ -1,0 +1,219 @@
+[build-system]
+# See https://pypi.org/project/hatchling/
+requires = ["hatchling", "hatch-vcs>=0.3"]
+build-backend = "hatchling.build"
+
+
+[project]
+name = "MeasuermentSystem"
+dynamic = ["version"]
+description = "to be added"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+    {name="Alfred Paar", email="alf.paar@gmail.com"}
+]
+
+# Add your project dependencies here
+# See https://hatch.pypa.io/dev/config/dependency/
+#  or https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#dependencies-and-requirements
+#  or https://packaging.python.org/en/latest/specifications/dependency-specifiers/#dependency-specifiers
+#  Additonal notes: only add the package here, no need for any other command, depencedcies are synced on next hatch command (e.g. hatch run fix)
+dependencies = [
+    "cowsay",
+    "daqhats",
+    "lgpio; sys_platform != 'win32'",
+    "numpy",
+]
+
+[project.optional-dependencies]
+# Add your additional development dependencies here.
+dev = []
+
+
+# Creating executable scripts
+# See https://hatch.pypa.io/dev/config/metadata/#entry-points
+#  or https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#creating-executable-scripts
+# Example:
+#  my-cli = "my_package.my_module:cli"
+#  ~~> from my_package.my_module import cli; cli()
+[project.scripts]
+
+
+[project.gui-scripts]
+
+
+###########################################
+# Tool specific configurations comes here #
+###########################################
+
+
+#########
+# Hatch #
+#########
+[tool.hatch]
+# Hatch is a modern, extensible Python project manager
+# Read more at https://hatch.pypa.io
+# Why Hatch? -> https://hatch.pypa.io/latest/why/
+# https://hatch.pypa.io/dev/config/build/
+build.dev-mode-dirs = ["src"]
+build.targets.sdist.packages = ["src"]
+build.targets.wheel.packages = ["src/MeasurementSystem"]
+build.hooks.vcs.version-file = "src/MeasurementSystem/version.py"
+version.source = "vcs"  # dyn. calculate version from GIT tags
+
+[tool.hatch.envs.hatch-uv]
+dependencies = [
+  "uv>=0.2.25",
+]
+
+
+[tool.hatch.envs.default]
+installer = "uv"
+python = "3.11"
+features = ["dev"]
+dependencies = [
+    # docs
+    "sphinx<8",
+    "sphinx_rtd_theme<3",  # "display_version" option depreciated since version 3.0.0
+    "sphinx-copybutton",
+    "rst2pdf",
+    "svglib",  # for SVG images in PDF
+    "myst-parser",
+    # test
+    "pytest",
+    "pytest-timeout",
+    "pytest-mock",
+    "pytest-cov",  # Coverage measurement
+    # lint
+    "pre-commit",
+    "ruff",  # code formatter and linter
+    #"mypy",  # type checking
+]
+
+
+[tool.hatch.envs.default.scripts]
+
+dev = [
+    "hatch build",
+    "{env:HATCH_UV} pip install -e .[dev]",
+]
+
+fix = [
+    "pre-commit install",
+    "pre-commit run {args:--all-files}",
+]
+
+test = [
+    """python -c "from pathlib import Path;Path('.tmp').mkdir(parents=True, exist_ok=True)" """,
+    "pytest --basetemp=.tmp/pytest {args}",
+]
+
+cov = [
+    """python -c "from pathlib import Path;Path('.tmp').mkdir(parents=True, exist_ok=True)" """,
+    """pytest \
+        --basetemp=.tmp/pytest \
+        {args: \
+        --junitxml .tmp/junit.{env_name}.xml \
+        --cov \
+        --cov-context test \
+        --cov-config pyproject.toml \
+        --cov-report term-missing:skip-covered \
+        --cov-report html:.tmp/htmlcov \
+        --cov-report xml:.tmp/coverage.{env_name}.xml \
+        --no-cov-on-fail \
+    }""",
+]
+
+docs = [
+    "sphinx-build -b html docs/ docs/build_html {args}",
+    # "sphinx-build -b pdf docs/ docs/build_pdf {args}",  # not working with badges (issues with SVG files)
+    "pre-commit install",
+    "pre-commit run {args:--all-files}",
+]
+
+update-precommit = "pre-commit autoupdate && pre-commit install"
+
+clean = [
+    "git clean -ffX .tmp",  # Temporary files from testing
+    "git clean -fX .coverage*",
+    "git clean -fX dist",  # Built documentation and distributions (wheels etc)
+    "git clean -fX src/*/version.py",
+]
+
+#[tool.pytest.ini_options]
+#pythonpath = ["src"]
+
+
+########
+# Ruff #
+########
+[tool.ruff]
+# https://docs.astral.sh/ruff/settings
+target-version = "py39"
+line-length = 120
+fix = false  # Allow autofix for all enabled rules (when `--fix`) is provided.
+show-fixes = true
+unsafe-fixes = false
+
+[tool.ruff.lint]
+# https://docs.astral.sh/ruff/settings/#select
+select = [
+    "E", # pycodestyle errors
+    "F", # pyflakes
+    "I", # isort
+    "UP", # pyupgrade
+    "B", # bugbear
+    "C4", # flake8-comprehensions
+    "DTZ", # flake8-datetimez
+    "EM", # flake8-errmsg
+    "FA", # flake8-future-annotations
+    "PIE", # flake8-pie
+    "PT", # flake8-pytest-style
+    "RSE", # flake8-raise
+    "RET", # flake8-return
+    "SIM", # flake8-simplify
+    "TID252", # flake8-tidy-imports -> convert relative-imports
+    "TCH", # flake8-type-checking
+    "PLE", # Pylint - errors
+    "PLW", # Pylint - warnings
+    "PLC", # Pylint - conventions
+    "RUF", # Ruff-specific rules
+    "NPY", # NumPy-specific rules
+]
+
+# https://docs.astral.sh/ruff/settings/#ignore
+ignore = [
+    "EM101", "EM102", "EM103",
+    "E501",  # line too long
+    "E402",
+    "B006",
+    "B007",
+    "B008",
+    "B904",
+    "RET504",
+    "E722",  # bare except
+    "UP006",
+    "PLW0642",  # --> to be checked!!!
+    "RUF012",
+    "RUF013",
+    "PLW2901",
+    "UP035",  # --> to be updated!!!
+    "DTZ005",
+    "SIM108",
+    "SIM102",
+    "UP007",
+    "UP008",
+    "UP028",
+    "F841",
+    "TCH001",
+    "TCH002",
+    "TCH003",
+]
+
+# https://docs.astral.sh/ruff/settings/#unfixable
+unfixable = []
+
+[tool.ruff.lint.isort]
+known-first-party = ["MeasurementSystem"]
+required-imports = ["from __future__ import annotations"]

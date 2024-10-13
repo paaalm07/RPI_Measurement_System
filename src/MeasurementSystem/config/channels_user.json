@@ -1,0 +1,222 @@
+[
+    {
+        "id": 140735938991248,
+        "class": "Channel_RPI_FrequencyCounter",
+        "module": "core.driver.Hardware",
+        "attributes": {
+            "name": "Speed1",
+            "pin": 18,
+            "unit": "rpm",
+            "model": {
+                "id": 140735938991696,
+                "class": "LinearModel",
+                "module": "core.driver.Hardware",
+                "attributes": {
+                    "name": "LinearModel",
+                    "offset": 0,
+                    "gain": 1
+                }
+            },
+            "config": {
+                "id": 140735938991760,
+                "class": "Config",
+                "module": "core.driver.Hardware",
+                "attributes": {
+                    "sample_rate": 1.0,
+                    "chart_number": 701,
+                    "enabled": true
+                }
+            },
+            "type": "frequency"
+        },
+        "parent_hardware": {
+            "id": 140735938987536,
+            "name": "RPI5",
+            "class": "Hardware_RaspberryPi",
+            "module": "core.driver.Hardware"
+        }
+    },
+    {
+        "id": 140735938634896,
+        "class": "Channel_RPI_InternalTemperature",
+        "module": "core.driver.Hardware",
+        "attributes": {
+            "name": "Temperature",
+            "unit": "C",
+            "model": {
+                "id": 140735938637776,
+                "class": "LinearModel",
+                "module": "core.driver.Hardware",
+                "attributes": {
+                    "name": "LinearModel",
+                    "offset": 0,
+                    "gain": 1
+                }
+            },
+            "config": {
+                "id": 140735938634064,
+                "class": "Config",
+                "module": "core.driver.Hardware",
+                "attributes": {
+                    "sample_rate": 2,
+                    "chart_number": 729,
+                    "enabled": true
+                }
+            },
+            "type": "temperature"
+        },
+        "parent_hardware": {
+            "id": 140735938987536,
+            "name": "RPI5",
+            "class": "Hardware_RaspberryPi",
+            "module": "core.driver.Hardware"
+        }
+    },
+    {
+        "id": 140735938638096,
+        "class": "Channel_RPI_DigitalOutput",
+        "module": "core.driver.Hardware",
+        "attributes": {
+            "name": "KeepAliveLED",
+            "pin": 19,
+            "unit": "High/Low",
+            "model": {
+                "id": 140735938637328,
+                "class": "LinearModel",
+                "module": "core.driver.Hardware",
+                "attributes": {
+                    "name": "LinearModel",
+                    "offset": 0,
+                    "gain": 1
+                }
+            },
+            "config": {
+                "id": 140735938637904,
+                "class": "Config",
+                "module": "core.driver.Hardware",
+                "attributes": {
+                    "enabled": true
+                }
+            },
+            "type": "digital_output",
+            "level": 0
+        },
+        "parent_hardware": {
+            "id": 140735938987536,
+            "name": "RPI5",
+            "class": "Hardware_RaspberryPi",
+            "module": "core.driver.Hardware"
+        }
+    },
+    {
+        "id": 140735938636688,
+        "class": "Channel_MCC118_VoltageChannel",
+        "module": "core.driver.Hardware",
+        "attributes": {
+            "name": "MCC118_0",
+            "channel": 0,
+            "unit": "V",
+            "model": {
+                "id": 140735938641744,
+                "class": "LinearModel",
+                "module": "core.driver.Hardware",
+                "attributes": {
+                    "name": "LinearModel",
+                    "offset": 0,
+                    "gain": 1
+                }
+            },
+            "config": {
+                "id": 140735938640592,
+                "class": "Config",
+                "module": "core.driver.Hardware",
+                "attributes": {
+                    "sample_rate": 0.5,
+                    "chart_number": 767,
+                    "enabled": true
+                }
+            },
+            "type": "voltage"
+        },
+        "parent_hardware": {
+            "id": 140735938987600,
+            "name": "MCC118",
+            "class": "Hardware_DigilentMCC118",
+            "module": "core.driver.Hardware"
+        }
+    },
+    {
+        "id": 140735938639888,
+        "class": "Channel_MCC118_VoltageChannel",
+        "module": "core.driver.Hardware",
+        "attributes": {
+            "name": "MCC118_1",
+            "channel": 1,
+            "unit": "V",
+            "model": {
+                "id": 140735938641488,
+                "class": "LinearModel",
+                "module": "core.driver.Hardware",
+                "attributes": {
+                    "name": "LinearModel",
+                    "offset": 0,
+                    "gain": 1
+                }
+            },
+            "config": {
+                "id": 140735938992784,
+                "class": "Config",
+                "module": "core.driver.Hardware",
+                "attributes": {
+                    "sample_rate": 1,
+                    "chart_number": 781,
+                    "enabled": true
+                }
+            },
+            "type": "voltage"
+        },
+        "parent_hardware": {
+            "id": 140735938987600,
+            "name": "MCC118",
+            "class": "Hardware_DigilentMCC118",
+            "module": "core.driver.Hardware"
+        }
+    },
+    {
+        "id": 140735938641552,
+        "class": "Channel_MCC118_VoltageChannel",
+        "module": "core.driver.Hardware",
+        "attributes": {
+            "name": "MCC118_2",
+            "channel": 2,
+            "unit": "V",
+            "model": {
+                "id": 140735938992592,
+                "class": "LinearModel",
+                "module": "core.driver.Hardware",
+                "attributes": {
+                    "name": "LinearModel",
+                    "offset": 0,
+                    "gain": 1
+                }
+            },
+            "config": {
+                "id": 140735938992848,
+                "class": "Config",
+                "module": "core.driver.Hardware",
+                "attributes": {
+                    "sample_rate": 2,
+                    "chart_number": 789,
+                    "enabled": true
+                }
+            },
+            "type": "voltage"
+        },
+        "parent_hardware": {
+            "id": 140735938987600,
+            "name": "MCC118",
+            "class": "Hardware_DigilentMCC118",
+            "module": "core.driver.Hardware"
+        }
+    }
+]

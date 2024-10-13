@@ -1,0 +1,270 @@
+[
+    {
+        "id": 140735938992528,
+        "class": "Module_RPI_StepperMotor",
+        "module": "core.driver.Hardware",
+        "attributes": {
+            "name": "StepperMotor",
+            "step_pin": 24,
+            "dir_pin": 25,
+            "enable_pin": 16,
+            "limitA_pin": 20,
+            "limitB_pin": 21,
+            "config": {
+                "id": 140735949489744,
+                "class": "Config",
+                "module": "core.driver.Hardware",
+                "attributes": {
+                    "enabled": true
+                }
+            },
+            "input_channels": [
+                {
+                    "id": 140735938995024,
+                    "class": "Channel_RPI_DigitalInput",
+                    "module": "core.driver.Hardware",
+                    "attributes": {
+                        "name": "LimitAPin",
+                        "pin": 20,
+                        "unit": "High/Low",
+                        "model": {
+                            "id": 140735949780496,
+                            "class": "LinearModel",
+                            "module": "core.driver.Hardware",
+                            "attributes": {
+                                "name": "LinearModel",
+                                "offset": 0,
+                                "gain": 1
+                            }
+                        },
+                        "config": {
+                            "id": 140735938995088,
+                            "class": "Config",
+                            "module": "core.driver.Hardware",
+                            "attributes": {}
+                        },
+                        "type": "digital_input"
+                    }
+                },
+                {
+                    "id": 140735938995344,
+                    "class": "Channel_RPI_DigitalInput",
+                    "module": "core.driver.Hardware",
+                    "attributes": {
+                        "name": "LimitBPin",
+                        "pin": 21,
+                        "unit": "High/Low",
+                        "model": {
+                            "id": 140735949780496,
+                            "class": "LinearModel",
+                            "module": "core.driver.Hardware",
+                            "attributes": {
+                                "name": "LinearModel",
+                                "offset": 0,
+                                "gain": 1
+                            }
+                        },
+                        "config": {
+                            "id": 140735938995408,
+                            "class": "Config",
+                            "module": "core.driver.Hardware",
+                            "attributes": {}
+                        },
+                        "type": "digital_input"
+                    }
+                }
+            ],
+            "output_channels": [
+                {
+                    "id": 140735938994640,
+                    "class": "Channel_RPI_DigitalOutput",
+                    "module": "core.driver.Hardware",
+                    "attributes": {
+                        "name": "StepPin",
+                        "pin": 24,
+                        "unit": "High/Low",
+                        "model": {
+                            "id": 140735949781136,
+                            "class": "LinearModel",
+                            "module": "core.driver.Hardware",
+                            "attributes": {
+                                "name": "LinearModel",
+                                "offset": 0,
+                                "gain": 1
+                            }
+                        },
+                        "config": {
+                            "id": 140735938994512,
+                            "class": "Config",
+                            "module": "core.driver.Hardware",
+                            "attributes": {}
+                        },
+                        "type": "digital_output",
+                        "level": 0
+                    }
+                },
+                {
+                    "id": 140735938994768,
+                    "class": "Channel_RPI_DigitalOutput",
+                    "module": "core.driver.Hardware",
+                    "attributes": {
+                        "name": "DirPin",
+                        "pin": 25,
+                        "unit": "High/Low",
+                        "model": {
+                            "id": 140735949781136,
+                            "class": "LinearModel",
+                            "module": "core.driver.Hardware",
+                            "attributes": {
+                                "name": "LinearModel",
+                                "offset": 0,
+                                "gain": 1
+                            }
+                        },
+                        "config": {
+                            "id": 140735938994832,
+                            "class": "Config",
+                            "module": "core.driver.Hardware",
+                            "attributes": {}
+                        },
+                        "type": "digital_output",
+                        "level": 0
+                    }
+                },
+                {
+                    "id": 140735938994896,
+                    "class": "Channel_RPI_DigitalOutput",
+                    "module": "core.driver.Hardware",
+                    "attributes": {
+                        "name": "EnablePin",
+                        "pin": 16,
+                        "unit": "High/Low",
+                        "model": {
+                            "id": 140735949781136,
+                            "class": "LinearModel",
+                            "module": "core.driver.Hardware",
+                            "attributes": {
+                                "name": "LinearModel",
+                                "offset": 0,
+                                "gain": 1
+                            }
+                        },
+                        "config": {
+                            "id": 140735938994960,
+                            "class": "Config",
+                            "module": "core.driver.Hardware",
+                            "attributes": {}
+                        },
+                        "type": "digital_output",
+                        "level": 0
+                    }
+                }
+            ],
+            "multi_channels": []
+        },
+        "parent_hardware": {
+            "id": 140735938987536,
+            "name": "RPI5",
+            "class": "Hardware_RaspberryPi",
+            "module": "core.driver.Hardware"
+        }
+    },
+    {
+        "id": 140735938995920,
+        "class": "Module_RPI_WeighScalesHX711",
+        "module": "core.driver.Hardware",
+        "attributes": {
+            "name": "HX711",
+            "data_pin": 5,
+            "clock_pin": 6,
+            "model": {
+                "id": 140735938996048,
+                "class": "LinearModel",
+                "module": "core.driver.Hardware",
+                "attributes": {
+                    "name": "LinearModel",
+                    "offset": 0,
+                    "gain": 1
+                }
+            },
+            "config": {
+                "id": 140735938996112,
+                "class": "Config",
+                "module": "core.driver.Hardware",
+                "attributes": {
+                    "sample_rate": 1,
+                    "chart_number": 745,
+                    "enabled": true
+                }
+            },
+            "input_channels": [
+                {
+                    "id": 140735938996752,
+                    "class": "Channel_RPI_DigitalInput",
+                    "module": "core.driver.Hardware",
+                    "attributes": {
+                        "name": "DATA",
+                        "pin": 5,
+                        "unit": "High/Low",
+                        "model": {
+                            "id": 140735949780496,
+                            "class": "LinearModel",
+                            "module": "core.driver.Hardware",
+                            "attributes": {
+                                "name": "LinearModel",
+                                "offset": 0,
+                                "gain": 1
+                            }
+                        },
+                        "config": {
+                            "id": 140735938996880,
+                            "class": "Config",
+                            "module": "core.driver.Hardware",
+                            "attributes": {}
+                        },
+                        "type": "digital_input"
+                    }
+                }
+            ],
+            "output_channels": [
+                {
+                    "id": 140735938997200,
+                    "class": "Channel_RPI_DigitalOutput",
+                    "module": "core.driver.Hardware",
+                    "attributes": {
+                        "name": "CLOCK",
+                        "pin": 6,
+                        "unit": "High/Low",
+                        "model": {
+                            "id": 140735949781136,
+                            "class": "LinearModel",
+                            "module": "core.driver.Hardware",
+                            "attributes": {
+                                "name": "LinearModel",
+                                "offset": 0,
+                                "gain": 1
+                            }
+                        },
+                        "config": {
+                            "id": 140735938997264,
+                            "class": "Config",
+                            "module": "core.driver.Hardware",
+                            "attributes": {}
+                        },
+                        "type": "digital_output",
+                        "level": 1
+                    }
+                }
+            ],
+            "multi_channels": [],
+            "type": "weight",
+            "unit": "kg"
+        },
+        "parent_hardware": {
+            "id": 140735938987536,
+            "name": "RPI5",
+            "class": "Hardware_RaspberryPi",
+            "module": "core.driver.Hardware"
+        }
+    }
+]

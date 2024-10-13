@@ -1,0 +1,106 @@
+[
+    {
+        "id": 140736031582096,
+        "class": "Channel_RPI_FrequencyCounter",
+        "module": "core.driver.Hardware",
+        "attributes": {
+            "name": "Speed1",
+            "pin": 18,
+            "unit": "rpm",
+            "sample_rate": 1,
+            "chart_number": 701,
+            "type": "frequency",
+            "offset": 0,
+            "gain": 1
+        },
+        "parent_hardware": {
+            "id": 140736031581776,
+            "name": "RPI5",
+            "class": "Hardware_RaspberryPi",
+            "module": "core.driver.Hardware"
+        }
+    },
+    {
+        "id": 140736018210384,
+        "class": "Channel_RPI_InternalTemperature",
+        "module": "core.driver.Hardware",
+        "attributes": {
+            "name": "Temperature",
+            "unit": "C",
+            "sample_rate": 2,
+            "chart_number": 729,
+            "type": "temperature",
+            "offset": 0,
+            "gain": 1
+        },
+        "parent_hardware": {
+            "id": 140736031581776,
+            "name": "RPI5",
+            "class": "Hardware_RaspberryPi",
+            "module": "core.driver.Hardware"
+        }
+    },
+    {
+        "id": 140736018415056,
+        "class": "Channel_MCC118_VoltageChannel",
+        "module": "core.driver.Hardware",
+        "attributes": {
+            "name": "MCC118_0",
+            "channel": 0,
+            "unit": "V",
+            "sample_rate": 0.5,
+            "chart_number": 767,
+            "type": "voltage",
+            "offset": 0,
+            "gain": 1
+        },
+        "parent_hardware": {
+            "id": 140736018214352,
+            "name": "MCC118",
+            "class": "Hardware_DigilentMCC118",
+            "module": "core.driver.Hardware"
+        }
+    },
+    {
+        "id": 140736018415312,
+        "class": "Channel_MCC118_VoltageChannel",
+        "module": "core.driver.Hardware",
+        "attributes": {
+            "name": "MCC118_1",
+            "channel": 1,
+            "unit": "V",
+            "sample_rate": 1,
+            "chart_number": 781,
+            "type": "voltage",
+            "offset": 0,
+            "gain": 1
+        },
+        "parent_hardware": {
+            "id": 140736018214352,
+            "name": "MCC118",
+            "class": "Hardware_DigilentMCC118",
+            "module": "core.driver.Hardware"
+        }
+    },
+    {
+        "id": 140736018415440,
+        "class": "Channel_MCC118_VoltageChannel",
+        "module": "core.driver.Hardware",
+        "attributes": {
+            "name": "MCC118_2",
+            "channel": 2,
+            "unit": "V",
+            "sample_rate": 2,
+            "chart_number": 789,
+            "type": "voltage",
+            "offset": 0,
+            "gain": 1
+        },
+        "parent_hardware": {
+            "id": 140736018214352,
+            "name": "MCC118",
+            "class": "Hardware_DigilentMCC118",
+            "module": "core.driver.Hardware"
+        }
+    }
+]

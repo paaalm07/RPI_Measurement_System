@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Measurement-System &mdash; Measurement System 0.1.dev38+g7a2a8bf.d20241012 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=1e1f024c"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Reference" href="reference.html" />
+</head>
+
+<body class="wy-body-for-nav">
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980b9" >
+
+
+
+          <a href="#">
+
+              <img src="_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.1.dev38+g7a2a8bf.d20241012
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#module-MeasurementSystem.measurement_server">Measurement Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.ControlTask"><code class="docutils literal notranslate"><span class="pre">ControlTask</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.ControlTask.SendCommandCallbackType"><code class="docutils literal notranslate"><span class="pre">SendCommandCallbackType</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.ControlTask.add_command"><code class="docutils literal notranslate"><span class="pre">add_command()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.ControlTask.start"><code class="docutils literal notranslate"><span class="pre">start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.ControlTask.stop"><code class="docutils literal notranslate"><span class="pre">stop()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.ControlTaskManager"><code class="docutils literal notranslate"><span class="pre">ControlTaskManager</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.ControlTaskManager.add_command_to_task"><code class="docutils literal notranslate"><span class="pre">add_command_to_task()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.ControlTaskManager.initialize_tasks"><code class="docutils literal notranslate"><span class="pre">initialize_tasks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.ControlTaskManager.start_tasks"><code class="docutils literal notranslate"><span class="pre">start_tasks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.ControlTaskManager.stop_tasks"><code class="docutils literal notranslate"><span class="pre">stop_tasks()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.HardwareInterface"><code class="docutils literal notranslate"><span class="pre">HardwareInterface</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.HardwareInterface.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.HardwareInterface.from_json"><code class="docutils literal notranslate"><span class="pre">from_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.HardwareInterface.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.HardwareInterface.to_json"><code class="docutils literal notranslate"><span class="pre">to_json()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.MeasurementSystem"><code class="docutils literal notranslate"><span class="pre">MeasurementSystem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.MeasurementSystem.add_command_to_send_queue"><code class="docutils literal notranslate"><span class="pre">add_command_to_send_queue()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.MeasurementSystem.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.MeasurementSystem.init_comvisu"><code class="docutils literal notranslate"><span class="pre">init_comvisu()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.MeasurementSystem.printConsole"><code class="docutils literal notranslate"><span class="pre">printConsole()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.MeasurementSystem.process_commands"><code class="docutils literal notranslate"><span class="pre">process_commands()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.MeasurementTask"><code class="docutils literal notranslate"><span class="pre">MeasurementTask</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.MeasurementTask.SendCommandCallbackType_2"><code class="docutils literal notranslate"><span class="pre">SendCommandCallbackType_2</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.MeasurementTask.start"><code class="docutils literal notranslate"><span class="pre">start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.MeasurementTask.stop"><code class="docutils literal notranslate"><span class="pre">stop()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.MeasurementTaskManager"><code class="docutils literal notranslate"><span class="pre">MeasurementTaskManager</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.MeasurementTaskManager.initialize_tasks"><code class="docutils literal notranslate"><span class="pre">initialize_tasks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.MeasurementTaskManager.start_tasks"><code class="docutils literal notranslate"><span class="pre">start_tasks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.MeasurementTaskManager.stop_tasks"><code class="docutils literal notranslate"><span class="pre">stop_tasks()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#module-MeasurementSystem.core.Utils">Core Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.Utils.OrderedPriorityQueue"><code class="docutils literal notranslate"><span class="pre">OrderedPriorityQueue</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.Utils.OrderedPriorityQueue.get"><code class="docutils literal notranslate"><span class="pre">get()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.Utils.OrderedPriorityQueue.put"><code class="docutils literal notranslate"><span class="pre">put()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#module-MeasurementSystem.core.driver.Hardware">Hardware Driver</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel"><code class="docutils literal notranslate"><span class="pre">Channel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel.set_model_from_str"><code class="docutils literal notranslate"><span class="pre">set_model_from_str()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.ChannelManager"><code class="docutils literal notranslate"><span class="pre">ChannelManager</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.ChannelManager.add_channels"><code class="docutils literal notranslate"><span class="pre">add_channels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.ChannelManager.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.ChannelManager.get_channels"><code class="docutils literal notranslate"><span class="pre">get_channels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.ChannelManager.get_channels_by_name"><code class="docutils literal notranslate"><span class="pre">get_channels_by_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.ChannelManager.get_channels_by_type"><code class="docutils literal notranslate"><span class="pre">get_channels_by_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.ChannelManager.get_modules"><code class="docutils literal notranslate"><span class="pre">get_modules()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.ChannelProperties"><code class="docutils literal notranslate"><span class="pre">ChannelProperties</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.ChannelProperties.Type"><code class="docutils literal notranslate"><span class="pre">Type</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel_MCC118_VoltageChannel"><code class="docutils literal notranslate"><span class="pre">Channel_MCC118_VoltageChannel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel_MCC118_VoltageChannel.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel_MCC118_VoltageChannel.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel_MCC118_VoltageChannel.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel_MCC118_VoltageChannel.to_dict"><code class="docutils literal notranslate"><span class="pre">to_dict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel_MCC134_ThermocoupleChannel"><code class="docutils literal notranslate"><span class="pre">Channel_MCC134_ThermocoupleChannel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel_MCC134_ThermocoupleChannel.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel_MCC134_ThermocoupleChannel.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel_MCC134_ThermocoupleChannel.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel_MCC134_ThermocoupleChannel.to_dict"><code class="docutils literal notranslate"><span class="pre">to_dict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_BufferedDigitalInput"><code class="docutils literal notranslate"><span class="pre">Channel_RPI_BufferedDigitalInput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_BufferedDigitalInput.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_BufferedDigitalInput.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_BufferedDigitalInput.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_DigitalInput"><code class="docutils literal notranslate"><span class="pre">Channel_RPI_DigitalInput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_DigitalInput.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_DigitalInput.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_DigitalInput.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_DigitalInput.readRaw"><code class="docutils literal notranslate"><span class="pre">readRaw()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_DigitalOutput"><code class="docutils literal notranslate"><span class="pre">Channel_RPI_DigitalOutput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_DigitalOutput.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_DigitalOutput.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_DigitalOutput.write"><code class="docutils literal notranslate"><span class="pre">write()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_FrequencyCounter"><code class="docutils literal notranslate"><span class="pre">Channel_RPI_FrequencyCounter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_FrequencyCounter.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_FrequencyCounter.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_FrequencyCounter.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_InternalTemperature"><code class="docutils literal notranslate"><span class="pre">Channel_RPI_InternalTemperature</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_InternalTemperature.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_InternalTemperature.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Channel_RPI_InternalTemperature.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Config"><code class="docutils literal notranslate"><span class="pre">Config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Data"><code class="docutils literal notranslate"><span class="pre">Data</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Data.add_value"><code class="docutils literal notranslate"><span class="pre">add_value()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Data.clear"><code class="docutils literal notranslate"><span class="pre">clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Data.get_all"><code class="docutils literal notranslate"><span class="pre">get_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Data.get_count"><code class="docutils literal notranslate"><span class="pre">get_count()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Data.get_last"><code class="docutils literal notranslate"><span class="pre">get_last()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Hardware"><code class="docutils literal notranslate"><span class="pre">Hardware</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Hardware.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Hardware_DigilentMCC118"><code class="docutils literal notranslate"><span class="pre">Hardware_DigilentMCC118</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Hardware_DigilentMCC118.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Hardware_DigilentMCC118.handle"><code class="docutils literal notranslate"><span class="pre">handle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Hardware_DigilentMCC118.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Hardware_DigilentMCC134"><code class="docutils literal notranslate"><span class="pre">Hardware_DigilentMCC134</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Hardware_DigilentMCC134.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Hardware_DigilentMCC134.handle"><code class="docutils literal notranslate"><span class="pre">handle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Hardware_DigilentMCC134.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Hardware_RaspberryPi"><code class="docutils literal notranslate"><span class="pre">Hardware_RaspberryPi</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Hardware_RaspberryPi.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Hardware_RaspberryPi.handle"><code class="docutils literal notranslate"><span class="pre">handle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Hardware_RaspberryPi.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.InputChannel"><code class="docutils literal notranslate"><span class="pre">InputChannel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.InputChannel.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.InputModule"><code class="docutils literal notranslate"><span class="pre">InputModule</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.InputModule.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.KTYxModel"><code class="docutils literal notranslate"><span class="pre">KTYxModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.KTYxModel.apply"><code class="docutils literal notranslate"><span class="pre">apply()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.KTYxModel.to_string"><code class="docutils literal notranslate"><span class="pre">to_string()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.LinearModel"><code class="docutils literal notranslate"><span class="pre">LinearModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.LinearModel.apply"><code class="docutils literal notranslate"><span class="pre">apply()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.LinearModel.to_string"><code class="docutils literal notranslate"><span class="pre">to_string()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Model"><code class="docutils literal notranslate"><span class="pre">Model</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Model.apply"><code class="docutils literal notranslate"><span class="pre">apply()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Model.parse_model_list"><code class="docutils literal notranslate"><span class="pre">parse_model_list()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Model.to_string"><code class="docutils literal notranslate"><span class="pre">to_string()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.ModelMeta"><code class="docutils literal notranslate"><span class="pre">ModelMeta</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.ModelMeta.model_registry"><code class="docutils literal notranslate"><span class="pre">model_registry</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Module"><code class="docutils literal notranslate"><span class="pre">Module</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Module.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Module.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_ServoMotor"><code class="docutils literal notranslate"><span class="pre">Module_RPI_ServoMotor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_ServoMotor.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_ServoMotor.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_ServoMotor.write"><code class="docutils literal notranslate"><span class="pre">write()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_StepperMotor"><code class="docutils literal notranslate"><span class="pre">Module_RPI_StepperMotor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_StepperMotor.calibrate"><code class="docutils literal notranslate"><span class="pre">calibrate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_StepperMotor.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_StepperMotor.disable_stepper"><code class="docutils literal notranslate"><span class="pre">disable_stepper()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_StepperMotor.enable_stepper"><code class="docutils literal notranslate"><span class="pre">enable_stepper()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_StepperMotor.getPosition"><code class="docutils literal notranslate"><span class="pre">getPosition()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_StepperMotor.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_StepperMotor.setDirection"><code class="docutils literal notranslate"><span class="pre">setDirection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_StepperMotor.write"><code class="docutils literal notranslate"><span class="pre">write()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_WeighScalesHX711"><code class="docutils literal notranslate"><span class="pre">Module_RPI_WeighScalesHX711</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_WeighScalesHX711.ReadType"><code class="docutils literal notranslate"><span class="pre">ReadType</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_WeighScalesHX711.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_WeighScalesHX711.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_WeighScalesHX711.powerDown"><code class="docutils literal notranslate"><span class="pre">powerDown()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_WeighScalesHX711.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_WeighScalesHX711.readAverage"><code class="docutils literal notranslate"><span class="pre">readAverage()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_WeighScalesHX711.readMedian"><code class="docutils literal notranslate"><span class="pre">readMedian()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_WeighScalesHX711.readRaw"><code class="docutils literal notranslate"><span class="pre">readRaw()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Module_RPI_WeighScalesHX711.wakeup"><code class="docutils literal notranslate"><span class="pre">wakeup()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.MultiChannel"><code class="docutils literal notranslate"><span class="pre">MultiChannel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.MultiChannel.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.MultiHardware"><code class="docutils literal notranslate"><span class="pre">MultiHardware</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.MultiHardware.add_hardware"><code class="docutils literal notranslate"><span class="pre">add_hardware()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.MultiHardware.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.MultiHardware.get_channels"><code class="docutils literal notranslate"><span class="pre">get_channels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.MultiHardware.get_channels_by_name"><code class="docutils literal notranslate"><span class="pre">get_channels_by_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.MultiHardware.get_channels_by_type"><code class="docutils literal notranslate"><span class="pre">get_channels_by_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.MultiHardware.get_hardware"><code class="docutils literal notranslate"><span class="pre">get_hardware()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.MultiHardware.get_hardware_by_name"><code class="docutils literal notranslate"><span class="pre">get_hardware_by_name()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.NTCModel"><code class="docutils literal notranslate"><span class="pre">NTCModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.NTCModel.apply"><code class="docutils literal notranslate"><span class="pre">apply()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.NTCModel.to_string"><code class="docutils literal notranslate"><span class="pre">to_string()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.OutputChannel"><code class="docutils literal notranslate"><span class="pre">OutputChannel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.OutputChannel.write"><code class="docutils literal notranslate"><span class="pre">write()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.OutputModule"><code class="docutils literal notranslate"><span class="pre">OutputModule</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.OutputModule.write"><code class="docutils literal notranslate"><span class="pre">write()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.PTxModel"><code class="docutils literal notranslate"><span class="pre">PTxModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.PTxModel.apply"><code class="docutils literal notranslate"><span class="pre">apply()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.PTxModel.to_string"><code class="docutils literal notranslate"><span class="pre">to_string()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Serializable"><code class="docutils literal notranslate"><span class="pre">Serializable</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Serializable.from_dict"><code class="docutils literal notranslate"><span class="pre">from_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.Serializable.to_dict"><code class="docutils literal notranslate"><span class="pre">to_dict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.StackedModel"><code class="docutils literal notranslate"><span class="pre">StackedModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.StackedModel.apply"><code class="docutils literal notranslate"><span class="pre">apply()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.driver.Hardware.StackedModel.to_string"><code class="docutils literal notranslate"><span class="pre">to_string()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#communication-visualization">Communication &amp; Visualization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#module-MeasurementSystem.core.comvisu.Command">Command Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.comvisu.Command.Command"><code class="docutils literal notranslate"><span class="pre">Command</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#module-MeasurementSystem.core.comvisu.ServerUtils">Server Utilities</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.comvisu.ServerUtils.DataQueueThread"><code class="docutils literal notranslate"><span class="pre">DataQueueThread</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.comvisu.ServerUtils.ServerConnection"><code class="docutils literal notranslate"><span class="pre">ServerConnection</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980b9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Measurement System</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Measurement-System</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+
+  <section id="measurement-system">
+<h1>Measurement-System<a class="headerlink" href="#measurement-system" title="Link to this heading"></a></h1>
+<p><a class="reference external" href="https://www.python.org/"><img alt="Python" src="https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10-blue" /></a>
+<a class="reference external" href="https://server.paaalm07.at:3000/paaalm07/MyAwsomePackage/issues"><img alt="Issues" src="https://img.shields.io/badge/Issues-orange" /></a>
+<a class="reference external" href="https://github.com/pypa/hatch"><img alt="Hatch project" src="https://img.shields.io/badge/%F0%9F%A5%9A-Hatch-4051b5.svg" /></a>
+<a class="reference external" href="https://github.com/sphinx-doc/sphinx"><img alt="Sphinx" src="https://img.shields.io/badge/docs-blue?label=sphinx&amp;logo=sphinx&amp;logoColor=white" /></a>
+<a class="reference external" href="https://github.com/pre-commit/pre-commit"><img alt="pre-commit" src="https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit" /></a>
+<a class="reference external" href="https://github.com/astral-sh/ruff"><img alt="Ruff" src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json" /></a>
+<a class="reference external" href="https://server.paaalm07.at:3000/paaalm07/MyAwsomePackage/src/branch/main/LICENSE"><img alt="License" src="https://img.shields.io/badge/License-BSD%203--Clause-blue.svg" /></a></p>
+<p>This is a template Python project with Sphinx documentation.
+Measurement-System based on RaspberryPi 5 hardware.</p>
+<ul class="simple">
+<li><p>Measurements: DAQ-Hats (Digilent MCC Series) and RPi IOs</p></li>
+<li><p>Visualization: <a class="reference external" href="http://comvisu.de/">ComVisu</a></p></li>
+</ul>
+<section id="pre-requisites">
+<h2>Pre-Requisites<a class="headerlink" href="#pre-requisites" title="Link to this heading"></a></h2>
+<ul>
+<li><p>Hardware</p>
+<ul class="simple">
+<li><p>RaspberryPi 5</p></li>
+<li><p>Digilent MCC HATs</p>
+<ul>
+<li><p>currently supported HATs: MCC118, MCC134</p></li>
+</ul>
+</li>
+<li><p>HX711 weight scales input module</p></li>
+</ul>
+</li>
+<li><p>Software</p>
+<ul>
+<li><p>Installed the shared library and tools for MCC DAQ Hat</p>
+<ul>
+<li><p>Summary</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/mccdaq/daqhats.git
+<span class="nb">cd</span><span class="w"> </span>~/daqhats
+sudo<span class="w"> </span>./install.sh
+</pre></div>
+</div>
+</li>
+<li><p>For more details, checkout https://mccdaq.github.io/daqhats/install.html</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Toolchain</p>
+<ul class="simple">
+<li><p>Install <a class="reference external" href="https://hatch.pypa.io/">Hatch</a> as python manager:</p>
+<ul>
+<li><p>Python/Pip already there: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">hatch</span> <span class="pre">--break-system-packages</span></code></p></li>
+<li><p>Set global hatch config: <code class="docutils literal notranslate"><span class="pre">hatch</span> <span class="pre">config</span> <span class="pre">set</span> <span class="pre">dirs.env.virtual</span> <span class="pre">.hatch</span></code></p></li>
+</ul>
+</li>
+<li><p>Notes</p>
+<ul>
+<li><p>On Windows system, the <a class="reference external" href="https://abyz.me.uk/lg/py_lgpio.html">lgpio</a> library is not installed. Building docs and other features not available.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="install">
+<h2>Install<a class="headerlink" href="#install" title="Link to this heading"></a></h2>
+<p>Use <a class="reference external" href="https://hatch.pypa.io/">Hatch</a> to install dependencies:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>hatch<span class="w"> </span>env<span class="w"> </span>create
+</pre></div>
+</div>
+</section>
+</section>
+<section id="reference">
+<h1>Reference<a class="headerlink" href="#reference" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#module-MeasurementSystem.measurement_server">Measurement Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#module-MeasurementSystem.core.Utils">Core Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#module-MeasurementSystem.core.driver.Hardware">Hardware Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#communication-visualization">Communication &amp; Visualization</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="reference.html" class="btn btn-neutral float-right" title="Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Alfred Paar.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+</body>
+</html>
