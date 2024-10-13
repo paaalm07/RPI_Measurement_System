@@ -2732,10 +2732,27 @@ if __name__ == "__main__":
 
     mcc118_hardware.add_channels(mcc118_input_channels)
 
+    # Hardware: Digilent MCC134
+    mcc134_hardware = Hardware_DigilentMCC134(name="MCC134", hat_address=1)
+    mcc134_hardware.initialize()
+
+    mcc134_input_channels = [
+        Channel_MCC134_ThermocoupleChannel(
+            handle=mcc134_hardware._handle, name="MCC134_0", channel=0, unit="degC", model=LinearModel(offset=0, gain=1)
+        ),
+        Channel_MCC134_ThermocoupleChannel(
+            handle=mcc134_hardware._handle, name="MCC134_3", channel=3, unit="degC", model=LinearModel(offset=0, gain=1)
+        ),
+        # Add more channels here if needed
+    ]
+
+    mcc134_hardware.add_channels(mcc134_input_channels)
+
     # Hardware: Multihardware
     multi_hardware = MultiHardware(name="MeasurementSystem")
     multi_hardware.add_hardware(rpi_hardware)
     multi_hardware.add_hardware(mcc118_hardware)
+    multi_hardware.add_hardware(mcc134_hardware)
 
     # # Example 1: Standard Loop to read all channels
     # for channel in multi_hardware.get_channels():
@@ -2790,6 +2807,8 @@ if __name__ == "__main__":
         "MCC118_0": 1,
         "MCC118_1": 1,
         "HX711": 0.5,
+        "MCC134_0": 1,
+        "MCC134_3": 1,
     }
 
     readers = []

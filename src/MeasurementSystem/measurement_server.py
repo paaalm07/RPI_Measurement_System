@@ -17,10 +17,12 @@ from MeasurementSystem.core.comvisu.ServerUtils import DataQueueThread, ServerCo
 from MeasurementSystem.core.driver.Hardware import (
     Channel,
     Channel_MCC118_VoltageChannel,
+    Channel_MCC134_ThermocoupleChannel,
     Channel_RPI_DigitalOutput,
     Channel_RPI_FrequencyCounter,
     Channel_RPI_InternalTemperature,
     Hardware_DigilentMCC118,
+    Hardware_DigilentMCC134,
     Hardware_RaspberryPi,
     InputChannel,
     InputModule,
@@ -115,8 +117,6 @@ class HardwareInterface(Serializable):
         ]
         _rpi_hardware.add_channels(rpi_multi_channels)
 
-        self.multi_hardware.add_hardware(_rpi_hardware)
-
         # Hardware: Digilent MCC118
         _mcc118_hardware = Hardware_DigilentMCC118(name="MCC118", hat_address=0)
 
@@ -154,7 +154,38 @@ class HardwareInterface(Serializable):
         ]
 
         _mcc118_hardware.add_channels(mcc118_input_channels)
+
+        # Hardware: Digilent MCC134
+        _mcc134_hardware = Hardware_DigilentMCC134(name="MCC134", hat_address=1)
+
+        mcc134_input_channels = [
+            Channel_MCC134_ThermocoupleChannel(
+                handle=_mcc134_hardware._handle,
+                channel=0,
+                name="MCC134_0",
+                unit="C",
+                model=LinearModel(offset=0, gain=1),
+                sample_rate=1,
+                chart_number=721,
+                enabled=True,
+            ),
+            Channel_MCC134_ThermocoupleChannel(
+                handle=_mcc134_hardware._handle,
+                channel=3,
+                name="MCC134_3",
+                unit="C",
+                model=LinearModel(offset=0, gain=1),
+                sample_rate=1,
+                chart_number=724,
+                enabled=True,
+            ),
+        ]
+        _mcc134_hardware.add_channels(mcc134_input_channels)
+
+        # MultiHardware
+        self.multi_hardware.add_hardware(_rpi_hardware)
         self.multi_hardware.add_hardware(_mcc118_hardware)
+        self.multi_hardware.add_hardware(_mcc134_hardware)
 
     def close(self) -> None:
         """
