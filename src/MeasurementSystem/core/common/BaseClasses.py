@@ -4,9 +4,9 @@ import os
 import sys
 from typing import Generator, List, Union
 
-from MeasurementSystem.core.driver.Data import Data
-from MeasurementSystem.core.driver.Models import Model, ModelMeta, StackedModel
-from MeasurementSystem.core.Utils import Serializable
+from MeasurementSystem.core.common.Data import Data
+from MeasurementSystem.core.common.Models import Model, ModelMeta, StackedModel
+from MeasurementSystem.core.common.Utils import Serializable
 
 
 class ChannelProperties:

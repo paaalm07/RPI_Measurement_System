@@ -1,68 +1,60 @@
 Reference
 =========
 
-Measurement Server
-------------------
+Main Application
+##################
 
+Measurement Server
+~~~~~~~~~~~~~~~~~~
 .. automodule:: MeasurementSystem.measurement_server
 
-Core Utilities
---------------
 
-.. automodule:: MeasurementSystem.core.Utils
+Common Utilities
+################
+
+Utils
+~~~~~
+.. automodule:: MeasurementSystem.core.common.Utils
+
+Config
+~~~~~
+.. automodule:: MeasurementSystem.core.common.Config
+
+Data
+~~~~
+.. automodule:: MeasurementSystem.core.common.Data
+
+Models
+~~~~~~
+.. automodule:: MeasurementSystem.core.common.Models
+
+BaseClasses
+~~~~~~~~~~~
+.. automodule:: MeasurementSystem.core.common.BaseClasses
 
 
 Driver
-------
-
-Common
-~~~~~~
-
-Data
-++++
-
-.. automodule:: MeasurementSystem.core.driver.Data
-
-Models
-++++++
-
-.. automodule:: MeasurementSystem.core.driver.Models
-
-Config
-++++++
-
-.. automodule:: MeasurementSystem.core.driver.Config
-
-BaseClasses
-+++++++++++
-
-.. automodule:: MeasurementSystem.core.driver.BaseClasses
-
-
-Hardware
-~~~~~~~~
+######
 
 RaspberryPi
-+++++++++++
-
+~~~~~~~~~~~
 .. automodule:: MeasurementSystem.core.driver.RaspberryPi
 
-
-Digilent Modules
-++++++++++++++++
-
+Digilent MCC118
+~~~~~~~~~~~~~~~~
 .. automodule:: MeasurementSystem.core.driver.DigilentMCC118
 
+Digilent MCC134
+~~~~~~~~~~~~~~~
 .. automodule:: MeasurementSystem.core.driver.DigilentMCC134
 
 
 Communication & Visualization
------------------------------
+#############################
 
 Command Module
 ~~~~~~~~~~~~~~
 .. automodule:: MeasurementSystem.core.comvisu.Command
-
 
 Server Utilities
 ~~~~~~~~~~~~~~~~

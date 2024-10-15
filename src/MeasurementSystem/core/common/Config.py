@@ -3,7 +3,7 @@ from __future__ import annotations
 import os
 import sys
 
-from MeasurementSystem.core.Utils import Serializable
+from MeasurementSystem.core.common.Utils import Serializable
 
 
 class Config(Serializable):

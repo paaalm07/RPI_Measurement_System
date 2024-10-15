@@ -6,7 +6,7 @@ import re
 import sys
 from typing import List
 
-from MeasurementSystem.core.Utils import Serializable
+from MeasurementSystem.core.common.Utils import Serializable
 
 
 class Model(Serializable):

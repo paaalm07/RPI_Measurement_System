@@ -9,7 +9,7 @@ from typing import NewType
 
 import lgpio
 
-from MeasurementSystem.core.driver.BaseClasses import (
+from MeasurementSystem.core.common.BaseClasses import (
     Channel,
     ChannelManager,
     ChannelProperties,
@@ -21,9 +21,9 @@ from MeasurementSystem.core.driver.BaseClasses import (
     OutputChannel,
     OutputModule,
 )
-from MeasurementSystem.core.driver.Config import Config
-from MeasurementSystem.core.driver.Data import Data
-from MeasurementSystem.core.driver.Models import (
+from MeasurementSystem.core.common.Config import Config
+from MeasurementSystem.core.common.Data import Data
+from MeasurementSystem.core.common.Models import (
     KTYxModel,
     LinearModel,
     Model,

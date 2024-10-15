@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MeasurementSystem.core.driver.DigilentMCC118 &mdash; Measurement System 0.1.dev1+g9e4a58d documentation</title>
+  <title>MeasurementSystem.core.common.Config &mdash; Measurement System 0.1.dev1+g9e4a58d documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
@@ -373,7 +373,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
-      <li class="breadcrumb-item active">MeasurementSystem.core.driver.DigilentMCC118</li>
+      <li class="breadcrumb-item active">MeasurementSystem.core.common.Config</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -382,200 +382,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
 
-  <h1>Source code for MeasurementSystem.core.driver.DigilentMCC118</h1><div class="highlight"><pre>
+  <h1>Source code for MeasurementSystem.core.common.Config</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 
-<span class="kn">from</span> <span class="nn">daqhats</span> <span class="kn">import</span> <span class="n">OptionFlags</span><span class="p">,</span> <span class="n">mcc118</span>
-
-<span class="kn">from</span> <span class="nn">MeasurementSystem.core.common.BaseClasses</span> <span class="kn">import</span> <span class="n">ChannelProperties</span><span class="p">,</span> <span class="n">Hardware</span><span class="p">,</span> <span class="n">InputChannel</span>
-<span class="kn">from</span> <span class="nn">MeasurementSystem.core.common.Config</span> <span class="kn">import</span> <span class="n">Config</span>
-<span class="kn">from</span> <span class="nn">MeasurementSystem.core.common.Data</span> <span class="kn">import</span> <span class="n">Data</span>
-<span class="kn">from</span> <span class="nn">MeasurementSystem.core.common.Models</span> <span class="kn">import</span> <span class="n">LinearModel</span><span class="p">,</span> <span class="n">Model</span>
+<span class="kn">from</span> <span class="nn">MeasurementSystem.core.common.Utils</span> <span class="kn">import</span> <span class="n">Serializable</span>
 
 
-<div class="viewcode-block" id="Hardware_DigilentMCC118">
-<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Hardware_DigilentMCC118">[docs]</a>
-<span class="k">class</span> <span class="nc">Hardware_DigilentMCC118</span><span class="p">(</span><span class="n">Hardware</span><span class="p">):</span>
+<div class="viewcode-block" id="Config">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.common.Config.Config">[docs]</a>
+<span class="k">class</span> <span class="nc">Config</span><span class="p">(</span><span class="n">Serializable</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    A class representing the Digilent MCC 118 hardware device.</span>
+<span class="sd">    A class representing the configuration settings, allowing for easy access and manipulation of settings.</span>
 
-<span class="sd">    :param name: The name of the hardware instance.</span>
-<span class="sd">    :type name: str</span>
-<span class="sd">    :param hat_address: The address of the Digilent MCC 118.</span>
-<span class="sd">    :type hat_address: str</span>
+<span class="sd">    :param kwargs: A dictionary of keyword arguments to set as attributes of the instance.</span>
+<span class="sd">    :type kwargs: dict</span>
 
-<span class="sd">    :return: A Hardware_DigilentMCC118 instance.</span>
-<span class="sd">    :rtype: Hardware_DigilentMCC118</span>
+<span class="sd">    :return: Config instance</span>
+<span class="sd">    :rtype: Config</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">hat_address</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">hat_address</span> <span class="o">=</span> <span class="n">hat_address</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
-
-<div class="viewcode-block" id="Hardware_DigilentMCC118.initialize">
-<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Hardware_DigilentMCC118.initialize">[docs]</a>
-    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Initialize a Hardware_DigilentMCC118 instance.</span>
-
-<span class="sd">        :return: None</span>
-<span class="sd">        :rtype: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">handle</span> <span class="o">=</span> <span class="n">mcc118</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hat_address</span><span class="p">)</span></div>
-
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mcc118</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        :return: The handle of the MCC 118 device.</span>
-<span class="sd">        :rtype: mcc118</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span>
-
-    <span class="nd">@handle</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">mcc118</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        :param value: The handle of the MCC 118 device.</span>
-<span class="sd">        :type value: mcc118</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">value</span>
-
-<div class="viewcode-block" id="Hardware_DigilentMCC118.close">
-<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Hardware_DigilentMCC118.close">[docs]</a>
-    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Close the Hardware_DigilentMCC118 instance.</span>
-
-<span class="sd">        This method closes all channels in the Hardware_DigilentMCC118 instance.</span>
-
-<span class="sd">        :return: None</span>
-<span class="sd">        :rtype: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
-</div>
-
-        <span class="c1"># TODO: check if ressource close is needed</span>
-
-
-<div class="viewcode-block" id="Channel_MCC118_VoltageChannel">
-<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Channel_MCC118_VoltageChannel">[docs]</a>
-<span class="k">class</span> <span class="nc">Channel_MCC118_VoltageChannel</span><span class="p">(</span><span class="n">InputChannel</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    A class representing a voltage input channel on the Digilent MCC 118 device.</span>
-
-<span class="sd">    This class provides a software interface to a single voltage input channel on the MCC 118 device.</span>
-
-<span class="sd">    :param handle: The handle of the MCC 118 device.</span>
-<span class="sd">    :type handle: mcc118</span>
-<span class="sd">    :param name: The name of the channel.</span>
-<span class="sd">    :type name: str</span>
-<span class="sd">    :param channel: The channel number on the MCC 118 (0-7).</span>
-<span class="sd">    :type channel: int</span>
-<span class="sd">    :param unit: The unit of the voltage measurement. Defaults to &quot;V&quot;.</span>
-<span class="sd">    :type unit: str</span>
-<span class="sd">    :param model: The model to use for voltage measurement. Defaults to LinearModel(offset=0, gain=1).</span>
-<span class="sd">    :type model: Model</span>
-<span class="sd">    :param config: Additional keyword arguments to store as a Config instance.</span>
-<span class="sd">    :type config: dict</span>
-
-<span class="sd">    :return: A Channel_MCC118_VoltageChannel instance.</span>
-<span class="sd">    :rtype: Channel_MCC118_VoltageChannel</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">handle</span><span class="p">:</span> <span class="n">mcc118</span><span class="p">,</span>
-        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-        <span class="n">channel</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-        <span class="n">unit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;V&quot;</span><span class="p">,</span>
-        <span class="n">model</span><span class="p">:</span> <span class="n">Model</span> <span class="o">=</span> <span class="n">LinearModel</span><span class="p">(</span><span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">gain</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
-        <span class="o">**</span><span class="n">config</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">handle</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">channel</span> <span class="o">=</span> <span class="n">channel</span>  <span class="c1"># do not mix with self.hat.channels !</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">unit</span> <span class="o">=</span> <span class="n">unit</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
-
-        <span class="c1"># Store the config as an instance of Config</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
-
-<div class="viewcode-block" id="Channel_MCC118_VoltageChannel.initialize">
-<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Channel_MCC118_VoltageChannel.initialize">[docs]</a>
-    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Initialize the Channel_MCC118_VoltageChannel instance.</span>
-
-<span class="sd">        :return: None</span>
-<span class="sd">        :rtype: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-            <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-            <span class="nb">type</span><span class="o">=</span><span class="n">ChannelProperties</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">VOLTAGE</span><span class="p">,</span>
-            <span class="n">unit</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">unit</span><span class="p">,</span>
-            <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_options</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">OptionFlags</span><span class="o">.</span><span class="n">DEFAULT</span>
-        <span class="p">)</span>  <span class="c1"># TODO: check if needed and implement in __init__ &amp; check if flags are correct</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">Data</span><span class="p">()</span></div>
-
-
-<div class="viewcode-block" id="Channel_MCC118_VoltageChannel.read">
-<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Channel_MCC118_VoltageChannel.read">[docs]</a>
-    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Data</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Read a voltage measurement from the channel.</span>
-
-<span class="sd">        :return: The voltage measurement.</span>
-<span class="sd">        :rtype: Data</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">_voltage</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="o">.</span><span class="n">a_in_read</span><span class="p">(</span><span class="n">channel</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">channel</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">)</span>
-        <span class="n">_voltage</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">_voltage</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">add_value</span><span class="p">(</span><span class="n">_voltage</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span></div>
-
-
-<div class="viewcode-block" id="Channel_MCC118_VoltageChannel.close">
-<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Channel_MCC118_VoltageChannel.close">[docs]</a>
-    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Close the voltage channel.</span>
-
-<span class="sd">        This method stops the voltage channel, clears the internal data.</span>
-
-<span class="sd">        :return: None</span>
-<span class="sd">        :rtype: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_voltage</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span></div>
-
-
-<div class="viewcode-block" id="Channel_MCC118_VoltageChannel.to_dict">
-<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Channel_MCC118_VoltageChannel.to_dict">[docs]</a>
-    <span class="k">def</span> <span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        :return: A dictionary representation of the voltage channel.</span>
-<span class="sd">        :rtype: dict</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="c1"># prevet RecursionError</span>
-        <span class="n">original_hat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="n">d</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">original_hat</span>
-
-        <span class="k">return</span> <span class="n">d</span></div>
-</div>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div>
 
 </pre></div>
 

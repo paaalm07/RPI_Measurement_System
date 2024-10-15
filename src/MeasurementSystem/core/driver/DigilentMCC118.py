@@ -5,10 +5,10 @@ import sys
 
 from daqhats import OptionFlags, mcc118
 
-from MeasurementSystem.core.driver.BaseClasses import ChannelProperties, Hardware, InputChannel
-from MeasurementSystem.core.driver.Config import Config
-from MeasurementSystem.core.driver.Data import Data
-from MeasurementSystem.core.driver.Models import LinearModel, Model
+from MeasurementSystem.core.common.BaseClasses import ChannelProperties, Hardware, InputChannel
+from MeasurementSystem.core.common.Config import Config
+from MeasurementSystem.core.common.Data import Data
+from MeasurementSystem.core.common.Models import LinearModel, Model
 
 
 class Hardware_DigilentMCC118(Hardware):

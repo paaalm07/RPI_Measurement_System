@@ -12,9 +12,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 from typing import Any, Dict, List, Protocol, Union
 
-from MeasurementSystem.core.comvisu.Command import Command
-from MeasurementSystem.core.comvisu.ServerUtils import DataQueueThread, ServerConnection
-from MeasurementSystem.core.driver.BaseClasses import (
+from MeasurementSystem.core.common.BaseClasses import (
     Channel,
     ChannelManager,
     ChannelProperties,
@@ -27,10 +25,8 @@ from MeasurementSystem.core.driver.BaseClasses import (
     OutputChannel,
     OutputModule,
 )
-from MeasurementSystem.core.driver.Data import Data
-from MeasurementSystem.core.driver.DigilentMCC118 import Channel_MCC118_VoltageChannel, Hardware_DigilentMCC118
-from MeasurementSystem.core.driver.DigilentMCC134 import Channel_MCC134_ThermocoupleChannel, Hardware_DigilentMCC134
-from MeasurementSystem.core.driver.Models import (
+from MeasurementSystem.core.common.Data import Data
+from MeasurementSystem.core.common.Models import (
     KTYxModel,
     LinearModel,
     Model,
@@ -39,6 +35,11 @@ from MeasurementSystem.core.driver.Models import (
     PTxModel,
     StackedModel,
 )
+from MeasurementSystem.core.common.Utils import OrderedPriorityQueue, Serializable
+from MeasurementSystem.core.comvisu.Command import Command
+from MeasurementSystem.core.comvisu.ServerUtils import DataQueueThread, ServerConnection
+from MeasurementSystem.core.driver.DigilentMCC118 import Channel_MCC118_VoltageChannel, Hardware_DigilentMCC118
+from MeasurementSystem.core.driver.DigilentMCC134 import Channel_MCC134_ThermocoupleChannel, Hardware_DigilentMCC134
 from MeasurementSystem.core.driver.RaspberryPi import (
     Channel_RPI_BufferedDigitalInput,
     Channel_RPI_DigitalInput,
@@ -50,7 +51,6 @@ from MeasurementSystem.core.driver.RaspberryPi import (
     Module_RPI_StepperMotor,
     Module_RPI_WeighScalesHX711,
 )
-from MeasurementSystem.core.Utils import OrderedPriorityQueue, Serializable
 
 current_dir = os.path.dirname(os.path.realpath(__file__))
 

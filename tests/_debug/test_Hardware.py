@@ -7,7 +7,7 @@ import time
 from collections.abc import Generator
 from typing import List, NewType, Union
 
-from MeasurementSystem.core.driver.BaseClasses import (
+from MeasurementSystem.core.common.BaseClasses import (
     Channel,
     ChannelManager,
     ChannelProperties,
@@ -20,10 +20,8 @@ from MeasurementSystem.core.driver.BaseClasses import (
     OutputChannel,
     OutputModule,
 )
-from MeasurementSystem.core.driver.Data import Data
-from MeasurementSystem.core.driver.DigilentMCC118 import Channel_MCC118_VoltageChannel, Hardware_DigilentMCC118
-from MeasurementSystem.core.driver.DigilentMCC134 import Channel_MCC134_ThermocoupleChannel, Hardware_DigilentMCC134
-from MeasurementSystem.core.driver.Models import (
+from MeasurementSystem.core.common.Data import Data
+from MeasurementSystem.core.common.Models import (
     KTYxModel,
     LinearModel,
     Model,
@@ -32,6 +30,9 @@ from MeasurementSystem.core.driver.Models import (
     PTxModel,
     StackedModel,
 )
+from MeasurementSystem.core.common.Utils import Serializable
+from MeasurementSystem.core.driver.DigilentMCC118 import Channel_MCC118_VoltageChannel, Hardware_DigilentMCC118
+from MeasurementSystem.core.driver.DigilentMCC134 import Channel_MCC134_ThermocoupleChannel, Hardware_DigilentMCC134
 from MeasurementSystem.core.driver.RaspberryPi import (
     Channel_RPI_BufferedDigitalInput,
     Channel_RPI_DigitalInput,
@@ -43,7 +44,6 @@ from MeasurementSystem.core.driver.RaspberryPi import (
     Module_RPI_StepperMotor,
     Module_RPI_WeighScalesHX711,
 )
-from MeasurementSystem.core.Utils import Serializable
 
 ########################
 # Example usage
