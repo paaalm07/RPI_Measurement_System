@@ -187,6 +187,7 @@ ignore = [
     "EM101", "EM102", "EM103",
     "E501",  # line too long
     "E402",
+    "F401",  # unused imports - keep!
     "B006",
     "B007",
     "B008",
