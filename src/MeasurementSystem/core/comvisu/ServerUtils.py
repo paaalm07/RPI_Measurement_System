@@ -5,8 +5,8 @@ import threading
 import time
 from typing import List, Protocol
 
+from MeasurementSystem.core.common.Utils import OrderedPriorityQueue
 from MeasurementSystem.core.comvisu.Command import Command
-from MeasurementSystem.core.Utils import OrderedPriorityQueue
 
 
 class ServerConnection:

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MeasurementSystem.core.comvisu.ServerUtils &mdash; Measurement System 0.1.dev1+g9e4a58d documentation</title>
+  <title>MeasurementSystem.core.driver.DigilentMCC118 &mdash; Measurement System 0.1.dev1+g9e4a58d documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
@@ -50,52 +50,49 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../reference.html">Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../../reference.html#main-application">Main Application</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#module-MeasurementSystem.measurement_server">Measurement Server</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTask"><code class="docutils literal notranslate"><span class="pre">ControlTask</span></code></a><ul>
-<li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTask.SendCommandCallbackType"><code class="docutils literal notranslate"><span class="pre">SendCommandCallbackType</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTask.add_command"><code class="docutils literal notranslate"><span class="pre">add_command()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTask.start"><code class="docutils literal notranslate"><span class="pre">start()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTask.stop"><code class="docutils literal notranslate"><span class="pre">stop()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reference.html#module-MeasurementSystem.measurement_server">Measurement Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTask"><code class="docutils literal notranslate"><span class="pre">ControlTask</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTask.SendCommandCallbackType"><code class="docutils literal notranslate"><span class="pre">SendCommandCallbackType</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTask.add_command"><code class="docutils literal notranslate"><span class="pre">add_command()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTask.start"><code class="docutils literal notranslate"><span class="pre">start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTask.stop"><code class="docutils literal notranslate"><span class="pre">stop()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTaskManager"><code class="docutils literal notranslate"><span class="pre">ControlTaskManager</span></code></a><ul>
-<li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTaskManager.add_command_to_task"><code class="docutils literal notranslate"><span class="pre">add_command_to_task()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTaskManager.initialize_tasks"><code class="docutils literal notranslate"><span class="pre">initialize_tasks()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTaskManager.start_tasks"><code class="docutils literal notranslate"><span class="pre">start_tasks()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTaskManager.stop_tasks"><code class="docutils literal notranslate"><span class="pre">stop_tasks()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTaskManager"><code class="docutils literal notranslate"><span class="pre">ControlTaskManager</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTaskManager.add_command_to_task"><code class="docutils literal notranslate"><span class="pre">add_command_to_task()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTaskManager.initialize_tasks"><code class="docutils literal notranslate"><span class="pre">initialize_tasks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTaskManager.start_tasks"><code class="docutils literal notranslate"><span class="pre">start_tasks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTaskManager.stop_tasks"><code class="docutils literal notranslate"><span class="pre">stop_tasks()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.HardwareInterface"><code class="docutils literal notranslate"><span class="pre">HardwareInterface</span></code></a><ul>
-<li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.HardwareInterface.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.HardwareInterface.from_json"><code class="docutils literal notranslate"><span class="pre">from_json()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.HardwareInterface.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.HardwareInterface.to_json"><code class="docutils literal notranslate"><span class="pre">to_json()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.HardwareInterface"><code class="docutils literal notranslate"><span class="pre">HardwareInterface</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.HardwareInterface.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.HardwareInterface.from_json"><code class="docutils literal notranslate"><span class="pre">from_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.HardwareInterface.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.HardwareInterface.to_json"><code class="docutils literal notranslate"><span class="pre">to_json()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem"><code class="docutils literal notranslate"><span class="pre">MeasurementSystem</span></code></a><ul>
-<li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.add_command_to_send_queue"><code class="docutils literal notranslate"><span class="pre">add_command_to_send_queue()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.init_comvisu"><code class="docutils literal notranslate"><span class="pre">init_comvisu()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.printConsole"><code class="docutils literal notranslate"><span class="pre">printConsole()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.process_commands"><code class="docutils literal notranslate"><span class="pre">process_commands()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem"><code class="docutils literal notranslate"><span class="pre">MeasurementSystem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.add_command_to_send_queue"><code class="docutils literal notranslate"><span class="pre">add_command_to_send_queue()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.init_comvisu"><code class="docutils literal notranslate"><span class="pre">init_comvisu()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.printConsole"><code class="docutils literal notranslate"><span class="pre">printConsole()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.process_commands"><code class="docutils literal notranslate"><span class="pre">process_commands()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTask"><code class="docutils literal notranslate"><span class="pre">MeasurementTask</span></code></a><ul>
-<li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTask.SendCommandCallbackType_2"><code class="docutils literal notranslate"><span class="pre">SendCommandCallbackType_2</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTask.start"><code class="docutils literal notranslate"><span class="pre">start()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTask.stop"><code class="docutils literal notranslate"><span class="pre">stop()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTask"><code class="docutils literal notranslate"><span class="pre">MeasurementTask</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTask.SendCommandCallbackType_2"><code class="docutils literal notranslate"><span class="pre">SendCommandCallbackType_2</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTask.start"><code class="docutils literal notranslate"><span class="pre">start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTask.stop"><code class="docutils literal notranslate"><span class="pre">stop()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTaskManager"><code class="docutils literal notranslate"><span class="pre">MeasurementTaskManager</span></code></a><ul>
-<li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTaskManager.initialize_tasks"><code class="docutils literal notranslate"><span class="pre">initialize_tasks()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTaskManager.start_tasks"><code class="docutils literal notranslate"><span class="pre">start_tasks()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTaskManager.stop_tasks"><code class="docutils literal notranslate"><span class="pre">stop_tasks()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTaskManager"><code class="docutils literal notranslate"><span class="pre">MeasurementTaskManager</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTaskManager.initialize_tasks"><code class="docutils literal notranslate"><span class="pre">initialize_tasks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTaskManager.start_tasks"><code class="docutils literal notranslate"><span class="pre">start_tasks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTaskManager.stop_tasks"><code class="docutils literal notranslate"><span class="pre">stop_tasks()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../reference.html#common-utilities">Common Utilities</a><ul>
@@ -298,7 +295,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#module-MeasurementSystem.core.driver.DigilentMCC118">Digilent MCC118</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#module-MeasurementSystem.core.driver.DigilentMCC118">Digilent Modules</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Channel_MCC118_VoltageChannel"><code class="docutils literal notranslate"><span class="pre">Channel_MCC118_VoltageChannel</span></code></a><ul>
 <li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Channel_MCC118_VoltageChannel.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Channel_MCC118_VoltageChannel.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
@@ -312,9 +309,6 @@
 <li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Hardware_DigilentMCC118.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#module-MeasurementSystem.core.driver.DigilentMCC134">Digilent MCC134</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC134.Channel_MCC134_ThermocoupleChannel"><code class="docutils literal notranslate"><span class="pre">Channel_MCC134_ThermocoupleChannel</span></code></a><ul>
 <li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC134.Channel_MCC134_ThermocoupleChannel.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC134.Channel_MCC134_ThermocoupleChannel.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
@@ -379,7 +373,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
-      <li class="breadcrumb-item active">MeasurementSystem.core.comvisu.ServerUtils</li>
+      <li class="breadcrumb-item active">MeasurementSystem.core.driver.DigilentMCC118</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -388,265 +382,200 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
 
-  <h1>Source code for MeasurementSystem.core.comvisu.ServerUtils</h1><div class="highlight"><pre>
+  <h1>Source code for MeasurementSystem.core.driver.DigilentMCC118</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
 
-<span class="kn">import</span> <span class="nn">socket</span>
-<span class="kn">import</span> <span class="nn">threading</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Protocol</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
 
-<span class="kn">from</span> <span class="nn">MeasurementSystem.core.common.Utils</span> <span class="kn">import</span> <span class="n">OrderedPriorityQueue</span>
-<span class="kn">from</span> <span class="nn">MeasurementSystem.core.comvisu.Command</span> <span class="kn">import</span> <span class="n">Command</span>
+<span class="kn">from</span> <span class="nn">daqhats</span> <span class="kn">import</span> <span class="n">OptionFlags</span><span class="p">,</span> <span class="n">mcc118</span>
+
+<span class="kn">from</span> <span class="nn">MeasurementSystem.core.common.BaseClasses</span> <span class="kn">import</span> <span class="n">ChannelProperties</span><span class="p">,</span> <span class="n">Hardware</span><span class="p">,</span> <span class="n">InputChannel</span>
+<span class="kn">from</span> <span class="nn">MeasurementSystem.core.common.Config</span> <span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span> <span class="nn">MeasurementSystem.core.common.Data</span> <span class="kn">import</span> <span class="n">Data</span>
+<span class="kn">from</span> <span class="nn">MeasurementSystem.core.common.Models</span> <span class="kn">import</span> <span class="n">LinearModel</span><span class="p">,</span> <span class="n">Model</span>
 
 
-<div class="viewcode-block" id="ServerConnection">
-<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.comvisu.ServerUtils.ServerConnection">[docs]</a>
-<span class="k">class</span> <span class="nc">ServerConnection</span><span class="p">:</span>
+<div class="viewcode-block" id="Hardware_DigilentMCC118">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Hardware_DigilentMCC118">[docs]</a>
+<span class="k">class</span> <span class="nc">Hardware_DigilentMCC118</span><span class="p">(</span><span class="n">Hardware</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    A class representing a connection to a server.</span>
+<span class="sd">    A class representing the Digilent MCC 118 hardware device.</span>
 
-<span class="sd">    This class provides methods for establishing and managing a connection to a server.</span>
-<span class="sd">    It allows for sending commands to the server and receiving data in response.</span>
-
-<span class="sd">    :param name: The name of the connection.</span>
+<span class="sd">    :param name: The name of the hardware instance.</span>
 <span class="sd">    :type name: str</span>
-<span class="sd">    :param server_address: The address of the server to connect to, given as a tuple of IP address and port.</span>
-<span class="sd">    :type server_address: tuple</span>
-<span class="sd">    :param timeout: The timeout for establishing the connection. Defaults to 5 seconds.</span>
-<span class="sd">    :type timeout: int</span>
+<span class="sd">    :param hat_address: The address of the Digilent MCC 118.</span>
+<span class="sd">    :type hat_address: str</span>
 
-<span class="sd">    :return: Instance of ServerConnection</span>
-<span class="sd">    :rtype: :class:`ServerConnection`</span>
+<span class="sd">    :return: A Hardware_DigilentMCC118 instance.</span>
+<span class="sd">    :rtype: Hardware_DigilentMCC118</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">server_address</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">hat_address</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">server_address</span> <span class="o">=</span> <span class="n">server_address</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_client_socket</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_client_socket</span><span class="o">.</span><span class="n">settimeout</span><span class="p">(</span><span class="n">timeout</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_is_connected</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hat_address</span> <span class="o">=</span> <span class="n">hat_address</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Hardware_DigilentMCC118.initialize">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Hardware_DigilentMCC118.initialize">[docs]</a>
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize a Hardware_DigilentMCC118 instance.</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">handle</span> <span class="o">=</span> <span class="n">mcc118</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hat_address</span><span class="p">)</span></div>
+
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">is_connected</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mcc118</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        :return: True if the connection is open, False otherwise.</span>
-<span class="sd">        :rtype: bool</span>
+<span class="sd">        :return: The handle of the MCC 118 device.</span>
+<span class="sd">        :rtype: mcc118</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_connected</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span>
 
-<div class="viewcode-block" id="ServerConnection.connect">
-<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.comvisu.ServerUtils.ServerConnection.connect">[docs]</a>
-    <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nd">@handle</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">mcc118</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Connect to the server.</span>
-
-<span class="sd">        This method tries to connect to the server.</span>
-<span class="sd">        If the connection is successful, the `is_connected` flag is</span>
-<span class="sd">        set to `True`. If the connection fails, an exception is raised.</span>
-
-<span class="sd">        :return: None</span>
-<span class="sd">        :rtype: None</span>
-
-<span class="sd">        :raises Exception: Any Exception raised.</span>
+<span class="sd">        :param value: The handle of the MCC 118 device.</span>
+<span class="sd">        :type value: mcc118</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;try to connect to </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">server_address</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_client_socket</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">server_address</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_is_connected</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">e</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">value</span>
 
-
-<div class="viewcode-block" id="ServerConnection.disconnect">
-<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.comvisu.ServerUtils.ServerConnection.disconnect">[docs]</a>
-    <span class="k">def</span> <span class="nf">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="Hardware_DigilentMCC118.close">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Hardware_DigilentMCC118.close">[docs]</a>
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Disconnect from the server.</span>
+<span class="sd">        Close the Hardware_DigilentMCC118 instance.</span>
 
-<span class="sd">        This method closes the socket and sets the `is_connected` flag to `False`.</span>
+<span class="sd">        This method closes all channels in the Hardware_DigilentMCC118 instance.</span>
 
 <span class="sd">        :return: None</span>
 <span class="sd">        :rtype: None</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_connected</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_client_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_is_connected</span> <span class="o">=</span> <span class="kc">False</span></div>
-
-
-<div class="viewcode-block" id="ServerConnection.receive">
-<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.comvisu.ServerUtils.ServerConnection.receive">[docs]</a>
-    <span class="k">def</span> <span class="nf">receive</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bufsize</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Command</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Receive data from the server and return a list of Command objects.</span>
-
-<span class="sd">        :param bufsize: The buffer size for receiving data. Defaults to 1024.</span>
-<span class="sd">        :type bufsize: int</span>
-
-<span class="sd">        :return: A list of Command objects containing the received data.</span>
-<span class="sd">        :rtype: List[Command]</span>
-
-<span class="sd">        :raises ConnectionError: If the connection to the server is lost.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="k">try</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;receiving....&quot;</span><span class="p">)</span>
-            <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="n">bufsize</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span><span class="s2">&quot;Connection to the server lost.&quot;</span><span class="p">)</span>
-
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Received:&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-
-            <span class="n">split_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
-            <span class="n">commands</span> <span class="o">=</span> <span class="p">[</span><span class="n">Command</span><span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="s2">&quot;;&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">split_data</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
-
-            <span class="k">return</span> <span class="n">commands</span>
-        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">e</span></div>
-
-
-<div class="viewcode-block" id="ServerConnection.send">
-<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.comvisu.ServerUtils.ServerConnection.send">[docs]</a>
-    <span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">:</span> <span class="n">Command</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Send a command to the server if connected.</span>
-
-<span class="sd">        :param command: The Command object to send.</span>
-<span class="sd">        :type command: Command</span>
-
-<span class="sd">        :return: None</span>
-<span class="sd">        :rtype: None</span>
-
-<span class="sd">        :raises ConnectionError: If the connection to the server is lost.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_connected</span><span class="p">:</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_client_socket</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">command</span><span class="o">.</span><span class="n">to_string</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
-            <span class="k">except</span> <span class="ne">BrokenPipeError</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span><span class="s2">&quot;Connection to the server lost.&quot;</span><span class="p">)</span></div>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
 </div>
 
+        <span class="c1"># TODO: check if ressource close is needed</span>
 
 
-<div class="viewcode-block" id="DataQueueThread">
-<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.comvisu.ServerUtils.DataQueueThread">[docs]</a>
-<span class="k">class</span> <span class="nc">DataQueueThread</span><span class="p">:</span>
+<div class="viewcode-block" id="Channel_MCC118_VoltageChannel">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Channel_MCC118_VoltageChannel">[docs]</a>
+<span class="k">class</span> <span class="nc">Channel_MCC118_VoltageChannel</span><span class="p">(</span><span class="n">InputChannel</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    A class representing a thread that processes a queue of data.</span>
+<span class="sd">    A class representing a voltage input channel on the Digilent MCC 118 device.</span>
 
-<span class="sd">    :param data_queue: The queue of data to process.</span>
-<span class="sd">    :type data_queue: OrderedPriorityQueue</span>
-<span class="sd">    :param send_command_callback: A callback function to send commands to the server.</span>
-<span class="sd">    :type send_command_callback: SendCommandCallbackType_3</span>
+<span class="sd">    This class provides a software interface to a single voltage input channel on the MCC 118 device.</span>
 
-<span class="sd">    :return: Instance of DataQueueThread</span>
-<span class="sd">    :rtype: :class:`DataQueueThread`</span>
+<span class="sd">    :param handle: The handle of the MCC 118 device.</span>
+<span class="sd">    :type handle: mcc118</span>
+<span class="sd">    :param name: The name of the channel.</span>
+<span class="sd">    :type name: str</span>
+<span class="sd">    :param channel: The channel number on the MCC 118 (0-7).</span>
+<span class="sd">    :type channel: int</span>
+<span class="sd">    :param unit: The unit of the voltage measurement. Defaults to &quot;V&quot;.</span>
+<span class="sd">    :type unit: str</span>
+<span class="sd">    :param model: The model to use for voltage measurement. Defaults to LinearModel(offset=0, gain=1).</span>
+<span class="sd">    :type model: Model</span>
+<span class="sd">    :param config: Additional keyword arguments to store as a Config instance.</span>
+<span class="sd">    :type config: dict</span>
+
+<span class="sd">    :return: A Channel_MCC118_VoltageChannel instance.</span>
+<span class="sd">    :rtype: Channel_MCC118_VoltageChannel</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
-<div class="viewcode-block" id="DataQueueThread.SendCommandCallbackType_3">
-<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.comvisu.ServerUtils.DataQueueThread.SendCommandCallbackType_3">[docs]</a>
-    <span class="k">class</span> <span class="nc">SendCommandCallbackType_3</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        A protocol defining a callback function for sending commands.</span>
-
-<span class="sd">        This protocol specifies the signature of a callback function that is called when sending a command.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">:</span> <span class="n">Command</span><span class="p">,</span> <span class="n">priority</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span></div>
-
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">data_queue</span><span class="p">:</span> <span class="n">OrderedPriorityQueue</span><span class="p">,</span>
-        <span class="n">send_command_callback</span><span class="p">:</span> <span class="n">SendCommandCallbackType_3</span><span class="p">,</span>
-    <span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">data_queue</span> <span class="o">=</span> <span class="n">data_queue</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">send_command_callback</span> <span class="o">=</span> <span class="n">send_command_callback</span>
+        <span class="n">handle</span><span class="p">:</span> <span class="n">mcc118</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">channel</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">unit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;V&quot;</span><span class="p">,</span>
+        <span class="n">model</span><span class="p">:</span> <span class="n">Model</span> <span class="o">=</span> <span class="n">LinearModel</span><span class="p">(</span><span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">gain</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+        <span class="o">**</span><span class="n">config</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">handle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">channel</span> <span class="o">=</span> <span class="n">channel</span>  <span class="c1"># do not mix with self.hat.channels !</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unit</span> <span class="o">=</span> <span class="n">unit</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_stop_event</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Event</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_processing_thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_dataqueue_processing_loop</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_processing_thread</span><span class="o">.</span><span class="n">daemon</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="c1"># Store the config as an instance of Config</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
 
-<div class="viewcode-block" id="DataQueueThread.start">
-<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.comvisu.ServerUtils.DataQueueThread.start">[docs]</a>
-    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Channel_MCC118_VoltageChannel.initialize">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Channel_MCC118_VoltageChannel.initialize">[docs]</a>
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Starts the thread that runs the data queue processing loop.</span>
+<span class="sd">        Initialize the Channel_MCC118_VoltageChannel instance.</span>
 
 <span class="sd">        :return: None</span>
 <span class="sd">        :rtype: None</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_processing_thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span></div>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="n">ChannelProperties</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">VOLTAGE</span><span class="p">,</span>
+            <span class="n">unit</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">unit</span><span class="p">,</span>
+            <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_options</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">OptionFlags</span><span class="o">.</span><span class="n">DEFAULT</span>
+        <span class="p">)</span>  <span class="c1"># TODO: check if needed and implement in __init__ &amp; check if flags are correct</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">Data</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="DataQueueThread.stop">
-<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.comvisu.ServerUtils.DataQueueThread.stop">[docs]</a>
-    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="Channel_MCC118_VoltageChannel.read">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Channel_MCC118_VoltageChannel.read">[docs]</a>
+    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Data</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Stops the thread that runs the data queue processing loop. It also waits for the thread to finish.</span>
+<span class="sd">        Read a voltage measurement from the channel.</span>
+
+<span class="sd">        :return: The voltage measurement.</span>
+<span class="sd">        :rtype: Data</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_voltage</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="o">.</span><span class="n">a_in_read</span><span class="p">(</span><span class="n">channel</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">channel</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">)</span>
+        <span class="n">_voltage</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">_voltage</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">add_value</span><span class="p">(</span><span class="n">_voltage</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span></div>
+
+
+<div class="viewcode-block" id="Channel_MCC118_VoltageChannel.close">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Channel_MCC118_VoltageChannel.close">[docs]</a>
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Close the voltage channel.</span>
+
+<span class="sd">        This method stops the voltage channel, clears the internal data.</span>
 
 <span class="sd">        :return: None</span>
 <span class="sd">        :rtype: None</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_stop_event</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_processing_thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_stop_event</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_voltage</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span></div>
 
 
-    <span class="k">def</span> <span class="nf">_dataqueue_processing_loop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="Channel_MCC118_VoltageChannel.to_dict">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Channel_MCC118_VoltageChannel.to_dict">[docs]</a>
+    <span class="k">def</span> <span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Data queue processing loop.</span>
-
-<span class="sd">        This method runs in a separate thread and processes the data queue. It gets</span>
-<span class="sd">        commands from the queue, ueses the send_command_callback to send them to the server,</span>
-<span class="sd">        and updates the queue status every 20 iterations. If the queue is empty, it sends a message to the server</span>
-<span class="sd">        indicating that the queue is empty and waits for 0.5 seconds before checking the queue again.</span>
-
-<span class="sd">        Data queue processing loop is stopped when the stop_event is set.</span>
-
-<span class="sd">        :return: None</span>
-<span class="sd">        :rtype: None</span>
+<span class="sd">        :return: A dictionary representation of the voltage channel.</span>
+<span class="sd">        :rtype: dict</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="n">data_queue_empty_not_sent</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="c1"># prevet RecursionError</span>
+        <span class="n">original_hat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">original_hat</span>
 
-        <span class="n">i_loop</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stop_event</span><span class="o">.</span><span class="n">is_set</span><span class="p">():</span>
-            <span class="n">i_loop</span> <span class="o">+=</span> <span class="mi">1</span>
-
-            <span class="k">try</span><span class="p">:</span>
-                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_queue</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
-                    <span class="n">data_queue_empty_not_sent</span> <span class="o">=</span> <span class="kc">True</span>
-
-                    <span class="n">command</span><span class="p">,</span> <span class="n">priority</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-                    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">Command</span><span class="p">)</span>
-
-                    <span class="c1"># Send command to the server</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">send_command_callback</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
-
-                    <span class="k">if</span> <span class="n">i_loop</span> <span class="o">%</span> <span class="mi">20</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                        <span class="c1"># Queue status update</span>
-                        <span class="c1"># self.send_command_callback(f&quot;#990SData in queue: {self.data_queue.qsize()};&quot;)</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">send_command_callback</span><span class="p">(</span>
-                            <span class="n">Command</span><span class="p">(</span>
-                                <span class="mi">990</span><span class="p">,</span>
-                                <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span>
-                                <span class="sa">f</span><span class="s2">&quot;Data in queue: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">data_queue</span><span class="o">.</span><span class="n">qsize</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-                            <span class="p">)</span>
-                        <span class="p">)</span>
-
-                    <span class="c1"># delay for sending data (otherwise ComVisu overflow!)</span>
-                    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">data_queue_empty_not_sent</span><span class="p">:</span>
-                        <span class="c1"># self.send_command_callback(f&quot;#990SData Queue: empty;&quot;)</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">send_command_callback</span><span class="p">(</span><span class="n">Command</span><span class="p">(</span><span class="mi">990</span><span class="p">,</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="s2">&quot;Data Queue: empty&quot;</span><span class="p">))</span>
-                        <span class="n">data_queue_empty_not_sent</span> <span class="o">=</span> <span class="kc">False</span>
-
-                    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c1"># Note: not too long for keep alive update</span>
-            <span class="k">except</span><span class="p">:</span>
-                <span class="k">break</span>  <span class="c1"># stop sending the data queue send loop</span></div>
+        <span class="k">return</span> <span class="n">d</span></div>
+</div>
 
 </pre></div>
 

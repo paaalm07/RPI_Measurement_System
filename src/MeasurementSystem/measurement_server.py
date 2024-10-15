@@ -12,28 +12,45 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 from typing import Any, Dict, List, Protocol, Union
 
+from MeasurementSystem.core.common.BaseClasses import (
+    Channel,
+    ChannelManager,
+    ChannelProperties,
+    Hardware,
+    InputChannel,
+    InputModule,
+    Module,
+    MultiChannel,
+    MultiHardware,
+    OutputChannel,
+    OutputModule,
+)
+from MeasurementSystem.core.common.Data import Data
+from MeasurementSystem.core.common.Models import (
+    KTYxModel,
+    LinearModel,
+    Model,
+    ModelMeta,
+    NTCModel,
+    PTxModel,
+    StackedModel,
+)
+from MeasurementSystem.core.common.Utils import OrderedPriorityQueue, Serializable
 from MeasurementSystem.core.comvisu.Command import Command
 from MeasurementSystem.core.comvisu.ServerUtils import DataQueueThread, ServerConnection
-from MeasurementSystem.core.driver.Hardware import (
-    Channel,
-    Channel_MCC118_VoltageChannel,
-    Channel_MCC134_ThermocoupleChannel,
+from MeasurementSystem.core.driver.DigilentMCC118 import Channel_MCC118_VoltageChannel, Hardware_DigilentMCC118
+from MeasurementSystem.core.driver.DigilentMCC134 import Channel_MCC134_ThermocoupleChannel, Hardware_DigilentMCC134
+from MeasurementSystem.core.driver.RaspberryPi import (
+    Channel_RPI_BufferedDigitalInput,
+    Channel_RPI_DigitalInput,
     Channel_RPI_DigitalOutput,
     Channel_RPI_FrequencyCounter,
     Channel_RPI_InternalTemperature,
-    Hardware_DigilentMCC118,
-    Hardware_DigilentMCC134,
     Hardware_RaspberryPi,
-    InputChannel,
-    InputModule,
-    LinearModel,
-    Module,
+    Module_RPI_ServoMotor,
     Module_RPI_StepperMotor,
     Module_RPI_WeighScalesHX711,
-    MultiHardware,
-    Serializable,
 )
-from MeasurementSystem.core.Utils import OrderedPriorityQueue
 
 current_dir = os.path.dirname(os.path.realpath(__file__))
 
