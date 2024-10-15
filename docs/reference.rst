@@ -15,7 +15,19 @@ Core Utilities
 Hardware Driver
 ---------------
 
-.. automodule:: MeasurementSystem.core.driver.Hardware
+.. automodule:: MeasurementSystem.core.driver.Data
+
+.. automodule:: MeasurementSystem.core.driver.Models
+
+.. automodule:: MeasurementSystem.core.driver.Config
+
+.. automodule:: MeasurementSystem.core.driver.BaseClasses
+
+.. automodule:: MeasurementSystem.core.driver.RaspberryPi
+
+.. automodule:: MeasurementSystem.core.driver.DigilentMCC118
+
+.. automodule:: MeasurementSystem.core.driver.DigilentMCC134
 
 
 Communication & Visualization
