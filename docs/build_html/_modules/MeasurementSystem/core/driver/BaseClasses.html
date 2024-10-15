@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MeasurementSystem.core.driver.BaseClasses &mdash; Measurement System 0.1.dev1+g9e4a58d documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+
+
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=dbc61f67"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+</head>
+
+<body class="wy-body-for-nav">
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980b9" >
+
+
+
+          <a href="../../../../index.html">
+
+              <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.1.dev1+g9e4a58d
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../reference.html">Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reference.html#module-MeasurementSystem.measurement_server">Measurement Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTask"><code class="docutils literal notranslate"><span class="pre">ControlTask</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTask.SendCommandCallbackType"><code class="docutils literal notranslate"><span class="pre">SendCommandCallbackType</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTask.add_command"><code class="docutils literal notranslate"><span class="pre">add_command()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTask.start"><code class="docutils literal notranslate"><span class="pre">start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTask.stop"><code class="docutils literal notranslate"><span class="pre">stop()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTaskManager"><code class="docutils literal notranslate"><span class="pre">ControlTaskManager</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTaskManager.add_command_to_task"><code class="docutils literal notranslate"><span class="pre">add_command_to_task()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTaskManager.initialize_tasks"><code class="docutils literal notranslate"><span class="pre">initialize_tasks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTaskManager.start_tasks"><code class="docutils literal notranslate"><span class="pre">start_tasks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTaskManager.stop_tasks"><code class="docutils literal notranslate"><span class="pre">stop_tasks()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.HardwareInterface"><code class="docutils literal notranslate"><span class="pre">HardwareInterface</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.HardwareInterface.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.HardwareInterface.from_json"><code class="docutils literal notranslate"><span class="pre">from_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.HardwareInterface.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.HardwareInterface.to_json"><code class="docutils literal notranslate"><span class="pre">to_json()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem"><code class="docutils literal notranslate"><span class="pre">MeasurementSystem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.add_command_to_send_queue"><code class="docutils literal notranslate"><span class="pre">add_command_to_send_queue()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.init_comvisu"><code class="docutils literal notranslate"><span class="pre">init_comvisu()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.printConsole"><code class="docutils literal notranslate"><span class="pre">printConsole()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.process_commands"><code class="docutils literal notranslate"><span class="pre">process_commands()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTask"><code class="docutils literal notranslate"><span class="pre">MeasurementTask</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTask.SendCommandCallbackType_2"><code class="docutils literal notranslate"><span class="pre">SendCommandCallbackType_2</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTask.start"><code class="docutils literal notranslate"><span class="pre">start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTask.stop"><code class="docutils literal notranslate"><span class="pre">stop()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTaskManager"><code class="docutils literal notranslate"><span class="pre">MeasurementTaskManager</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTaskManager.initialize_tasks"><code class="docutils literal notranslate"><span class="pre">initialize_tasks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTaskManager.start_tasks"><code class="docutils literal notranslate"><span class="pre">start_tasks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTaskManager.stop_tasks"><code class="docutils literal notranslate"><span class="pre">stop_tasks()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reference.html#module-MeasurementSystem.core.Utils">Core Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.Utils.OrderedPriorityQueue"><code class="docutils literal notranslate"><span class="pre">OrderedPriorityQueue</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.Utils.OrderedPriorityQueue.get"><code class="docutils literal notranslate"><span class="pre">get()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.Utils.OrderedPriorityQueue.put"><code class="docutils literal notranslate"><span class="pre">put()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.Utils.Serializable"><code class="docutils literal notranslate"><span class="pre">Serializable</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.Utils.Serializable.from_dict"><code class="docutils literal notranslate"><span class="pre">from_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.Utils.Serializable.to_dict"><code class="docutils literal notranslate"><span class="pre">to_dict()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reference.html#module-MeasurementSystem.core.driver.Data">Hardware Driver</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Data.Data"><code class="docutils literal notranslate"><span class="pre">Data</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Data.Data.add_value"><code class="docutils literal notranslate"><span class="pre">add_value()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Data.Data.clear"><code class="docutils literal notranslate"><span class="pre">clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Data.Data.get_all"><code class="docutils literal notranslate"><span class="pre">get_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Data.Data.get_count"><code class="docutils literal notranslate"><span class="pre">get_count()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Data.Data.get_last"><code class="docutils literal notranslate"><span class="pre">get_last()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.KTYxModel"><code class="docutils literal notranslate"><span class="pre">KTYxModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.KTYxModel.apply"><code class="docutils literal notranslate"><span class="pre">apply()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.KTYxModel.to_string"><code class="docutils literal notranslate"><span class="pre">to_string()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.LinearModel"><code class="docutils literal notranslate"><span class="pre">LinearModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.LinearModel.apply"><code class="docutils literal notranslate"><span class="pre">apply()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.LinearModel.to_string"><code class="docutils literal notranslate"><span class="pre">to_string()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.Model"><code class="docutils literal notranslate"><span class="pre">Model</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.Model.apply"><code class="docutils literal notranslate"><span class="pre">apply()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.Model.parse_model_list"><code class="docutils literal notranslate"><span class="pre">parse_model_list()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.Model.to_string"><code class="docutils literal notranslate"><span class="pre">to_string()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.ModelMeta"><code class="docutils literal notranslate"><span class="pre">ModelMeta</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.ModelMeta.model_registry"><code class="docutils literal notranslate"><span class="pre">model_registry</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.NTCModel"><code class="docutils literal notranslate"><span class="pre">NTCModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.NTCModel.apply"><code class="docutils literal notranslate"><span class="pre">apply()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.NTCModel.to_string"><code class="docutils literal notranslate"><span class="pre">to_string()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.PTxModel"><code class="docutils literal notranslate"><span class="pre">PTxModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.PTxModel.apply"><code class="docutils literal notranslate"><span class="pre">apply()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.PTxModel.to_string"><code class="docutils literal notranslate"><span class="pre">to_string()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.StackedModel"><code class="docutils literal notranslate"><span class="pre">StackedModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.StackedModel.apply"><code class="docutils literal notranslate"><span class="pre">apply()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.StackedModel.to_string"><code class="docutils literal notranslate"><span class="pre">to_string()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Config.Config"><code class="docutils literal notranslate"><span class="pre">Config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.Channel"><code class="docutils literal notranslate"><span class="pre">Channel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.Channel.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.Channel.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.Channel.set_model_from_str"><code class="docutils literal notranslate"><span class="pre">set_model_from_str()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.ChannelManager"><code class="docutils literal notranslate"><span class="pre">ChannelManager</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.ChannelManager.add_channels"><code class="docutils literal notranslate"><span class="pre">add_channels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.ChannelManager.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.ChannelManager.get_channels"><code class="docutils literal notranslate"><span class="pre">get_channels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.ChannelManager.get_channels_by_name"><code class="docutils literal notranslate"><span class="pre">get_channels_by_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.ChannelManager.get_channels_by_type"><code class="docutils literal notranslate"><span class="pre">get_channels_by_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.ChannelManager.get_modules"><code class="docutils literal notranslate"><span class="pre">get_modules()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.ChannelProperties"><code class="docutils literal notranslate"><span class="pre">ChannelProperties</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.ChannelProperties.Type"><code class="docutils literal notranslate"><span class="pre">Type</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.Hardware"><code class="docutils literal notranslate"><span class="pre">Hardware</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.Hardware.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.InputChannel"><code class="docutils literal notranslate"><span class="pre">InputChannel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.InputChannel.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.InputModule"><code class="docutils literal notranslate"><span class="pre">InputModule</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.InputModule.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.Module"><code class="docutils literal notranslate"><span class="pre">Module</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.Module.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.Module.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.MultiChannel"><code class="docutils literal notranslate"><span class="pre">MultiChannel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.MultiChannel.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.MultiHardware"><code class="docutils literal notranslate"><span class="pre">MultiHardware</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.MultiHardware.add_hardware"><code class="docutils literal notranslate"><span class="pre">add_hardware()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.MultiHardware.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.MultiHardware.get_channels"><code class="docutils literal notranslate"><span class="pre">get_channels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.MultiHardware.get_channels_by_name"><code class="docutils literal notranslate"><span class="pre">get_channels_by_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.MultiHardware.get_channels_by_type"><code class="docutils literal notranslate"><span class="pre">get_channels_by_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.MultiHardware.get_hardware"><code class="docutils literal notranslate"><span class="pre">get_hardware()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.MultiHardware.get_hardware_by_name"><code class="docutils literal notranslate"><span class="pre">get_hardware_by_name()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.OutputChannel"><code class="docutils literal notranslate"><span class="pre">OutputChannel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.OutputChannel.write"><code class="docutils literal notranslate"><span class="pre">write()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.OutputModule"><code class="docutils literal notranslate"><span class="pre">OutputModule</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.OutputModule.write"><code class="docutils literal notranslate"><span class="pre">write()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_BufferedDigitalInput"><code class="docutils literal notranslate"><span class="pre">Channel_RPI_BufferedDigitalInput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_BufferedDigitalInput.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_BufferedDigitalInput.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_BufferedDigitalInput.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_DigitalInput"><code class="docutils literal notranslate"><span class="pre">Channel_RPI_DigitalInput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_DigitalInput.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_DigitalInput.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_DigitalInput.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_DigitalInput.readRaw"><code class="docutils literal notranslate"><span class="pre">readRaw()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_DigitalOutput"><code class="docutils literal notranslate"><span class="pre">Channel_RPI_DigitalOutput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_DigitalOutput.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_DigitalOutput.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_DigitalOutput.write"><code class="docutils literal notranslate"><span class="pre">write()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_FrequencyCounter"><code class="docutils literal notranslate"><span class="pre">Channel_RPI_FrequencyCounter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_FrequencyCounter.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_FrequencyCounter.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_FrequencyCounter.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_InternalTemperature"><code class="docutils literal notranslate"><span class="pre">Channel_RPI_InternalTemperature</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_InternalTemperature.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_InternalTemperature.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_InternalTemperature.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Hardware_RaspberryPi"><code class="docutils literal notranslate"><span class="pre">Hardware_RaspberryPi</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Hardware_RaspberryPi.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Hardware_RaspberryPi.handle"><code class="docutils literal notranslate"><span class="pre">handle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Hardware_RaspberryPi.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_ServoMotor"><code class="docutils literal notranslate"><span class="pre">Module_RPI_ServoMotor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_ServoMotor.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_ServoMotor.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_ServoMotor.write"><code class="docutils literal notranslate"><span class="pre">write()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_StepperMotor"><code class="docutils literal notranslate"><span class="pre">Module_RPI_StepperMotor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_StepperMotor.calibrate"><code class="docutils literal notranslate"><span class="pre">calibrate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_StepperMotor.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_StepperMotor.disable_stepper"><code class="docutils literal notranslate"><span class="pre">disable_stepper()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_StepperMotor.enable_stepper"><code class="docutils literal notranslate"><span class="pre">enable_stepper()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_StepperMotor.getPosition"><code class="docutils literal notranslate"><span class="pre">getPosition()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_StepperMotor.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_StepperMotor.setDirection"><code class="docutils literal notranslate"><span class="pre">setDirection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_StepperMotor.write"><code class="docutils literal notranslate"><span class="pre">write()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_WeighScalesHX711"><code class="docutils literal notranslate"><span class="pre">Module_RPI_WeighScalesHX711</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_WeighScalesHX711.ReadType"><code class="docutils literal notranslate"><span class="pre">ReadType</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_WeighScalesHX711.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_WeighScalesHX711.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_WeighScalesHX711.powerDown"><code class="docutils literal notranslate"><span class="pre">powerDown()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_WeighScalesHX711.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_WeighScalesHX711.readAverage"><code class="docutils literal notranslate"><span class="pre">readAverage()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_WeighScalesHX711.readMedian"><code class="docutils literal notranslate"><span class="pre">readMedian()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_WeighScalesHX711.readRaw"><code class="docutils literal notranslate"><span class="pre">readRaw()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_WeighScalesHX711.wakeup"><code class="docutils literal notranslate"><span class="pre">wakeup()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Channel_MCC118_VoltageChannel"><code class="docutils literal notranslate"><span class="pre">Channel_MCC118_VoltageChannel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Channel_MCC118_VoltageChannel.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Channel_MCC118_VoltageChannel.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Channel_MCC118_VoltageChannel.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Channel_MCC118_VoltageChannel.to_dict"><code class="docutils literal notranslate"><span class="pre">to_dict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Hardware_DigilentMCC118"><code class="docutils literal notranslate"><span class="pre">Hardware_DigilentMCC118</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Hardware_DigilentMCC118.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Hardware_DigilentMCC118.handle"><code class="docutils literal notranslate"><span class="pre">handle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Hardware_DigilentMCC118.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC134.Channel_MCC134_ThermocoupleChannel"><code class="docutils literal notranslate"><span class="pre">Channel_MCC134_ThermocoupleChannel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC134.Channel_MCC134_ThermocoupleChannel.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC134.Channel_MCC134_ThermocoupleChannel.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC134.Channel_MCC134_ThermocoupleChannel.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC134.Channel_MCC134_ThermocoupleChannel.to_dict"><code class="docutils literal notranslate"><span class="pre">to_dict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC134.Hardware_DigilentMCC134"><code class="docutils literal notranslate"><span class="pre">Hardware_DigilentMCC134</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC134.Hardware_DigilentMCC134.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC134.Hardware_DigilentMCC134.handle"><code class="docutils literal notranslate"><span class="pre">handle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC134.Hardware_DigilentMCC134.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reference.html#communication-visualization">Communication &amp; Visualization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#module-MeasurementSystem.core.comvisu.Command">Command Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.comvisu.Command.Command"><code class="docutils literal notranslate"><span class="pre">Command</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#module-MeasurementSystem.core.comvisu.ServerUtils">Server Utilities</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.comvisu.ServerUtils.DataQueueThread"><code class="docutils literal notranslate"><span class="pre">DataQueueThread</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.comvisu.ServerUtils.ServerConnection"><code class="docutils literal notranslate"><span class="pre">ServerConnection</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980b9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Measurement System</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">MeasurementSystem.core.driver.BaseClasses</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+
+  <h1>Source code for MeasurementSystem.core.driver.BaseClasses</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Generator</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">from</span> <span class="nn">MeasurementSystem.core.driver.Data</span> <span class="kn">import</span> <span class="n">Data</span>
+<span class="kn">from</span> <span class="nn">MeasurementSystem.core.driver.Models</span> <span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">ModelMeta</span><span class="p">,</span> <span class="n">StackedModel</span>
+<span class="kn">from</span> <span class="nn">MeasurementSystem.core.Utils</span> <span class="kn">import</span> <span class="n">Serializable</span>
+
+
+<div class="viewcode-block" id="ChannelProperties">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.ChannelProperties">[docs]</a>
+<span class="k">class</span> <span class="nc">ChannelProperties</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class representing the properties of a channel.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ChannelProperties.Type">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.ChannelProperties.Type">[docs]</a>
+    <span class="k">class</span> <span class="nc">Type</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :class:`Type` provides valid data types for ChannelProperties.Type</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">DIGITAL_IN</span> <span class="o">=</span> <span class="s2">&quot;digital_input&quot;</span>
+        <span class="n">DIGITAL_OUT</span> <span class="o">=</span> <span class="s2">&quot;digital_output&quot;</span>
+        <span class="n">FREQUENCY</span> <span class="o">=</span> <span class="s2">&quot;frequency&quot;</span>
+        <span class="n">TEMPERATURE</span> <span class="o">=</span> <span class="s2">&quot;temperature&quot;</span>
+        <span class="n">VOLTAGE</span> <span class="o">=</span> <span class="s2">&quot;voltage&quot;</span>
+        <span class="n">CURRENT</span> <span class="o">=</span> <span class="s2">&quot;current&quot;</span>
+        <span class="n">WEIGHT</span> <span class="o">=</span> <span class="s2">&quot;weight&quot;</span>
+        <span class="n">PRESSURE</span> <span class="o">=</span> <span class="s2">&quot;pressure&quot;</span>
+        <span class="n">FORCE</span> <span class="o">=</span> <span class="s2">&quot;force&quot;</span>
+        <span class="n">TORQUE</span> <span class="o">=</span> <span class="s2">&quot;torque&quot;</span>
+        <span class="n">ANGLE</span> <span class="o">=</span> <span class="s2">&quot;angle&quot;</span>
+        <span class="n">VELOCITY</span> <span class="o">=</span> <span class="s2">&quot;velocity&quot;</span>
+        <span class="n">OTHER</span> <span class="o">=</span> <span class="s2">&quot;other&quot;</span>
+
+<div class="viewcode-block" id="ChannelProperties.Type.valid_types">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.ChannelProperties.Type.valid_types">[docs]</a>
+        <span class="nd">@classmethod</span>
+        <span class="k">def</span> <span class="nf">valid_types</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+            <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="nb">vars</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="ChannelProperties.Type.is_valid">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.ChannelProperties.Type.is_valid">[docs]</a>
+        <span class="nd">@classmethod</span>
+        <span class="k">def</span> <span class="nf">is_valid</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">type</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">valid_types</span><span class="p">()</span></div>
+</div>
+</div>
+
+
+
+<div class="viewcode-block" id="Channel">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.Channel">[docs]</a>
+<span class="k">class</span> <span class="nc">Channel</span><span class="p">(</span><span class="n">Serializable</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class representing a single channel, encapsulating its properties and behavior.</span>
+
+<span class="sd">    :param name: The name of the channel.</span>
+<span class="sd">    :type name: str</span>
+<span class="sd">    :param type: The type of the channel.</span>
+<span class="sd">    :type type: ChannelProperties.Type</span>
+<span class="sd">    :param unit: The unit of measurement of the channel.</span>
+<span class="sd">    :type unit: str</span>
+<span class="sd">    :param model: The model of the channel.</span>
+<span class="sd">    :type model: Model</span>
+
+<span class="sd">    :return: Channel instance</span>
+<span class="sd">    :rtype: Channel</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="n">ChannelProperties</span><span class="p">,</span> <span class="n">unit</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">Model</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">ChannelProperties</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">is_valid</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid channel type: </span><span class="si">{</span><span class="nb">type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="nb">type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unit</span> <span class="o">=</span> <span class="n">unit</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+
+<div class="viewcode-block" id="Channel.initialize">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.Channel.initialize">[docs]</a>
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;To be implemented by subclasses.&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;This method should be implemented by subclasses&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Channel.close">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.Channel.close">[docs]</a>
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;To be implemented by subclasses.&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;This method should be implemented by subclasses&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Channel.set_model_from_str">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.Channel.set_model_from_str">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_model_from_str</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_str</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the model of the channel from a string representation using the model registry.</span>
+
+<span class="sd">        :param model_str: The string representation of the model.</span>
+<span class="sd">        :type model_str: str</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+
+<span class="sd">        :raise: ValueError</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Prepare the execution environment with available classes</span>
+            <span class="n">model_registry</span> <span class="o">=</span> <span class="n">ModelMeta</span><span class="o">.</span><span class="n">model_registry</span>
+            <span class="n">env</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;ModelMeta&quot;</span><span class="p">:</span> <span class="n">ModelMeta</span><span class="p">,</span>
+                <span class="s2">&quot;StackedModel&quot;</span><span class="p">:</span> <span class="n">StackedModel</span><span class="p">,</span>
+                <span class="o">**</span><span class="n">model_registry</span><span class="p">,</span>
+            <span class="p">}</span>
+
+            <span class="c1"># Extract the model class name and arguments</span>
+            <span class="n">class_name</span> <span class="o">=</span> <span class="n">model_str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;(&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">args_str</span> <span class="o">=</span> <span class="n">model_str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;(&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">&quot;)&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">class_name</span> <span class="o">==</span> <span class="s2">&quot;StackedModel&quot;</span><span class="p">:</span>
+                <span class="c1"># Handle StackedModel by parsing the list of models</span>
+                <span class="n">model_list</span> <span class="o">=</span> <span class="n">Model</span><span class="o">.</span><span class="n">parse_model_list</span><span class="p">(</span><span class="n">args_str</span><span class="p">,</span> <span class="n">model_registry</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">StackedModel</span><span class="p">(</span><span class="n">model_list</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Handle other models</span>
+                <span class="n">exec_code</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;model = ModelMeta.model_registry.get(&#39;</span><span class="si">{</span><span class="n">class_name</span><span class="si">}</span><span class="s2">&#39;)(</span><span class="si">{</span><span class="n">args_str</span><span class="si">}</span><span class="s2">)&quot;</span>
+                <span class="n">exec</span><span class="p">(</span><span class="n">exec_code</span><span class="p">,</span> <span class="p">{},</span> <span class="n">env</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">env</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Model instantiation failed.&quot;</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error setting model from string: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">e</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="InputChannel">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.InputChannel">[docs]</a>
+<span class="k">class</span> <span class="nc">InputChannel</span><span class="p">(</span><span class="n">Channel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class representing an input channel.</span>
+
+<span class="sd">    :param name: The name of the channel.</span>
+<span class="sd">    :type name: str</span>
+<span class="sd">    :param type: The type of the channel.</span>
+<span class="sd">    :type type: ChannelProperties.Type</span>
+<span class="sd">    :param unit: The unit of measurement of the channel.</span>
+<span class="sd">    :type unit: str</span>
+<span class="sd">    :param model: The model of the channel.</span>
+<span class="sd">    :type model: Model</span>
+
+<span class="sd">    :return: InputChannel instance</span>
+<span class="sd">    :rtype: InputChannel</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">unit</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">Model</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">type</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="n">unit</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">)</span>
+
+<div class="viewcode-block" id="InputChannel.read">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.InputChannel.read">[docs]</a>
+    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Data</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;To be implemented by subclasses.&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;This method should be implemented by subclasses&quot;</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="OutputChannel">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.OutputChannel">[docs]</a>
+<span class="k">class</span> <span class="nc">OutputChannel</span><span class="p">(</span><span class="n">Channel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class representing an output channel.</span>
+
+<span class="sd">    :param name: The name of the channel.</span>
+<span class="sd">    :type name: str</span>
+<span class="sd">    :param type: The type of the channel.</span>
+<span class="sd">    :type type: ChannelProperties.Type</span>
+<span class="sd">    :param unit: The unit of measurement of the channel.</span>
+<span class="sd">    :type unit: str</span>
+<span class="sd">    :param model: The model of the channel.</span>
+<span class="sd">    :type model: Model</span>
+
+<span class="sd">    :return: OutputChannel instance</span>
+<span class="sd">    :rtype: OutputChannel</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">unit</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">Model</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">type</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="n">unit</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">)</span>
+
+<div class="viewcode-block" id="OutputChannel.write">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.OutputChannel.write">[docs]</a>
+    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;To be implemented by subclasses.&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;This method should be implemented by subclasses&quot;</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="ChannelManager">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.ChannelManager">[docs]</a>
+<span class="k">class</span> <span class="nc">ChannelManager</span><span class="p">(</span><span class="n">Serializable</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class responsible for managing channels.</span>
+<span class="sd">    The ChannelManager class provides a centralized interface for creating, configuring, and managing multiple channels such input and output or multi (mixed) channels.</span>
+
+<span class="sd">    :param input_channels: A list of input channels. Defaults to an empty list.</span>
+<span class="sd">    :type input_channels: List[InputChannel]</span>
+<span class="sd">    :param output_channels: A list of output channels. Defaults to an empty list.</span>
+<span class="sd">    :type output_channels: List[OutputChannel]</span>
+<span class="sd">    :param multi_channels: A list of multi channels. Defaults to an empty list.</span>
+<span class="sd">    :type multi_channels: List[MultiChannel]</span>
+
+<span class="sd">    :return: ChannelManager instance</span>
+<span class="sd">    :rtype: ChannelManager</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_channels</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># TODO: IMPROVEMENT: combine to single generic list and make differentiation in functions later</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_channels</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">multi_channels</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_existing_channel_names</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>  <span class="c1"># Used to check for duplicate channel names</span>
+
+<div class="viewcode-block" id="ChannelManager.add_channels">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.ChannelManager.add_channels">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_channels</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">channels</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span>
+            <span class="n">InputChannel</span><span class="p">,</span>
+            <span class="n">List</span><span class="p">[</span><span class="n">InputChannel</span><span class="p">],</span>
+            <span class="n">OutputChannel</span><span class="p">,</span>
+            <span class="n">List</span><span class="p">[</span><span class="n">OutputChannel</span><span class="p">],</span>
+            <span class="n">MultiChannel</span><span class="p">,</span>
+            <span class="n">List</span><span class="p">[</span><span class="n">MultiChannel</span><span class="p">],</span>
+        <span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add channels to the ChannelManager instance.</span>
+
+<span class="sd">        :param channels: The channels to add to the ChannelManager instance. Defaults to an empty list.</span>
+<span class="sd">        :type channels: Union[InputChannel, List[InputChannel], OutputChannel, List[OutputChannel], MultiChannel, List[MultiChannel]]</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+
+<span class="sd">        :raise: ValueError</span>
+<span class="sd">            If a channel with a duplicate name is added.</span>
+<span class="sd">        :raise: TypeError</span>
+<span class="sd">            If the channel is not an instance of InputChannel, OutputChannel, or MultiChannel.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">channels</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="n">channels</span> <span class="o">=</span> <span class="p">[</span><span class="n">channels</span><span class="p">]</span>
+            <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">channels</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="n">channels</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">channel</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_existing_channel_names</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Duplicate channel name: </span><span class="si">{</span><span class="n">channel</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">InputChannel</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">input_channels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">OutputChannel</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">output_channels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">MultiChannel</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">multi_channels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Channel must be an instance of InputChannel, OutputChannel, or MultiChannel&quot;</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_existing_channel_names</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">channel</span><span class="o">.</span><span class="n">name</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ChannelManager.get_channels">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.ChannelManager.get_channels">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_channels</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Channel</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns a generator of all channels in the ChannelManager instance.</span>
+
+<span class="sd">        This method returns a generator of all channels in the ChannelManager</span>
+<span class="sd">        instance. The generator yields each channel in the order they were</span>
+<span class="sd">        added to the ChannelManager instance.</span>
+
+<span class="sd">        :return: A generator of all channels in the ChannelManager instance.</span>
+<span class="sd">        :rtype: Generator[Channel, None, None]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">input_channels</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_channels</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">multi_channels</span>
+        <span class="p">):</span>  <span class="c1"># TODO: check if self.multi_channels should be excluded!!</span>
+            <span class="k">yield</span> <span class="n">channel</span></div>
+
+
+<div class="viewcode-block" id="ChannelManager.get_channels_by_name">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.ChannelManager.get_channels_by_name">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_channels_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Channel</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns a generator of channels in the ChannelManager instance with the given name.</span>
+
+<span class="sd">        :param name: The name of the channel to search for.</span>
+<span class="sd">        :type name: str</span>
+
+<span class="sd">        :return: A generator of channels in the ChannelManager instance with the given name.</span>
+<span class="sd">        :rtype: Generator[Channel, None, None]</span>
+
+<span class="sd">        :raise: ValueError</span>
+<span class="sd">            If no channel with the given name is found in the ChannelManager instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_channels</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">channel</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">name</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">channel</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Channel not found: </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ChannelManager.get_channels_by_type">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.ChannelManager.get_channels_by_type">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_channels_by_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Channel</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns a generator of channels in the ChannelManager instance with the given type.</span>
+
+<span class="sd">        :param type: The type of the channel to search for.</span>
+<span class="sd">        :type type: str</span>
+
+<span class="sd">        :return: A generator of channels in the ChannelManager instance with the given type.</span>
+<span class="sd">        :rtype: Generator[Channel, None, None]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_channels</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">ChannelProperties</span><span class="o">.</span><span class="n">Type</span> <span class="o">==</span> <span class="nb">type</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">channel</span></div>
+
+        <span class="c1"># raise ValueError(f&quot;Type not found: {type}&quot;)  # TODO: check if needed</span>
+
+<div class="viewcode-block" id="ChannelManager.get_modules">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.ChannelManager.get_modules">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_modules</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Module</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns a generator of modules in the ChannelManager instance.</span>
+
+<span class="sd">        :return: A generator of modules in the ChannelManager instance.</span>
+<span class="sd">        :rtype: Generator[Module, None, None]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">module</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">multi_channels</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">module</span></div>
+
+
+<div class="viewcode-block" id="ChannelManager.close">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.ChannelManager.close">[docs]</a>
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Close all channels in the ChannelManager instance.</span>
+
+<span class="sd">        This method closes all channels in the ChannelManager instance by calling</span>
+<span class="sd">        the close method on each channel. The close method is called only once</span>
+<span class="sd">        for each channel, even if the channel is part of multiple lists (e.g.</span>
+<span class="sd">        input_channels and output_channels).</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">closed_channels</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_channels</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">channel</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">closed_channels</span><span class="p">:</span>
+                <span class="n">channel</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+                <span class="n">closed_channels</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="MultiChannel">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.MultiChannel">[docs]</a>
+<span class="k">class</span> <span class="nc">MultiChannel</span><span class="p">(</span><span class="n">ChannelManager</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class that extends ChannelManager to support multiple channels.</span>
+
+<span class="sd">    The MultiChannel class builds upon the ChannelManager&#39;s functionality by providing features for managing multiple channels simultaneously.</span>
+
+<span class="sd">    :param name: The name of the MultiChannel instance.</span>
+<span class="sd">    :type name: str</span>
+<span class="sd">    :param input_channels: A list of input channels to add to the MultiChannel instance. Defaults to an empty list.</span>
+<span class="sd">    :type input_channels: List[InputChannel]</span>
+<span class="sd">    :param output_channels: A list of output channels to add to the MultiChannel instance. Defaults to an empty list.</span>
+<span class="sd">    :type output_channels: List[OutputChannel]</span>
+
+<span class="sd">    :return: MultiChannel instance</span>
+<span class="sd">    :rtype: MultiChannel</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">input_channels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">InputChannel</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="n">output_channels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">OutputChannel</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_channels</span><span class="p">(</span><span class="n">input_channels</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_channels</span><span class="p">(</span><span class="n">output_channels</span><span class="p">)</span>
+
+<div class="viewcode-block" id="MultiChannel.close">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.MultiChannel.close">[docs]</a>
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Close all channels in the MultiChannel instance.</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Hardware">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.Hardware">[docs]</a>
+<span class="k">class</span> <span class="nc">Hardware</span><span class="p">(</span><span class="n">ChannelManager</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class that extends ChannelManager to provide an interface for interacting with hardware components.</span>
+
+<span class="sd">    :param name: The name of the hardware instance.</span>
+<span class="sd">    :type name: str</span>
+<span class="sd">    :param input_channels: A list of input channels to add to the hardware instance. Defaults to an empty list.</span>
+<span class="sd">    :type input_channels: List[InputChannel]</span>
+<span class="sd">    :param output_channels: A list of output channels to add to the hardware instance. Defaults to an empty list.</span>
+<span class="sd">    :type output_channels: List[OutputChannel]</span>
+<span class="sd">    :param multi_channels: A list of multi channels to add to the hardware instance. Defaults to an empty list.</span>
+<span class="sd">    :type multi_channels: List[MultiChannel]</span>
+
+<span class="sd">    :return: Hardware instance</span>
+<span class="sd">    :rtype: Hardware</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">,</span>
+        <span class="n">input_channels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">InputChannel</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">output_channels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">OutputChannel</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">multi_channels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">MultiChannel</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+        <span class="k">if</span> <span class="n">input_channels</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_channels</span><span class="p">(</span><span class="n">input_channels</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">output_channels</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_channels</span><span class="p">(</span><span class="n">output_channels</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">multi_channels</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_channels</span><span class="p">(</span><span class="n">multi_channels</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Hardware.initialize">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.Hardware.initialize">[docs]</a>
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;To be implemented by subclasses.&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;This method should be implemented by subclasses&quot;</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="MultiHardware">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.MultiHardware">[docs]</a>
+<span class="k">class</span> <span class="nc">MultiHardware</span><span class="p">(</span><span class="n">Serializable</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class representing a collection of hardware devices.</span>
+
+<span class="sd">    :param name: The name of the multi-hardware instance.</span>
+<span class="sd">    :type name: str</span>
+<span class="sd">    :param hardware_list: A list of hardware instances to be included in the multi-hardware instance. Defaults to an empty list.</span>
+<span class="sd">    :type hardware_list: List[Hardware]</span>
+
+<span class="sd">    :return: A MultiHardware instance.</span>
+<span class="sd">    :rtype: MultiHardware</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">hardware_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Hardware</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hardware_list</span> <span class="o">=</span> <span class="n">hardware_list</span>
+
+<div class="viewcode-block" id="MultiHardware.add_hardware">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.MultiHardware.add_hardware">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_hardware</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hardware_instance</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add a hardware instance to the collection.</span>
+
+<span class="sd">        :param hardware_instance: The hardware instance to be added to the collection.</span>
+<span class="sd">        :type hardware_instance: Hardware</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">hardware_instance</span><span class="p">,</span> <span class="n">Hardware</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">hardware_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hardware_instance</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;hardware_instance must be an instance of Hardware&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MultiHardware.close">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.MultiHardware.close">[docs]</a>
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Close the MultiHardware instance.</span>
+
+<span class="sd">        This method calls the close method of all hardware instances in the collection.</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">hardware</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hardware_list</span><span class="p">:</span>
+            <span class="n">hardware</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="MultiHardware.get_channels">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.MultiHardware.get_channels">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_channels</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Channel</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :return: A generator of all channels in the multi-hardware instance.</span>
+<span class="sd">        :rtype: Generator[Channel, None, None]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">for</span> <span class="n">hardware</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hardware_list</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="n">hardware</span><span class="o">.</span><span class="n">get_channels</span><span class="p">():</span>
+                <span class="k">yield</span> <span class="n">channel</span></div>
+
+
+<div class="viewcode-block" id="MultiHardware.get_channels_by_name">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.MultiHardware.get_channels_by_name">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_channels_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Channel</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param name: The name of the channel to search for.</span>
+<span class="sd">        :type name: str</span>
+
+<span class="sd">        :return: A generator of channels in the multi-hardware instance with the given name.</span>
+<span class="sd">        :rtype: Generator[Channel, None, None]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">hardware</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hardware_list</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="n">hardware</span><span class="o">.</span><span class="n">get_channels_by_name</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">channel</span></div>
+
+
+<div class="viewcode-block" id="MultiHardware.get_channels_by_type">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.MultiHardware.get_channels_by_type">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_channels_by_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel_type</span><span class="p">:</span> <span class="n">ChannelProperties</span><span class="o">.</span><span class="n">Type</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Channel</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param channel_type: The type of the channel to search for.</span>
+<span class="sd">        :type channel_type: ChannelProperties.Type</span>
+
+<span class="sd">        :return: A generator of channels in the multi-hardware instance with the given type.</span>
+<span class="sd">        :rtype: Generator[Channel, None, None]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">hardware</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hardware_list</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="n">hardware</span><span class="o">.</span><span class="n">get_channels_by_type</span><span class="p">(</span><span class="n">channel_type</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">channel</span></div>
+
+
+<div class="viewcode-block" id="MultiHardware.get_hardware">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.MultiHardware.get_hardware">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_hardware</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Hardware</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :return: A generator of all hardware in the multi-hardware instance.</span>
+<span class="sd">        :rtype: Generator[Hardware, None, None]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">hardware</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hardware_list</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">hardware</span></div>
+
+
+<div class="viewcode-block" id="MultiHardware.get_hardware_by_name">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.MultiHardware.get_hardware_by_name">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_hardware_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Hardware</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param name: The name of the hardware to search for.</span>
+<span class="sd">        :type name: str</span>
+
+<span class="sd">        :return: A generator of hardware in the multi-hardware instance with the given name.</span>
+<span class="sd">        :rtype: Generator[Hardware, None, None]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">hardware</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hardware_list</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">hardware</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">name</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">hardware</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Module">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.Module">[docs]</a>
+<span class="k">class</span> <span class="nc">Module</span><span class="p">(</span><span class="n">Serializable</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A base class for module.</span>
+
+<span class="sd">    :param name: The name of the module.</span>
+<span class="sd">    :type name: str</span>
+
+<span class="sd">    :return: Module instance</span>
+<span class="sd">    :rtype: Module</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+<div class="viewcode-block" id="Module.initialize">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.Module.initialize">[docs]</a>
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;To be implemented by subclasses.&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;This method should be implemented by subclasses&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Module.close">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.Module.close">[docs]</a>
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;To be implemented by subclasses.&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;This method should be implemented by subclasses&quot;</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="InputModule">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.InputModule">[docs]</a>
+<span class="k">class</span> <span class="nc">InputModule</span><span class="p">(</span><span class="n">Module</span><span class="p">,</span> <span class="n">Channel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The InputModule base class is a subclass of Module and Channel, providing a specialized interface for handling input data.</span>
+<span class="sd">    It defines the structure and behavior of an input module, which can be used to receive and process input data from various sources.</span>
+
+<span class="sd">    :param name: The name of the module.</span>
+<span class="sd">    :type name: str</span>
+<span class="sd">    :param type: The type of the channel.</span>
+<span class="sd">    :type type: ChannelProperties.Type</span>
+<span class="sd">    :param unit: The unit of measurement of the channel.</span>
+<span class="sd">    :type unit: str</span>
+<span class="sd">    :param model: The model of the channel.</span>
+<span class="sd">    :type model: Model</span>
+
+<span class="sd">    :return: InputModule instance</span>
+<span class="sd">    :rtype: InputModule</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="n">ChannelProperties</span><span class="o">.</span><span class="n">Type</span><span class="p">,</span> <span class="n">unit</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">Model</span><span class="p">):</span>
+        <span class="n">Module</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">Channel</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">type</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="n">unit</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">)</span>
+
+<div class="viewcode-block" id="InputModule.read">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.InputModule.read">[docs]</a>
+    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Data</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;To be implemented by subclasses.&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;This method should be implemented by subclasses&quot;</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="OutputModule">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.OutputModule">[docs]</a>
+<span class="k">class</span> <span class="nc">OutputModule</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The OutputModule base class is a subclass of Module, providing a specialized interface for handling output data.</span>
+<span class="sd">    It defines the structure and behavior of an output module, which can be used to send and display output data to various destinations.</span>
+
+<span class="sd">    :param name: The name of the module0.</span>
+<span class="sd">    :type name: str</span>
+
+<span class="sd">    :return: OutputModule instance</span>
+<span class="sd">    :rtype: OutputModule</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+
+<div class="viewcode-block" id="OutputModule.write">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.OutputModule.write">[docs]</a>
+    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;To be implemented by subclasses.&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;This method should be implemented by subclasses&quot;</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Alfred Paar.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+</body>
+</html>

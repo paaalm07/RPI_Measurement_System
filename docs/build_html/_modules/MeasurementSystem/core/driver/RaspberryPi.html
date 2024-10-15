@@ -1,0 +1,1763 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MeasurementSystem.core.driver.RaspberryPi &mdash; Measurement System 0.1.dev1+g9e4a58d documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+
+
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=dbc61f67"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+</head>
+
+<body class="wy-body-for-nav">
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980b9" >
+
+
+
+          <a href="../../../../index.html">
+
+              <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.1.dev1+g9e4a58d
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../reference.html">Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reference.html#module-MeasurementSystem.measurement_server">Measurement Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTask"><code class="docutils literal notranslate"><span class="pre">ControlTask</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTask.SendCommandCallbackType"><code class="docutils literal notranslate"><span class="pre">SendCommandCallbackType</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTask.add_command"><code class="docutils literal notranslate"><span class="pre">add_command()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTask.start"><code class="docutils literal notranslate"><span class="pre">start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTask.stop"><code class="docutils literal notranslate"><span class="pre">stop()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTaskManager"><code class="docutils literal notranslate"><span class="pre">ControlTaskManager</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTaskManager.add_command_to_task"><code class="docutils literal notranslate"><span class="pre">add_command_to_task()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTaskManager.initialize_tasks"><code class="docutils literal notranslate"><span class="pre">initialize_tasks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTaskManager.start_tasks"><code class="docutils literal notranslate"><span class="pre">start_tasks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.ControlTaskManager.stop_tasks"><code class="docutils literal notranslate"><span class="pre">stop_tasks()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.HardwareInterface"><code class="docutils literal notranslate"><span class="pre">HardwareInterface</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.HardwareInterface.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.HardwareInterface.from_json"><code class="docutils literal notranslate"><span class="pre">from_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.HardwareInterface.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.HardwareInterface.to_json"><code class="docutils literal notranslate"><span class="pre">to_json()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem"><code class="docutils literal notranslate"><span class="pre">MeasurementSystem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.add_command_to_send_queue"><code class="docutils literal notranslate"><span class="pre">add_command_to_send_queue()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.init_comvisu"><code class="docutils literal notranslate"><span class="pre">init_comvisu()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.printConsole"><code class="docutils literal notranslate"><span class="pre">printConsole()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.process_commands"><code class="docutils literal notranslate"><span class="pre">process_commands()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTask"><code class="docutils literal notranslate"><span class="pre">MeasurementTask</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTask.SendCommandCallbackType_2"><code class="docutils literal notranslate"><span class="pre">SendCommandCallbackType_2</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTask.start"><code class="docutils literal notranslate"><span class="pre">start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTask.stop"><code class="docutils literal notranslate"><span class="pre">stop()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTaskManager"><code class="docutils literal notranslate"><span class="pre">MeasurementTaskManager</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTaskManager.initialize_tasks"><code class="docutils literal notranslate"><span class="pre">initialize_tasks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTaskManager.start_tasks"><code class="docutils literal notranslate"><span class="pre">start_tasks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.MeasurementTaskManager.stop_tasks"><code class="docutils literal notranslate"><span class="pre">stop_tasks()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.measurement_server.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reference.html#module-MeasurementSystem.core.Utils">Core Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.Utils.OrderedPriorityQueue"><code class="docutils literal notranslate"><span class="pre">OrderedPriorityQueue</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.Utils.OrderedPriorityQueue.get"><code class="docutils literal notranslate"><span class="pre">get()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.Utils.OrderedPriorityQueue.put"><code class="docutils literal notranslate"><span class="pre">put()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.Utils.Serializable"><code class="docutils literal notranslate"><span class="pre">Serializable</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.Utils.Serializable.from_dict"><code class="docutils literal notranslate"><span class="pre">from_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.Utils.Serializable.to_dict"><code class="docutils literal notranslate"><span class="pre">to_dict()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reference.html#module-MeasurementSystem.core.driver.Data">Hardware Driver</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Data.Data"><code class="docutils literal notranslate"><span class="pre">Data</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Data.Data.add_value"><code class="docutils literal notranslate"><span class="pre">add_value()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Data.Data.clear"><code class="docutils literal notranslate"><span class="pre">clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Data.Data.get_all"><code class="docutils literal notranslate"><span class="pre">get_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Data.Data.get_count"><code class="docutils literal notranslate"><span class="pre">get_count()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Data.Data.get_last"><code class="docutils literal notranslate"><span class="pre">get_last()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.KTYxModel"><code class="docutils literal notranslate"><span class="pre">KTYxModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.KTYxModel.apply"><code class="docutils literal notranslate"><span class="pre">apply()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.KTYxModel.to_string"><code class="docutils literal notranslate"><span class="pre">to_string()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.LinearModel"><code class="docutils literal notranslate"><span class="pre">LinearModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.LinearModel.apply"><code class="docutils literal notranslate"><span class="pre">apply()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.LinearModel.to_string"><code class="docutils literal notranslate"><span class="pre">to_string()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.Model"><code class="docutils literal notranslate"><span class="pre">Model</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.Model.apply"><code class="docutils literal notranslate"><span class="pre">apply()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.Model.parse_model_list"><code class="docutils literal notranslate"><span class="pre">parse_model_list()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.Model.to_string"><code class="docutils literal notranslate"><span class="pre">to_string()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.ModelMeta"><code class="docutils literal notranslate"><span class="pre">ModelMeta</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.ModelMeta.model_registry"><code class="docutils literal notranslate"><span class="pre">model_registry</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.NTCModel"><code class="docutils literal notranslate"><span class="pre">NTCModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.NTCModel.apply"><code class="docutils literal notranslate"><span class="pre">apply()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.NTCModel.to_string"><code class="docutils literal notranslate"><span class="pre">to_string()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.PTxModel"><code class="docutils literal notranslate"><span class="pre">PTxModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.PTxModel.apply"><code class="docutils literal notranslate"><span class="pre">apply()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.PTxModel.to_string"><code class="docutils literal notranslate"><span class="pre">to_string()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.StackedModel"><code class="docutils literal notranslate"><span class="pre">StackedModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.StackedModel.apply"><code class="docutils literal notranslate"><span class="pre">apply()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Models.StackedModel.to_string"><code class="docutils literal notranslate"><span class="pre">to_string()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.Config.Config"><code class="docutils literal notranslate"><span class="pre">Config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.Channel"><code class="docutils literal notranslate"><span class="pre">Channel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.Channel.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.Channel.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.Channel.set_model_from_str"><code class="docutils literal notranslate"><span class="pre">set_model_from_str()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.ChannelManager"><code class="docutils literal notranslate"><span class="pre">ChannelManager</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.ChannelManager.add_channels"><code class="docutils literal notranslate"><span class="pre">add_channels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.ChannelManager.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.ChannelManager.get_channels"><code class="docutils literal notranslate"><span class="pre">get_channels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.ChannelManager.get_channels_by_name"><code class="docutils literal notranslate"><span class="pre">get_channels_by_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.ChannelManager.get_channels_by_type"><code class="docutils literal notranslate"><span class="pre">get_channels_by_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.ChannelManager.get_modules"><code class="docutils literal notranslate"><span class="pre">get_modules()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.ChannelProperties"><code class="docutils literal notranslate"><span class="pre">ChannelProperties</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.ChannelProperties.Type"><code class="docutils literal notranslate"><span class="pre">Type</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.Hardware"><code class="docutils literal notranslate"><span class="pre">Hardware</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.Hardware.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.InputChannel"><code class="docutils literal notranslate"><span class="pre">InputChannel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.InputChannel.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.InputModule"><code class="docutils literal notranslate"><span class="pre">InputModule</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.InputModule.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.Module"><code class="docutils literal notranslate"><span class="pre">Module</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.Module.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.Module.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.MultiChannel"><code class="docutils literal notranslate"><span class="pre">MultiChannel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.MultiChannel.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.MultiHardware"><code class="docutils literal notranslate"><span class="pre">MultiHardware</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.MultiHardware.add_hardware"><code class="docutils literal notranslate"><span class="pre">add_hardware()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.MultiHardware.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.MultiHardware.get_channels"><code class="docutils literal notranslate"><span class="pre">get_channels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.MultiHardware.get_channels_by_name"><code class="docutils literal notranslate"><span class="pre">get_channels_by_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.MultiHardware.get_channels_by_type"><code class="docutils literal notranslate"><span class="pre">get_channels_by_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.MultiHardware.get_hardware"><code class="docutils literal notranslate"><span class="pre">get_hardware()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.MultiHardware.get_hardware_by_name"><code class="docutils literal notranslate"><span class="pre">get_hardware_by_name()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.OutputChannel"><code class="docutils literal notranslate"><span class="pre">OutputChannel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.OutputChannel.write"><code class="docutils literal notranslate"><span class="pre">write()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.OutputModule"><code class="docutils literal notranslate"><span class="pre">OutputModule</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.BaseClasses.OutputModule.write"><code class="docutils literal notranslate"><span class="pre">write()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_BufferedDigitalInput"><code class="docutils literal notranslate"><span class="pre">Channel_RPI_BufferedDigitalInput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_BufferedDigitalInput.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_BufferedDigitalInput.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_BufferedDigitalInput.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_DigitalInput"><code class="docutils literal notranslate"><span class="pre">Channel_RPI_DigitalInput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_DigitalInput.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_DigitalInput.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_DigitalInput.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_DigitalInput.readRaw"><code class="docutils literal notranslate"><span class="pre">readRaw()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_DigitalOutput"><code class="docutils literal notranslate"><span class="pre">Channel_RPI_DigitalOutput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_DigitalOutput.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_DigitalOutput.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_DigitalOutput.write"><code class="docutils literal notranslate"><span class="pre">write()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_FrequencyCounter"><code class="docutils literal notranslate"><span class="pre">Channel_RPI_FrequencyCounter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_FrequencyCounter.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_FrequencyCounter.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_FrequencyCounter.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_InternalTemperature"><code class="docutils literal notranslate"><span class="pre">Channel_RPI_InternalTemperature</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_InternalTemperature.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_InternalTemperature.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_InternalTemperature.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Hardware_RaspberryPi"><code class="docutils literal notranslate"><span class="pre">Hardware_RaspberryPi</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Hardware_RaspberryPi.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Hardware_RaspberryPi.handle"><code class="docutils literal notranslate"><span class="pre">handle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Hardware_RaspberryPi.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_ServoMotor"><code class="docutils literal notranslate"><span class="pre">Module_RPI_ServoMotor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_ServoMotor.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_ServoMotor.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_ServoMotor.write"><code class="docutils literal notranslate"><span class="pre">write()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_StepperMotor"><code class="docutils literal notranslate"><span class="pre">Module_RPI_StepperMotor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_StepperMotor.calibrate"><code class="docutils literal notranslate"><span class="pre">calibrate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_StepperMotor.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_StepperMotor.disable_stepper"><code class="docutils literal notranslate"><span class="pre">disable_stepper()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_StepperMotor.enable_stepper"><code class="docutils literal notranslate"><span class="pre">enable_stepper()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_StepperMotor.getPosition"><code class="docutils literal notranslate"><span class="pre">getPosition()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_StepperMotor.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_StepperMotor.setDirection"><code class="docutils literal notranslate"><span class="pre">setDirection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_StepperMotor.write"><code class="docutils literal notranslate"><span class="pre">write()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_WeighScalesHX711"><code class="docutils literal notranslate"><span class="pre">Module_RPI_WeighScalesHX711</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_WeighScalesHX711.ReadType"><code class="docutils literal notranslate"><span class="pre">ReadType</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_WeighScalesHX711.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_WeighScalesHX711.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_WeighScalesHX711.powerDown"><code class="docutils literal notranslate"><span class="pre">powerDown()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_WeighScalesHX711.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_WeighScalesHX711.readAverage"><code class="docutils literal notranslate"><span class="pre">readAverage()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_WeighScalesHX711.readMedian"><code class="docutils literal notranslate"><span class="pre">readMedian()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_WeighScalesHX711.readRaw"><code class="docutils literal notranslate"><span class="pre">readRaw()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_WeighScalesHX711.wakeup"><code class="docutils literal notranslate"><span class="pre">wakeup()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Channel_MCC118_VoltageChannel"><code class="docutils literal notranslate"><span class="pre">Channel_MCC118_VoltageChannel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Channel_MCC118_VoltageChannel.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Channel_MCC118_VoltageChannel.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Channel_MCC118_VoltageChannel.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Channel_MCC118_VoltageChannel.to_dict"><code class="docutils literal notranslate"><span class="pre">to_dict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Hardware_DigilentMCC118"><code class="docutils literal notranslate"><span class="pre">Hardware_DigilentMCC118</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Hardware_DigilentMCC118.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Hardware_DigilentMCC118.handle"><code class="docutils literal notranslate"><span class="pre">handle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC118.Hardware_DigilentMCC118.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC134.Channel_MCC134_ThermocoupleChannel"><code class="docutils literal notranslate"><span class="pre">Channel_MCC134_ThermocoupleChannel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC134.Channel_MCC134_ThermocoupleChannel.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC134.Channel_MCC134_ThermocoupleChannel.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC134.Channel_MCC134_ThermocoupleChannel.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC134.Channel_MCC134_ThermocoupleChannel.to_dict"><code class="docutils literal notranslate"><span class="pre">to_dict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC134.Hardware_DigilentMCC134"><code class="docutils literal notranslate"><span class="pre">Hardware_DigilentMCC134</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC134.Hardware_DigilentMCC134.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC134.Hardware_DigilentMCC134.handle"><code class="docutils literal notranslate"><span class="pre">handle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.driver.DigilentMCC134.Hardware_DigilentMCC134.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reference.html#communication-visualization">Communication &amp; Visualization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#module-MeasurementSystem.core.comvisu.Command">Command Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.comvisu.Command.Command"><code class="docutils literal notranslate"><span class="pre">Command</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#module-MeasurementSystem.core.comvisu.ServerUtils">Server Utilities</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.comvisu.ServerUtils.DataQueueThread"><code class="docutils literal notranslate"><span class="pre">DataQueueThread</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.comvisu.ServerUtils.ServerConnection"><code class="docutils literal notranslate"><span class="pre">ServerConnection</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980b9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Measurement System</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">MeasurementSystem.core.driver.RaspberryPi</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+
+  <h1>Source code for MeasurementSystem.core.driver.RaspberryPi</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">NewType</span>
+
+<span class="kn">import</span> <span class="nn">lgpio</span>
+
+<span class="kn">from</span> <span class="nn">MeasurementSystem.core.driver.BaseClasses</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Channel</span><span class="p">,</span>
+    <span class="n">ChannelManager</span><span class="p">,</span>
+    <span class="n">ChannelProperties</span><span class="p">,</span>
+    <span class="n">Hardware</span><span class="p">,</span>
+    <span class="n">InputChannel</span><span class="p">,</span>
+    <span class="n">InputModule</span><span class="p">,</span>
+    <span class="n">Module</span><span class="p">,</span>
+    <span class="n">MultiChannel</span><span class="p">,</span>
+    <span class="n">OutputChannel</span><span class="p">,</span>
+    <span class="n">OutputModule</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">MeasurementSystem.core.driver.Config</span> <span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span> <span class="nn">MeasurementSystem.core.driver.Data</span> <span class="kn">import</span> <span class="n">Data</span>
+<span class="kn">from</span> <span class="nn">MeasurementSystem.core.driver.Models</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">KTYxModel</span><span class="p">,</span>
+    <span class="n">LinearModel</span><span class="p">,</span>
+    <span class="n">Model</span><span class="p">,</span>
+    <span class="n">ModelMeta</span><span class="p">,</span>
+    <span class="n">NTCModel</span><span class="p">,</span>
+    <span class="n">PTxModel</span><span class="p">,</span>
+    <span class="n">StackedModel</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">GPIOHandle</span> <span class="o">=</span> <span class="n">NewType</span><span class="p">(</span><span class="s2">&quot;GPIOHandle&quot;</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Hardware_RaspberryPi">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Hardware_RaspberryPi">[docs]</a>
+<span class="k">class</span> <span class="nc">Hardware_RaspberryPi</span><span class="p">(</span><span class="n">Hardware</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a Raspberry Pi 5 hardware instance.</span>
+
+<span class="sd">    :param name: The name of the hardware instance.</span>
+<span class="sd">    :type name: str</span>
+<span class="sd">    :param gpiochip: The gpiochip to use. Defaults to 4.</span>
+
+<span class="sd">    :return: Hardware_RaspberryPi instance</span>
+<span class="sd">    :rtype: Hardware_RaspberryPi</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">gpiochip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gpiochip</span> <span class="o">=</span> <span class="n">gpiochip</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Hardware_RaspberryPi.initialize">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Hardware_RaspberryPi.initialize">[docs]</a>
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize a Hardware_RaspberryPi instance.</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">handle</span> <span class="o">=</span> <span class="n">lgpio</span><span class="o">.</span><span class="n">gpiochip_open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gpiochip</span><span class="p">)</span>  <span class="c1"># Open gpiochip4 --&gt; GPIOs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">GPIOHandle</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>  <span class="c1"># Cast handle to GPIOHandle</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GPIOHandle</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :return: The handle of the gpiochip.</span>
+<span class="sd">        :rtype: GPIOHandle</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span>
+
+    <span class="nd">@handle</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">handle</span><span class="p">:</span> <span class="n">GPIOHandle</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param handle: The handle of the gpiochip.</span>
+<span class="sd">        :type handle: GPIOHandle</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">handle</span>
+
+<div class="viewcode-block" id="Hardware_RaspberryPi.close">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Hardware_RaspberryPi.close">[docs]</a>
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Close the Hardware_RaspberryPi instance.</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">handle</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">lgpio</span><span class="o">.</span><span class="n">gpiochip_close</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">handle</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">handle</span> <span class="o">=</span> <span class="kc">None</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Channel_RPI_FrequencyCounter">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_FrequencyCounter">[docs]</a>
+<span class="k">class</span> <span class="nc">Channel_RPI_FrequencyCounter</span><span class="p">(</span><span class="n">InputChannel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A Raspberry Pi-based frequency counter input channel.</span>
+<span class="sd">    The frequency is measured continuously in a thread-safe way and can be read anytime using the `read` method.</span>
+
+<span class="sd">    :param handle: The handle of the gpiochip.</span>
+<span class="sd">    :type handle: GPIOHandle</span>
+<span class="sd">    :param name: The name of the channel.</span>
+<span class="sd">    :type name: str</span>
+<span class="sd">    :param pin: The pin to use for frequency counting.</span>
+<span class="sd">    :type pin: int</span>
+<span class="sd">    :param unit: The unit of the frequency. Defaults to &quot;Hz&quot;.</span>
+<span class="sd">    :type unit: str</span>
+<span class="sd">    :param model: The model to use for frequency counting. Defaults to LinearModel(offset=0, gain=1).</span>
+<span class="sd">    :type model: Model</span>
+<span class="sd">    :param **config: Additional keyword arguments to store as a Config instance.</span>
+
+<span class="sd">    :return: Channel_RPI_FrequencyCounter instance</span>
+<span class="sd">    :rtype: Channel_RPI_FrequencyCounter</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">handle</span><span class="p">:</span> <span class="n">GPIOHandle</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">pin</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">unit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Hz&quot;</span><span class="p">,</span>
+        <span class="n">model</span><span class="p">:</span> <span class="n">Model</span> <span class="o">=</span> <span class="n">LinearModel</span><span class="p">(</span><span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">gain</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+        <span class="o">**</span><span class="n">config</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">handle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pin</span> <span class="o">=</span> <span class="n">pin</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unit</span> <span class="o">=</span> <span class="n">unit</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+
+        <span class="c1"># Store the config as an instance of Config</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Channel_RPI_FrequencyCounter.initialize">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_FrequencyCounter.initialize">[docs]</a>
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the Channel_RPI_FrequencyCounter instance.</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="n">ChannelProperties</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">FREQUENCY</span><span class="p">,</span>
+            <span class="n">unit</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">unit</span><span class="p">,</span>
+            <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_frequency</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
+
+        <span class="c1"># NOTE: check if needed and implement arguments in __init__</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_debounce_micros</span> <span class="o">=</span> <span class="mi">5</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_monitor_duration_seconds</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_monitoring_edges</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">lgpio</span><span class="o">.</span><span class="n">BOTH_EDGES</span>
+        <span class="p">)</span>  <span class="c1"># TODO: check if non 50% dutycycle signals are also valid with BOTH_EDGES</span>
+
+        <span class="c1"># Setup GPIO</span>
+        <span class="n">lgpio</span><span class="o">.</span><span class="n">gpio_claim_alert</span><span class="p">(</span><span class="n">handle</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">gpio</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pin</span><span class="p">,</span> <span class="n">eFlags</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_monitoring_edges</span><span class="p">)</span>
+        <span class="n">lgpio</span><span class="o">.</span><span class="n">gpio_set_debounce_micros</span><span class="p">(</span><span class="n">handle</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">gpio</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pin</span><span class="p">,</span> <span class="n">debounce_micros</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_debounce_micros</span><span class="p">)</span>
+
+        <span class="c1"># Initialize callback</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cb</span> <span class="o">=</span> <span class="n">lgpio</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span><span class="n">handle</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">gpio</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pin</span><span class="p">,</span> <span class="n">edge</span><span class="o">=</span><span class="n">lgpio</span><span class="o">.</span><span class="n">BOTH_EDGES</span><span class="p">,</span> <span class="n">func</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+        <span class="c1"># Start the background thread</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_thread_stop_event</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Event</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_count_frequency</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_thread</span><span class="o">.</span><span class="n">daemon</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_monitor_duration_seconds</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_monitor_duration_seconds</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;WARNING: monitor_duration_seconds=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_monitor_duration_seconds</span><span class="si">}</span><span class="s2">, wait at least that time to get a valid measurement&quot;</span>
+            <span class="p">)</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_count_frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Measure the frequency of the input channel.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_thread_stop_event</span><span class="o">.</span><span class="n">is_set</span><span class="p">():</span>
+            <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cb</span><span class="o">.</span><span class="n">reset_tally</span><span class="p">()</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_monitor_duration_seconds</span><span class="p">)</span>
+            <span class="n">edge_count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cb</span><span class="o">.</span><span class="n">tally</span><span class="p">()</span>
+            <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_monitoring_edges</span> <span class="o">==</span> <span class="n">lgpio</span><span class="o">.</span><span class="n">BOTH_EDGES</span><span class="p">:</span>
+                <span class="n">frequency</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">edge_count</span> <span class="o">/</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+                <span class="p">)</span>  <span class="c1"># both edges -&gt; half period -&gt; double count, therefore divide by 2</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">frequency</span> <span class="o">=</span> <span class="n">edge_count</span> <span class="o">/</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
+
+            <span class="c1"># thread save update of _frequency</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_frequency</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">frequency</span><span class="p">)</span>  <span class="c1"># * self.gain + self.offset</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">add_value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_frequency</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Channel_RPI_FrequencyCounter.read">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_FrequencyCounter.read">[docs]</a>
+    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Data</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Read the frequency of the channel. Thread safe.</span>
+
+<span class="sd">        :return: The frequency of the channel.</span>
+<span class="sd">        :rtype: Data</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+            <span class="c1"># return self._frequency</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span></div>
+
+
+<div class="viewcode-block" id="Channel_RPI_FrequencyCounter.close">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_FrequencyCounter.close">[docs]</a>
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Close the frequency counter channel.</span>
+
+<span class="sd">        This method stops the frequency counter thread, cancels the callback,</span>
+<span class="sd">        clears the data queue, and frees the GPIO pin.</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_thread_stop_event</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_thread</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_thread</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_thread_stop_event</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cb</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_frequency</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="n">lgpio</span><span class="o">.</span><span class="n">gpio_free</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pin</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Channel_RPI_DigitalInput">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_DigitalInput">[docs]</a>
+<span class="k">class</span> <span class="nc">Channel_RPI_DigitalInput</span><span class="p">(</span><span class="n">InputChannel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A Raspberry Pi-based digital input channel.</span>
+
+<span class="sd">    :param handle: The handle of the gpiochip.</span>
+<span class="sd">    :param name: The name of the channel.</span>
+<span class="sd">    :param pin: The pin to use for digital input.</span>
+<span class="sd">    :param unit: The unit of the digital input. Defaults to &quot;High/Low&quot;.</span>
+<span class="sd">    :param model: The model to use for digital input. Defaults to LinearModel(offset=0, gain=1).</span>
+<span class="sd">    :param config: Additional keyword arguments to store as a Config instance.</span>
+
+<span class="sd">    :return: A Channel_RPI_DigitalInput instance.</span>
+<span class="sd">    :rtype: Channel_RPI_DigitalInput</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">handle</span><span class="p">:</span> <span class="n">GPIOHandle</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">pin</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">unit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;High/Low&quot;</span><span class="p">,</span>
+        <span class="n">model</span><span class="p">:</span> <span class="n">Model</span> <span class="o">=</span> <span class="n">LinearModel</span><span class="p">(</span><span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">gain</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+        <span class="o">**</span><span class="n">config</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">handle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pin</span> <span class="o">=</span> <span class="n">pin</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unit</span> <span class="o">=</span> <span class="n">unit</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+
+        <span class="c1"># Store the config as an instance of Config</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Channel_RPI_DigitalInput.initialize">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_DigitalInput.initialize">[docs]</a>
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the digital input channel.</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="n">ChannelProperties</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">DIGITAL_IN</span><span class="p">,</span>
+            <span class="n">unit</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">unit</span><span class="p">,</span>
+            <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pin_status</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
+
+        <span class="c1"># Setup GPIO</span>
+        <span class="n">lgpio</span><span class="o">.</span><span class="n">gpio_claim_alert</span><span class="p">(</span><span class="n">handle</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">gpio</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pin</span><span class="p">,</span> <span class="n">eFlags</span><span class="o">=</span><span class="n">lgpio</span><span class="o">.</span><span class="n">BOTH_EDGES</span><span class="p">)</span>
+        <span class="n">lgpio</span><span class="o">.</span><span class="n">gpio_set_debounce_micros</span><span class="p">(</span><span class="n">handle</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">gpio</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pin</span><span class="p">,</span> <span class="n">debounce_micros</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+        <span class="c1"># Read the status of the pin</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pin_status</span> <span class="o">=</span> <span class="n">lgpio</span><span class="o">.</span><span class="n">gpio_read</span><span class="p">(</span><span class="n">handle</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">gpio</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pin</span><span class="p">)</span>
+
+        <span class="c1"># Initialize callback</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cb</span> <span class="o">=</span> <span class="n">lgpio</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span>
+            <span class="n">handle</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span>
+            <span class="n">gpio</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pin</span><span class="p">,</span>
+            <span class="n">edge</span><span class="o">=</span><span class="n">lgpio</span><span class="o">.</span><span class="n">BOTH_EDGES</span><span class="p">,</span>
+            <span class="n">func</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_callback</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">handle</span><span class="p">,</span> <span class="n">gpio</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">tick</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Callback for the digital input pin.</span>
+
+<span class="sd">        This method is called whenever the digital input pin changes state. It</span>
+<span class="sd">        updates the pin status and adds the new value to the data queue.</span>
+
+<span class="sd">        :param handle: The handle of the gpiochip.</span>
+<span class="sd">        :param gpio: The GPIO pin number.</span>
+<span class="sd">        :param level: The level of the GPIO pin (0 or 1).</span>
+<span class="sd">        :param tick: The tick of the GPIO pin.</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pin_status</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">level</span><span class="p">))</span>  <span class="c1"># float(level) * self.gain + self.offset</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">add_value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pin_status</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Channel_RPI_DigitalInput.read">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_DigitalInput.read">[docs]</a>
+    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Data</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Read the digital input channel.</span>
+
+<span class="sd">        :return: The digital input channel.</span>
+<span class="sd">        :rtype: Data</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span></div>
+
+
+<div class="viewcode-block" id="Channel_RPI_DigitalInput.readRaw">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_DigitalInput.readRaw">[docs]</a>
+    <span class="k">def</span> <span class="nf">readRaw</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Read the raw digital input channel.</span>
+
+<span class="sd">        :return: The raw digital input channel.</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">lgpio</span><span class="o">.</span><span class="n">gpio_read</span><span class="p">(</span><span class="n">handle</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">gpio</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pin</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Channel_RPI_DigitalInput.close">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_DigitalInput.close">[docs]</a>
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Close the digital input channel.</span>
+
+<span class="sd">        This method stops the callback, clears the data queue, and frees the GPIO pin.</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cb</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pin_status</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="n">lgpio</span><span class="o">.</span><span class="n">gpio_free</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pin</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Channel_RPI_BufferedDigitalInput">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_BufferedDigitalInput">[docs]</a>
+<span class="k">class</span> <span class="nc">Channel_RPI_BufferedDigitalInput</span><span class="p">(</span><span class="n">Channel_RPI_DigitalInput</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A buffered Raspberry Pi-based digital input channel.</span>
+
+<span class="sd">    :param handle: The handle of the gpiochip.</span>
+<span class="sd">    :param name: The name of the channel.</span>
+<span class="sd">    :param pin: The pin to use for digital input.</span>
+<span class="sd">    :param unit: The unit of the digital input. Defaults to &quot;High/Low&quot;.</span>
+<span class="sd">    :param model: The model to use for digital input. Defaults to LinearModel(offset=0, gain=1).</span>
+<span class="sd">    :param config: Additional keyword arguments to store as a Config instance.</span>
+
+<span class="sd">    :return: A Channel_RPI_BufferedDigitalInput instance.</span>
+<span class="sd">    :rtype: Channel_RPI_BufferedDigitalInput</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">handle</span><span class="p">:</span> <span class="n">GPIOHandle</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">pin</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">unit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;High/Low&quot;</span><span class="p">,</span>
+        <span class="n">model</span><span class="p">:</span> <span class="n">Model</span> <span class="o">=</span> <span class="n">LinearModel</span><span class="p">(</span><span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">gain</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+        <span class="o">**</span><span class="n">config</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">handle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pin</span> <span class="o">=</span> <span class="n">pin</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unit</span> <span class="o">=</span> <span class="n">unit</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+
+        <span class="c1"># # Store the config as an instance of Config</span>
+        <span class="c1"># self.config = Config(**config)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Channel_RPI_BufferedDigitalInput.initialize">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_BufferedDigitalInput.initialize">[docs]</a>
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize a Channel_RPI_BufferedDigitalInput instance.</span>
+
+<span class="sd">        This method calls the superclass&#39;s `initialize` method and initializes</span>
+<span class="sd">        the internal data buffer.</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>  <span class="c1"># TODO: what about the config??</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">Data</span><span class="p">()</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">handle</span><span class="p">,</span> <span class="n">gpio</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">tick</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Callback for the digital input pin.</span>
+
+<span class="sd">        This method is called whenever the digital input pin changes state. It</span>
+<span class="sd">        updates the pin status and adds the new value to the data queue.</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">level</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">add_value</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Channel_RPI_BufferedDigitalInput.read">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_BufferedDigitalInput.read">[docs]</a>
+    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Data</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :return: The last value of the buffered digital input channel.</span>
+<span class="sd">        :rtype: Data</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span></div>
+
+
+<div class="viewcode-block" id="Channel_RPI_BufferedDigitalInput.close">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_BufferedDigitalInput.close">[docs]</a>
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Close the buffered digital input channel.</span>
+
+<span class="sd">        This method clears the data queue and calls the superclass&#39;s `close` method.</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Channel_RPI_DigitalOutput">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_DigitalOutput">[docs]</a>
+<span class="k">class</span> <span class="nc">Channel_RPI_DigitalOutput</span><span class="p">(</span><span class="n">OutputChannel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A Raspberry Pi-based digital output channel.</span>
+
+<span class="sd">    :param handle: The handle of the gpiochip.</span>
+<span class="sd">    :param name: The name of the channel.</span>
+<span class="sd">    :param pin: The pin to use for digital output.</span>
+<span class="sd">    :param unit: The unit of the digital output. Defaults to &quot;High/Low&quot;.</span>
+<span class="sd">    :param model: The model to use for digital output. Defaults to LinearModel(offset=0, gain=1).</span>
+<span class="sd">    :param config: Additional keyword arguments to store as a Config instance.</span>
+
+<span class="sd">    :return: A Channel_RPI_DigitalOutput instance.</span>
+<span class="sd">    :rtype: Channel_RPI_DigitalOutput</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">handle</span><span class="p">:</span> <span class="n">GPIOHandle</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">pin</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">unit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;High/Low&quot;</span><span class="p">,</span>
+        <span class="n">model</span><span class="p">:</span> <span class="n">Model</span> <span class="o">=</span> <span class="n">LinearModel</span><span class="p">(</span><span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">gain</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+        <span class="o">**</span><span class="n">config</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">handle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pin</span> <span class="o">=</span> <span class="n">pin</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unit</span> <span class="o">=</span> <span class="n">unit</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+
+        <span class="c1"># Store the config as an instance of Config</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Channel_RPI_DigitalOutput.initialize">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_DigitalOutput.initialize">[docs]</a>
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the digital output channel.</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="n">ChannelProperties</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">DIGITAL_OUT</span><span class="p">,</span>
+            <span class="n">unit</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">unit</span><span class="p">,</span>
+            <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Setup GPIO</span>
+        <span class="n">level</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">lgpio</span><span class="o">.</span><span class="n">gpio_claim_output</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pin</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">level</span><span class="p">,</span> <span class="n">lFlags</span><span class="o">=</span><span class="n">lgpio</span><span class="o">.</span><span class="n">SET_PULL_DOWN</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="n">level</span></div>
+
+
+<div class="viewcode-block" id="Channel_RPI_DigitalOutput.write">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_DigitalOutput.write">[docs]</a>
+    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Write the given value to the digital output channel.</span>
+
+<span class="sd">        :param value: The value to write to the digital output channel.</span>
+<span class="sd">        :type value: int</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">lgpio</span><span class="o">.</span><span class="n">gpio_write</span><span class="p">(</span><span class="n">handle</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">gpio</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pin</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="n">value</span></div>
+
+
+<div class="viewcode-block" id="Channel_RPI_DigitalOutput.close">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_DigitalOutput.close">[docs]</a>
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Close the digital output channel.</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">lgpio</span><span class="o">.</span><span class="n">gpio_free</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pin</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Channel_RPI_InternalTemperature">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_InternalTemperature">[docs]</a>
+<span class="k">class</span> <span class="nc">Channel_RPI_InternalTemperature</span><span class="p">(</span><span class="n">InputChannel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A Raspberry Pi-based internal temperature input channel.</span>
+
+<span class="sd">    :param name: The name of the channel.</span>
+<span class="sd">    :param unit: The unit of the temperature. Defaults to &quot;Celsius&quot;.</span>
+<span class="sd">    :param model: The model to use for internal temperature measurement. Defaults to LinearModel(offset=0, gain=1).</span>
+<span class="sd">    :param config: Additional keyword arguments to store as a Config instance.</span>
+
+<span class="sd">    :return: A Channel_RPI_InternalTemperature instance.</span>
+<span class="sd">    :rtype: Channel_RPI_InternalTemperature</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;InternalTemperature&quot;</span><span class="p">,</span>
+        <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;Celsius&quot;</span><span class="p">,</span>
+        <span class="n">model</span><span class="p">:</span> <span class="n">Model</span> <span class="o">=</span> <span class="n">LinearModel</span><span class="p">(</span><span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">gain</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+        <span class="o">**</span><span class="n">config</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unit</span> <span class="o">=</span> <span class="n">unit</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+
+        <span class="c1"># Store the config as an instance of Config</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Channel_RPI_InternalTemperature.initialize">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_InternalTemperature.initialize">[docs]</a>
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the internal temperature channel.</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="n">ChannelProperties</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">TEMPERATURE</span><span class="p">,</span>
+            <span class="n">unit</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">unit</span><span class="p">,</span>
+            <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">Data</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Channel_RPI_InternalTemperature.read">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_InternalTemperature.read">[docs]</a>
+    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Data</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Read the internal temperature of the Raspberry Pi.</span>
+
+<span class="sd">        This method reads the internal temperature of the Raspberry Pi by executing</span>
+<span class="sd">        the &quot;vcgencmd measure_temp&quot; command and parsing the output.</span>
+
+<span class="sd">        :return: The internal temperature of the Raspberry Pi.</span>
+<span class="sd">        :rtype: Data</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">output</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="s2">&quot;vcgencmd measure_temp&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+        <span class="c1"># Remove anything not like a digit or a decimal point</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;[^0-9.]&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+        <span class="n">temperature</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>  <span class="c1"># float(result) * self.gain + self.offset</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">add_value</span><span class="p">(</span><span class="n">temperature</span><span class="p">)</span>
+
+        <span class="c1"># return self._temperature</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span></div>
+
+
+<div class="viewcode-block" id="Channel_RPI_InternalTemperature.close">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Channel_RPI_InternalTemperature.close">[docs]</a>
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Close the internal temperature channel and clears the data buffer.</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># self._temperature = None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Module_RPI_StepperMotor">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_StepperMotor">[docs]</a>
+<span class="k">class</span> <span class="nc">Module_RPI_StepperMotor</span><span class="p">(</span><span class="n">MultiChannel</span><span class="p">,</span> <span class="n">OutputModule</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A Raspberry Pi-based stepper motor control module.</span>
+
+<span class="sd">    :param handle: The handle of the gpiochip.</span>
+<span class="sd">    :param name: The name of the module.</span>
+<span class="sd">    :param step_pin: The pin to use for step signal output.</span>
+<span class="sd">    :param dir_pin: The pin to use for direction signal output.</span>
+<span class="sd">    :param enable_pin: The pin to use for enable signal output.</span>
+<span class="sd">    :param limitA_pin: The pin to use for limit A signal input.</span>
+<span class="sd">    :param limitB_pin: The pin to use for limit B signal input.</span>
+<span class="sd">    :param config: Additional keyword arguments to store as a Config instance.</span>
+
+<span class="sd">    :return: A Module_RPI_StepperMotor instance.</span>
+<span class="sd">    :rtype: Module_RPI_StepperMotor</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">handle</span><span class="p">:</span> <span class="n">GPIOHandle</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">step_pin</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">dir_pin</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">enable_pin</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">limitA_pin</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">limitB_pin</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">config</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">handle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">step_pin</span> <span class="o">=</span> <span class="n">step_pin</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dir_pin</span> <span class="o">=</span> <span class="n">dir_pin</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enable_pin</span> <span class="o">=</span> <span class="n">enable_pin</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">limitA_pin</span> <span class="o">=</span> <span class="n">limitA_pin</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">limitB_pin</span> <span class="o">=</span> <span class="n">limitB_pin</span>
+
+        <span class="c1"># Store the config as an instance of Config</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Module_RPI_StepperMotor.initialize">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_StepperMotor.initialize">[docs]</a>
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the Module_RPI_StepperMotor instance.</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">MultiChannel</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">input_channels</span><span class="o">=</span><span class="p">[],</span> <span class="n">output_channels</span><span class="o">=</span><span class="p">[])</span>
+        <span class="n">OutputModule</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_channel_step_pin</span> <span class="o">=</span> <span class="n">Channel_RPI_DigitalOutput</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="s2">&quot;StepPin&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">step_pin</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_channel_dir_pin</span> <span class="o">=</span> <span class="n">Channel_RPI_DigitalOutput</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="s2">&quot;DirPin&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir_pin</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_channel_enable_pin</span> <span class="o">=</span> <span class="n">Channel_RPI_DigitalOutput</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="s2">&quot;EnablePin&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">enable_pin</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_channel_limitA_pin</span> <span class="o">=</span> <span class="n">Channel_RPI_DigitalInput</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="s2">&quot;LimitAPin&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">limitA_pin</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_channel_limitB_pin</span> <span class="o">=</span> <span class="n">Channel_RPI_DigitalInput</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="s2">&quot;LimitBPin&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">limitB_pin</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_channels</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_channel_step_pin</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_channels</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_channel_dir_pin</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_channels</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_channel_enable_pin</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_channels</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_channel_limitA_pin</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_channels</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_channel_limitB_pin</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_thread</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_running</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stop_event</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Event</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_max_steps</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_direction</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_position</span> <span class="o">=</span> <span class="mi">0</span></div>
+
+
+<div class="viewcode-block" id="Module_RPI_StepperMotor.enable_stepper">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_StepperMotor.enable_stepper">[docs]</a>
+    <span class="k">def</span> <span class="nf">enable_stepper</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Enable the stepper motor.</span>
+
+<span class="sd">        This method will set the enable pin to HIGH to enable the stepper motor.</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_channel_enable_pin</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Module_RPI_StepperMotor.disable_stepper">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_StepperMotor.disable_stepper">[docs]</a>
+    <span class="k">def</span> <span class="nf">disable_stepper</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Disable the stepper motor.</span>
+
+<span class="sd">        This method will set the enable pin to LOW to disable the stepper motor.</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_channel_enable_pin</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Module_RPI_StepperMotor.getPosition">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_StepperMotor.getPosition">[docs]</a>
+    <span class="k">def</span> <span class="nf">getPosition</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the current position of the stepper motor.</span>
+
+<span class="sd">        :return: The current position of the stepper motor.</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_position</span></div>
+
+
+<div class="viewcode-block" id="Module_RPI_StepperMotor.setDirection">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_StepperMotor.setDirection">[docs]</a>
+    <span class="k">def</span> <span class="nf">setDirection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">direction</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the direction of the stepper motor.</span>
+
+<span class="sd">        :param direction: 1 to move towards limitA, 0 to move towards limitB.</span>
+<span class="sd">        :type direction: int</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_channel_dir_pin</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">direction</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_direction</span> <span class="o">=</span> <span class="n">direction</span></div>
+
+
+<div class="viewcode-block" id="Module_RPI_StepperMotor.write">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_StepperMotor.write">[docs]</a>
+    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">direction</span><span class="p">,</span> <span class="n">steps</span><span class="p">,</span> <span class="n">duration</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Write a command to the stepper motor to move a given number of steps in a given direction.</span>
+<span class="sd">        The method will block until the move is complete.</span>
+
+<span class="sd">        :param direction: 1 to move towards limitA, 0 to move towards limitB.</span>
+<span class="sd">        :type direction: int</span>
+<span class="sd">        :param steps: The number of steps to move.</span>
+<span class="sd">        :type steps: int</span>
+<span class="sd">        :param duration: The maximum time to wait for the move to complete.</span>
+<span class="sd">        :type duration: float</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_drive_motor</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">direction</span><span class="p">,</span> <span class="n">steps</span><span class="p">,</span> <span class="n">duration</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_thread</span><span class="o">.</span><span class="n">daemon</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_thread</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="n">duration</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Wait for thread to finish</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_drive_motor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">direction</span><span class="p">,</span> <span class="n">steps</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Internal method to drive the stepper motor. (Thread function)</span>
+
+<span class="sd">        :param direction: 1 to move towards limitA, 0 to move towards limitB.</span>
+<span class="sd">        :type direction: int</span>
+<span class="sd">        :param steps: The number of steps to move.</span>
+<span class="sd">        :type steps: int</span>
+<span class="sd">        :param duration: The maximum time to wait for the move to complete.</span>
+<span class="sd">        :type duration: float</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_running</span><span class="p">:</span>
+                <span class="k">return</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_running</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="c1"># Limit Check Thread</span>
+        <span class="k">def</span> <span class="nf">check_limits</span><span class="p">():</span>
+            <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stop_event</span><span class="o">.</span><span class="n">is_set</span><span class="p">():</span>
+                <span class="k">if</span> <span class="p">(</span>
+                    <span class="n">direction</span> <span class="o">==</span> <span class="mi">1</span>
+                    <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_channel_limitA_pin</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+                    <span class="ow">or</span> <span class="n">direction</span> <span class="o">==</span> <span class="mi">0</span>
+                    <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_channel_limitB_pin</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+                <span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_stop_event</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>  <span class="c1"># Check limits every 10ms</span>
+
+        <span class="n">limit_thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">check_limits</span><span class="p">)</span>
+        <span class="n">limit_thread</span><span class="o">.</span><span class="n">daemon</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">limit_thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+        <span class="c1"># Set Direction</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setDirection</span><span class="p">(</span><span class="n">direction</span><span class="p">)</span>
+
+        <span class="c1"># Generate steps</span>
+        <span class="k">if</span> <span class="n">duration</span><span class="p">:</span>
+            <span class="n">steps_frequency</span> <span class="o">=</span> <span class="n">steps</span> <span class="o">/</span> <span class="n">duration</span>  <span class="c1"># Steps per second</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">steps_frequency</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># Steps per second</span>
+
+        <span class="n">lgpio</span><span class="o">.</span><span class="n">tx_pwm</span><span class="p">(</span>
+            <span class="n">handle</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span>
+            <span class="n">gpio</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_channel_step_pin</span><span class="o">.</span><span class="n">pin</span><span class="p">,</span>
+            <span class="n">pwm_frequency</span><span class="o">=</span><span class="n">steps_frequency</span><span class="p">,</span>
+            <span class="n">pwm_duty_cycle</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+            <span class="n">pulse_cycles</span><span class="o">=</span><span class="n">steps</span><span class="p">,</span>
+        <span class="p">)</span>  <span class="c1"># Generate 50% PWM for steps</span>
+
+        <span class="c1"># Wait until the desired number of steps are completed or stop event is set</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stop_event</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span>
+            <span class="n">timeout</span><span class="o">=</span><span class="n">duration</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">steps_frequency</span>
+        <span class="p">)</span>  <span class="c1"># plus wait for one addional step --&gt; TODO: replace with step feedback loop</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_running</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="c1"># Stop the limit check thread</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stop_event</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+        <span class="n">limit_thread</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stop_event</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Module_RPI_StepperMotor.calibrate">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_StepperMotor.calibrate">[docs]</a>
+    <span class="k">def</span> <span class="nf">calibrate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout_steps</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calibrate the stepper motor.</span>
+
+<span class="sd">        This method moves the stepper motor until it hits one of its limits,</span>
+<span class="sd">        then moves it in the other direction until it hits the other limit.</span>
+<span class="sd">        The maximum number of steps between the limits is stored in the</span>
+<span class="sd">        _max_steps attribute.</span>
+
+<span class="sd">        :param timeout_steps: The maximum number of steps to move.</span>
+<span class="sd">        :type timeout_steps: int</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">steps_fwd</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">steps_bwd</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># Move until limitA</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setDirection</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enable_stepper</span><span class="p">()</span>
+
+        <span class="n">steps_fwd</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_channel_limitA_pin</span><span class="o">.</span><span class="n">read</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_channel_step_pin</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_channel_step_pin</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
+            <span class="n">steps_fwd</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">steps_fwd</span> <span class="o">&gt;</span> <span class="n">timeout_steps</span><span class="p">:</span>
+                <span class="k">break</span>
+
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+
+        <span class="c1"># Move until limitB</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setDirection</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="n">steps_bwd</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_channel_limitB_pin</span><span class="o">.</span><span class="n">read</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_channel_step_pin</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_channel_step_pin</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
+            <span class="n">steps_bwd</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">steps_bwd</span> <span class="o">&gt;</span> <span class="n">timeout_steps</span><span class="p">:</span>
+                <span class="k">break</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">disable_stepper</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_max_steps</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">steps_fwd</span><span class="p">,</span> <span class="n">steps_bwd</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_position</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Calibration complete. Max steps between limits: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_max_steps</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Module_RPI_StepperMotor.close">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_StepperMotor.close">[docs]</a>
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Close the Module_RPI_StepperMotor instance.</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">MultiChannel</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Module_RPI_WeighScalesHX711">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_WeighScalesHX711">[docs]</a>
+<span class="k">class</span> <span class="nc">Module_RPI_WeighScalesHX711</span><span class="p">(</span><span class="n">MultiChannel</span><span class="p">,</span> <span class="n">InputModule</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A Raspberry Pi-based HX711 weight scales input module.</span>
+
+<span class="sd">    :param handle: The handle of the gpiochip.</span>
+<span class="sd">    :type handle: GPIOHandle</span>
+<span class="sd">    :param name: The name of the module.</span>
+<span class="sd">    :type name: str</span>
+<span class="sd">    :param data_pin: The pin to use for data input from the HX711.</span>
+<span class="sd">    :type data_pin: int</span>
+<span class="sd">    :param clock_pin: The pin to use for clock input to the HX711.</span>
+<span class="sd">    :type clock_pin: int</span>
+<span class="sd">    :param model: The model of the HX711.</span>
+<span class="sd">    :type model: Model</span>
+
+<span class="sd">    :return: Module_RPI_WeighScalesHX711 instance</span>
+<span class="sd">    :rtype: Module_RPI_WeighScalesHX711</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Module_RPI_WeighScalesHX711.ReadType">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_WeighScalesHX711.ReadType">[docs]</a>
+    <span class="k">class</span> <span class="nc">ReadType</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Enumeration-like class representing different read types.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">RAW</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">AVG</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">MEDIAN</span> <span class="o">=</span> <span class="mi">2</span></div>
+
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">handle</span><span class="p">:</span> <span class="n">GPIOHandle</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">,</span>
+        <span class="n">data_pin</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">clock_pin</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">model</span><span class="p">:</span> <span class="n">Model</span> <span class="o">=</span> <span class="n">LinearModel</span><span class="p">(</span><span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">gain</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+        <span class="o">**</span><span class="n">config</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">handle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_pin</span> <span class="o">=</span> <span class="n">data_pin</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clock_pin</span> <span class="o">=</span> <span class="n">clock_pin</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+
+        <span class="c1"># Store the config as an instance of Config</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Module_RPI_WeighScalesHX711.initialize">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_WeighScalesHX711.initialize">[docs]</a>
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the Module_RPI_WeighScalesHX711 instance.</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">MultiChannel</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">input_channels</span><span class="o">=</span><span class="p">[],</span> <span class="n">output_channels</span><span class="o">=</span><span class="p">[])</span>
+        <span class="n">InputModule</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="n">ChannelProperties</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">WEIGHT</span><span class="p">,</span>
+            <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;kg&quot;</span><span class="p">,</span>
+            <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_channel_data_pin</span> <span class="o">=</span> <span class="n">Channel_RPI_DigitalInput</span><span class="p">(</span><span class="n">handle</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;DATA&quot;</span><span class="p">,</span> <span class="n">pin</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data_pin</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_channel_clock_pin</span> <span class="o">=</span> <span class="n">Channel_RPI_DigitalOutput</span><span class="p">(</span><span class="n">handle</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;CLOCK&quot;</span><span class="p">,</span> <span class="n">pin</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">clock_pin</span><span class="p">)</span>
+
+        <span class="c1"># NOTE: issue when adding channels later on in &quot;get_channels&quot; of multi_channel</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_channels</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_channel_data_pin</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_channels</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_channel_clock_pin</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
+
+        <span class="c1"># default gain is 128</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hx711_gain</span> <span class="o">=</span> <span class="mi">128</span>
+
+        <span class="c1"># Power down after initialization</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">powerDown</span><span class="p">()</span>
+
+        <span class="c1"># Measure tara</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tara</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measure_tara</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Module_RPI_WeighScalesHX711.read">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_WeighScalesHX711.read">[docs]</a>
+    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="n">ReadType</span> <span class="o">=</span> <span class="n">ReadType</span><span class="o">.</span><span class="n">RAW</span><span class="p">,</span> <span class="n">count</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Data</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Read data from the HX711 module.</span>
+
+<span class="sd">        :param type: The type of read to perform. Defaults to ReadType.RAW.</span>
+<span class="sd">        :type type: Module_RPI_WeighScalesHX711.ReadType</span>
+<span class="sd">        :param count: The number of values to read. Defaults to 5.</span>
+<span class="sd">        :type count: int</span>
+
+<span class="sd">        :return: Data object containing the read values.</span>
+<span class="sd">        :rtype: Data</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">ReadType</span><span class="o">.</span><span class="n">AVG</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">readAverage</span><span class="p">(</span><span class="n">count</span><span class="o">=</span><span class="n">count</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">ReadType</span><span class="o">.</span><span class="n">MEDIAN</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">readMedian</span><span class="p">(</span><span class="n">count</span><span class="o">=</span><span class="n">count</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">readRaw</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">add_value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">val</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_measure_tara</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Measure the tara (zero) value of the HX711 module.</span>
+
+<span class="sd">        :return: The tara value.</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">tara</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">readMedian</span><span class="p">(</span><span class="n">count</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">tara</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_is_ready</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if the HX711 module is ready for a measurement.</span>
+
+<span class="sd">        This method will read the data pin of the HX711 module and return True if the</span>
+<span class="sd">        pin is low (0), indicating that the module is ready for a measurement.</span>
+<span class="sd">        Otherwise it will return False.</span>
+
+<span class="sd">        :return: True if the module is ready for a measurement, False otherwise.</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_channel_data_pin</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">get_count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">val</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get_last</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">val</span> <span class="o">==</span> <span class="mi">0</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">_send_clock_cycle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Send a clock cycle to the HX711 module.</span>
+
+<span class="sd">        :param count: The number of clock cycles to send. Defaults to 1.</span>
+<span class="sd">        :type count: int</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_channel_clock_pin</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_channel_clock_pin</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_twos_complement_24bit_to_int</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="c1"># Mask to get the lower 24 bits</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Convert a 24-bit two&#39;s complement number to an integer.</span>
+
+<span class="sd">        :param data: The 24-bit two&#39;s complement number to convert.</span>
+<span class="sd">        :type data: int</span>
+
+<span class="sd">        :return: The integer value of the 24-bit two&#39;s complement number.</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">mask</span> <span class="o">=</span> <span class="mh">0xFFFFFF</span>
+        <span class="c1"># Apply the mask</span>
+        <span class="n">data</span> <span class="o">&amp;=</span> <span class="n">mask</span>
+        <span class="c1"># Check if the sign bit (24th bit) is set</span>
+        <span class="k">if</span> <span class="n">data</span> <span class="o">&amp;</span> <span class="mh">0x800000</span><span class="p">:</span>  <span class="c1"># 0x800000 is the 24th bit (2^23)</span>
+            <span class="c1"># If the sign bit is set, calculate the negative value</span>
+            <span class="n">data</span> <span class="o">-=</span> <span class="mh">0x1000000</span>  <span class="c1"># Subtract 2^24</span>
+        <span class="k">return</span> <span class="n">data</span>
+
+<div class="viewcode-block" id="Module_RPI_WeighScalesHX711.wakeup">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_WeighScalesHX711.wakeup">[docs]</a>
+    <span class="k">def</span> <span class="nf">wakeup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Wakeup the HX711 module with setting the clock pin low for 1 ms.</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_channel_clock_pin</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Module_RPI_WeighScalesHX711.powerDown">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_WeighScalesHX711.powerDown">[docs]</a>
+    <span class="k">def</span> <span class="nf">powerDown</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Power down the HX711 module with setting the clock pin high for 1 ms.</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_channel_clock_pin</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_wait_for_data_ready</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t_timeout</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># wait until HX711 is ready</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Wait until the HX711 module is ready for a measurement.</span>
+<span class="sd">        The method will timeout and power down the module if it is not ready.</span>
+
+<span class="sd">        :param t_timeout: The timeout in seconds. Defaults to 3.</span>
+<span class="sd">        :type t_timeout: float</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">t_start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_ready</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t_start</span> <span class="o">&gt;</span> <span class="n">t_timeout</span><span class="p">:</span>  <span class="c1"># timeout after 3 seconds</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">powerDown</span><span class="p">()</span>
+                <span class="k">raise</span> <span class="ne">TimeoutError</span><span class="p">(</span><span class="s2">&quot;Timeout waiting for HX711&quot;</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_readBit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Read a single bit from the HX711 module by sending a clock cycle.</span>
+
+<span class="sd">        :return: The value of the bit.</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_send_clock_cycle</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_channel_data_pin</span><span class="o">.</span><span class="n">readRaw</span><span class="p">()</span>  <span class="c1"># read is altert/callback based, use readRaw for direct read</span>
+
+<div class="viewcode-block" id="Module_RPI_WeighScalesHX711.readRaw">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_WeighScalesHX711.readRaw">[docs]</a>
+    <span class="k">def</span> <span class="nf">readRaw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t_timeout</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Read a single measurement from the HX711 module. Only 24 bits are supported.</span>
+
+<span class="sd">        :param t_timeout: The timeout in seconds. Defaults to 3.</span>
+<span class="sd">        :type t_timeout: float</span>
+
+<span class="sd">        :return: The raw value of the measurement.</span>
+<span class="sd">        :rtype: float</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wakeup</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">t_timeout</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_wait_for_data_ready</span><span class="p">(</span><span class="n">t_timeout</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+        <span class="c1"># get 24 bits</span>
+        <span class="n">dataValue</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">24</span><span class="p">):</span>
+            <span class="n">dataValue</span> <span class="o">=</span> <span class="p">(</span><span class="n">dataValue</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="bp">self</span><span class="o">.</span><span class="n">_readBit</span><span class="p">()</span>
+
+        <span class="c1"># send 25th bit: set channel A, gain=128 in next conversion</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_send_clock_cycle</span><span class="p">(</span><span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># TODO: implement for other channels/gain</span>
+        <span class="c1"># when sending 26th bit: set channel B, gain=32 in next conversion</span>
+        <span class="c1"># when sending 27th bit: set channel A, gain=64 in next conversion</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">powerDown</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_twos_complement_24bit_to_int</span><span class="p">(</span><span class="n">dataValue</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Module_RPI_WeighScalesHX711.readAverage">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_WeighScalesHX711.readAverage">[docs]</a>
+    <span class="k">def</span> <span class="nf">readAverage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Read the average of &#39;count&#39; raw values.</span>
+
+<span class="sd">        :param count: The number of values to read. Defaults to 5.</span>
+<span class="sd">        :type count: int</span>
+
+<span class="sd">        :return: The average of the &#39;count&#39; number of raw values.</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
+            <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">readRaw</span><span class="p">())</span>
+            <span class="n">avg</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">//</span> <span class="n">count</span>
+            <span class="c1"># time.sleep(0.1)</span>
+        <span class="k">return</span> <span class="n">avg</span>  <span class="c1"># int(sum(self.readRaw() for _ in range(count)) / count)</span></div>
+
+
+<div class="viewcode-block" id="Module_RPI_WeighScalesHX711.readMedian">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_WeighScalesHX711.readMedian">[docs]</a>
+    <span class="k">def</span> <span class="nf">readMedian</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Read the median of &#39;count&#39; raw values.</span>
+
+<span class="sd">        :param count: The number of values to read. Defaults to 5.</span>
+<span class="sd">        :type count: int</span>
+
+<span class="sd">        :return: The median of the &#39;count&#39; number of raw values.</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
+            <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">readRaw</span><span class="p">())</span>
+            <span class="n">median</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">values</span><span class="p">)[</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">]</span>
+            <span class="c1"># time.sleep(0.1)</span>
+        <span class="k">return</span> <span class="n">median</span>  <span class="c1"># int(sorted(self.readRaw() for _ in range(count))[int(count / 2)])</span></div>
+
+
+<div class="viewcode-block" id="Module_RPI_WeighScalesHX711.close">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_WeighScalesHX711.close">[docs]</a>
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Close the module.</span>
+
+<span class="sd">        This method will clear the internal data queue and call the close method of the</span>
+<span class="sd">        MultiChannel class to release any resources allocated by the module.</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="n">MultiChannel</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>  <span class="c1"># NOTE: self to ensure correct instance of close is called</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Module_RPI_ServoMotor">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_ServoMotor">[docs]</a>
+<span class="k">class</span> <span class="nc">Module_RPI_ServoMotor</span><span class="p">(</span><span class="n">MultiChannel</span><span class="p">,</span> <span class="n">OutputModule</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A Raspberry Pi-based servo motor control module.</span>
+
+<span class="sd">    :param handle: The handle of the gpiochip.</span>
+<span class="sd">    :type handle: GPIOHandle</span>
+<span class="sd">    :param name: The name of the module.</span>
+<span class="sd">    :type name: str</span>
+<span class="sd">    :param servo_pin: The pin to use for servo motor control.</span>
+<span class="sd">    :type servo_pin: int</span>
+<span class="sd">    :param config: Additional keyword arguments to store as a Config instance.</span>
+<span class="sd">    :type config: Config</span>
+
+<span class="sd">    :return: A Module_RPI_ServoMotor instance.</span>
+<span class="sd">    :rtype: Module_RPI_ServoMotor</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">handle</span><span class="p">:</span> <span class="n">GPIOHandle</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">servo_pin</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">**</span><span class="n">config</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">handle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">servo_pin</span> <span class="o">=</span> <span class="n">servo_pin</span>
+
+        <span class="c1"># Store the config as an instance of Config</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Module_RPI_ServoMotor.initialize">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_ServoMotor.initialize">[docs]</a>
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the Module_RPI_ServoMotor instance.</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">MultiChannel</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">input_channels</span><span class="o">=</span><span class="p">[],</span> <span class="n">output_channels</span><span class="o">=</span><span class="p">[])</span>
+        <span class="n">OutputModule</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_channel_servo_pin</span> <span class="o">=</span> <span class="n">Channel_RPI_DigitalOutput</span><span class="p">(</span><span class="n">handle</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;SERVO_PIN&quot;</span><span class="p">,</span> <span class="n">pin</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">servo_pin</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_servo_frequency</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># NOTE: check if needed and implement in __init__</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_channels</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_channel_servo_pin</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Module_RPI_ServoMotor.write">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_ServoMotor.write">[docs]</a>
+    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">percentage</span><span class="p">,</span> <span class="n">pulse_cycles</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the servo motor output to a given percentage of the total range.</span>
+
+<span class="sd">        :param percentage: The percentage of the total range to set the servo motor output to.</span>
+<span class="sd">            0% corresponds to 1000us and 100% corresponds to 2000us.</span>
+<span class="sd">        :type percentage: float</span>
+<span class="sd">        :param pulse_cycles: The number of pulse cycles to send. Defaults to 0, which means continuous servo motor output.</span>
+<span class="sd">        :type pulse_cycles: int</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># 0% = 1000us</span>
+        <span class="c1"># 100% = 2000us</span>
+        <span class="n">pulseWidth</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">1000</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2000</span> <span class="o">-</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">*</span> <span class="n">percentage</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>
+
+        <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_channel_servo_pin</span><span class="o">.</span><span class="n">_handle</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_channel_servo_pin</span><span class="o">.</span><span class="n">pin</span>
+        <span class="n">lgpio</span><span class="o">.</span><span class="n">tx_servo</span><span class="p">(</span>
+            <span class="n">handle</span><span class="o">=</span><span class="n">h</span><span class="p">,</span>
+            <span class="n">gpio</span><span class="o">=</span><span class="n">p</span><span class="p">,</span>
+            <span class="n">pulse_width</span><span class="o">=</span><span class="n">pulseWidth</span><span class="p">,</span>
+            <span class="n">servo_frequency</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_servo_frequency</span><span class="p">,</span>
+            <span class="n">pulse_offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">pulse_cycles</span><span class="o">=</span><span class="n">pulse_cycles</span><span class="p">,</span>
+        <span class="p">)</span>  <span class="c1"># pulse_cycles=0 --&gt; continuous servo</span></div>
+
+
+<div class="viewcode-block" id="Module_RPI_ServoMotor.close">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_ServoMotor.close">[docs]</a>
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Close the Hardware_DigilentMCC118 instance.</span>
+
+<span class="sd">        This method closes all channels in the Hardware_DigilentMCC118 instance.</span>
+<span class="sd">        It also stops the servo motor output and closes the underlying gpiochip handle.</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        :rtype: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">MultiChannel</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Alfred Paar.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+</body>
+</html>
