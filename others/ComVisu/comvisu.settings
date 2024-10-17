@@ -1,0 +1,8 @@
+CVGLOBALGENERAL
+cvVersion "V1.8"
+language "de"
+projectPath "C:\SVN\svn_work\EDV-Dienstleistungen\Knappitsch-Heinz\Motor-Prüfstand\ComvisuV180Win64\"
+lastProjectFile "configuration.visu"
+decimalSeparator system
+autoLoadProject true
+startInRunMode true

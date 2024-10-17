@@ -5,7 +5,8 @@
 exclude: |
   (?x)^(
     (third-party/.*)|
-    docs/_static.*
+    docs/_static.* |
+    others/*
   )
 
 repos:
