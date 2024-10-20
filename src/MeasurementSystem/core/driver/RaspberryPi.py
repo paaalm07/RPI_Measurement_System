@@ -151,7 +151,6 @@ class Channel_RPI_FrequencyCounter(InputChannel):
             model=self.model,
         )
 
-        self._frequency = None
         self._data = Data()
 
         # NOTE: check if needed and implement arguments in __init__
@@ -203,8 +202,8 @@ class Channel_RPI_FrequencyCounter(InputChannel):
 
             # thread save update of _frequency
             with self._lock:
-                self._frequency = self.model.apply(frequency)  # * self.gain + self.offset
-                self._data.add_value(self._frequency)
+                frequency = self.model.apply(frequency)  # * self.gain + self.offset
+                self._data.add_value(frequency)
 
     def read(self) -> Data:
         """
@@ -233,7 +232,6 @@ class Channel_RPI_FrequencyCounter(InputChannel):
         self._thread = None
         self._thread_stop_event.clear()
         self._cb.cancel()
-        self._frequency = None
         self._data.clear()
         lgpio.gpio_free(self._handle, self.pin)
 
