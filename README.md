@@ -36,10 +36,15 @@ Measurement-System based on RaspberryPi 5 hardware.
     - Notes
         - On Windows system, the [lgpio](https://abyz.me.uk/lg/py_lgpio.html) library is not installed. Building docs and other features not available.
 
-## Install
+## Getting Started
 
-Use [Hatch](https://hatch.pypa.io/) to install dependencies:
+Use [Hatch](https://hatch.pypa.io/) to...
 
-```bash
-hatch env create
-```
+- ...install environment: ``` hatch env create```
+- ...run pre-commit: ```hatch run fix```
+- ...create docs: ```hatch run docs```
+- ...build: ```hatch run dev```
+
+Check [pyproject.toml](pyproject.toml) for more scripts in section [tool.hatch.envs.default.scripts]
+
+Use any hatch command to sync dependencies.
