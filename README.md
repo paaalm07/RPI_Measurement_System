@@ -6,7 +6,7 @@
 [![Sphinx](https://img.shields.io/badge/docs-blue?label=sphinx&logo=sphinx&logoColor=white)](https://github.com/sphinx-doc/sphinx)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
-[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://server.paaalm07.at:3000/paaalm07/MyAwsomePackage/src/branch/main/LICENSE)
+[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/license/bsd-3-clause)
 
 This is a template Python project with Sphinx documentation.
 Measurement-System based on RaspberryPi 5 hardware.
