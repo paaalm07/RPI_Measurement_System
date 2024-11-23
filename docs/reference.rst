@@ -17,7 +17,7 @@ Utils
 .. automodule:: MeasurementSystem.core.common.Utils
 
 Config
-~~~~~
+~~~~~~
 .. automodule:: MeasurementSystem.core.common.Config
 
 Data

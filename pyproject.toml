@@ -24,6 +24,7 @@ dependencies = [
     "daqhats",
     "lgpio; sys_platform != 'win32'",
     "numpy",
+    "psutil",
 ]
 
 [project.optional-dependencies]

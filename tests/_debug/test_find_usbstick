@@ -1,0 +1,38 @@
+import psutil
+
+def find_all_usb_drives(common_mount_points = ['/media/', '/mnt/'], common_filesystems = {'vfat', 'ntfs', 'ntfs3'}):
+    """Finds all USB drives attached to the system.
+
+    Looks for mount points that begin with any of the paths in common_mount_points and
+    have a filesystem type of vfat, ntfs, or ntfs3. The latter is to support the
+    default filesystem type of the USB drive we used for testing.
+
+    :param common_mount_points: A list of mount points to check for. Defaults to ['/media/', '/mnt/'].
+    :return: A list of paths of the found USB drives.
+    """
+    usb_drives = []
+    for partition in psutil.disk_partitions():
+        # Check for common mount points like /media or /mnt
+        if any(partition.mountpoint.startswith(path) for path in common_mount_points):
+            # Include common filesystems
+            if partition.fstype in common_filesystems:
+                usb_drives.append(partition.mountpoint)
+
+    return usb_drives
+
+usb_paths = find_all_usb_drives()
+
+print(usb_paths)
+
+# if usb_paths:
+#     for usb_path in usb_paths:
+#         print(f"USB drive is mounted at: {usb_path}")
+#         # Save a file to each USB drive
+#         try:
+#             with open(f"{usb_path}/example.txt", "w") as file:
+#                 file.write(f"Hello, USB drive at {usb_path}!")
+#             print(f"File written to {usb_path}/example.txt")
+#         except Exception as e:
+#             print(f"Failed to write to {usb_path}: {e}")
+# else:
+#     print("No USB drives detected.")

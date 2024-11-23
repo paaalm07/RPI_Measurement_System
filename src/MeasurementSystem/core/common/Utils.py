@@ -1,8 +1,13 @@
 from __future__ import annotations
 
 import importlib
+import os
+import platform
 import queue
+import sys
 from typing import Any, Dict, Tuple
+
+import psutil
 
 
 class OrderedPriorityQueue(queue.PriorityQueue):
@@ -189,6 +194,60 @@ class Serializable:
         return instance
 
 
+class USBUtils:
+    @staticmethod
+    def find_all_usb_drives(common_mount_points=None, common_filesystems=None) -> list:
+        """
+        Finds all USB drives attached to the system, excluding system drives.
+
+        Automatically adapts to the current operating system. On Linux, it checks
+        for USB drives mounted under paths like `/media/` or `/mnt/`. If the
+        filesystem doesn't match the expected types, an error will be raised.
+
+        :param common_mount_points: A list of base paths or prefixes for mount points. Defaults to platform-specific values.
+        :type common_mount_points: Optional[List[str]]
+        :param common_filesystems: A set of filesystem types to look for. Defaults to platform-specific values.
+        :type common_filesystems: Optional[Set[str]]
+
+        :return: A list of paths where USB drives are mounted.
+        :rtype: List[str]
+
+        :raises ValueError: If the filesystem of a USB drive doesn't match the expected ones.
+        """
+
+        # Set default values based on the platform
+        if common_mount_points is None:
+            if platform.system() == "Windows":
+                # Windows: All drive letters are potential mount points, excluding C:\
+                # common_mount_points = [f"{chr(d)}:\\" for d in range(65, 91) if chr(d) != 'C']  # Exclude C:\
+                raise NotImplementedError("Windows is not supported yet")
+            # Linux/Unix
+            common_mount_points = ["/media/", "/mnt/"]
+
+        if common_filesystems is None:
+            if platform.system() == "Windows":
+                # Common USB filesystems on Windows
+                # common_filesystems = {'FAT32', 'NTFS', 'exFAT'}
+                raise NotImplementedError("Windows is not supported yet")
+            # Common USB filesystems on Linux
+            common_filesystems = {"vfat", "ntfs", "ntfs3"}
+
+        usb_drives = []
+        for partition in psutil.disk_partitions():
+            # Check if the mount point matches any common path and exclude system drives
+            if any(partition.mountpoint.startswith(path) for path in common_mount_points):
+                # On Linux, exclude root partition and internal drives
+                if partition.device == "/":
+                    continue
+                # Include only specified filesystems
+                if partition.fstype:
+                    if partition.fstype not in common_filesystems:
+                        raise ValueError(f"Unsupported filesystem type: {partition.fstype} for {partition.device}")
+                    usb_drives.append(partition.mountpoint)
+
+        return usb_drives
+
+
 # TEST
 if __name__ == "__main__":
     q = OrderedPriorityQueue("test")
@@ -206,3 +265,8 @@ if __name__ == "__main__":
             break
 
     print("done")
+
+    print("----")
+
+    usb_drives = USBUtils.find_all_usb_drives()
+    print(usb_drives)

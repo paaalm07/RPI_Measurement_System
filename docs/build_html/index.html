@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Measurement-System &mdash; Measurement System 0.1.dev10+g5541d5c documentation</title>
+  <title>Measurement-System &mdash; Measurement System 0.1.dev18+g5cb60f0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -16,7 +16,7 @@
 
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=ee3ae00d"></script>
+        <script src="_static/documentation_options.js?v=ea4c1654"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -40,7 +40,7 @@
               <img src="_static/logo.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                0.1.dev10+g5541d5c
+                0.1.dev18+g5cb60f0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -110,6 +110,10 @@
 <li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.common.Utils.Serializable"><code class="docutils literal notranslate"><span class="pre">Serializable</span></code></a><ul>
 <li class="toctree-l5"><a class="reference internal" href="reference.html#MeasurementSystem.core.common.Utils.Serializable.from_dict"><code class="docutils literal notranslate"><span class="pre">from_dict()</span></code></a></li>
 <li class="toctree-l5"><a class="reference internal" href="reference.html#MeasurementSystem.core.common.Utils.Serializable.to_dict"><code class="docutils literal notranslate"><span class="pre">to_dict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.common.Utils.USBUtils"><code class="docutils literal notranslate"><span class="pre">USBUtils</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="reference.html#MeasurementSystem.core.common.Utils.USBUtils.find_all_usb_drives"><code class="docutils literal notranslate"><span class="pre">find_all_usb_drives()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -393,12 +397,12 @@
   <section id="measurement-system">
 <h1>Measurement-System<a class="headerlink" href="#measurement-system" title="Link to this heading"></a></h1>
 <p><a class="reference external" href="https://www.python.org/"><img alt="Python" src="https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10-blue" /></a>
-<a class="reference external" href="https://server.paaalm07.at:3000/paaalm07/MyAwsomePackage/issues"><img alt="Issues" src="https://img.shields.io/badge/Issues-orange" /></a>
+<a class="reference external" href="https://github.com/paaalm07/RPI_Measurement_System/issues"><img alt="Issues" src="https://img.shields.io/badge/Issues-orange" /></a>
 <a class="reference external" href="https://github.com/pypa/hatch"><img alt="Hatch project" src="https://img.shields.io/badge/%F0%9F%A5%9A-Hatch-4051b5.svg" /></a>
 <a class="reference external" href="https://github.com/sphinx-doc/sphinx"><img alt="Sphinx" src="https://img.shields.io/badge/docs-blue?label=sphinx&amp;logo=sphinx&amp;logoColor=white" /></a>
 <a class="reference external" href="https://github.com/pre-commit/pre-commit"><img alt="pre-commit" src="https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit" /></a>
 <a class="reference external" href="https://github.com/astral-sh/ruff"><img alt="Ruff" src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json" /></a>
-<a class="reference external" href="https://server.paaalm07.at:3000/paaalm07/MyAwsomePackage/src/branch/main/LICENSE"><img alt="License" src="https://img.shields.io/badge/License-BSD%203--Clause-blue.svg" /></a></p>
+<a class="reference external" href="https://github.com/paaalm07/RPI_Measurement_System/blob/master/LICENSE"><img alt="License" src="https://img.shields.io/badge/License-BSD%203--Clause-blue.svg" /></a></p>
 <p>This is a template Python project with Sphinx documentation.
 Measurement-System based on RaspberryPi 5 hardware.</p>
 <ul class="simple">
@@ -453,12 +457,17 @@ sudo<span class="w"> </span>./install.sh
 </li>
 </ul>
 </section>
-<section id="install">
-<h2>Install<a class="headerlink" href="#install" title="Link to this heading"></a></h2>
-<p>Use <a class="reference external" href="https://hatch.pypa.io/">Hatch</a> to install dependencies:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>hatch<span class="w"> </span>env<span class="w"> </span>create
-</pre></div>
-</div>
+<section id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h2>
+<p>Use <a class="reference external" href="https://hatch.pypa.io/">Hatch</a> to…</p>
+<ul class="simple">
+<li><p>…install environment: <code class="docutils literal notranslate"> <span class="pre">hatch</span> <span class="pre">env</span> <span class="pre">create</span></code></p></li>
+<li><p>…run pre-commit: <code class="docutils literal notranslate"><span class="pre">hatch</span> <span class="pre">run</span> <span class="pre">fix</span></code></p></li>
+<li><p>…create docs: <code class="docutils literal notranslate"><span class="pre">hatch</span> <span class="pre">run</span> <span class="pre">docs</span></code></p></li>
+<li><p>…build: <code class="docutils literal notranslate"><span class="pre">hatch</span> <span class="pre">run</span> <span class="pre">dev</span></code></p></li>
+</ul>
+<p>Check <a class="reference internal" href="#pyproject.toml"><span class="xref myst">pyproject.toml</span></a> for more scripts in section [tool.hatch.envs.default.scripts]</p>
+<p>Use any hatch command to sync dependencies.</p>
 </section>
 </section>
 <section id="reference">
