@@ -4,10 +4,10 @@
 # Don't run pre-commit on files under third-party/
 exclude: |
   (?x)^(
-    (third-party/.*)|
-    docs/_static.* |
-    others/*
-  )
+    third-party/.* |
+    docs/_static/.* |
+    others/.*
+  )$
 
 repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
