@@ -621,11 +621,14 @@
 <span class="sd">        for USB drives mounted under paths like `/media/` or `/mnt/`. If the</span>
 <span class="sd">        filesystem doesn&#39;t match the expected types, an error will be raised.</span>
 
-<span class="sd">        :param common_mount_points: A list of base paths or prefixes for mount points.</span>
-<span class="sd">            Defaults to platform-specific values.</span>
-<span class="sd">        :param common_filesystems: A set of filesystem types to look for.</span>
-<span class="sd">            Defaults to platform-specific values.</span>
+<span class="sd">        :param common_mount_points: A list of base paths or prefixes for mount points. Defaults to platform-specific values.</span>
+<span class="sd">        :type common_mount_points: Optional[List[str]]</span>
+<span class="sd">        :param common_filesystems: A set of filesystem types to look for. Defaults to platform-specific values.</span>
+<span class="sd">        :type common_filesystems: Optional[Set[str]]</span>
+
 <span class="sd">        :return: A list of paths where USB drives are mounted.</span>
+<span class="sd">        :rtype: List[str]</span>
+
 <span class="sd">        :raises ValueError: If the filesystem of a USB drive doesn&#39;t match the expected ones.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 

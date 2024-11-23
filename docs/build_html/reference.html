@@ -1088,17 +1088,18 @@ filesystem doesn’t match the expected types, an error will be raised.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>common_mount_points</strong> – A list of base paths or prefixes for mount points.
-Defaults to platform-specific values.</p></li>
-<li><p><strong>common_filesystems</strong> – A set of filesystem types to look for.
-Defaults to platform-specific values.</p></li>
+<li><p><strong>common_mount_points</strong> (<em>Optional</em><em>[</em><em>List</em><em>[</em><em>str</em><em>]</em><em>]</em>) – A list of base paths or prefixes for mount points. Defaults to platform-specific values.</p></li>
+<li><p><strong>common_filesystems</strong> (<em>Optional</em><em>[</em><em>Set</em><em>[</em><em>str</em><em>]</em><em>]</em>) – A set of filesystem types to look for. Defaults to platform-specific values.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A list of paths where USB drives are mounted.</p>
 </dd>
-<dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ValueError</strong> – If the filesystem of a USB drive doesn’t match the expected ones.</p>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[str]</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the filesystem of a USB drive doesn’t match the expected ones.</p>
 </dd>
 </dl>
 </dd></dl>

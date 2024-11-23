@@ -204,11 +204,14 @@ class USBUtils:
         for USB drives mounted under paths like `/media/` or `/mnt/`. If the
         filesystem doesn't match the expected types, an error will be raised.
 
-        :param common_mount_points: A list of base paths or prefixes for mount points.
-            Defaults to platform-specific values.
-        :param common_filesystems: A set of filesystem types to look for.
-            Defaults to platform-specific values.
+        :param common_mount_points: A list of base paths or prefixes for mount points. Defaults to platform-specific values.
+        :type common_mount_points: Optional[List[str]]
+        :param common_filesystems: A set of filesystem types to look for. Defaults to platform-specific values.
+        :type common_filesystems: Optional[Set[str]]
+
         :return: A list of paths where USB drives are mounted.
+        :rtype: List[str]
+
         :raises ValueError: If the filesystem of a USB drive doesn't match the expected ones.
         """
 
