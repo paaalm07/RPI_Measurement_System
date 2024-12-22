@@ -25,6 +25,7 @@ dependencies = [
     "lgpio; sys_platform != 'win32'",
     "numpy",
     "psutil",
+    "pandas",
 ]
 
 [project.optional-dependencies]
