@@ -219,18 +219,21 @@ class USBUtils:
         if common_mount_points is None:
             if platform.system() == "Windows":
                 # Windows: All drive letters are potential mount points, excluding C:\
-                # common_mount_points = [f"{chr(d)}:\\" for d in range(65, 91) if chr(d) != 'C']  # Exclude C:\
-                raise NotImplementedError("Windows is not supported yet")
-            # Linux/Unix
-            common_mount_points = ["/media/", "/mnt/"]
+                common_mount_points = [f"{chr(d)}:\\" for d in range(65, 91) if chr(d) != "C"]  # Exclude C:\
+            else:
+                # Linux/Unix
+                common_mount_points = ["/media/", "/mnt/"]
 
         if common_filesystems is None:
             if platform.system() == "Windows":
                 # Common USB filesystems on Windows
-                # common_filesystems = {'FAT32', 'NTFS', 'exFAT'}
-                raise NotImplementedError("Windows is not supported yet")
-            # Common USB filesystems on Linux
-            common_filesystems = {"vfat", "ntfs", "ntfs3"}
+                common_filesystems = {"fat32", "ntfs", "exfat"}
+                # raise NotImplementedError("Windows is not supported yet")
+            else:
+                # Common USB filesystems on Linux
+                common_filesystems = {"vfat", "ntfs", "ntfs3"}
+        else:
+            common_filesystems = [fs.lower() for fs in common_filesystems]
 
         usb_drives = []
         for partition in psutil.disk_partitions():
@@ -241,7 +244,7 @@ class USBUtils:
                     continue
                 # Include only specified filesystems
                 if partition.fstype:
-                    if partition.fstype not in common_filesystems:
+                    if partition.fstype.lower() not in common_filesystems:
                         raise ValueError(f"Unsupported filesystem type: {partition.fstype} for {partition.device}")
                     usb_drives.append(partition.mountpoint)
 
@@ -250,23 +253,25 @@ class USBUtils:
 
 # TEST
 if __name__ == "__main__":
-    q = OrderedPriorityQueue("test")
+    # q = OrderedPriorityQueue("test")
 
-    # fill the queue
-    for i in range(10):
-        q.put(i)
+    # # fill the queue
+    # for i in range(10):
+    #     q.put(i)
 
-    # read the queue
-    while True:
-        try:
-            priority, queue_element = q.get(timeout=1)
-            print(f"Priority: {priority}, QueueElement: {queue_element}")
-        except queue.Empty:
-            break
+    # # read the queue
+    # while True:
+    #     try:
+    #         priority, queue_element = q.get(timeout=1)
+    #         print(f"Priority: {priority}, QueueElement: {queue_element}")
+    #     except queue.Empty:
+    #         break
 
-    print("done")
+    # print("done")
 
     print("----")
 
-    usb_drives = USBUtils.find_all_usb_drives()
+    usb_drives = USBUtils.find_all_usb_drives(
+        common_mount_points=["F:\\"], common_filesystems={"fat32", "ntfs", "ntfs3"}
+    )
     print(usb_drives)
