@@ -46,8 +46,9 @@ Execute (Windows)
 3. Move to ``Startseite`` sheet
 4. Start ``START Measurement System.bat``
 5. Make sure a USB drive is plugged in
-6. Press ``Mess-System: START`` and perform the measurement
-7. Press ``Mess-System: STOP`` to stop and save the data to the USB drive
+6. Press ``Mess-System: START``
+7. Execute the tests
+8. Press ``Mess-System: STOP`` to stop and save the data to the USB drive
 
 
 Troubleshooting
