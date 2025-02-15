@@ -1291,6 +1291,7 @@ class MeasurementSystem:
         self.hardware_interface.close()  # close measurement
         self.data_queue_processor.stop()  # stop data queue processor
         self.server_connection.disconnect()  # close server connection
+        self.save_data()  # save temporary data
 
     def printConsole(self, *args, sep=" ", end="") -> None:
         """
@@ -1397,6 +1398,9 @@ class MeasurementSystem:
                     self.printConsole("Measurement system stopped")
                     self.add_command_to_send_queue(Command(901, Command.Type.F, "0"), priority=0)
 
+                    self.save_data()
+                    self.printConsole("Data saved")
+
             ##################################
             # Slider Test
             elif command.channel == 510:  # == "#510F12;"
@@ -1455,54 +1459,47 @@ class MeasurementSystem:
                 self.printConsole("Unknown command:", command)
                 print("Unknown command:", command.to_string())
 
+    def save_data(self) -> None:
+        """
+        1) load all csv files from TMP_DATA_DIR using ceda.load
+        2) comibe them in one single ceda data and save as csv in TMP_DATA_DIR
+        3) copy to USB or SD card
+        4) delete TMP_DATA_DIR directory
 
-##############################
-# Methods
-def save_data(save_path: str) -> None:
-    """
-    1) load all csv files from save_path using ceda.load
-    2) comibe them in one single ceda data and save as csv in save_path
-    3) delete data folder
+        :raises OSError: if no external USB or SD card found
+        """
+        if os.path.exists(TMP_DATA_DIR):
+            ceda_new = Ceda()
 
-    :param save_path: path to save results
-    :type save_path: str
+            for file in os.listdir(TMP_DATA_DIR):
+                if file.endswith(".csv"):
+                    ceda = Ceda()
+                    ceda.load(os.path.join(TMP_DATA_DIR, file))
 
-    :raises OSError: if no external USB or SD card found
-    """
-    if os.path.exists(save_path):
-        ceda_new = Ceda()
+                    ceda_new.merge(ceda)
 
-        for file in os.listdir(save_path):
-            if file.endswith(".csv"):
-                ceda = Ceda()
-                ceda.load(os.path.join(save_path, file))
+            fileName = f"{datetime.now().strftime('%Y%m%d_%H%M%S')}__results.csv"
+            filePath = os.path.join(TMP_DATA_DIR, fileName)
 
-                ceda_new.merge(ceda)
-
-        fileName = f"{datetime.now().strftime('%Y%m%d_%H%M%S')}__results.csv"
-        filePath = os.path.join(save_path, fileName)
-
-        ceda_new.save(
-            filePath=filePath, overwrite=True, print_index=True, fill_nan_values=False, nan_replacement="=NA()"
-        )
-
-        # find USB stick and copy file to it
-        usb_drives = USBUtils.find_all_usb_drives()
-        if len(usb_drives) > 0:
-            print(f">>> Copy file {fileName} to USB drive:", usb_drives[-1])
-            shutil.copy(
-                filePath, usb_drives[-1]
-            )  # copy file to last USB drive in list; raises exception if no USB drive found
-        else:
-            raise OSError(
-                f"No external USB or SD card found to save the results. Temporary data available here: {save_path}"
+            ceda_new.save(
+                filePath=filePath, overwrite=True, print_index=True, fill_nan_values=False, nan_replacement="=NA()"
             )
 
-        # delete temporary data folder
-        try:
-            shutil.rmtree(save_path)
-        except:
-            pass  # skip if folder does not exist, maybe deleted by user
+            # find USB stick and copy file to it
+            usb_drives = USBUtils.find_all_usb_drives()
+            if len(usb_drives) > 0:
+                print(f">>> Copy file {fileName} to USB drive:", usb_drives[-1])
+                shutil.copy(filePath, usb_drives[-1])
+            else:
+                raise OSError(
+                    f"No external USB or SD card found to save the results. Temporary data available here: {TMP_DATA_DIR}"
+                )
+
+            # delete temporary data folder, not reached if copy to USB or SD card fails
+            try:
+                shutil.rmtree(TMP_DATA_DIR)
+            except:
+                pass  # skip if folder does not exist, maybe deleted by user
 
 
 ##############################
@@ -1601,9 +1598,6 @@ def main():
                     # Close measurement system
                     measurementSystem.close()
                     measurementSystem = None
-
-                    # Save data on exit
-                    save_data(TMP_DATA_DIR)
 
             except Exception as e:
                 raise e
