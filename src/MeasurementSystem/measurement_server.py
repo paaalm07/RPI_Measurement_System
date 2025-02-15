@@ -54,16 +54,12 @@ from MeasurementSystem.core.driver.RaspberryPi import (
     Module_RPI_WeighScalesHX711,
 )
 
-current_dir = os.path.dirname(os.path.realpath(__file__))
-
 LOCKFILE = "/tmp/measurement_server.lock"
 
-default_server_address = ("192.168.1.31", 8008)
+CONFIG_DIR = os.path.join(os.path.dirname(os.path.realpath(__file__)), "config")
+TMP_DATA_DIR = os.path.join(os.path.expanduser("/tmp"), f"MeasurementSystem_data_{time.strftime('%Y-%m-%d_%H-%M-%S')}")
 
-DATA_DIR = os.path.join(
-    os.path.expanduser("~"),
-    f"MeasurementSystem_data_{time.strftime('%Y-%m-%d_%H-%M-%S')}",
-)
+DEFAULT_SERVER = ("192.168.1.31", 8008)
 
 
 class HardwareInterface(Serializable):
@@ -586,7 +582,7 @@ class MeasurementTask:
                 self.ceda.append("time", rel_time)
                 self.ceda.append(self.channel.name, value)
 
-                filePath = os.path.join(DATA_DIR, f"{self.channel.name}__intermediate.csv")
+                filePath = os.path.join(TMP_DATA_DIR, f"{self.channel.name}__intermediate.csv")
                 self.ceda.save(
                     filePath=filePath, overwrite=True, print_index=True, fill_nan_values=True, nan_replacement="=NA()"
                 )  # prepare for Excel post processing
@@ -1094,9 +1090,9 @@ class ControlTask:
 
             # SAVE CONFIG
             elif command.channel == 890:
-                hardware_file = os.path.join(current_dir, "config", "hardware_user.json")
-                channels_file = os.path.join(current_dir, "config", "channels_user.json")
-                modules_file = os.path.join(current_dir, "config", "modules_user.json")
+                hardware_file = os.path.join(CONFIG_DIR, "hardware_user.json")
+                channels_file = os.path.join(CONFIG_DIR, "channels_user.json")
+                modules_file = os.path.join(CONFIG_DIR, "modules_user.json")
 
                 self.measurement_system.hardware_interface.to_json(
                     hardware_file=hardware_file,
@@ -1114,9 +1110,9 @@ class ControlTask:
                     name_postfix = "_default"
                 else:
                     name_postfix = "_user"  # user defined
-                hardware_file = os.path.join(current_dir, "config", f"hardware{name_postfix}.json")
-                channels_file = os.path.join(current_dir, "config", f"channels{name_postfix}.json")
-                modules_file = os.path.join(current_dir, "config", f"modules{name_postfix}.json")
+                hardware_file = os.path.join(CONFIG_DIR, f"hardware{name_postfix}.json")
+                channels_file = os.path.join(CONFIG_DIR, f"channels{name_postfix}.json")
+                modules_file = os.path.join(CONFIG_DIR, f"modules{name_postfix}.json")
 
                 msg = f"Loading config from '{hardware_file}', '{channels_file}' and '{modules_file}'"
                 self.measurement_system.printConsole(msg)
@@ -1462,13 +1458,16 @@ class MeasurementSystem:
 
 ##############################
 # Methods
-def save_on_exit(save_path: str) -> None:
+def save_data(save_path: str) -> None:
     """
     1) load all csv files from save_path using ceda.load
     2) comibe them in one single ceda data and save as csv in save_path
+    3) delete data folder
 
     :param save_path: path to save results
     :type save_path: str
+
+    :raises OSError: if no external USB or SD card found
     """
     if os.path.exists(save_path):
         ceda_new = Ceda()
@@ -1480,8 +1479,7 @@ def save_on_exit(save_path: str) -> None:
 
                 ceda_new.merge(ceda)
 
-        fileName = f"combined_results_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
-
+        fileName = f"{datetime.now().strftime('%Y%m%d_%H%M%S')}__results.csv"
         filePath = os.path.join(save_path, fileName)
 
         ceda_new.save(
@@ -1491,11 +1489,20 @@ def save_on_exit(save_path: str) -> None:
         # find USB stick and copy file to it
         usb_drives = USBUtils.find_all_usb_drives()
         if len(usb_drives) > 0:
-            print(f"Copy file {fileName} to USB drive:", usb_drives[-1])
-            shutil.copy(filePath, usb_drives[-1])  # copy file to last detected USB drive
+            print(f">>> Copy file {fileName} to USB drive:", usb_drives[-1])
+            shutil.copy(
+                filePath, usb_drives[-1]
+            )  # copy file to last USB drive in list; raises exception if no USB drive found
+        else:
+            raise OSError(
+                f"No external USB or SD card found to save the results. Temporary data available here: {save_path}"
+            )
 
-        # delete data folder
-        shutil.rmtree(save_path)  # TODO: correct???
+        # delete temporary data folder
+        try:
+            shutil.rmtree(save_path)
+        except:
+            pass  # skip if folder does not exist, maybe deleted by user
 
 
 ##############################
@@ -1539,7 +1546,7 @@ def main():
 
         server_address = (ip_address, port)
     else:
-        server_address = default_server_address
+        server_address = DEFAULT_SERVER
 
     # Only one instance of the measurement system is allowed
     if os.path.exists(LOCKFILE):
@@ -1591,13 +1598,15 @@ def main():
         finally:
             try:
                 if measurementSystem is not None:
+                    # Close measurement system
                     measurementSystem.close()
                     measurementSystem = None
+
+                    # Save data on exit
+                    save_data(TMP_DATA_DIR)
+
             except Exception as e:
                 raise e
-
-        # Save data on exit
-        save_on_exit(DATA_DIR)  # TODO: is this the right call position???
 
         # Overall loop timer
         time.sleep(0.5)
