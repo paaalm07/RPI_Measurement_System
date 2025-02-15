@@ -44,6 +44,7 @@ Use [Hatch](https://hatch.pypa.io/) to...
 - ...run pre-commit: ```hatch run fix```
 - ...create docs: ```hatch run docs```
 - ...build: ```hatch run dev```
+- ...run: ```hatch run measurement-system```
 
 Check [pyproject.toml](pyproject.toml) for more scripts in section [tool.hatch.envs.default.scripts]
 

@@ -40,7 +40,7 @@ dev = []
 #  my-cli = "my_package.my_module:cli"
 #  ~~> from my_package.my_module import cli; cli()
 [project.scripts]
-
+measurement-system = "MeasurementSystem.measurement_server:main"
 
 [project.gui-scripts]
 
