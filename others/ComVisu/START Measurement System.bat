@@ -19,7 +19,7 @@ for /f "tokens=2 delims=:" %%A in ('ipconfig ^| findstr /C:"IPv4 Address"') do (
 :found
 if defined my_ip (
     echo MyIP: %my_ip%
-    ssh heinz@raspberrypi.local "cd ~/Documents/RPI_Measurement_System && hatch env prune && hatch env create && hatch run measurement-system %caller_ip%:8008"
+    ssh -t heinz@raspberrypi.local "bash -ic 'cd ~/Documents/RPI_Measurement_System && hatch env prune && hatch env create && hatch run measurement-system %my_ip%:8008'"
 ) else (
     echo No active IPv4 address found.
 )
