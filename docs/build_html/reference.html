@@ -4,8 +4,8 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Reference &mdash; Measurement System 0.1.dev18+g5cb60f0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+  <title>Reference &mdash; Measurement System 0.1.dev35+g38b34c5.d20250215 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
 
@@ -16,7 +16,7 @@
 
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=ea4c1654"></script>
+        <script src="_static/documentation_options.js?v=5a714d8d"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -24,7 +24,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Measurement-System" href="index.html" />
+    <link rel="prev" title="Developement Guide" href="dev_guide.html" />
 </head>
 
 <body class="wy-body-for-nav">
@@ -40,7 +40,7 @@
               <img src="_static/logo.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                0.1.dev18+g5cb60f0
+                0.1.dev35+g38b34c5.d20250215
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -50,7 +50,13 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dev_guide.html">Developement Guide</a></li>
+</ul>
+<ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#main-application">Main Application</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#module-MeasurementSystem.measurement_server">Measurement Server</a><ul>
@@ -81,6 +87,7 @@
 <li class="toctree-l5"><a class="reference internal" href="#MeasurementSystem.measurement_server.MeasurementSystem.init_comvisu"><code class="docutils literal notranslate"><span class="pre">init_comvisu()</span></code></a></li>
 <li class="toctree-l5"><a class="reference internal" href="#MeasurementSystem.measurement_server.MeasurementSystem.printConsole"><code class="docutils literal notranslate"><span class="pre">printConsole()</span></code></a></li>
 <li class="toctree-l5"><a class="reference internal" href="#MeasurementSystem.measurement_server.MeasurementSystem.process_commands"><code class="docutils literal notranslate"><span class="pre">process_commands()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#MeasurementSystem.measurement_server.MeasurementSystem.save_data"><code class="docutils literal notranslate"><span class="pre">save_data()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#MeasurementSystem.measurement_server.MeasurementTask"><code class="docutils literal notranslate"><span class="pre">MeasurementTask</span></code></a><ul>
@@ -118,7 +125,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#config">Config</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-MeasurementSystem.core.common.Config">Config</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#MeasurementSystem.core.common.Config.Config"><code class="docutils literal notranslate"><span class="pre">Config</span></code></a></li>
 </ul>
 </li>
@@ -228,6 +235,21 @@
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#MeasurementSystem.core.common.BaseClasses.OutputModule"><code class="docutils literal notranslate"><span class="pre">OutputModule</span></code></a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#MeasurementSystem.core.common.BaseClasses.OutputModule.write"><code class="docutils literal notranslate"><span class="pre">write()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-MeasurementSystem.core.common.Ceda">Ceda</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#MeasurementSystem.core.common.Ceda.Ceda"><code class="docutils literal notranslate"><span class="pre">Ceda</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#MeasurementSystem.core.common.Ceda.Ceda.append"><code class="docutils literal notranslate"><span class="pre">append()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#MeasurementSystem.core.common.Ceda.Ceda.clear"><code class="docutils literal notranslate"><span class="pre">clear()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#MeasurementSystem.core.common.Ceda.Ceda.data"><code class="docutils literal notranslate"><span class="pre">data</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#MeasurementSystem.core.common.Ceda.Ceda.delete"><code class="docutils literal notranslate"><span class="pre">delete()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#MeasurementSystem.core.common.Ceda.Ceda.duprow"><code class="docutils literal notranslate"><span class="pre">duprow()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#MeasurementSystem.core.common.Ceda.Ceda.load"><code class="docutils literal notranslate"><span class="pre">load()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#MeasurementSystem.core.common.Ceda.Ceda.log"><code class="docutils literal notranslate"><span class="pre">log()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#MeasurementSystem.core.common.Ceda.Ceda.merge"><code class="docutils literal notranslate"><span class="pre">merge()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#MeasurementSystem.core.common.Ceda.Ceda.save"><code class="docutils literal notranslate"><span class="pre">save()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -793,6 +815,22 @@ The commands are processed according to the channel number and type.</p>
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="MeasurementSystem.measurement_server.MeasurementSystem.save_data">
+<span class="sig-name descname"><span class="pre">save_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/MeasurementSystem/measurement_server.html#MeasurementSystem.save_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MeasurementSystem.measurement_server.MeasurementSystem.save_data" title="Link to this definition"></a></dt>
+<dd><ol class="arabic simple">
+<li><p>load all csv files from TMP_DATA_DIR using ceda.load</p></li>
+<li><p>comibe them in one single ceda data and save as csv in TMP_DATA_DIR</p></li>
+<li><p>copy to USB or SD card</p></li>
+<li><p>delete TMP_DATA_DIR directory</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>OSError</strong> – if no external USB or SD card found</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -1107,9 +1145,9 @@ filesystem doesn’t match the expected types, an error will be raised.</p>
 </dd></dl>
 
 </section>
-<section id="config">
-<h3>Config<a class="headerlink" href="#config" title="Link to this heading"></a></h3>
-<dl class="py class" id="module-MeasurementSystem.core.common.Config">
+<section id="module-MeasurementSystem.core.common.Config">
+<span id="config"></span><h3>Config<a class="headerlink" href="#module-MeasurementSystem.core.common.Config" title="Link to this heading"></a></h3>
+<dl class="py class">
 <dt class="sig sig-object py" id="MeasurementSystem.core.common.Config.Config">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MeasurementSystem/core/common/Config.html#Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MeasurementSystem.core.common.Config.Config" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#MeasurementSystem.core.common.Utils.Serializable" title="MeasurementSystem.core.common.Utils.Serializable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Serializable</span></code></a></p>
@@ -1533,9 +1571,9 @@ It provides a way to create complex models by stacking simpler models together.<
 </dl>
 <p>Example:</p>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MeasurementSystem.core.driver.Hardware</span> <span class="kn">import</span> <span class="n">Channel</span>
-<span class="kn">from</span> <span class="nn">MeasurementSystem.core.driver.Hardware</span> <span class="kn">import</span> <span class="n">StackedModel</span>
-<span class="kn">from</span> <span class="nn">MeasurementSystem.core.driver.Hardware</span> <span class="kn">import</span> <span class="n">LinearModel</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">MeasurementSystem.core.driver.Hardware</span><span class="w"> </span><span class="kn">import</span> <span class="n">Channel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">MeasurementSystem.core.driver.Hardware</span><span class="w"> </span><span class="kn">import</span> <span class="n">StackedModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">MeasurementSystem.core.driver.Hardware</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearModel</span>
 <span class="n">channel</span> <span class="o">=</span> <span class="n">Channel</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">LinearModel</span><span class="p">(</span><span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">gain</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 <span class="n">channel</span><span class="o">.</span><span class="n">set_model_from_str</span><span class="p">(</span><span class="s2">&quot;StackedModel([LinearModel(offset=100, gain=1), LinearModel(offset=0, gain=10)])&quot;</span><span class="p">)</span>
 </pre></div>
@@ -2188,6 +2226,98 @@ It defines the structure and behavior of an output module, which can be used to 
 <dt class="sig sig-object py" id="MeasurementSystem.core.common.BaseClasses.OutputModule.write">
 <span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/MeasurementSystem/core/common/BaseClasses.html#OutputModule.write"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MeasurementSystem.core.common.BaseClasses.OutputModule.write" title="Link to this definition"></a></dt>
 <dd><p>To be implemented by subclasses.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-MeasurementSystem.core.common.Ceda">
+<span id="ceda"></span><h3>Ceda<a class="headerlink" href="#module-MeasurementSystem.core.common.Ceda" title="Link to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="MeasurementSystem.core.common.Ceda.Ceda">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Ceda</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MeasurementSystem/core/common/Ceda.html#Ceda"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MeasurementSystem.core.common.Ceda.Ceda" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Output Manager (Ceda Style)
+Wrapper of a pandas DataFrame to provide a LabVIEW Modular Sequencer style output (Ceda)
+and its functionality during automation like duprow</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="MeasurementSystem.core.common.Ceda.Ceda.append">
+<span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/MeasurementSystem/core/common/Ceda.html#Ceda.append"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MeasurementSystem.core.common.Ceda.Ceda.append" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MeasurementSystem.core.common.Ceda.Ceda.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/MeasurementSystem/core/common/Ceda.html#Ceda.clear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MeasurementSystem.core.common.Ceda.Ceda.clear" title="Link to this definition"></a></dt>
+<dd><p>Clear the whole DataFrame</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="MeasurementSystem.core.common.Ceda.Ceda.data">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">DataFrame</span></em><a class="headerlink" href="#MeasurementSystem.core.common.Ceda.Ceda.data" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MeasurementSystem.core.common.Ceda.Ceda.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">last_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/MeasurementSystem/core/common/Ceda.html#Ceda.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MeasurementSystem.core.common.Ceda.Ceda.delete" title="Link to this definition"></a></dt>
+<dd><p>Delete the last n rows of the DataFrame
+:param last_n: number of rows to be deleted, defaults to 1
+:type last_n: int</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MeasurementSystem.core.common.Ceda.Ceda.duprow">
+<span class="sig-name descname"><span class="pre">duprow</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/MeasurementSystem/core/common/Ceda.html#Ceda.duprow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MeasurementSystem.core.common.Ceda.Ceda.duprow" title="Link to this definition"></a></dt>
+<dd><p>Duplicate last row and replace entries with NaN</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MeasurementSystem.core.common.Ceda.Ceda.load">
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filePath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/MeasurementSystem/core/common/Ceda.html#Ceda.load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MeasurementSystem.core.common.Ceda.Ceda.load" title="Link to this definition"></a></dt>
+<dd><p>Load a CSV File to the DataFrame (overwrite!)
+:param filePath: filePath to CSV file, seperator has to be “;”
+:type filePath: str
+:param index_col: (optional) Column to be used as index, default None
+:type index_col: str</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MeasurementSystem.core.common.Ceda.Ceda.log">
+<span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">columnName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newLine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/MeasurementSystem/core/common/Ceda.html#Ceda.log"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MeasurementSystem.core.common.Ceda.Ceda.log" title="Link to this definition"></a></dt>
+<dd><p>Add a message to a specific column
+:param str  columnName: column name
+:param str  message: message text
+:param bool newLine: if True and log message will be created in a new line of the DataFrame</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MeasurementSystem.core.common.Ceda.Ceda.merge">
+<span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#MeasurementSystem.core.common.Ceda.Ceda" title="MeasurementSystem.core.common.Ceda.Ceda"><span class="pre">Ceda</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/MeasurementSystem/core/common/Ceda.html#Ceda.merge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MeasurementSystem.core.common.Ceda.Ceda.merge" title="Link to this definition"></a></dt>
+<dd><p>Merge the current Ceda object (self) with another Ceda object
+:param other: the other Ceda object to merge into to current one
+:type other: Ceda</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raise<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ValueError</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MeasurementSystem.core.common.Ceda.Ceda.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filePath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'C:\\UserData\\results.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_nan_values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nan_replacement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'=NA()'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/MeasurementSystem/core/common/Ceda.html#Ceda.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MeasurementSystem.core.common.Ceda.Ceda.save" title="Link to this definition"></a></dt>
+<dd><p>Save DataFrame to CSV File
+:param file: (optional) Path to CSV File, default “C:UserDataresults.csv”
+:type file: str
+:param overwrite: (optional) if True, overwrite existing file, otherwise add timestamp to existing file, default False
+:type overwrite: bool
+:param print_index: (optional) if True, output also index column, default True
+:type print_index: bool
+:param fill_nan_values: (optional) if True, fill NaN values with previous row value (if no previous row exists, NaN is used), default False
+:type fill_nan_values: bool
+:param nan_replacement: (optional) value to replace NaN values, default “=NA()”
+:type nan_replacement: str</p>
 </dd></dl>
 
 </dd></dl>
@@ -3585,13 +3715,13 @@ set to <cite>True</cite>. If the connection fails, an exception is raised.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Measurement-System" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dev_guide.html" class="btn btn-neutral float-left" title="Developement Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, Alfred Paar.</p>
+    <p>&#169; Copyright 2025, Alfred Paar.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

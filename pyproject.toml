@@ -81,6 +81,7 @@ dependencies = [
     "sphinx-copybutton",
     "rst2pdf",
     "svglib",  # for SVG images in PDF
+    "graphviz",  # for PNGs in pyreverse
     "myst-parser",
     # test
     "pytest",
@@ -130,6 +131,7 @@ cov = [
 ]
 
 docs = [
+    "pyreverse -o png -d docs/_static src/MeasurementSystem/",  # graphviz needs to be installed
     "sphinx-build -b html docs/ docs/build_html {args}",
     # "sphinx-build -b pdf docs/ docs/build_pdf {args}",  # not working with badges (issues with SVG files)
     "pre-commit install",

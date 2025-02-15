@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Measurement-System &mdash; Measurement System 0.1.dev35+g38b34c5.d20250215 documentation</title>
+  <title>Developement Guide &mdash; Measurement System 0.1.dev35+g38b34c5.d20250215 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -24,7 +24,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="User Guide" href="user_guide.html" />
+    <link rel="next" title="Reference" href="reference.html" />
+    <link rel="prev" title="User Guide" href="user_guide.html" />
 </head>
 
 <body class="wy-body-for-nav">
@@ -35,7 +36,7 @@
 
 
 
-          <a href="#">
+          <a href="index.html">
 
               <img src="_static/logo.png" class="logo" alt="Logo"/>
           </a>
@@ -71,9 +72,9 @@
 </ul>
 </li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="dev_guide.html">Developement Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="dev_guide.html#classes-and-packages">Classes and Packages</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Developement Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#classes-and-packages">Classes and Packages</a></li>
 </ul>
 </li>
 </ul>
@@ -419,17 +420,17 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980b9" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">Measurement System</a>
+          <a href="index.html">Measurement System</a>
       </nav>
 
       <div class="wy-nav-content">
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Measurement-System</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Developement Guide</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/dev_guide.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -437,126 +438,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
 
-  <section id="measurement-system">
-<h1>Measurement-System<a class="headerlink" href="#measurement-system" title="Link to this heading"></a></h1>
-<p><a class="reference external" href="https://www.python.org/"><img alt="Python" src="https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10-blue" /></a>
-<a class="reference external" href="https://github.com/paaalm07/RPI_Measurement_System/issues"><img alt="Issues" src="https://img.shields.io/badge/Issues-orange" /></a>
-<a class="reference external" href="https://github.com/pypa/hatch"><img alt="Hatch project" src="https://img.shields.io/badge/%F0%9F%A5%9A-Hatch-4051b5.svg" /></a>
-<a class="reference external" href="https://github.com/sphinx-doc/sphinx"><img alt="Sphinx" src="https://img.shields.io/badge/docs-blue?label=sphinx&amp;logo=sphinx&amp;logoColor=white" /></a>
-<a class="reference external" href="https://github.com/pre-commit/pre-commit"><img alt="pre-commit" src="https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit" /></a>
-<a class="reference external" href="https://github.com/astral-sh/ruff"><img alt="Ruff" src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json" /></a>
-<a class="reference external" href="https://github.com/paaalm07/RPI_Measurement_System/blob/master/LICENSE"><img alt="License" src="https://img.shields.io/badge/License-BSD%203--Clause-blue.svg" /></a></p>
-<p>This is a template Python project with Sphinx documentation.
-Measurement-System based on RaspberryPi 5 hardware.</p>
-<ul class="simple">
-<li><p>Measurements: DAQ-Hats (Digilent MCC Series) and RPi IOs</p></li>
-<li><p>Visualization: <a class="reference external" href="http://comvisu.de/">ComVisu</a></p></li>
-</ul>
-<section id="pre-requisites">
-<h2>Pre-Requisites<a class="headerlink" href="#pre-requisites" title="Link to this heading"></a></h2>
-<ul>
-<li><p>Hardware</p>
-<ul class="simple">
-<li><p>RaspberryPi 5</p></li>
-<li><p>Digilent MCC HATs</p>
-<ul>
-<li><p>currently supported HATs: MCC118, MCC134</p></li>
-</ul>
-</li>
-<li><p>HX711 weight scales input module</p></li>
-</ul>
-</li>
-<li><p>Software</p>
-<ul>
-<li><p>Installed the shared library and tools for MCC DAQ Hat</p>
-<ul>
-<li><p>Summary</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~
-git<span class="w"> </span>clone<span class="w"> </span>https://github.com/mccdaq/daqhats.git
-<span class="nb">cd</span><span class="w"> </span>~/daqhats
-sudo<span class="w"> </span>./install.sh
-</pre></div>
-</div>
-</li>
-<li><p>For more details, checkout https://mccdaq.github.io/daqhats/install.html</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>Toolchain</p>
-<ul class="simple">
-<li><p>Install <a class="reference external" href="https://hatch.pypa.io/">Hatch</a> as python manager:</p>
-<ul>
-<li><p>Python/Pip already there: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">hatch</span> <span class="pre">--break-system-packages</span></code></p></li>
-<li><p>Set global hatch config: <code class="docutils literal notranslate"><span class="pre">hatch</span> <span class="pre">config</span> <span class="pre">set</span> <span class="pre">dirs.env.virtual</span> <span class="pre">.hatch</span></code></p></li>
-</ul>
-</li>
-<li><p>Notes</p>
-<ul>
-<li><p>On Windows system, the <a class="reference external" href="https://abyz.me.uk/lg/py_lgpio.html">lgpio</a> library is not installed. Building docs and other features not available.</p></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="getting-started">
-<h2>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h2>
-<p>Use <a class="reference external" href="https://hatch.pypa.io/">Hatch</a> to…</p>
-<ul class="simple">
-<li><p>…install environment: <code class="docutils literal notranslate"> <span class="pre">hatch</span> <span class="pre">env</span> <span class="pre">create</span></code></p></li>
-<li><p>…run pre-commit: <code class="docutils literal notranslate"><span class="pre">hatch</span> <span class="pre">run</span> <span class="pre">fix</span></code></p></li>
-<li><p>…create docs: <code class="docutils literal notranslate"><span class="pre">hatch</span> <span class="pre">run</span> <span class="pre">docs</span></code></p></li>
-<li><p>…build: <code class="docutils literal notranslate"><span class="pre">hatch</span> <span class="pre">run</span> <span class="pre">dev</span></code></p></li>
-<li><p>…run: <code class="docutils literal notranslate"><span class="pre">hatch</span> <span class="pre">run</span> <span class="pre">measurement-system</span></code></p></li>
-</ul>
-<p>Check <a class="reference internal" href="#pyproject.toml"><span class="xref myst">pyproject.toml</span></a> for more scripts in section [tool.hatch.envs.default.scripts]</p>
-<p>Use any hatch command to sync dependencies.</p>
-</section>
-</section>
-<section id="user-guide">
-<h1>User Guide<a class="headerlink" href="#user-guide" title="Link to this heading"></a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="user_guide.html#preparation">Preparation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_guide.html#execute-windows">Execute (Windows)</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</section>
-<section id="developement-guide">
+  <section id="developement-guide">
 <h1>Developement Guide<a class="headerlink" href="#developement-guide" title="Link to this heading"></a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="dev_guide.html">Developement Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="dev_guide.html#classes-and-packages">Classes and Packages</a></li>
-</ul>
-</li>
-</ul>
-</div>
+<section id="classes-and-packages">
+<h2>Classes and Packages<a class="headerlink" href="#classes-and-packages" title="Link to this heading"></a></h2>
+<img alt="_images/classes.png" src="_images/classes.png" />
+<img alt="_images/packages.png" src="_images/packages.png" />
 </section>
-<section id="reference">
-<h1>Reference<a class="headerlink" href="#reference" title="Link to this heading"></a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="reference.html#main-application">Main Application</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference.html#common-utilities">Common Utilities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference.html#driver">Driver</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference.html#communication-visualization">Communication &amp; Visualization</a></li>
-</ul>
-</li>
-</ul>
-</div>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="user_guide.html" class="btn btn-neutral float-right" title="User Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="user_guide.html" class="btn btn-neutral float-left" title="User Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="reference.html" class="btn btn-neutral float-right" title="Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
