@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 
 
 [project]
-name = "MeasuermentSystem"
+name = "MeasurementSystem"
 dynamic = ["version"]
 description = "to be added"
 readme = "README.md"
