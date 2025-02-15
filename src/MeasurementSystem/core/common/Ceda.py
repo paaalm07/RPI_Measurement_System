@@ -173,7 +173,7 @@ class Ceda:
             df_copy = self._df.replace(np.nan, nan_replacement)
 
         # Check if directory exists
-        directory = os.path.dirname(filePath)
+        directory = os.path.expanduser(os.path.dirname(filePath))  # get rid of "~"
         try:
             os.makedirs(directory)
         except FileExistsError:
