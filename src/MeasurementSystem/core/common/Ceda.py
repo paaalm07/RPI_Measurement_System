@@ -33,11 +33,11 @@ class Ceda:
         pd.set_option("future.no_silent_downcasting", True)
 
     @property
-    def data(self):
+    def data(self) -> pd.DataFrame:
         return self._df
 
     @data.setter
-    def data(self, val):
+    def data(self, val) -> None:
         """Create a new DataFrame (overwrite!)
         :param DataFrame/dict val: new value of Dataframe
             if type is a dictionary, format has to be strictly {column_name: list(values), ...}
@@ -73,7 +73,7 @@ class Ceda:
         else:
             raise TypeError("Invalid arguments for append method")
 
-    def _append_columnname_value(self, column_name, value):
+    def _append_columnname_value(self, column_name, value) -> None:
         """Append a value to a specific column of the DataFrame
             If column does not exist: it will be created
             If column already exist: a new row will be added
@@ -104,7 +104,7 @@ class Ceda:
             last_row_index = self._df.index[-1]
             self._df.loc[last_row_index, column_name] = value
 
-    def _append_dictionary(self, dictionary):
+    def _append_dictionary(self, dictionary) -> None:
         """Append a Dictionary to the DataFrame
         :param dict dictionary: Dictionary to be appended
         """
@@ -114,7 +114,7 @@ class Ceda:
         for key, value in dictionary.items():
             self.append(key, value)
 
-    def log(self, columnName, message, newLine=False):
+    def log(self, columnName, message, newLine=False) -> None:
         """Add a message to a specific column
         :param str  columnName: column name
         :param str  message: message text
@@ -142,7 +142,7 @@ class Ceda:
         print_index: bool = True,
         fill_nan_values: bool = False,
         nan_replacement: str = "=NA()",
-    ):
+    ) -> None:
         """Save DataFrame to CSV File
         :param file: (optional) Path to CSV File, default "C:\\UserData\\results.csv"
         :type file: str
@@ -172,6 +172,13 @@ class Ceda:
             # Replace NaN values with nan_replacement argument
             df_copy = self._df.replace(np.nan, nan_replacement)
 
+        # Check if directory exists
+        directory = os.path.dirname(filePath)
+        try:
+            os.makedirs(directory)
+        except FileExistsError:
+            pass
+
         # Save DataFrame to CSV with ';' as the separator
         try:
             df_copy.to_csv(filePath, sep=";", index=print_index)
@@ -186,7 +193,7 @@ class Ceda:
             print("ERROR")
             print(e)
 
-    def load(self, filePath, index_col=None):
+    def load(self, filePath, index_col=None) -> None:
         """Load a CSV File to the DataFrame (overwrite!)
         :param filePath: filePath to CSV file, seperator has to be ";"
         :type filePath: str
@@ -196,11 +203,11 @@ class Ceda:
         self._df = pd.read_csv(filePath, sep=";", keep_default_na=False, index_col=index_col)
         self._df = self._df.replace("=NA()", np.nan)
 
-    def clear(self):
+    def clear(self) -> None:
         """Clear the whole DataFrame"""
         self._df = pd.DataFrame()
 
-    def duprow(self):
+    def duprow(self) -> None:
         """Duplicate last row and replace entries with NaN"""
         if not self._df.empty:
             last_row = self._df.iloc[-1]
@@ -209,13 +216,25 @@ class Ceda:
             self._df = pd.concat([self._df, new_df], ignore_index=True)
             self._df.iloc[-1] = np.nan  # replace duplicated row with np.Nan
 
-    def delete(self, last_n=1):
+    def delete(self, last_n=1) -> None:
         """Delete the last n rows of the DataFrame
         :param last_n: number of rows to be deleted, defaults to 1
         :type last_n: int
         """
         if not self._df.empty:
             self._df.drop(self._df.tail(last_n).index, inplace=True)
+
+    def merge(self, other: Ceda) -> None:
+        """Merge the current Ceda object (self) with another Ceda object
+        :param other: the other Ceda object to merge into to current one
+        :type other: Ceda
+
+        :raise: ValueError
+        """
+        if not isinstance(other, Ceda):
+            raise ValueError("Invalid value for other. Expected a Ceda object.")
+
+        self._df = pd.concat([self._df, other._df], ignore_index=True)
 
 
 if __name__ == "__main__":
