@@ -91,6 +91,8 @@ dependencies = [
     "pre-commit",
     "ruff",  # code formatter and linter
     #"mypy",  # type checking
+    # development
+    "ipykernel",
 ]
 
 
