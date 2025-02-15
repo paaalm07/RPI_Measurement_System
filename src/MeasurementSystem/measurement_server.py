@@ -4,6 +4,7 @@ import importlib
 import json
 import os
 import queue
+import shutil
 import sys
 import threading
 import time
@@ -25,6 +26,7 @@ from MeasurementSystem.core.common.BaseClasses import (
     OutputChannel,
     OutputModule,
 )
+from MeasurementSystem.core.common.Ceda import Ceda
 from MeasurementSystem.core.common.Data import Data
 from MeasurementSystem.core.common.Models import (
     KTYxModel,
@@ -35,7 +37,7 @@ from MeasurementSystem.core.common.Models import (
     PTxModel,
     StackedModel,
 )
-from MeasurementSystem.core.common.Utils import OrderedPriorityQueue, Serializable
+from MeasurementSystem.core.common.Utils import OrderedPriorityQueue, Serializable, USBUtils
 from MeasurementSystem.core.comvisu.Command import Command
 from MeasurementSystem.core.comvisu.ServerUtils import DataQueueThread, ServerConnection
 from MeasurementSystem.core.driver.DigilentMCC118 import Channel_MCC118_VoltageChannel, Hardware_DigilentMCC118
@@ -52,11 +54,12 @@ from MeasurementSystem.core.driver.RaspberryPi import (
     Module_RPI_WeighScalesHX711,
 )
 
-current_dir = os.path.dirname(os.path.realpath(__file__))
-
 LOCKFILE = "/tmp/measurement_server.lock"
 
-default_server_address = ("192.168.1.31", 8008)
+CONFIG_DIR = os.path.join(os.path.dirname(os.path.realpath(__file__)), "config")
+TMP_DATA_DIR = os.path.join(os.path.expanduser("/tmp"), f"MeasurementSystem_data_{time.strftime('%Y-%m-%d_%H-%M-%S')}")
+
+DEFAULT_SERVER = ("192.168.1.31", 8008)
 
 
 class HardwareInterface(Serializable):
@@ -500,6 +503,8 @@ class MeasurementTask:
         self.channel = channel
         self.send_command_callback = send_command_callback
 
+        self.ceda = Ceda()
+
         self._measurement_thread = None
         self._measurement_thread_stop_event = threading.Event()
 
@@ -554,30 +559,11 @@ class MeasurementTask:
         Measurement loop.
 
         This method runs indefinitely until the stop method is called.
-        The method performs a measurement task and send the result to the server.
+        The method performs a measurement task and store the result
 
         :return: None
         :rtype: None
         """
-
-        # Clear diagram, e.g. 700 Control Channel
-        self.send_command_callback(Command(self.chart_control_channel, Command.Type.STRING, "Clear"))
-
-        # # X-Axis
-        self.send_command_callback(Command(self.chart_control_channel, Command.Type.FLOAT, 0))
-        self.send_command_callback(Command(self.chart_control_channel, Command.Type.STRING, "Xmin"))
-        self.send_command_callback(Command(self.chart_control_channel, Command.Type.FLOAT, 11))
-        self.send_command_callback(Command(self.chart_control_channel, Command.Type.STRING, "Xmax"))
-
-        # # Y-Axis
-        self.send_command_callback(Command(self.chart_control_channel, Command.Type.FLOAT, 0))
-        self.send_command_callback(Command(self.chart_control_channel, Command.Type.STRING, "Ymin"))
-        self.send_command_callback(Command(self.chart_control_channel, Command.Type.FLOAT, 10))
-        self.send_command_callback(Command(self.chart_control_channel, Command.Type.STRING, "Ymax"))
-
-        y_storage = []
-        y_min = 0
-        y_max = 0
 
         idx = 0
         while not self._measurement_thread_stop_event.is_set():
@@ -591,42 +577,15 @@ class MeasurementTask:
                     print("INFO: 'empty data' should never happen --> to be debugged!")
                     continue
 
-                y_storage.append(value)
-
                 rel_time = (t_value - self.time_start) * 10**-9  # convert to seconds
 
-                self.send_command_callback(Command(self.chart_y_axis_channel, Command.Type.FLOAT, value))
-                self.send_command_callback(Command(self.chart_x_axis_channel, Command.Type.FLOAT, rel_time))
+                self.ceda.append("time", rel_time)
+                self.ceda.append(self.channel.name, value)
 
-                # TODO: dynamic update of X-Axis & Y-Axis limits dependent on values
-
-                # dynamic update of X-Axis
-                if idx > 1 and idx % 10 == 0:
-                    self.send_command_callback(
-                        Command(
-                            self.chart_control_channel,
-                            Command.Type.FLOAT,
-                            rel_time + 10,
-                        )
-                    )
-                    self.send_command_callback(Command(self.chart_control_channel, Command.Type.STRING, "Xmax"))
-
-                # dynamic update of Y-Axis
-                if len(y_storage) > 1:
-                    y_adder = (max(y_storage) - min(y_storage)) * 0.2  # add 20% to the y-axis range
-                    y_min_new = min(y_storage) - y_adder
-                    y_max_new = max(y_storage) + y_adder
-
-                    if (
-                        y_min_new != y_min or y_max_new != y_max
-                    ):  # IMPORTANT TODO: this will overwrite min/max from other channels if same chart is used!!!!
-                        y_min = y_min_new
-                        y_max = y_max_new
-
-                        self.send_command_callback(Command(self.chart_control_channel, Command.Type.FLOAT, y_min))
-                        self.send_command_callback(Command(self.chart_control_channel, Command.Type.STRING, "Ymin"))
-                        self.send_command_callback(Command(self.chart_control_channel, Command.Type.FLOAT, y_max))
-                        self.send_command_callback(Command(self.chart_control_channel, Command.Type.STRING, "Ymax"))
+                filePath = os.path.join(TMP_DATA_DIR, f"{self.channel.name}__intermediate.csv")
+                self.ceda.save(
+                    filePath=filePath, overwrite=True, print_index=True, fill_nan_values=True, nan_replacement="=NA()"
+                )  # prepare for Excel post processing
 
                 # Wait time
                 if self.channel.config.sample_rate <= 0:
@@ -1131,9 +1090,9 @@ class ControlTask:
 
             # SAVE CONFIG
             elif command.channel == 890:
-                hardware_file = os.path.join(current_dir, "config", "hardware_user.json")
-                channels_file = os.path.join(current_dir, "config", "channels_user.json")
-                modules_file = os.path.join(current_dir, "config", "modules_user.json")
+                hardware_file = os.path.join(CONFIG_DIR, "hardware_user.json")
+                channels_file = os.path.join(CONFIG_DIR, "channels_user.json")
+                modules_file = os.path.join(CONFIG_DIR, "modules_user.json")
 
                 self.measurement_system.hardware_interface.to_json(
                     hardware_file=hardware_file,
@@ -1151,9 +1110,9 @@ class ControlTask:
                     name_postfix = "_default"
                 else:
                     name_postfix = "_user"  # user defined
-                hardware_file = os.path.join(current_dir, "config", f"hardware{name_postfix}.json")
-                channels_file = os.path.join(current_dir, "config", f"channels{name_postfix}.json")
-                modules_file = os.path.join(current_dir, "config", f"modules{name_postfix}.json")
+                hardware_file = os.path.join(CONFIG_DIR, f"hardware{name_postfix}.json")
+                channels_file = os.path.join(CONFIG_DIR, f"channels{name_postfix}.json")
+                modules_file = os.path.join(CONFIG_DIR, f"modules{name_postfix}.json")
 
                 msg = f"Loading config from '{hardware_file}', '{channels_file}' and '{modules_file}'"
                 self.measurement_system.printConsole(msg)
@@ -1332,6 +1291,7 @@ class MeasurementSystem:
         self.hardware_interface.close()  # close measurement
         self.data_queue_processor.stop()  # stop data queue processor
         self.server_connection.disconnect()  # close server connection
+        self.save_data()  # save temporary data
 
     def printConsole(self, *args, sep=" ", end="") -> None:
         """
@@ -1438,6 +1398,9 @@ class MeasurementSystem:
                     self.printConsole("Measurement system stopped")
                     self.add_command_to_send_queue(Command(901, Command.Type.F, "0"), priority=0)
 
+                    self.save_data()
+                    self.printConsole("Data saved")
+
             ##################################
             # Slider Test
             elif command.channel == 510:  # == "#510F12;"
@@ -1496,6 +1459,48 @@ class MeasurementSystem:
                 self.printConsole("Unknown command:", command)
                 print("Unknown command:", command.to_string())
 
+    def save_data(self) -> None:
+        """
+        1) load all csv files from TMP_DATA_DIR using ceda.load
+        2) comibe them in one single ceda data and save as csv in TMP_DATA_DIR
+        3) copy to USB or SD card
+        4) delete TMP_DATA_DIR directory
+
+        :raises OSError: if no external USB or SD card found
+        """
+        if os.path.exists(TMP_DATA_DIR):
+            ceda_new = Ceda()
+
+            for file in os.listdir(TMP_DATA_DIR):
+                if file.endswith(".csv"):
+                    ceda = Ceda()
+                    ceda.load(os.path.join(TMP_DATA_DIR, file))
+
+                    ceda_new.merge(ceda)
+
+            fileName = f"{datetime.now().strftime('%Y%m%d_%H%M%S')}__results.csv"
+            filePath = os.path.join(TMP_DATA_DIR, fileName)
+
+            ceda_new.save(
+                filePath=filePath, overwrite=True, print_index=True, fill_nan_values=False, nan_replacement="=NA()"
+            )
+
+            # find USB stick and copy file to it
+            usb_drives = USBUtils.find_all_usb_drives()
+            if len(usb_drives) > 0:
+                print(f">>> Copy file {fileName} to USB drive:", usb_drives[-1])
+                shutil.copy(filePath, usb_drives[-1])
+            else:
+                raise OSError(
+                    f"No external USB or SD card found to save the results. Temporary data available here: {TMP_DATA_DIR}"
+                )
+
+            # delete temporary data folder, not reached if copy to USB or SD card fails
+            try:
+                shutil.rmtree(TMP_DATA_DIR)
+            except:
+                pass  # skip if folder does not exist, maybe deleted by user
+
 
 ##############################
 # MAIN
@@ -1538,7 +1543,7 @@ def main():
 
         server_address = (ip_address, port)
     else:
-        server_address = default_server_address
+        server_address = DEFAULT_SERVER
 
     # Only one instance of the measurement system is allowed
     if os.path.exists(LOCKFILE):
@@ -1575,7 +1580,7 @@ def main():
 
             # Receive loop
             while True:
-                commands = measurementSystem.server_connection.receive()  # blocking
+                commands = measurementSystem.server_connection.receive()  # blocking, raises TimeoutError
                 measurementSystem.process_commands(commands)
                 time.sleep(0.5)  # Receive loop timer
 
@@ -1590,8 +1595,10 @@ def main():
         finally:
             try:
                 if measurementSystem is not None:
+                    # Close measurement system
                     measurementSystem.close()
                     measurementSystem = None
+
             except Exception as e:
                 raise e
 

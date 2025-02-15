@@ -91,6 +91,8 @@ dependencies = [
     "pre-commit",
     "ruff",  # code formatter and linter
     #"mypy",  # type checking
+    # development
+    "ipykernel",
 ]
 
 
@@ -205,6 +207,7 @@ ignore = [
     "DTZ005",
     "SIM108",
     "SIM102",
+    "SIM105",
     "UP007",
     "UP008",
     "UP028",
