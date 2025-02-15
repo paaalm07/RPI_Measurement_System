@@ -4,6 +4,7 @@ import importlib
 import json
 import os
 import queue
+import shutil
 import sys
 import threading
 import time
@@ -25,6 +26,7 @@ from MeasurementSystem.core.common.BaseClasses import (
     OutputChannel,
     OutputModule,
 )
+from MeasurementSystem.core.common.Ceda import Ceda
 from MeasurementSystem.core.common.Data import Data
 from MeasurementSystem.core.common.Models import (
     KTYxModel,
@@ -35,7 +37,7 @@ from MeasurementSystem.core.common.Models import (
     PTxModel,
     StackedModel,
 )
-from MeasurementSystem.core.common.Utils import OrderedPriorityQueue, Serializable
+from MeasurementSystem.core.common.Utils import OrderedPriorityQueue, Serializable, USBUtils
 from MeasurementSystem.core.comvisu.Command import Command
 from MeasurementSystem.core.comvisu.ServerUtils import DataQueueThread, ServerConnection
 from MeasurementSystem.core.driver.DigilentMCC118 import Channel_MCC118_VoltageChannel, Hardware_DigilentMCC118
@@ -57,6 +59,11 @@ current_dir = os.path.dirname(os.path.realpath(__file__))
 LOCKFILE = "/tmp/measurement_server.lock"
 
 default_server_address = ("192.168.1.31", 8008)
+
+DATA_DIR = os.path.join(
+    os.path.expanduser("~"),
+    f"MeasurementSystem_data_{time.strftime('%Y-%m-%d_%H-%M-%S')}",
+)
 
 
 class HardwareInterface(Serializable):
@@ -500,6 +507,8 @@ class MeasurementTask:
         self.channel = channel
         self.send_command_callback = send_command_callback
 
+        self.ceda = Ceda()
+
         self._measurement_thread = None
         self._measurement_thread_stop_event = threading.Event()
 
@@ -554,30 +563,11 @@ class MeasurementTask:
         Measurement loop.
 
         This method runs indefinitely until the stop method is called.
-        The method performs a measurement task and send the result to the server.
+        The method performs a measurement task and store the result
 
         :return: None
         :rtype: None
         """
-
-        # Clear diagram, e.g. 700 Control Channel
-        self.send_command_callback(Command(self.chart_control_channel, Command.Type.STRING, "Clear"))
-
-        # # X-Axis
-        self.send_command_callback(Command(self.chart_control_channel, Command.Type.FLOAT, 0))
-        self.send_command_callback(Command(self.chart_control_channel, Command.Type.STRING, "Xmin"))
-        self.send_command_callback(Command(self.chart_control_channel, Command.Type.FLOAT, 11))
-        self.send_command_callback(Command(self.chart_control_channel, Command.Type.STRING, "Xmax"))
-
-        # # Y-Axis
-        self.send_command_callback(Command(self.chart_control_channel, Command.Type.FLOAT, 0))
-        self.send_command_callback(Command(self.chart_control_channel, Command.Type.STRING, "Ymin"))
-        self.send_command_callback(Command(self.chart_control_channel, Command.Type.FLOAT, 10))
-        self.send_command_callback(Command(self.chart_control_channel, Command.Type.STRING, "Ymax"))
-
-        y_storage = []
-        y_min = 0
-        y_max = 0
 
         idx = 0
         while not self._measurement_thread_stop_event.is_set():
@@ -591,42 +581,15 @@ class MeasurementTask:
                     print("INFO: 'empty data' should never happen --> to be debugged!")
                     continue
 
-                y_storage.append(value)
-
                 rel_time = (t_value - self.time_start) * 10**-9  # convert to seconds
 
-                self.send_command_callback(Command(self.chart_y_axis_channel, Command.Type.FLOAT, value))
-                self.send_command_callback(Command(self.chart_x_axis_channel, Command.Type.FLOAT, rel_time))
+                self.ceda.append("time", rel_time)
+                self.ceda.append(self.channel.name, value)
 
-                # TODO: dynamic update of X-Axis & Y-Axis limits dependent on values
-
-                # dynamic update of X-Axis
-                if idx > 1 and idx % 10 == 0:
-                    self.send_command_callback(
-                        Command(
-                            self.chart_control_channel,
-                            Command.Type.FLOAT,
-                            rel_time + 10,
-                        )
-                    )
-                    self.send_command_callback(Command(self.chart_control_channel, Command.Type.STRING, "Xmax"))
-
-                # dynamic update of Y-Axis
-                if len(y_storage) > 1:
-                    y_adder = (max(y_storage) - min(y_storage)) * 0.2  # add 20% to the y-axis range
-                    y_min_new = min(y_storage) - y_adder
-                    y_max_new = max(y_storage) + y_adder
-
-                    if (
-                        y_min_new != y_min or y_max_new != y_max
-                    ):  # IMPORTANT TODO: this will overwrite min/max from other channels if same chart is used!!!!
-                        y_min = y_min_new
-                        y_max = y_max_new
-
-                        self.send_command_callback(Command(self.chart_control_channel, Command.Type.FLOAT, y_min))
-                        self.send_command_callback(Command(self.chart_control_channel, Command.Type.STRING, "Ymin"))
-                        self.send_command_callback(Command(self.chart_control_channel, Command.Type.FLOAT, y_max))
-                        self.send_command_callback(Command(self.chart_control_channel, Command.Type.STRING, "Ymax"))
+                filePath = os.path.join(DATA_DIR, f"{self.channel.name}__intermediate.csv")
+                self.ceda.save(
+                    filePath=filePath, overwrite=True, print_index=True, fill_nan_values=True, nan_replacement="=NA()"
+                )  # prepare for Excel post processing
 
                 # Wait time
                 if self.channel.config.sample_rate <= 0:
@@ -1498,6 +1461,44 @@ class MeasurementSystem:
 
 
 ##############################
+# Methods
+def save_on_exit(save_path: str) -> None:
+    """
+    1) load all csv files from save_path using ceda.load
+    2) comibe them in one single ceda data and save as csv in save_path
+
+    :param save_path: path to save results
+    :type save_path: str
+    """
+    if os.path.exists(save_path):
+        ceda_new = Ceda()
+
+        for file in os.listdir(save_path):
+            if file.endswith(".csv"):
+                ceda = Ceda()
+                ceda.load(os.path.join(save_path, file))
+
+                ceda_new.merge(ceda)
+
+        fileName = f"combined_results_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
+
+        filePath = os.path.join(save_path, fileName)
+
+        ceda_new.save(
+            filePath=filePath, overwrite=True, print_index=True, fill_nan_values=False, nan_replacement="=NA()"
+        )
+
+        # find USB stick and copy file to it
+        usb_drives = USBUtils.find_all_usb_drives()
+        if len(usb_drives) > 0:
+            print(f"Copy file {fileName} to USB drive:", usb_drives[-1])
+            shutil.copy(filePath, usb_drives[-1])  # copy file to last detected USB drive
+
+        # delete data folder
+        shutil.rmtree(save_path)  # TODO: correct???
+
+
+##############################
 # MAIN
 def main():
     """
@@ -1575,7 +1576,7 @@ def main():
 
             # Receive loop
             while True:
-                commands = measurementSystem.server_connection.receive()  # blocking
+                commands = measurementSystem.server_connection.receive()  # blocking, raises TimeoutError
                 measurementSystem.process_commands(commands)
                 time.sleep(0.5)  # Receive loop timer
 
@@ -1594,6 +1595,9 @@ def main():
                     measurementSystem = None
             except Exception as e:
                 raise e
+
+        # Save data on exit
+        save_on_exit(DATA_DIR)  # TODO: is this the right call position???
 
         # Overall loop timer
         time.sleep(0.5)
