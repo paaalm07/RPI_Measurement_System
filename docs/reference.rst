@@ -32,6 +32,10 @@ BaseClasses
 ~~~~~~~~~~~
 .. automodule:: MeasurementSystem.core.common.BaseClasses
 
+Ceda
+~~~~
+.. automodule:: MeasurementSystem.core.common.Ceda
+
 
 Driver
 ######

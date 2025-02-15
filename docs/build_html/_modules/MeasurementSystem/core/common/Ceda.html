@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MeasurementSystem.core.comvisu.ServerUtils &mdash; Measurement System 0.1.dev35+g38b34c5.d20250215 documentation</title>
+  <title>MeasurementSystem.core.common.Ceda &mdash; Measurement System 0.1.dev35+g38b34c5.d20250215 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
@@ -49,6 +49,12 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide.html">User Guide</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../dev_guide.html">Developement Guide</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../reference.html">Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../reference.html#main-application">Main Application</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#module-MeasurementSystem.measurement_server">Measurement Server</a><ul>
@@ -231,6 +237,21 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference.html#module-MeasurementSystem.core.common.Ceda">Ceda</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.common.Ceda.Ceda"><code class="docutils literal notranslate"><span class="pre">Ceda</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.common.Ceda.Ceda.append"><code class="docutils literal notranslate"><span class="pre">append()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.common.Ceda.Ceda.clear"><code class="docutils literal notranslate"><span class="pre">clear()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.common.Ceda.Ceda.data"><code class="docutils literal notranslate"><span class="pre">data</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.common.Ceda.Ceda.delete"><code class="docutils literal notranslate"><span class="pre">delete()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.common.Ceda.Ceda.duprow"><code class="docutils literal notranslate"><span class="pre">duprow()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.common.Ceda.Ceda.load"><code class="docutils literal notranslate"><span class="pre">load()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.common.Ceda.Ceda.log"><code class="docutils literal notranslate"><span class="pre">log()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.common.Ceda.Ceda.merge"><code class="docutils literal notranslate"><span class="pre">merge()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../reference.html#MeasurementSystem.core.common.Ceda.Ceda.save"><code class="docutils literal notranslate"><span class="pre">save()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../reference.html#driver">Driver</a><ul>
@@ -384,7 +405,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
-      <li class="breadcrumb-item active">MeasurementSystem.core.comvisu.ServerUtils</li>
+      <li class="breadcrumb-item active">MeasurementSystem.core.common.Ceda</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -393,266 +414,281 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
 
-  <h1>Source code for MeasurementSystem.core.comvisu.ServerUtils</h1><div class="highlight"><pre>
+  <h1>Source code for MeasurementSystem.core.common.Ceda</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">socket</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Protocol</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">overload</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">MeasurementSystem.core.common.Utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">OrderedPriorityQueue</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">MeasurementSystem.core.comvisu.Command</span><span class="w"> </span><span class="kn">import</span> <span class="n">Command</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;Ceda&quot;</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="ServerConnection">
-<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.comvisu.ServerUtils.ServerConnection">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">ServerConnection</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    A class representing a connection to a server.</span>
-
-<span class="sd">    This class provides methods for establishing and managing a connection to a server.</span>
-<span class="sd">    It allows for sending commands to the server and receiving data in response.</span>
-
-<span class="sd">    :param name: The name of the connection.</span>
-<span class="sd">    :type name: str</span>
-<span class="sd">    :param server_address: The address of the server to connect to, given as a tuple of IP address and port.</span>
-<span class="sd">    :type server_address: tuple</span>
-<span class="sd">    :param timeout: The timeout for establishing the connection. Defaults to 5 seconds.</span>
-<span class="sd">    :type timeout: int</span>
-
-<span class="sd">    :return: Instance of ServerConnection</span>
-<span class="sd">    :rtype: :class:`ServerConnection`</span>
+<div class="viewcode-block" id="Ceda">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.common.Ceda.Ceda">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Ceda</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Output Manager (Ceda Style)</span>
+<span class="sd">    Wrapper of a pandas DataFrame to provide a LabVIEW Modular Sequencer style output (Ceda)</span>
+<span class="sd">    and its functionality during automation like duprow</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">server_address</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">server_address</span> <span class="o">=</span> <span class="n">server_address</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_client_socket</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_client_socket</span><span class="o">.</span><span class="n">settimeout</span><span class="p">(</span><span class="n">timeout</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_is_connected</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_dict</span><span class="o">=</span><span class="p">{}):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param dict data_dict: new value of Dataframe</span>
+<span class="sd">            if type is a dictionary, format has to be strictly {column_name: list(values), ...}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_dict</span><span class="p">)</span>
+
+        <span class="c1"># print all columns using &#39;print&#39; function</span>
+        <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s2">&quot;display.max_columns&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="c1"># to avoid future warnings in ffill() function</span>
+        <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s2">&quot;future.no_silent_downcasting&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">is_connected</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        :return: True if the connection is open, False otherwise.</span>
-<span class="sd">        :rtype: bool</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_df</span>
+
+    <span class="nd">@data</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a new DataFrame (overwrite!)</span>
+<span class="sd">        :param DataFrame/dict val: new value of Dataframe</span>
+<span class="sd">            if type is a dictionary, format has to be strictly {column_name: list(values), ...}</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_connected</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_df</span> <span class="o">=</span> <span class="n">val</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid value for data&quot;</span><span class="p">)</span>
 
-<div class="viewcode-block" id="ServerConnection.connect">
-<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.comvisu.ServerUtils.ServerConnection.connect">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Connect to the server.</span>
-
-<span class="sd">        This method tries to connect to the server.</span>
-<span class="sd">        If the connection is successful, the `is_connected` flag is</span>
-<span class="sd">        set to `True`. If the connection fails, an exception is raised.</span>
-
-<span class="sd">        :return: None</span>
-<span class="sd">        :rtype: None</span>
-
-<span class="sd">        :raises Exception: Any Exception raised.</span>
+    <span class="nd">@overload</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Append a value to a specific column of the DataFrame</span>
+<span class="sd">        :param column_name: Column name</span>
+<span class="sd">        :param type: str</span>
+<span class="sd">        :param value: value</span>
+<span class="sd">        :param type: any</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+
+    <span class="nd">@overload</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Append a dictionary to the DataFrame</span>
+<span class="sd">        :param dictionary: Dictionary to be added</span>
+<span class="sd">        :param type: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Ceda.append">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.common.Ceda.Ceda.append">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span> <span class="nb">any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_append_columnname_value</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_append_dictionary</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Invalid arguments for append method&quot;</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_append_columnname_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column_name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Append a value to a specific column of the DataFrame</span>
+<span class="sd">            If column does not exist: it will be created</span>
+<span class="sd">            If column already exist: a new row will be added</span>
+<span class="sd">            New rows has values NaN</span>
+<span class="sd">        :param str column_name: Column name</span>
+<span class="sd">        :param any value: Value</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_df</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+            <span class="c1"># DataFrame is empty, insert new column and value as the first row</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_df</span><span class="p">[</span><span class="n">column_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">value</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">column_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="c1"># Column already exists</span>
+            <span class="n">last_row_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">last_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">last_row_index</span><span class="p">,</span> <span class="n">column_name</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">isnull</span><span class="p">(</span><span class="n">last_value</span><span class="p">):</span>
+                <span class="c1"># Last value is NaN, overwrite it</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">last_row_index</span><span class="p">,</span> <span class="n">column_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Create a new row</span>
+                <span class="n">new_row</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_df</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_df</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+                <span class="n">new_row</span><span class="p">[</span><span class="n">column_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+                <span class="n">new_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">new_row</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">_df</span><span class="p">,</span> <span class="n">new_df</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Column does not exist, insert at the end and add value to the last existing row</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_df</span><span class="p">[</span><span class="n">column_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_df</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+            <span class="n">last_row_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">last_row_index</span><span class="p">,</span> <span class="n">column_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_append_dictionary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Append a Dictionary to the DataFrame</span>
+<span class="sd">        :param dict dictionary: Dictionary to be appended</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dictionary</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid value for dictionary. Expected a dictionary.&quot;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Ceda.log">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.common.Ceda.Ceda.log">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">columnName</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">newLine</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a message to a specific column</span>
+<span class="sd">        :param str  columnName: column name</span>
+<span class="sd">        :param str  message: message text</span>
+<span class="sd">        :param bool newLine: if True and log message will be created in a new line of the DataFrame</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">columnName</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">newLine</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">columnName</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># add message to existing text of Log column</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="n">columnName</span><span class="p">]</span> <span class="o">+=</span> <span class="s2">&quot;; &quot;</span> <span class="o">+</span> <span class="n">message</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Log columns does not exists</span>
+            <span class="k">if</span> <span class="n">newLine</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">duprow</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">columnName</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">columnName</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Ceda.save">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.common.Ceda.Ceda.save">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">filePath</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;C:\UserData\results.csv&quot;</span><span class="p">,</span>
+        <span class="n">overwrite</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">print_index</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">fill_nan_values</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">nan_replacement</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;=NA()&quot;</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Save DataFrame to CSV File</span>
+<span class="sd">        :param file: (optional) Path to CSV File, default &quot;C:\\UserData\\results.csv&quot;</span>
+<span class="sd">        :type file: str</span>
+<span class="sd">        :param overwrite: (optional) if True, overwrite existing file, otherwise add timestamp to existing file, default False</span>
+<span class="sd">        :type overwrite: bool</span>
+<span class="sd">        :param print_index: (optional) if True, output also index column, default True</span>
+<span class="sd">        :type print_index: bool</span>
+<span class="sd">        :param fill_nan_values: (optional) if True, fill NaN values with previous row value (if no previous row exists, NaN is used), default False</span>
+<span class="sd">        :type fill_nan_values: bool</span>
+<span class="sd">        :param nan_replacement: (optional) value to replace NaN values, default &quot;=NA()&quot;</span>
+<span class="sd">        :type nan_replacement: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">overwrite</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filePath</span><span class="p">):</span>
+            <span class="c1"># File already exists and overwrite is False</span>
+            <span class="n">timestamp</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">_%H%M%S&quot;</span><span class="p">)</span>
+            <span class="n">base_filename</span><span class="p">,</span> <span class="n">ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">filePath</span><span class="p">)</span>
+            <span class="n">new_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_filename</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">timestamp</span><span class="si">}{</span><span class="n">ext</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File &#39;</span><span class="si">{</span><span class="n">filePath</span><span class="si">}</span><span class="s2">&#39; already exists. Saving as &#39;</span><span class="si">{</span><span class="n">new_file</span><span class="si">}</span><span class="s2">&#39; instead.&quot;</span><span class="p">)</span>
+            <span class="n">filePath</span> <span class="o">=</span> <span class="n">new_file</span>
+
+        <span class="k">if</span> <span class="n">fill_nan_values</span><span class="p">:</span>
+            <span class="c1"># fill NaN with previous row value</span>
+            <span class="c1"># if no previous row exists, value is NaN</span>
+            <span class="n">df_copy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_df</span><span class="o">.</span><span class="n">ffill</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">nan_replacement</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Replace NaN values with nan_replacement argument</span>
+            <span class="n">df_copy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">nan_replacement</span><span class="p">)</span>
+
+        <span class="c1"># Check if directory exists</span>
+        <span class="n">directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">filePath</span><span class="p">))</span>  <span class="c1"># get rid of &quot;~&quot;</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;try to connect to </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">server_address</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_client_socket</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">server_address</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_is_connected</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">e</span></div>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">FileExistsError</span><span class="p">:</span>
+            <span class="k">pass</span>
 
-
-<div class="viewcode-block" id="ServerConnection.disconnect">
-<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.comvisu.ServerUtils.ServerConnection.disconnect">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Disconnect from the server.</span>
-
-<span class="sd">        This method closes the socket and sets the `is_connected` flag to `False`.</span>
-
-<span class="sd">        :return: None</span>
-<span class="sd">        :rtype: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_connected</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_client_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_is_connected</span> <span class="o">=</span> <span class="kc">False</span></div>
-
-
-<div class="viewcode-block" id="ServerConnection.receive">
-<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.comvisu.ServerUtils.ServerConnection.receive">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">receive</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bufsize</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Command</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Receive data from the server and return a list of Command objects.</span>
-
-<span class="sd">        :param bufsize: The buffer size for receiving data. Defaults to 1024.</span>
-<span class="sd">        :type bufsize: int</span>
-
-<span class="sd">        :return: A list of Command objects containing the received data.</span>
-<span class="sd">        :rtype: List[Command]</span>
-
-<span class="sd">        :raises ConnectionError: If the connection to the server is lost.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
+        <span class="c1"># Save DataFrame to CSV with &#39;;&#39; as the separator</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;receiving....&quot;</span><span class="p">)</span>
-            <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="n">bufsize</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span><span class="s2">&quot;Connection to the server lost.&quot;</span><span class="p">)</span>
-
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Received:&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-
-            <span class="n">split_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
-            <span class="n">commands</span> <span class="o">=</span> <span class="p">[</span><span class="n">Command</span><span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="s2">&quot;;&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">split_data</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
-
-            <span class="k">return</span> <span class="n">commands</span>
+            <span class="n">df_copy</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">filePath</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">print_index</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">PermissionError</span><span class="p">:</span>
+            <span class="n">base_filename</span><span class="p">,</span> <span class="n">ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">filePath</span><span class="p">)</span>
+            <span class="n">new_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_filename</span><span class="si">}</span><span class="s2">_copy</span><span class="si">{</span><span class="n">ext</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;File &#39;</span><span class="si">{</span><span class="n">filePath</span><span class="si">}</span><span class="s2">&#39;seems to be blocked or there are no sufficient permissions - wirte </span><span class="si">{</span><span class="n">new_file</span><span class="si">}</span><span class="s2"> instead&quot;</span>
+            <span class="p">)</span>
+            <span class="n">df_copy</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">new_file</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">print_index</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">e</span></div>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ERROR&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ServerConnection.send">
-<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.comvisu.ServerUtils.ServerConnection.send">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">:</span> <span class="n">Command</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Send a command to the server if connected.</span>
-
-<span class="sd">        :param command: The Command object to send.</span>
-<span class="sd">        :type command: Command</span>
-
-<span class="sd">        :return: None</span>
-<span class="sd">        :rtype: None</span>
-
-<span class="sd">        :raises ConnectionError: If the connection to the server is lost.</span>
+<div class="viewcode-block" id="Ceda.load">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.common.Ceda.Ceda.load">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filePath</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Load a CSV File to the DataFrame (overwrite!)</span>
+<span class="sd">        :param filePath: filePath to CSV file, seperator has to be &quot;;&quot;</span>
+<span class="sd">        :type filePath: str</span>
+<span class="sd">        :param index_col: (optional) Column to be used as index, default None</span>
+<span class="sd">        :type index_col: str</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filePath</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="n">keep_default_na</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="n">index_col</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;=NA()&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span></div>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_connected</span><span class="p">:</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_client_socket</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">command</span><span class="o">.</span><span class="n">to_string</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
-            <span class="k">except</span> <span class="ne">BrokenPipeError</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span><span class="s2">&quot;Connection to the server lost.&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ceda.clear">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.common.Ceda.Ceda.clear">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clear the whole DataFrame&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Ceda.duprow">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.common.Ceda.Ceda.duprow">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">duprow</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Duplicate last row and replace entries with NaN&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_df</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+            <span class="n">last_row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="c1"># self._df = self._df.append(last_row, ignore_index=True)  # Note: append function was removed in pandas !</span>
+            <span class="n">new_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">last_row</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">_df</span><span class="p">,</span> <span class="n">new_df</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>  <span class="c1"># replace duplicated row with np.Nan</span></div>
+
+
+<div class="viewcode-block" id="Ceda.delete">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.common.Ceda.Ceda.delete">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">last_n</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete the last n rows of the DataFrame</span>
+<span class="sd">        :param last_n: number of rows to be deleted, defaults to 1</span>
+<span class="sd">        :type last_n: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_df</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="n">last_n</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Ceda.merge">
+<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.common.Ceda.Ceda.merge">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Ceda</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Merge the current Ceda object (self) with another Ceda object</span>
+<span class="sd">        :param other: the other Ceda object to merge into to current one</span>
+<span class="sd">        :type other: Ceda</span>
+
+<span class="sd">        :raise: ValueError</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Ceda</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid value for other. Expected a Ceda object.&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">_df</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">_df</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
 </div>
 
 
 
-<div class="viewcode-block" id="DataQueueThread">
-<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.comvisu.ServerUtils.DataQueueThread">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">DataQueueThread</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    A class representing a thread that processes a queue of data.</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># Example of usage</span>
+    <span class="n">ceda</span> <span class="o">=</span> <span class="n">Ceda</span><span class="p">()</span>
+    <span class="n">ceda</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">ceda</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">})</span>
+    <span class="n">ceda</span><span class="o">.</span><span class="n">duprow</span><span class="p">()</span>
 
-<span class="sd">    :param data_queue: The queue of data to process.</span>
-<span class="sd">    :type data_queue: OrderedPriorityQueue</span>
-<span class="sd">    :param send_command_callback: A callback function to send commands to the server.</span>
-<span class="sd">    :type send_command_callback: SendCommandCallbackType_3</span>
-
-<span class="sd">    :return: Instance of DataQueueThread</span>
-<span class="sd">    :rtype: :class:`DataQueueThread`</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-<div class="viewcode-block" id="DataQueueThread.SendCommandCallbackType_3">
-<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.comvisu.ServerUtils.DataQueueThread.SendCommandCallbackType_3">[docs]</a>
-    <span class="k">class</span><span class="w"> </span><span class="nc">SendCommandCallbackType_3</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        A protocol defining a callback function for sending commands.</span>
-
-<span class="sd">        This protocol specifies the signature of a callback function that is called when sending a command.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">:</span> <span class="n">Command</span><span class="p">,</span> <span class="n">priority</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span></div>
-
-
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">data_queue</span><span class="p">:</span> <span class="n">OrderedPriorityQueue</span><span class="p">,</span>
-        <span class="n">send_command_callback</span><span class="p">:</span> <span class="n">SendCommandCallbackType_3</span><span class="p">,</span>
-    <span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">data_queue</span> <span class="o">=</span> <span class="n">data_queue</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">send_command_callback</span> <span class="o">=</span> <span class="n">send_command_callback</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">_stop_event</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Event</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_processing_thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_dataqueue_processing_loop</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_processing_thread</span><span class="o">.</span><span class="n">daemon</span> <span class="o">=</span> <span class="kc">True</span>
-
-<div class="viewcode-block" id="DataQueueThread.start">
-<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.comvisu.ServerUtils.DataQueueThread.start">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Starts the thread that runs the data queue processing loop.</span>
-
-<span class="sd">        :return: None</span>
-<span class="sd">        :rtype: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_processing_thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span></div>
-
-
-<div class="viewcode-block" id="DataQueueThread.stop">
-<a class="viewcode-back" href="../../../../reference.html#MeasurementSystem.core.comvisu.ServerUtils.DataQueueThread.stop">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Stops the thread that runs the data queue processing loop. It also waits for the thread to finish.</span>
-
-<span class="sd">        :return: None</span>
-<span class="sd">        :rtype: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_stop_event</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_processing_thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_stop_event</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span></div>
-
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">_dataqueue_processing_loop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Data queue processing loop.</span>
-
-<span class="sd">        This method runs in a separate thread and processes the data queue. It gets</span>
-<span class="sd">        commands from the queue, ueses the send_command_callback to send them to the server,</span>
-<span class="sd">        and updates the queue status every 20 iterations. If the queue is empty, it sends a message to the server</span>
-<span class="sd">        indicating that the queue is empty and waits for 0.5 seconds before checking the queue again.</span>
-
-<span class="sd">        Data queue processing loop is stopped when the stop_event is set.</span>
-
-<span class="sd">        :return: None</span>
-<span class="sd">        :rtype: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">data_queue_empty_not_sent</span> <span class="o">=</span> <span class="kc">True</span>
-
-        <span class="n">i_loop</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stop_event</span><span class="o">.</span><span class="n">is_set</span><span class="p">():</span>
-            <span class="n">i_loop</span> <span class="o">+=</span> <span class="mi">1</span>
-
-            <span class="k">try</span><span class="p">:</span>
-                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_queue</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
-                    <span class="n">data_queue_empty_not_sent</span> <span class="o">=</span> <span class="kc">True</span>
-
-                    <span class="n">command</span><span class="p">,</span> <span class="n">priority</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-                    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">Command</span><span class="p">)</span>
-
-                    <span class="c1"># Send command to the server</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">send_command_callback</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
-
-                    <span class="k">if</span> <span class="n">i_loop</span> <span class="o">%</span> <span class="mi">20</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                        <span class="c1"># Queue status update</span>
-                        <span class="c1"># self.send_command_callback(f&quot;#990SData in queue: {self.data_queue.qsize()};&quot;)</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">send_command_callback</span><span class="p">(</span>
-                            <span class="n">Command</span><span class="p">(</span>
-                                <span class="mi">990</span><span class="p">,</span>
-                                <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span>
-                                <span class="sa">f</span><span class="s2">&quot;Data in queue: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">data_queue</span><span class="o">.</span><span class="n">qsize</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-                            <span class="p">)</span>
-                        <span class="p">)</span>
-
-                    <span class="c1"># delay for sending data (otherwise ComVisu overflow!)</span>
-                    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">data_queue_empty_not_sent</span><span class="p">:</span>
-                        <span class="c1"># self.send_command_callback(f&quot;#990SData Queue: empty;&quot;)</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">send_command_callback</span><span class="p">(</span><span class="n">Command</span><span class="p">(</span><span class="mi">990</span><span class="p">,</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="s2">&quot;Data Queue: empty&quot;</span><span class="p">))</span>
-                        <span class="n">data_queue_empty_not_sent</span> <span class="o">=</span> <span class="kc">False</span>
-
-                    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c1"># Note: not too long for keep alive update</span>
-            <span class="k">except</span><span class="p">:</span>
-                <span class="k">break</span>  <span class="c1"># stop sending the data queue send loop</span></div>
-
+    <span class="nb">print</span><span class="p">(</span><span class="n">ceda</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 
            </div>

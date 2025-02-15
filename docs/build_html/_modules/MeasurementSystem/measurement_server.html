@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MeasurementSystem.measurement_server &mdash; Measurement System 0.1.dev10+g5541d5c documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+  <title>MeasurementSystem.measurement_server &mdash; Measurement System 0.1.dev35+g38b34c5.d20250215 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
 
@@ -15,7 +15,7 @@
 
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../_static/documentation_options.js?v=ee3ae00d"></script>
+        <script src="../../_static/documentation_options.js?v=5a714d8d"></script>
         <script src="../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -38,7 +38,7 @@
               <img src="../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                0.1.dev10+g5541d5c
+                0.1.dev35+g38b34c5.d20250215
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -79,6 +79,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.init_comvisu"><code class="docutils literal notranslate"><span class="pre">init_comvisu()</span></code></a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.printConsole"><code class="docutils literal notranslate"><span class="pre">printConsole()</span></code></a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.process_commands"><code class="docutils literal notranslate"><span class="pre">process_commands()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.save_data"><code class="docutils literal notranslate"><span class="pre">save_data()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="../../reference.html#MeasurementSystem.measurement_server.MeasurementTask"><code class="docutils literal notranslate"><span class="pre">MeasurementTask</span></code></a><ul>
@@ -110,9 +111,13 @@
 <li class="toctree-l5"><a class="reference internal" href="../../reference.html#MeasurementSystem.core.common.Utils.Serializable.to_dict"><code class="docutils literal notranslate"><span class="pre">to_dict()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference.html#MeasurementSystem.core.common.Utils.USBUtils"><code class="docutils literal notranslate"><span class="pre">USBUtils</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../reference.html#MeasurementSystem.core.common.Utils.USBUtils.find_all_usb_drives"><code class="docutils literal notranslate"><span class="pre">find_all_usb_drives()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../reference.html#config">Config</a><ul>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference.html#module-MeasurementSystem.core.common.Config">Config</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../reference.html#MeasurementSystem.core.common.Config.Config"><code class="docutils literal notranslate"><span class="pre">Config</span></code></a></li>
 </ul>
 </li>
@@ -389,21 +394,22 @@
            <div itemprop="articleBody">
 
   <h1>Source code for MeasurementSystem.measurement_server</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
-<span class="kn">import</span> <span class="nn">importlib</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">queue</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">threading</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">traceback</span>
-<span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">ThreadPoolExecutor</span><span class="p">,</span> <span class="n">as_completed</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Protocol</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">importlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">queue</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">shutil</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">traceback</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">concurrent.futures</span><span class="w"> </span><span class="kn">import</span> <span class="n">ThreadPoolExecutor</span><span class="p">,</span> <span class="n">as_completed</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Protocol</span><span class="p">,</span> <span class="n">Union</span>
 
-<span class="kn">from</span> <span class="nn">MeasurementSystem.core.common.BaseClasses</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">MeasurementSystem.core.common.BaseClasses</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">Channel</span><span class="p">,</span>
     <span class="n">ChannelManager</span><span class="p">,</span>
     <span class="n">ChannelProperties</span><span class="p">,</span>
@@ -416,8 +422,9 @@
     <span class="n">OutputChannel</span><span class="p">,</span>
     <span class="n">OutputModule</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">MeasurementSystem.core.common.Data</span> <span class="kn">import</span> <span class="n">Data</span>
-<span class="kn">from</span> <span class="nn">MeasurementSystem.core.common.Models</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">MeasurementSystem.core.common.Ceda</span><span class="w"> </span><span class="kn">import</span> <span class="n">Ceda</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">MeasurementSystem.core.common.Data</span><span class="w"> </span><span class="kn">import</span> <span class="n">Data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">MeasurementSystem.core.common.Models</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">KTYxModel</span><span class="p">,</span>
     <span class="n">LinearModel</span><span class="p">,</span>
     <span class="n">Model</span><span class="p">,</span>
@@ -426,12 +433,12 @@
     <span class="n">PTxModel</span><span class="p">,</span>
     <span class="n">StackedModel</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">MeasurementSystem.core.common.Utils</span> <span class="kn">import</span> <span class="n">OrderedPriorityQueue</span><span class="p">,</span> <span class="n">Serializable</span>
-<span class="kn">from</span> <span class="nn">MeasurementSystem.core.comvisu.Command</span> <span class="kn">import</span> <span class="n">Command</span>
-<span class="kn">from</span> <span class="nn">MeasurementSystem.core.comvisu.ServerUtils</span> <span class="kn">import</span> <span class="n">DataQueueThread</span><span class="p">,</span> <span class="n">ServerConnection</span>
-<span class="kn">from</span> <span class="nn">MeasurementSystem.core.driver.DigilentMCC118</span> <span class="kn">import</span> <span class="n">Channel_MCC118_VoltageChannel</span><span class="p">,</span> <span class="n">Hardware_DigilentMCC118</span>
-<span class="kn">from</span> <span class="nn">MeasurementSystem.core.driver.DigilentMCC134</span> <span class="kn">import</span> <span class="n">Channel_MCC134_ThermocoupleChannel</span><span class="p">,</span> <span class="n">Hardware_DigilentMCC134</span>
-<span class="kn">from</span> <span class="nn">MeasurementSystem.core.driver.RaspberryPi</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">MeasurementSystem.core.common.Utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">OrderedPriorityQueue</span><span class="p">,</span> <span class="n">Serializable</span><span class="p">,</span> <span class="n">USBUtils</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">MeasurementSystem.core.comvisu.Command</span><span class="w"> </span><span class="kn">import</span> <span class="n">Command</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">MeasurementSystem.core.comvisu.ServerUtils</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataQueueThread</span><span class="p">,</span> <span class="n">ServerConnection</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">MeasurementSystem.core.driver.DigilentMCC118</span><span class="w"> </span><span class="kn">import</span> <span class="n">Channel_MCC118_VoltageChannel</span><span class="p">,</span> <span class="n">Hardware_DigilentMCC118</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">MeasurementSystem.core.driver.DigilentMCC134</span><span class="w"> </span><span class="kn">import</span> <span class="n">Channel_MCC134_ThermocoupleChannel</span><span class="p">,</span> <span class="n">Hardware_DigilentMCC134</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">MeasurementSystem.core.driver.RaspberryPi</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">Channel_RPI_BufferedDigitalInput</span><span class="p">,</span>
     <span class="n">Channel_RPI_DigitalInput</span><span class="p">,</span>
     <span class="n">Channel_RPI_DigitalOutput</span><span class="p">,</span>
@@ -443,16 +450,17 @@
     <span class="n">Module_RPI_WeighScalesHX711</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="n">current_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
-
 <span class="n">LOCKFILE</span> <span class="o">=</span> <span class="s2">&quot;/tmp/measurement_server.lock&quot;</span>
 
-<span class="n">default_server_address</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;192.168.1.31&quot;</span><span class="p">,</span> <span class="mi">8008</span><span class="p">)</span>
+<span class="n">CONFIG_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="s2">&quot;config&quot;</span><span class="p">)</span>
+<span class="n">TMP_DATA_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;/tmp&quot;</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;MeasurementSystem_data_</span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">_%H-%M-%S&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">DEFAULT_SERVER</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;192.168.1.31&quot;</span><span class="p">,</span> <span class="mi">8008</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="HardwareInterface">
 <a class="viewcode-back" href="../../reference.html#MeasurementSystem.measurement_server.HardwareInterface">[docs]</a>
-<span class="k">class</span> <span class="nc">HardwareInterface</span><span class="p">(</span><span class="n">Serializable</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">HardwareInterface</span><span class="p">(</span><span class="n">Serializable</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A class representing the hardware interface.</span>
 
@@ -465,13 +473,13 @@
 <span class="sd">    :rtype: HardwareInterface</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">multi_hardware</span> <span class="o">=</span> <span class="n">MultiHardware</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;MeasurementSystem&quot;</span><span class="p">)</span>
 
 <div class="viewcode-block" id="HardwareInterface.initialize">
 <a class="viewcode-back" href="../../reference.html#MeasurementSystem.measurement_server.HardwareInterface.initialize">[docs]</a>
-    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1"># Hardware: Raspberry Pi 5</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize the hardware interface.</span>
@@ -602,7 +610,7 @@
 
 <div class="viewcode-block" id="HardwareInterface.close">
 <a class="viewcode-back" href="../../reference.html#MeasurementSystem.measurement_server.HardwareInterface.close">[docs]</a>
-    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Close the hardware interface.</span>
 
@@ -622,7 +630,7 @@
     <span class="c1">#</span>
 <div class="viewcode-block" id="HardwareInterface.to_json">
 <a class="viewcode-back" href="../../reference.html#MeasurementSystem.measurement_server.HardwareInterface.to_json">[docs]</a>
-    <span class="k">def</span> <span class="nf">to_json</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_json</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">hardware_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;hardware.json&quot;</span><span class="p">,</span>
         <span class="n">channels_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;channels.json&quot;</span><span class="p">,</span>
@@ -669,7 +677,7 @@
             <span class="n">hardware_dict</span> <span class="o">=</span> <span class="n">hw</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
 
             <span class="c1"># Remove attributes that are lists or dicts containing Channel instances</span>
-            <span class="k">def</span> <span class="nf">exclude_channels_and_modules</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+            <span class="k">def</span><span class="w"> </span><span class="nf">exclude_channels_and_modules</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
                 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
                     <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
                     <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -740,7 +748,7 @@
 <div class="viewcode-block" id="HardwareInterface.from_json">
 <a class="viewcode-back" href="../../reference.html#MeasurementSystem.measurement_server.HardwareInterface.from_json">[docs]</a>
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">from_json</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_json</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">,</span>
         <span class="n">hardware_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;hardware.json&quot;</span><span class="p">,</span>
         <span class="n">channels_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;channels.json&quot;</span><span class="p">,</span>
@@ -811,7 +819,7 @@
 
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">_create_object_with_handle</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_create_object_with_handle</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">,</span>
         <span class="n">obj_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
         <span class="n">references</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
@@ -880,7 +888,7 @@
 
 <div class="viewcode-block" id="MeasurementTask">
 <a class="viewcode-back" href="../../reference.html#MeasurementSystem.measurement_server.MeasurementTask">[docs]</a>
-<span class="k">class</span> <span class="nc">MeasurementTask</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MeasurementTask</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Represents a measurement task that can be executed by the measurement system.</span>
 
@@ -895,21 +903,23 @@
 
 <div class="viewcode-block" id="MeasurementTask.SendCommandCallbackType_2">
 <a class="viewcode-back" href="../../reference.html#MeasurementSystem.measurement_server.MeasurementTask.SendCommandCallbackType_2">[docs]</a>
-    <span class="k">class</span> <span class="nc">SendCommandCallbackType_2</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">SendCommandCallbackType_2</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A callback type for sending commands.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">:</span> <span class="n">Command</span><span class="p">,</span> <span class="n">priority</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span></div>
+        <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">:</span> <span class="n">Command</span><span class="p">,</span> <span class="n">priority</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span></div>
 
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">channel</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">InputChannel</span><span class="p">,</span> <span class="n">InputModule</span><span class="p">],</span>
         <span class="n">send_command_callback</span><span class="p">:</span> <span class="n">SendCommandCallbackType_2</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">channel</span> <span class="o">=</span> <span class="n">channel</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">send_command_callback</span> <span class="o">=</span> <span class="n">send_command_callback</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ceda</span> <span class="o">=</span> <span class="n">Ceda</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_thread</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_thread_stop_event</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Event</span><span class="p">()</span>
@@ -927,7 +937,7 @@
 
 <div class="viewcode-block" id="MeasurementTask.start">
 <a class="viewcode-back" href="../../reference.html#MeasurementSystem.measurement_server.MeasurementTask.start">[docs]</a>
-    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Start the measurement task.</span>
 
@@ -945,7 +955,7 @@
 
 <div class="viewcode-block" id="MeasurementTask.stop">
 <a class="viewcode-back" href="../../reference.html#MeasurementSystem.measurement_server.MeasurementTask.stop">[docs]</a>
-    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Stop the measurement task.</span>
 
@@ -966,35 +976,16 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_thread_stop_event</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span></div>
 
 
-    <span class="k">def</span> <span class="nf">_measurement_loop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_measurement_loop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Measurement loop.</span>
 
 <span class="sd">        This method runs indefinitely until the stop method is called.</span>
-<span class="sd">        The method performs a measurement task and send the result to the server.</span>
+<span class="sd">        The method performs a measurement task and store the result</span>
 
 <span class="sd">        :return: None</span>
 <span class="sd">        :rtype: None</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="c1"># Clear diagram, e.g. 700 Control Channel</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">send_command_callback</span><span class="p">(</span><span class="n">Command</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chart_control_channel</span><span class="p">,</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="s2">&quot;Clear&quot;</span><span class="p">))</span>
-
-        <span class="c1"># # X-Axis</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">send_command_callback</span><span class="p">(</span><span class="n">Command</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chart_control_channel</span><span class="p">,</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">FLOAT</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">send_command_callback</span><span class="p">(</span><span class="n">Command</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chart_control_channel</span><span class="p">,</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="s2">&quot;Xmin&quot;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">send_command_callback</span><span class="p">(</span><span class="n">Command</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chart_control_channel</span><span class="p">,</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">FLOAT</span><span class="p">,</span> <span class="mi">11</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">send_command_callback</span><span class="p">(</span><span class="n">Command</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chart_control_channel</span><span class="p">,</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="s2">&quot;Xmax&quot;</span><span class="p">))</span>
-
-        <span class="c1"># # Y-Axis</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">send_command_callback</span><span class="p">(</span><span class="n">Command</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chart_control_channel</span><span class="p">,</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">FLOAT</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">send_command_callback</span><span class="p">(</span><span class="n">Command</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chart_control_channel</span><span class="p">,</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="s2">&quot;Ymin&quot;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">send_command_callback</span><span class="p">(</span><span class="n">Command</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chart_control_channel</span><span class="p">,</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">FLOAT</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">send_command_callback</span><span class="p">(</span><span class="n">Command</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chart_control_channel</span><span class="p">,</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="s2">&quot;Ymax&quot;</span><span class="p">))</span>
-
-        <span class="n">y_storage</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">y_min</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">y_max</span> <span class="o">=</span> <span class="mi">0</span>
 
         <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_thread_stop_event</span><span class="o">.</span><span class="n">is_set</span><span class="p">():</span>
@@ -1008,42 +999,15 @@
                     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;INFO: &#39;empty data&#39; should never happen --&gt; to be debugged!&quot;</span><span class="p">)</span>
                     <span class="k">continue</span>
 
-                <span class="n">y_storage</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-
                 <span class="n">rel_time</span> <span class="o">=</span> <span class="p">(</span><span class="n">t_value</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_start</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="o">**-</span><span class="mi">9</span>  <span class="c1"># convert to seconds</span>
 
-                <span class="bp">self</span><span class="o">.</span><span class="n">send_command_callback</span><span class="p">(</span><span class="n">Command</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chart_y_axis_channel</span><span class="p">,</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">FLOAT</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">send_command_callback</span><span class="p">(</span><span class="n">Command</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chart_x_axis_channel</span><span class="p">,</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">FLOAT</span><span class="p">,</span> <span class="n">rel_time</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ceda</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">rel_time</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ceda</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">channel</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
-                <span class="c1"># TODO: dynamic update of X-Axis &amp; Y-Axis limits dependent on values</span>
-
-                <span class="c1"># dynamic update of X-Axis</span>
-                <span class="k">if</span> <span class="n">idx</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">idx</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">send_command_callback</span><span class="p">(</span>
-                        <span class="n">Command</span><span class="p">(</span>
-                            <span class="bp">self</span><span class="o">.</span><span class="n">chart_control_channel</span><span class="p">,</span>
-                            <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">FLOAT</span><span class="p">,</span>
-                            <span class="n">rel_time</span> <span class="o">+</span> <span class="mi">10</span><span class="p">,</span>
-                        <span class="p">)</span>
-                    <span class="p">)</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">send_command_callback</span><span class="p">(</span><span class="n">Command</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chart_control_channel</span><span class="p">,</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="s2">&quot;Xmax&quot;</span><span class="p">))</span>
-
-                <span class="c1"># dynamic update of Y-Axis</span>
-                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_storage</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-                    <span class="n">y_adder</span> <span class="o">=</span> <span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">y_storage</span><span class="p">)</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">y_storage</span><span class="p">))</span> <span class="o">*</span> <span class="mf">0.2</span>  <span class="c1"># add 20% to the y-axis range</span>
-                    <span class="n">y_min_new</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">y_storage</span><span class="p">)</span> <span class="o">-</span> <span class="n">y_adder</span>
-                    <span class="n">y_max_new</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">y_storage</span><span class="p">)</span> <span class="o">+</span> <span class="n">y_adder</span>
-
-                    <span class="k">if</span> <span class="p">(</span>
-                        <span class="n">y_min_new</span> <span class="o">!=</span> <span class="n">y_min</span> <span class="ow">or</span> <span class="n">y_max_new</span> <span class="o">!=</span> <span class="n">y_max</span>
-                    <span class="p">):</span>  <span class="c1"># IMPORTANT TODO: this will overwrite min/max from other channels if same chart is used!!!!</span>
-                        <span class="n">y_min</span> <span class="o">=</span> <span class="n">y_min_new</span>
-                        <span class="n">y_max</span> <span class="o">=</span> <span class="n">y_max_new</span>
-
-                        <span class="bp">self</span><span class="o">.</span><span class="n">send_command_callback</span><span class="p">(</span><span class="n">Command</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chart_control_channel</span><span class="p">,</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">FLOAT</span><span class="p">,</span> <span class="n">y_min</span><span class="p">))</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">send_command_callback</span><span class="p">(</span><span class="n">Command</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chart_control_channel</span><span class="p">,</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="s2">&quot;Ymin&quot;</span><span class="p">))</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">send_command_callback</span><span class="p">(</span><span class="n">Command</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chart_control_channel</span><span class="p">,</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">FLOAT</span><span class="p">,</span> <span class="n">y_max</span><span class="p">))</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">send_command_callback</span><span class="p">(</span><span class="n">Command</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chart_control_channel</span><span class="p">,</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="s2">&quot;Ymax&quot;</span><span class="p">))</span>
+                <span class="n">filePath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">TMP_DATA_DIR</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">channel</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">__intermediate.csv&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ceda</span><span class="o">.</span><span class="n">save</span><span class="p">(</span>
+                    <span class="n">filePath</span><span class="o">=</span><span class="n">filePath</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">print_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fill_nan_values</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">nan_replacement</span><span class="o">=</span><span class="s2">&quot;=NA()&quot;</span>
+                <span class="p">)</span>  <span class="c1"># prepare for Excel post processing</span>
 
                 <span class="c1"># Wait time</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">channel</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">sample_rate</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
@@ -1059,7 +1023,7 @@
 
 <div class="viewcode-block" id="MeasurementTaskManager">
 <a class="viewcode-back" href="../../reference.html#MeasurementSystem.measurement_server.MeasurementTaskManager">[docs]</a>
-<span class="k">class</span> <span class="nc">MeasurementTaskManager</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MeasurementTaskManager</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Manages a collection of measurement tasks and provides functionality to start and stop them all.</span>
 
@@ -1070,14 +1034,14 @@
 <span class="sd">    :rtype: MeasurementTaskManager</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">measurement_system</span><span class="p">:</span> <span class="n">MeasurementSystem</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">measurement_system</span><span class="p">:</span> <span class="n">MeasurementSystem</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">measurement_system</span> <span class="o">=</span> <span class="n">measurement_system</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">send_command_callback</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">measurement_system</span><span class="o">.</span><span class="n">add_command_to_send_queue</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span> <span class="o">=</span> <span class="p">[]</span>
 
 <div class="viewcode-block" id="MeasurementTaskManager.initialize_tasks">
 <a class="viewcode-back" href="../../reference.html#MeasurementSystem.measurement_server.MeasurementTaskManager.initialize_tasks">[docs]</a>
-    <span class="k">def</span> <span class="nf">initialize_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">initialize_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize all measurement tasks.</span>
 
@@ -1103,7 +1067,7 @@
 
 <div class="viewcode-block" id="MeasurementTaskManager.start_tasks">
 <a class="viewcode-back" href="../../reference.html#MeasurementSystem.measurement_server.MeasurementTaskManager.start_tasks">[docs]</a>
-    <span class="k">def</span> <span class="nf">start_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">start_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Start all measurement tasks.</span>
 
@@ -1121,7 +1085,7 @@
 
 <div class="viewcode-block" id="MeasurementTaskManager.stop_tasks">
 <a class="viewcode-back" href="../../reference.html#MeasurementSystem.measurement_server.MeasurementTaskManager.stop_tasks">[docs]</a>
-    <span class="k">def</span> <span class="nf">stop_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">stop_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Stop all measurement tasks.</span>
 
@@ -1153,7 +1117,7 @@
 
 <div class="viewcode-block" id="ControlTask">
 <a class="viewcode-back" href="../../reference.html#MeasurementSystem.measurement_server.ControlTask">[docs]</a>
-<span class="k">class</span> <span class="nc">ControlTask</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ControlTask</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Represents a control task that can be executed by the system to perform a specific control action.</span>
 
@@ -1168,15 +1132,15 @@
 
 <div class="viewcode-block" id="ControlTask.SendCommandCallbackType">
 <a class="viewcode-back" href="../../reference.html#MeasurementSystem.measurement_server.ControlTask.SendCommandCallbackType">[docs]</a>
-    <span class="k">class</span> <span class="nc">SendCommandCallbackType</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">SendCommandCallbackType</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A callback type for sending commands.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">:</span> <span class="n">Command</span><span class="p">,</span> <span class="n">priority</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span></div>
+        <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">:</span> <span class="n">Command</span><span class="p">,</span> <span class="n">priority</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span></div>
 
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">measurement_system</span><span class="p">:</span> <span class="n">MeasurementSystem</span><span class="p">,</span>
         <span class="n">send_command_callback</span><span class="p">:</span> <span class="n">SendCommandCallbackType</span><span class="p">,</span>
@@ -1194,7 +1158,7 @@
 
 <div class="viewcode-block" id="ControlTask.start">
 <a class="viewcode-back" href="../../reference.html#MeasurementSystem.measurement_server.ControlTask.start">[docs]</a>
-    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Starts the control loop.</span>
 
@@ -1212,7 +1176,7 @@
 
 <div class="viewcode-block" id="ControlTask.stop">
 <a class="viewcode-back" href="../../reference.html#MeasurementSystem.measurement_server.ControlTask.stop">[docs]</a>
-    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Stops the control loop.</span>
 
@@ -1232,7 +1196,7 @@
 
 <div class="viewcode-block" id="ControlTask.add_command">
 <a class="viewcode-back" href="../../reference.html#MeasurementSystem.measurement_server.ControlTask.add_command">[docs]</a>
-    <span class="k">def</span> <span class="nf">add_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">:</span> <span class="n">Command</span><span class="p">,</span> <span class="n">priority</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">:</span> <span class="n">Command</span><span class="p">,</span> <span class="n">priority</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Adds a command to the control loop queue.</span>
 
@@ -1250,7 +1214,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_command_queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">priority</span><span class="p">)</span></div>
 
 
-    <span class="k">def</span> <span class="nf">_control_loop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_control_loop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Control loop thread.</span>
 
@@ -1271,7 +1235,7 @@
             <span class="k">except</span> <span class="n">queue</span><span class="o">.</span><span class="n">Empty</span><span class="p">:</span>
                 <span class="k">continue</span>
 
-    <span class="k">def</span> <span class="nf">_execute_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">:</span> <span class="n">Command</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_execute_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">:</span> <span class="n">Command</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Executes a control command.</span>
 
@@ -1282,7 +1246,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="c1"># Helper functions</span>
-        <span class="k">def</span> <span class="nf">_calculate_name</span><span class="p">(</span><span class="n">diagram_channel</span><span class="p">,</span> <span class="n">selected_index</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">_calculate_name</span><span class="p">(</span><span class="n">diagram_channel</span><span class="p">,</span> <span class="n">selected_index</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Helper function to calculate the name of a chart control channel based on the selected diagram channel and index.</span>
 
@@ -1316,7 +1280,7 @@
             <span class="n">base_for_diagram</span> <span class="o">=</span> <span class="n">base_name_number</span> <span class="o">+</span> <span class="p">(</span><span class="n">diagram_index</span> <span class="o">*</span> <span class="n">names_per_diagram</span><span class="p">)</span>  <span class="c1"># 701-719, 720-739, ...</span>
             <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">base_for_diagram</span> <span class="o">+</span> <span class="p">(</span><span class="n">selected_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
 
-        <span class="k">def</span> <span class="nf">_reset_channel_selection</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">ControlTask</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">_reset_channel_selection</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">ControlTask</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Helper function to reset the channel selection in the control interface.</span>
 
@@ -1575,9 +1539,9 @@
 
             <span class="c1"># SAVE CONFIG</span>
             <span class="k">elif</span> <span class="n">command</span><span class="o">.</span><span class="n">channel</span> <span class="o">==</span> <span class="mi">890</span><span class="p">:</span>
-                <span class="n">hardware_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">current_dir</span><span class="p">,</span> <span class="s2">&quot;config&quot;</span><span class="p">,</span> <span class="s2">&quot;hardware_user.json&quot;</span><span class="p">)</span>
-                <span class="n">channels_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">current_dir</span><span class="p">,</span> <span class="s2">&quot;config&quot;</span><span class="p">,</span> <span class="s2">&quot;channels_user.json&quot;</span><span class="p">)</span>
-                <span class="n">modules_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">current_dir</span><span class="p">,</span> <span class="s2">&quot;config&quot;</span><span class="p">,</span> <span class="s2">&quot;modules_user.json&quot;</span><span class="p">)</span>
+                <span class="n">hardware_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">CONFIG_DIR</span><span class="p">,</span> <span class="s2">&quot;hardware_user.json&quot;</span><span class="p">)</span>
+                <span class="n">channels_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">CONFIG_DIR</span><span class="p">,</span> <span class="s2">&quot;channels_user.json&quot;</span><span class="p">)</span>
+                <span class="n">modules_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">CONFIG_DIR</span><span class="p">,</span> <span class="s2">&quot;modules_user.json&quot;</span><span class="p">)</span>
 
                 <span class="bp">self</span><span class="o">.</span><span class="n">measurement_system</span><span class="o">.</span><span class="n">hardware_interface</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span>
                     <span class="n">hardware_file</span><span class="o">=</span><span class="n">hardware_file</span><span class="p">,</span>
@@ -1595,9 +1559,9 @@
                     <span class="n">name_postfix</span> <span class="o">=</span> <span class="s2">&quot;_default&quot;</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">name_postfix</span> <span class="o">=</span> <span class="s2">&quot;_user&quot;</span>  <span class="c1"># user defined</span>
-                <span class="n">hardware_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">current_dir</span><span class="p">,</span> <span class="s2">&quot;config&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;hardware</span><span class="si">{</span><span class="n">name_postfix</span><span class="si">}</span><span class="s2">.json&quot;</span><span class="p">)</span>
-                <span class="n">channels_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">current_dir</span><span class="p">,</span> <span class="s2">&quot;config&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;channels</span><span class="si">{</span><span class="n">name_postfix</span><span class="si">}</span><span class="s2">.json&quot;</span><span class="p">)</span>
-                <span class="n">modules_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">current_dir</span><span class="p">,</span> <span class="s2">&quot;config&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;modules</span><span class="si">{</span><span class="n">name_postfix</span><span class="si">}</span><span class="s2">.json&quot;</span><span class="p">)</span>
+                <span class="n">hardware_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">CONFIG_DIR</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;hardware</span><span class="si">{</span><span class="n">name_postfix</span><span class="si">}</span><span class="s2">.json&quot;</span><span class="p">)</span>
+                <span class="n">channels_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">CONFIG_DIR</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;channels</span><span class="si">{</span><span class="n">name_postfix</span><span class="si">}</span><span class="s2">.json&quot;</span><span class="p">)</span>
+                <span class="n">modules_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">CONFIG_DIR</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;modules</span><span class="si">{</span><span class="n">name_postfix</span><span class="si">}</span><span class="s2">.json&quot;</span><span class="p">)</span>
 
                 <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Loading config from &#39;</span><span class="si">{</span><span class="n">hardware_file</span><span class="si">}</span><span class="s2">&#39;, &#39;</span><span class="si">{</span><span class="n">channels_file</span><span class="si">}</span><span class="s2">&#39; and &#39;</span><span class="si">{</span><span class="n">modules_file</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">measurement_system</span><span class="o">.</span><span class="n">printConsole</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
@@ -1634,7 +1598,7 @@
 
 <div class="viewcode-block" id="ControlTaskManager">
 <a class="viewcode-back" href="../../reference.html#MeasurementSystem.measurement_server.ControlTaskManager">[docs]</a>
-<span class="k">class</span> <span class="nc">ControlTaskManager</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ControlTaskManager</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Manages a collection of control tasks and provides functionality to start and stop them all.</span>
 
@@ -1645,14 +1609,14 @@
 <span class="sd">    :rtype: ControlTaskManager</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">measurement_system</span><span class="p">:</span> <span class="n">MeasurementSystem</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">measurement_system</span><span class="p">:</span> <span class="n">MeasurementSystem</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">measurement_system</span> <span class="o">=</span> <span class="n">measurement_system</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">send_command_callback</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">measurement_system</span><span class="o">.</span><span class="n">add_command_to_send_queue</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span> <span class="o">=</span> <span class="p">[]</span>
 
 <div class="viewcode-block" id="ControlTaskManager.initialize_tasks">
 <a class="viewcode-back" href="../../reference.html#MeasurementSystem.measurement_server.ControlTaskManager.initialize_tasks">[docs]</a>
-    <span class="k">def</span> <span class="nf">initialize_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">initialize_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize the control tasks.</span>
 
@@ -1666,7 +1630,7 @@
 
 <div class="viewcode-block" id="ControlTaskManager.start_tasks">
 <a class="viewcode-back" href="../../reference.html#MeasurementSystem.measurement_server.ControlTaskManager.start_tasks">[docs]</a>
-    <span class="k">def</span> <span class="nf">start_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">start_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Start all control tasks.</span>
 
@@ -1684,7 +1648,7 @@
 
 <div class="viewcode-block" id="ControlTaskManager.stop_tasks">
 <a class="viewcode-back" href="../../reference.html#MeasurementSystem.measurement_server.ControlTaskManager.stop_tasks">[docs]</a>
-    <span class="k">def</span> <span class="nf">stop_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">stop_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Stop all control tasks.</span>
 
@@ -1702,7 +1666,7 @@
 
 <div class="viewcode-block" id="ControlTaskManager.add_command_to_task">
 <a class="viewcode-back" href="../../reference.html#MeasurementSystem.measurement_server.ControlTaskManager.add_command_to_task">[docs]</a>
-    <span class="k">def</span> <span class="nf">add_command_to_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">:</span> <span class="n">Command</span><span class="p">,</span> <span class="n">priority</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_command_to_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">:</span> <span class="n">Command</span><span class="p">,</span> <span class="n">priority</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Add a command to the control task.</span>
 
@@ -1726,7 +1690,7 @@
 
 <div class="viewcode-block" id="MeasurementSystem">
 <a class="viewcode-back" href="../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem">[docs]</a>
-<span class="k">class</span> <span class="nc">MeasurementSystem</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MeasurementSystem</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Represents a measurement system that collects and processes data from various measurement sources.</span>
 
@@ -1735,7 +1699,7 @@
 <span class="sd">    instruments, or other data acquisition systems.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">server_address</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">server_address</span><span class="p">):</span>
         <span class="c1"># Server Connection</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize a MeasurementSystem object.</span>
@@ -1779,7 +1743,7 @@
 
 <div class="viewcode-block" id="MeasurementSystem.close">
 <a class="viewcode-back" href="../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.close">[docs]</a>
-    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Close the MeasurementSystem object.</span>
 
@@ -1795,12 +1759,13 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">control_task_manager</span><span class="o">.</span><span class="n">stop_tasks</span><span class="p">()</span>  <span class="c1"># stop control tasks</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">hardware_interface</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>  <span class="c1"># close measurement</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data_queue_processor</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>  <span class="c1"># stop data queue processor</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">server_connection</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>  <span class="c1"># close server connection</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">server_connection</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>  <span class="c1"># close server connection</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_data</span><span class="p">()</span>  <span class="c1"># save temporary data</span></div>
 
 
 <div class="viewcode-block" id="MeasurementSystem.printConsole">
 <a class="viewcode-back" href="../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.printConsole">[docs]</a>
-    <span class="k">def</span> <span class="nf">printConsole</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">printConsole</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Prints a message to the ComVisu console #999 with a timestamp and replaces any semicolons or hashes in the message with underscores.</span>
 
@@ -1829,7 +1794,7 @@
 
 <div class="viewcode-block" id="MeasurementSystem.add_command_to_send_queue">
 <a class="viewcode-back" href="../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.add_command_to_send_queue">[docs]</a>
-    <span class="k">def</span> <span class="nf">add_command_to_send_queue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">:</span> <span class="n">Command</span><span class="p">,</span> <span class="n">priority</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_command_to_send_queue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">:</span> <span class="n">Command</span><span class="p">,</span> <span class="n">priority</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Sends a command to the server with a given priority.</span>
 
@@ -1845,7 +1810,7 @@
 
 <div class="viewcode-block" id="MeasurementSystem.init_comvisu">
 <a class="viewcode-back" href="../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.init_comvisu">[docs]</a>
-    <span class="k">def</span> <span class="nf">init_comvisu</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">init_comvisu</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize the ComVisu server.</span>
 
@@ -1880,7 +1845,7 @@
 
 <div class="viewcode-block" id="MeasurementSystem.process_commands">
 <a class="viewcode-back" href="../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.process_commands">[docs]</a>
-    <span class="k">def</span> <span class="nf">process_commands</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">commands</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Command</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">process_commands</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">commands</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Command</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Process commands received from the ComVisu server.</span>
 
@@ -1913,6 +1878,9 @@
                     <span class="bp">self</span><span class="o">.</span><span class="n">measurement_task_manager</span><span class="o">.</span><span class="n">stop_tasks</span><span class="p">()</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">printConsole</span><span class="p">(</span><span class="s2">&quot;Measurement system stopped&quot;</span><span class="p">)</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">add_command_to_send_queue</span><span class="p">(</span><span class="n">Command</span><span class="p">(</span><span class="mi">901</span><span class="p">,</span> <span class="n">Command</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">F</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">),</span> <span class="n">priority</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+                    <span class="bp">self</span><span class="o">.</span><span class="n">save_data</span><span class="p">()</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">printConsole</span><span class="p">(</span><span class="s2">&quot;Data saved&quot;</span><span class="p">)</span>
 
             <span class="c1">##################################</span>
             <span class="c1"># Slider Test</span>
@@ -1971,6 +1939,51 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">printConsole</span><span class="p">(</span><span class="s2">&quot;Unknown command:&quot;</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
                 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unknown command:&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="MeasurementSystem.save_data">
+<a class="viewcode-back" href="../../reference.html#MeasurementSystem.measurement_server.MeasurementSystem.save_data">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">save_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        1) load all csv files from TMP_DATA_DIR using ceda.load</span>
+<span class="sd">        2) comibe them in one single ceda data and save as csv in TMP_DATA_DIR</span>
+<span class="sd">        3) copy to USB or SD card</span>
+<span class="sd">        4) delete TMP_DATA_DIR directory</span>
+
+<span class="sd">        :raises OSError: if no external USB or SD card found</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">TMP_DATA_DIR</span><span class="p">):</span>
+            <span class="n">ceda_new</span> <span class="o">=</span> <span class="n">Ceda</span><span class="p">()</span>
+
+            <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">TMP_DATA_DIR</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.csv&quot;</span><span class="p">):</span>
+                    <span class="n">ceda</span> <span class="o">=</span> <span class="n">Ceda</span><span class="p">()</span>
+                    <span class="n">ceda</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">TMP_DATA_DIR</span><span class="p">,</span> <span class="n">file</span><span class="p">))</span>
+
+                    <span class="n">ceda_new</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">ceda</span><span class="p">)</span>
+
+            <span class="n">fileName</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y%m</span><span class="si">%d</span><span class="s1">_%H%M%S&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">__results.csv&quot;</span>
+            <span class="n">filePath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">TMP_DATA_DIR</span><span class="p">,</span> <span class="n">fileName</span><span class="p">)</span>
+
+            <span class="n">ceda_new</span><span class="o">.</span><span class="n">save</span><span class="p">(</span>
+                <span class="n">filePath</span><span class="o">=</span><span class="n">filePath</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">print_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fill_nan_values</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">nan_replacement</span><span class="o">=</span><span class="s2">&quot;=NA()&quot;</span>
+            <span class="p">)</span>
+
+            <span class="c1"># find USB stick and copy file to it</span>
+            <span class="n">usb_drives</span> <span class="o">=</span> <span class="n">USBUtils</span><span class="o">.</span><span class="n">find_all_usb_drives</span><span class="p">()</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">usb_drives</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&gt;&gt;&gt; Copy file </span><span class="si">{</span><span class="n">fileName</span><span class="si">}</span><span class="s2"> to USB drive:&quot;</span><span class="p">,</span> <span class="n">usb_drives</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+                <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">filePath</span><span class="p">,</span> <span class="n">usb_drives</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">OSError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;No external USB or SD card found to save the results. Temporary data available here: </span><span class="si">{</span><span class="n">TMP_DATA_DIR</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+
+            <span class="c1"># delete temporary data folder, not reached if copy to USB or SD card fails</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">TMP_DATA_DIR</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">pass</span>  <span class="c1"># skip if folder does not exist, maybe deleted by user</span></div>
 </div>
 
 
@@ -1979,7 +1992,7 @@
 <span class="c1"># MAIN</span>
 <div class="viewcode-block" id="main">
 <a class="viewcode-back" href="../../reference.html#MeasurementSystem.measurement_server.main">[docs]</a>
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Main loop of the measurement system.</span>
 
@@ -2018,7 +2031,7 @@
 
         <span class="n">server_address</span> <span class="o">=</span> <span class="p">(</span><span class="n">ip_address</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">server_address</span> <span class="o">=</span> <span class="n">default_server_address</span>
+        <span class="n">server_address</span> <span class="o">=</span> <span class="n">DEFAULT_SERVER</span>
 
     <span class="c1"># Only one instance of the measurement system is allowed</span>
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">LOCKFILE</span><span class="p">):</span>
@@ -2055,7 +2068,7 @@
 
             <span class="c1"># Receive loop</span>
             <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-                <span class="n">commands</span> <span class="o">=</span> <span class="n">measurementSystem</span><span class="o">.</span><span class="n">server_connection</span><span class="o">.</span><span class="n">receive</span><span class="p">()</span>  <span class="c1"># blocking</span>
+                <span class="n">commands</span> <span class="o">=</span> <span class="n">measurementSystem</span><span class="o">.</span><span class="n">server_connection</span><span class="o">.</span><span class="n">receive</span><span class="p">()</span>  <span class="c1"># blocking, raises TimeoutError</span>
                 <span class="n">measurementSystem</span><span class="o">.</span><span class="n">process_commands</span><span class="p">(</span><span class="n">commands</span><span class="p">)</span>
                 <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c1"># Receive loop timer</span>
 
@@ -2070,8 +2083,10 @@
         <span class="k">finally</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">measurementSystem</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="c1"># Close measurement system</span>
                     <span class="n">measurementSystem</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
                     <span class="n">measurementSystem</span> <span class="o">=</span> <span class="kc">None</span>
+
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="n">e</span>
 
@@ -2100,7 +2115,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, Alfred Paar.</p>
+    <p>&#169; Copyright 2025, Alfred Paar.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

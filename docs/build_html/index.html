@@ -4,8 +4,8 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Measurement-System &mdash; Measurement System 0.1.dev18+g5cb60f0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+  <title>Measurement-System &mdash; Measurement System 0.1.dev35+g38b34c5.d20250215 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
 
@@ -16,7 +16,7 @@
 
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=ea4c1654"></script>
+        <script src="_static/documentation_options.js?v=5a714d8d"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -24,7 +24,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Reference" href="reference.html" />
+    <link rel="next" title="User Guide" href="user_guide.html" />
 </head>
 
 <body class="wy-body-for-nav">
@@ -40,7 +40,7 @@
               <img src="_static/logo.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                0.1.dev18+g5cb60f0
+                0.1.dev35+g38b34c5.d20250215
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -51,6 +51,22 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#step-1-prepare-raspberrypi">Step 1: Prepare RaspberryPi</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guide.html#hardware">Hardware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guide.html#software">Software</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dev_guide.html">Developement Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dev_guide.html#classes-and-packages">Classes and Packages</a></li>
+</ul>
+</li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="reference.html">Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="reference.html#main-application">Main Application</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="reference.html#module-MeasurementSystem.measurement_server">Measurement Server</a><ul>
@@ -81,6 +97,7 @@
 <li class="toctree-l5"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.MeasurementSystem.init_comvisu"><code class="docutils literal notranslate"><span class="pre">init_comvisu()</span></code></a></li>
 <li class="toctree-l5"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.MeasurementSystem.printConsole"><code class="docutils literal notranslate"><span class="pre">printConsole()</span></code></a></li>
 <li class="toctree-l5"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.MeasurementSystem.process_commands"><code class="docutils literal notranslate"><span class="pre">process_commands()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.MeasurementSystem.save_data"><code class="docutils literal notranslate"><span class="pre">save_data()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.measurement_server.MeasurementTask"><code class="docutils literal notranslate"><span class="pre">MeasurementTask</span></code></a><ul>
@@ -118,7 +135,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="reference.html#config">Config</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#module-MeasurementSystem.core.common.Config">Config</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.common.Config.Config"><code class="docutils literal notranslate"><span class="pre">Config</span></code></a></li>
 </ul>
 </li>
@@ -228,6 +245,21 @@
 </li>
 <li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.common.BaseClasses.OutputModule"><code class="docutils literal notranslate"><span class="pre">OutputModule</span></code></a><ul>
 <li class="toctree-l5"><a class="reference internal" href="reference.html#MeasurementSystem.core.common.BaseClasses.OutputModule.write"><code class="docutils literal notranslate"><span class="pre">write()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#module-MeasurementSystem.core.common.Ceda">Ceda</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#MeasurementSystem.core.common.Ceda.Ceda"><code class="docutils literal notranslate"><span class="pre">Ceda</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="reference.html#MeasurementSystem.core.common.Ceda.Ceda.append"><code class="docutils literal notranslate"><span class="pre">append()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="reference.html#MeasurementSystem.core.common.Ceda.Ceda.clear"><code class="docutils literal notranslate"><span class="pre">clear()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="reference.html#MeasurementSystem.core.common.Ceda.Ceda.data"><code class="docutils literal notranslate"><span class="pre">data</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="reference.html#MeasurementSystem.core.common.Ceda.Ceda.delete"><code class="docutils literal notranslate"><span class="pre">delete()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="reference.html#MeasurementSystem.core.common.Ceda.Ceda.duprow"><code class="docutils literal notranslate"><span class="pre">duprow()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="reference.html#MeasurementSystem.core.common.Ceda.Ceda.load"><code class="docutils literal notranslate"><span class="pre">load()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="reference.html#MeasurementSystem.core.common.Ceda.Ceda.log"><code class="docutils literal notranslate"><span class="pre">log()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="reference.html#MeasurementSystem.core.common.Ceda.Ceda.merge"><code class="docutils literal notranslate"><span class="pre">merge()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="reference.html#MeasurementSystem.core.common.Ceda.Ceda.save"><code class="docutils literal notranslate"><span class="pre">save()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -465,10 +497,33 @@ sudo<span class="w"> </span>./install.sh
 <li><p>…run pre-commit: <code class="docutils literal notranslate"><span class="pre">hatch</span> <span class="pre">run</span> <span class="pre">fix</span></code></p></li>
 <li><p>…create docs: <code class="docutils literal notranslate"><span class="pre">hatch</span> <span class="pre">run</span> <span class="pre">docs</span></code></p></li>
 <li><p>…build: <code class="docutils literal notranslate"><span class="pre">hatch</span> <span class="pre">run</span> <span class="pre">dev</span></code></p></li>
+<li><p>…run: <code class="docutils literal notranslate"><span class="pre">hatch</span> <span class="pre">run</span> <span class="pre">measurement-system</span></code></p></li>
 </ul>
 <p>Check <a class="reference internal" href="#pyproject.toml"><span class="xref myst">pyproject.toml</span></a> for more scripts in section [tool.hatch.envs.default.scripts]</p>
 <p>Use any hatch command to sync dependencies.</p>
 </section>
+</section>
+<section id="user-guide">
+<h1>User Guide<a class="headerlink" href="#user-guide" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#step-1-prepare-raspberrypi">Step 1: Prepare RaspberryPi</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="developement-guide">
+<h1>Developement Guide<a class="headerlink" href="#developement-guide" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dev_guide.html">Developement Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dev_guide.html#classes-and-packages">Classes and Packages</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </section>
 <section id="reference">
 <h1>Reference<a class="headerlink" href="#reference" title="Link to this heading"></a></h1>
@@ -489,13 +544,13 @@ sudo<span class="w"> </span>./install.sh
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="reference.html" class="btn btn-neutral float-right" title="Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="user_guide.html" class="btn btn-neutral float-right" title="User Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, Alfred Paar.</p>
+    <p>&#169; Copyright 2025, Alfred Paar.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
