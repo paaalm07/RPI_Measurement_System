@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Search &mdash; Measurement System 0.1.dev41+g590ca12 documentation</title>
+  <title>Prerequisites &mdash; Measurement System 0.1.dev41+g590ca12 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-
 
 
   <!--[if lt IE 9]>
@@ -22,10 +22,10 @@
         <script src="_static/clipboard.min.js?v=a7894cd8"></script>
         <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/js/theme.js"></script>
-    <script src="_static/searchtools.js"></script>
-    <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="#" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="User Guide" href="user_guide.html" />
+    <link rel="prev" title="Measurement-System" href="index.html" />
 </head>
 
 <body class="wy-body-for-nav">
@@ -44,23 +44,23 @@
                 0.1.dev41+g590ca12
               </div>
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="prerequisites.html">Prerequisites</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="prerequisites.html#hardware">Hardware</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="prerequisites.html#connections">Connections</a></li>
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Prerequisites</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#hardware">Hardware</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#connections">Connections</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="prerequisites.html#software">Software</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="prerequisites.html#repository">Repository</a></li>
-<li class="toctree-l3"><a class="reference internal" href="prerequisites.html#daqhats-shared-library">Daqhats Shared Library</a></li>
-<li class="toctree-l3"><a class="reference internal" href="prerequisites.html#hatch">Hatch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#software">Software</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#repository">Repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#daqhats-shared-library">Daqhats Shared Library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hatch">Hatch</a></li>
 </ul>
 </li>
 </ul>
@@ -447,8 +447,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Search</li>
+      <li class="breadcrumb-item active">Prerequisites</li>
       <li class="wy-breadcrumbs-aside">
+            <a href="_sources/prerequisites.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -456,22 +457,97 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
 
-  <noscript>
-  <div id="fallback" class="admonition warning">
-    <p class="last">
-      Please activate JavaScript to enable the search functionality.
-    </p>
-  </div>
-  </noscript>
+  <section id="prerequisites">
+<h1>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h1>
+<section id="hardware">
+<h2>Hardware<a class="headerlink" href="#hardware" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>RaspberryPi 5</p></li>
+<li><dl class="simple">
+<dt>Digilent MCC HATs</dt><dd><ul>
+<li><p>currently supported HATs: <em>MCC118</em>, <em>MCC134</em></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><em>HX711</em> weight scales input module</p></li>
+<li><p>DIGPIO Screw Terminal Breakut Board HAT</p></li>
+<li><p>USB Stick (or SD-Card + reader)</p></li>
+</ul>
+<section id="connections">
+<h3>Connections<a class="headerlink" href="#connections" title="Link to this heading"></a></h3>
+<p>to be defined</p>
+</section>
+</section>
+<section id="software">
+<h2>Software<a class="headerlink" href="#software" title="Link to this heading"></a></h2>
+<section id="repository">
+<h3>Repository<a class="headerlink" href="#repository" title="Link to this heading"></a></h3>
+<p>Clone the git repository into <code class="docutils literal notranslate"><span class="pre">~/Documents/RPI_Measurement_System</span></code> on the RaspberryPi.
+<strong>This path is mandatory</strong>, otherwise the <code class="docutils literal notranslate"><span class="pre">START</span> <span class="pre">Measurement</span> <span class="pre">System.bat</span></code> won’t work (or has to be adapted).</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/Documents
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/paaalm07/RPI_Measurement_System.git
+</pre></div>
+</div>
+</div></blockquote>
+<p>Clone this repository as well on the Windows machine. Where is not important, just to have the files, for example here:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>%USERPROFILE%<span class="se">\D</span>esktop
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/paaalm07/RPI_Measurement_System.git
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="daqhats-shared-library">
+<h3>Daqhats Shared Library<a class="headerlink" href="#daqhats-shared-library" title="Link to this heading"></a></h3>
+<p>Install the shared library and tools for MCC DAQ Hat on the RaspberryPi.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/mccdaq/daqhats.git
+<span class="nb">cd</span><span class="w"> </span>~/daqhats
+sudo<span class="w"> </span>./install.sh
+</pre></div>
+</div>
+</div></blockquote>
+<p>For more details, checkout <a class="reference external" href="https://mccdaq.github.io/daqhats/install.html">https://mccdaq.github.io/daqhats/install.html</a></p>
+</section>
+<section id="hatch">
+<h3>Hatch<a class="headerlink" href="#hatch" title="Link to this heading"></a></h3>
+<ul>
+<li><dl>
+<dt>Install <a class="reference external" href="https://hatch.pypa.io/">Hatch</a> as python manager on the RaspberryPi:</dt><dd><ul class="simple">
+<li><p>Python/Pip already there: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">hatch</span> <span class="pre">--break-system-packages</span></code></p></li>
+<li><p>Set global hatch config: <code class="docutils literal notranslate"><span class="pre">hatch</span> <span class="pre">config</span> <span class="pre">set</span> <span class="pre">dirs.env.virtual</span> <span class="pre">.hatch</span></code></p></li>
+</ul>
+<p>Notes:</p>
+<ul class="simple">
+<li><p>On Windows system, the <a class="reference external" href="https://abyz.me.uk/lg/py_lgpio.html">lgpio</a> library is not installed. Building docs and other features not available.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Hatch will manage the virtual environment and dependencies for the project based on the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file.</p></li>
+</ul>
+<p>Use Hatch to:</p>
+<ul class="simple">
+<li><p>…create a new virtual environment: <code class="docutils literal notranslate"><span class="pre">hatch</span> <span class="pre">env</span> <span class="pre">create</span></code></p></li>
+<li><p>…run pre-commit hooks: <code class="docutils literal notranslate"><span class="pre">hatch</span> <span class="pre">run</span> <span class="pre">fix</span></code></p></li>
+<li><p>…create docs: <code class="docutils literal notranslate"><span class="pre">hatch</span> <span class="pre">run</span> <span class="pre">docs</span></code></p></li>
+<li><p>…run MeasurementSystem: <code class="docutils literal notranslate"><span class="pre">hatch</span> <span class="pre">run</span> <span class="pre">measurement-system</span></code></p></li>
+</ul>
+<p>Check the <cite>[tool.hatch.envs.default.scripts]</cite> section in the <cite>pyproject.toml</cite> file for more scripts</p>
+</section>
+</section>
+</section>
 
-
-  <div id="search-results">
-
-  </div>
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Measurement-System" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="user_guide.html" class="btn btn-neutral float-right" title="User Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
@@ -494,13 +570,6 @@
           SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
-  <script>
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-
-  <script id="searchindexloader"></script>
-
-
 
 </body>
 </html>

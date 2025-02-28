@@ -1,6 +1,15 @@
 .. include:: ../README.md
    :parser: myst_parser.sphinx_
 
+Prerequisites
+=============
+
+.. toctree::
+   :maxdepth: 2
+
+   prerequisites
+
+
 User Guide
 ==========
 

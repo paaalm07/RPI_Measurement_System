@@ -24,7 +24,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="User Guide" href="user_guide.html" />
+    <link rel="next" title="Prerequisites" href="prerequisites.html" />
 </head>
 
 <body class="wy-body-for-nav">
@@ -51,19 +51,22 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="prerequisites.html">Prerequisites</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="prerequisites.html#hardware">Hardware</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="prerequisites.html#connections">Connections</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="prerequisites.html#software">Software</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="prerequisites.html#repository">Repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="prerequisites.html#daqhats-shared-library">Daqhats Shared Library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="prerequisites.html#hatch">Hatch</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="user_guide.html#prerequisites">Prerequisites</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="user_guide.html#raspberrypi">RaspberryPi</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="user_guide.html#hardware">Hardware</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="user_guide.html#connections">Connections</a></li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="user_guide.html#software">Software</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="user_guide.html#windows">Windows</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="user_guide.html#usage-windows">Usage (Windows)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="user_guide.html#general-usage">General Usage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="user_guide.html#channel-configuration">Channel Configuration</a><ul>
@@ -78,7 +81,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="user_guide.html#troubleshooting">Troubleshooting</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="user_guide.html#id3">Software</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guide.html#software">Software</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="user_guide.html#measurement-system-lockfile">Measurement System Lockfile</a></li>
 </ul>
 </li>
@@ -470,51 +473,7 @@ Measurement-System based on RaspberryPi 5 hardware.</p>
 </ul>
 <section id="pre-requisites">
 <h2>Pre-Requisites<a class="headerlink" href="#pre-requisites" title="Link to this heading"></a></h2>
-<ul>
-<li><p>Hardware</p>
-<ul class="simple">
-<li><p>RaspberryPi 5</p></li>
-<li><p>Digilent MCC HATs</p>
-<ul>
-<li><p>currently supported HATs: MCC118, MCC134</p></li>
-</ul>
-</li>
-<li><p>HX711 weight scales input module</p></li>
-</ul>
-</li>
-<li><p>Software</p>
-<ul>
-<li><p>Installed the shared library and tools for MCC DAQ Hat</p>
-<ul>
-<li><p>Summary</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~
-git<span class="w"> </span>clone<span class="w"> </span>https://github.com/mccdaq/daqhats.git
-<span class="nb">cd</span><span class="w"> </span>~/daqhats
-sudo<span class="w"> </span>./install.sh
-</pre></div>
-</div>
-</li>
-<li><p>For more details, checkout https://mccdaq.github.io/daqhats/install.html</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>Toolchain</p>
-<ul class="simple">
-<li><p>Install <a class="reference external" href="https://hatch.pypa.io/">Hatch</a> as python manager:</p>
-<ul>
-<li><p>Python/Pip already there: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">hatch</span> <span class="pre">--break-system-packages</span></code></p></li>
-<li><p>Set global hatch config: <code class="docutils literal notranslate"><span class="pre">hatch</span> <span class="pre">config</span> <span class="pre">set</span> <span class="pre">dirs.env.virtual</span> <span class="pre">.hatch</span></code></p></li>
-</ul>
-</li>
-<li><p>Notes</p>
-<ul>
-<li><p>On Windows system, the <a class="reference external" href="https://abyz.me.uk/lg/py_lgpio.html">lgpio</a> library is not installed. Building docs and other features not available.</p></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<p>Please check the <a class="reference internal" href="#docs/prerequisites.rst"><span class="xref myst">pre-requisites documentation</span></a>.</p>
 </section>
 <section id="getting-started">
 <h2>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h2>
@@ -523,19 +482,29 @@ sudo<span class="w"> </span>./install.sh
 <li><p>…install environment: <code class="docutils literal notranslate"> <span class="pre">hatch</span> <span class="pre">env</span> <span class="pre">create</span></code></p></li>
 <li><p>…run pre-commit: <code class="docutils literal notranslate"><span class="pre">hatch</span> <span class="pre">run</span> <span class="pre">fix</span></code></p></li>
 <li><p>…create docs: <code class="docutils literal notranslate"><span class="pre">hatch</span> <span class="pre">run</span> <span class="pre">docs</span></code></p></li>
-<li><p>…build: <code class="docutils literal notranslate"><span class="pre">hatch</span> <span class="pre">run</span> <span class="pre">dev</span></code></p></li>
 <li><p>…run: <code class="docutils literal notranslate"><span class="pre">hatch</span> <span class="pre">run</span> <span class="pre">measurement-system</span></code></p></li>
 </ul>
 <p>Check <a class="reference internal" href="#pyproject.toml"><span class="xref myst">pyproject.toml</span></a> for more scripts in section [tool.hatch.envs.default.scripts]</p>
 <p>Use any hatch command to sync dependencies.</p>
 </section>
 </section>
+<section id="prerequisites">
+<h1>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="prerequisites.html">Prerequisites</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="prerequisites.html#hardware">Hardware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prerequisites.html#software">Software</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
 <section id="user-guide">
 <h1>User Guide<a class="headerlink" href="#user-guide" title="Link to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="user_guide.html#prerequisites">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user_guide.html#usage-windows">Usage (Windows)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user_guide.html#troubleshooting">Troubleshooting</a></li>
 </ul>
@@ -573,7 +542,7 @@ sudo<span class="w"> </span>./install.sh
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="user_guide.html" class="btn btn-neutral float-right" title="User Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="prerequisites.html" class="btn btn-neutral float-right" title="Prerequisites" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

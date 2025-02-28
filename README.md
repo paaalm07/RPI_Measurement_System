@@ -14,27 +14,8 @@ Measurement-System based on RaspberryPi 5 hardware.
 - Visualization: [ComVisu](http://comvisu.de/)
 
 ## Pre-Requisites
-- Hardware
-    - RaspberryPi 5
-    - Digilent MCC HATs
-        - currently supported HATs: MCC118, MCC134
-    - HX711 weight scales input module
-- Software
-    - Installed the shared library and tools for MCC DAQ Hat
-        - Summary
-            ```bash
-            cd ~
-            git clone https://github.com/mccdaq/daqhats.git
-            cd ~/daqhats
-            sudo ./install.sh
-            ```  
-        - For more details, checkout https://mccdaq.github.io/daqhats/install.html
-- Toolchain
-    - Install [Hatch](https://hatch.pypa.io/) as python manager:
-        - Python/Pip already there: ```pip install hatch --break-system-packages```
-        - Set global hatch config: ```hatch config set dirs.env.virtual .hatch```
-    - Notes
-        - On Windows system, the [lgpio](https://abyz.me.uk/lg/py_lgpio.html) library is not installed. Building docs and other features not available.
+
+Please check the [pre-requisites documentation](docs/prerequisites.rst).
 
 ## Getting Started
 
@@ -43,7 +24,6 @@ Use [Hatch](https://hatch.pypa.io/) to...
 - ...install environment: ``` hatch env create```
 - ...run pre-commit: ```hatch run fix```
 - ...create docs: ```hatch run docs```
-- ...build: ```hatch run dev```
 - ...run: ```hatch run measurement-system```
 
 Check [pyproject.toml](pyproject.toml) for more scripts in section [tool.hatch.envs.default.scripts]

@@ -25,7 +25,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Developement Guide" href="dev_guide.html" />
-    <link rel="prev" title="Measurement-System" href="index.html" />
+    <link rel="prev" title="Prerequisites" href="prerequisites.html" />
 </head>
 
 <body class="wy-body-for-nav">
@@ -51,20 +51,23 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="prerequisites.html">Prerequisites</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="prerequisites.html#hardware">Hardware</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="prerequisites.html#connections">Connections</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="prerequisites.html#software">Software</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="prerequisites.html#repository">Repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="prerequisites.html#daqhats-shared-library">Daqhats Shared Library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="prerequisites.html#hatch">Hatch</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">User Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#raspberrypi">RaspberryPi</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#hardware">Hardware</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#connections">Connections</a></li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#software">Software</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#windows">Windows</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="#usage-windows">Usage (Windows)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#general-usage">General Usage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#channel-configuration">Channel Configuration</a><ul>
@@ -79,7 +82,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id3">Software</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#software">Software</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#measurement-system-lockfile">Measurement System Lockfile</a></li>
 </ul>
 </li>
@@ -456,38 +459,6 @@
 
   <section id="user-guide">
 <h1>User Guide<a class="headerlink" href="#user-guide" title="Link to this heading"></a></h1>
-<section id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
-<section id="raspberrypi">
-<h3>RaspberryPi<a class="headerlink" href="#raspberrypi" title="Link to this heading"></a></h3>
-<section id="hardware">
-<h4>Hardware<a class="headerlink" href="#hardware" title="Link to this heading"></a></h4>
-<ol class="arabic simple">
-<li><p>Install Digilent HATs</p></li>
-<li><p>Install DIO HAT</p></li>
-<li><p>Insert USB Stick (or SD-Card reader)</p></li>
-</ol>
-<section id="connections">
-<h5>Connections<a class="headerlink" href="#connections" title="Link to this heading"></a></h5>
-<p>…to be defined</p>
-</section>
-</section>
-<section id="software">
-<h4>Software<a class="headerlink" href="#software" title="Link to this heading"></a></h4>
-<ul class="simple">
-<li><p>Clone the git repository into <code class="docutils literal notranslate"><span class="pre">~/Documents/RPI_Measurement_System</span></code>. This path is mandatory, otherwise the <code class="docutils literal notranslate"><span class="pre">START</span> <span class="pre">Measurement</span> <span class="pre">System.bat</span></code> won’t work (or has to be adapted).</p></li>
-<li><p>Hatch has to be installed, see pre-requisites in <code class="docutils literal notranslate"><span class="pre">README.md</span></code></p></li>
-<li><p>Shared library and tools for MCC DAQ Hat has to be installed, see pre-requisites in <code class="docutils literal notranslate"><span class="pre">README.md</span></code></p></li>
-</ul>
-</section>
-</section>
-<section id="windows">
-<h3>Windows<a class="headerlink" href="#windows" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p>Clone the git repository anywhere on the PC</p></li>
-</ul>
-</section>
-</section>
 <section id="usage-windows">
 <h2>Usage (Windows)<a class="headerlink" href="#usage-windows" title="Link to this heading"></a></h2>
 <section id="general-usage">
@@ -907,8 +878,8 @@ Also a communication overflows can happen, which may lead to a system crash.</p>
 </section>
 <section id="troubleshooting">
 <h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
-<section id="id3">
-<h3>Software<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<section id="software">
+<h3>Software<a class="headerlink" href="#software" title="Link to this heading"></a></h3>
 <p>On any issue, always check command line logs either in <em>ComVisu GUI</em> or in the <em>Terminal</em> where the batch file was started.</p>
 <section id="measurement-system-lockfile">
 <h4>Measurement System Lockfile<a class="headerlink" href="#measurement-system-lockfile" title="Link to this heading"></a></h4>
@@ -926,7 +897,7 @@ The system is then ready for a new attempt. This also happens on reboot.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Measurement-System" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="prerequisites.html" class="btn btn-neutral float-left" title="Prerequisites" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="dev_guide.html" class="btn btn-neutral float-right" title="Developement Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
