@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Index &mdash; Measurement System 0.1.dev35+g38b34c5.d20250215 documentation</title>
+  <title>Index &mdash; Measurement System 0.1.dev41+g590ca12 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -15,7 +15,7 @@
 
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=5a714d8d"></script>
+        <script src="_static/documentation_options.js?v=328826c9"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -38,7 +38,7 @@
               <img src="_static/logo.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                0.1.dev35+g38b34c5.d20250215
+                0.1.dev41+g590ca12
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -50,7 +50,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="user_guide.html#preparation">Preparation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#prerequisites">Prerequisites</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="user_guide.html#raspberrypi">RaspberryPi</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="user_guide.html#hardware">Hardware</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="user_guide.html#connections">Connections</a></li>
@@ -62,8 +62,24 @@
 <li class="toctree-l3"><a class="reference internal" href="user_guide.html#windows">Windows</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="user_guide.html#execute-windows">Execute (Windows)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="user_guide.html#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#usage-windows">Usage (Windows)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guide.html#general-usage">General Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guide.html#channel-configuration">Channel Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guide.html#modify-channel-configuration">Modify Channel Configuration</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="user_guide.html#models">Models</a></li>
+<li class="toctree-l5"><a class="reference internal" href="user_guide.html#sample-rate">Sample Rate</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guide.html#configuration-files">Configuration Files</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guide.html#id3">Software</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guide.html#measurement-system-lockfile">Measurement System Lockfile</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -481,18 +497,18 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference.html#MeasurementSystem.core.common.Ceda.Ceda.append">append() (Ceda method)</a>
 </li>
-      <li><a href="reference.html#MeasurementSystem.core.common.Models.KTYxModel.apply">apply() (KTYxModel method)</a>
+      <li><a href="reference.html#MeasurementSystem.core.common.Models.KTYxModel.apply">apply() (KTYxModel method)</a>, <a href="user_guide.html#MeasurementSystem.core.common.Models.KTYxModel.apply">[1]</a>
 
       <ul>
-        <li><a href="reference.html#MeasurementSystem.core.common.Models.LinearModel.apply">(LinearModel method)</a>
+        <li><a href="reference.html#MeasurementSystem.core.common.Models.LinearModel.apply">(LinearModel method)</a>, <a href="user_guide.html#MeasurementSystem.core.common.Models.LinearModel.apply">[1]</a>
 </li>
         <li><a href="reference.html#MeasurementSystem.core.common.Models.Model.apply">(Model method)</a>
 </li>
-        <li><a href="reference.html#MeasurementSystem.core.common.Models.NTCModel.apply">(NTCModel method)</a>
+        <li><a href="reference.html#MeasurementSystem.core.common.Models.NTCModel.apply">(NTCModel method)</a>, <a href="user_guide.html#MeasurementSystem.core.common.Models.NTCModel.apply">[1]</a>
 </li>
-        <li><a href="reference.html#MeasurementSystem.core.common.Models.PTxModel.apply">(PTxModel method)</a>
+        <li><a href="reference.html#MeasurementSystem.core.common.Models.PTxModel.apply">(PTxModel method)</a>, <a href="user_guide.html#MeasurementSystem.core.common.Models.PTxModel.apply">[1]</a>
 </li>
-        <li><a href="reference.html#MeasurementSystem.core.common.Models.StackedModel.apply">(StackedModel method)</a>
+        <li><a href="reference.html#MeasurementSystem.core.common.Models.StackedModel.apply">(StackedModel method)</a>, <a href="user_guide.html#MeasurementSystem.core.common.Models.StackedModel.apply">[1]</a>
 </li>
       </ul></li>
       <li><a href="reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_WeighScalesHX711.ReadType.AVG">AVG (Module_RPI_WeighScalesHX711.ReadType attribute)</a>
@@ -787,7 +803,7 @@
 <h2 id="K">K</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference.html#MeasurementSystem.core.common.Models.KTYxModel">KTYxModel (class in MeasurementSystem.core.common.Models)</a>
+      <li><a href="reference.html#MeasurementSystem.core.common.Models.KTYxModel">KTYxModel (class in MeasurementSystem.core.common.Models)</a>, <a href="user_guide.html#MeasurementSystem.core.common.Models.KTYxModel">[1]</a>
 </li>
   </ul></td>
 </tr></table>
@@ -795,7 +811,7 @@
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference.html#MeasurementSystem.core.common.Models.LinearModel">LinearModel (class in MeasurementSystem.core.common.Models)</a>
+      <li><a href="reference.html#MeasurementSystem.core.common.Models.LinearModel">LinearModel (class in MeasurementSystem.core.common.Models)</a>, <a href="user_guide.html#MeasurementSystem.core.common.Models.LinearModel">[1]</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -964,7 +980,7 @@
 <h2 id="N">N</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference.html#MeasurementSystem.core.common.Models.NTCModel">NTCModel (class in MeasurementSystem.core.common.Models)</a>
+      <li><a href="reference.html#MeasurementSystem.core.common.Models.NTCModel">NTCModel (class in MeasurementSystem.core.common.Models)</a>, <a href="user_guide.html#MeasurementSystem.core.common.Models.NTCModel">[1]</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1000,7 +1016,7 @@
 </li>
       <li><a href="reference.html#MeasurementSystem.measurement_server.MeasurementSystem.process_commands">process_commands() (MeasurementSystem method)</a>
 </li>
-      <li><a href="reference.html#MeasurementSystem.core.common.Models.PTxModel">PTxModel (class in MeasurementSystem.core.common.Models)</a>
+      <li><a href="reference.html#MeasurementSystem.core.common.Models.PTxModel">PTxModel (class in MeasurementSystem.core.common.Models)</a>, <a href="user_guide.html#MeasurementSystem.core.common.Models.PTxModel">[1]</a>
 </li>
       <li><a href="reference.html#MeasurementSystem.core.common.Utils.OrderedPriorityQueue.put">put() (OrderedPriorityQueue method)</a>
 </li>
@@ -1068,7 +1084,7 @@
 </li>
       <li><a href="reference.html#MeasurementSystem.core.driver.RaspberryPi.Module_RPI_StepperMotor.setDirection">setDirection() (Module_RPI_StepperMotor method)</a>
 </li>
-      <li><a href="reference.html#MeasurementSystem.core.common.Models.StackedModel">StackedModel (class in MeasurementSystem.core.common.Models)</a>
+      <li><a href="reference.html#MeasurementSystem.core.common.Models.StackedModel">StackedModel (class in MeasurementSystem.core.common.Models)</a>, <a href="user_guide.html#MeasurementSystem.core.common.Models.StackedModel">[1]</a>
 </li>
       <li><a href="reference.html#MeasurementSystem.measurement_server.ControlTask.start">start() (ControlTask method)</a>
 
@@ -1123,17 +1139,17 @@
       <li><a href="reference.html#MeasurementSystem.core.comvisu.Command.Command.to_string">to_string() (Command method)</a>
 
       <ul>
-        <li><a href="reference.html#MeasurementSystem.core.common.Models.KTYxModel.to_string">(KTYxModel method)</a>
+        <li><a href="reference.html#MeasurementSystem.core.common.Models.KTYxModel.to_string">(KTYxModel method)</a>, <a href="user_guide.html#MeasurementSystem.core.common.Models.KTYxModel.to_string">[1]</a>
 </li>
-        <li><a href="reference.html#MeasurementSystem.core.common.Models.LinearModel.to_string">(LinearModel method)</a>
+        <li><a href="reference.html#MeasurementSystem.core.common.Models.LinearModel.to_string">(LinearModel method)</a>, <a href="user_guide.html#MeasurementSystem.core.common.Models.LinearModel.to_string">[1]</a>
 </li>
         <li><a href="reference.html#MeasurementSystem.core.common.Models.Model.to_string">(Model method)</a>
 </li>
-        <li><a href="reference.html#MeasurementSystem.core.common.Models.NTCModel.to_string">(NTCModel method)</a>
+        <li><a href="reference.html#MeasurementSystem.core.common.Models.NTCModel.to_string">(NTCModel method)</a>, <a href="user_guide.html#MeasurementSystem.core.common.Models.NTCModel.to_string">[1]</a>
 </li>
-        <li><a href="reference.html#MeasurementSystem.core.common.Models.PTxModel.to_string">(PTxModel method)</a>
+        <li><a href="reference.html#MeasurementSystem.core.common.Models.PTxModel.to_string">(PTxModel method)</a>, <a href="user_guide.html#MeasurementSystem.core.common.Models.PTxModel.to_string">[1]</a>
 </li>
-        <li><a href="reference.html#MeasurementSystem.core.common.Models.StackedModel.to_string">(StackedModel method)</a>
+        <li><a href="reference.html#MeasurementSystem.core.common.Models.StackedModel.to_string">(StackedModel method)</a>, <a href="user_guide.html#MeasurementSystem.core.common.Models.StackedModel.to_string">[1]</a>
 </li>
       </ul></li>
   </ul></td>

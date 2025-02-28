@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>User Guide &mdash; Measurement System 0.1.dev35+g38b34c5.d20250215 documentation</title>
+  <title>User Guide &mdash; Measurement System 0.1.dev41+g590ca12 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -16,7 +16,7 @@
 
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=5a714d8d"></script>
+        <script src="_static/documentation_options.js?v=328826c9"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -41,7 +41,7 @@
               <img src="_static/logo.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                0.1.dev35+g38b34c5.d20250215
+                0.1.dev41+g590ca12
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -53,7 +53,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">User Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#preparation">Preparation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#raspberrypi">RaspberryPi</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#hardware">Hardware</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#connections">Connections</a></li>
@@ -65,8 +65,24 @@
 <li class="toctree-l3"><a class="reference internal" href="#windows">Windows</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#execute-windows">Execute (Windows)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage-windows">Usage (Windows)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#general-usage">General Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#channel-configuration">Channel Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#modify-channel-configuration">Modify Channel Configuration</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#models">Models</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#sample-rate">Sample Rate</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-files">Configuration Files</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Software</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#measurement-system-lockfile">Measurement System Lockfile</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -440,8 +456,8 @@
 
   <section id="user-guide">
 <h1>User Guide<a class="headerlink" href="#user-guide" title="Link to this heading"></a></h1>
-<section id="preparation">
-<h2>Preparation<a class="headerlink" href="#preparation" title="Link to this heading"></a></h2>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
 <section id="raspberrypi">
 <h3>RaspberryPi<a class="headerlink" href="#raspberrypi" title="Link to this heading"></a></h3>
 <section id="hardware">
@@ -472,27 +488,436 @@
 </ul>
 </section>
 </section>
-<section id="execute-windows">
-<h2>Execute (Windows)<a class="headerlink" href="#execute-windows" title="Link to this heading"></a></h2>
+<section id="usage-windows">
+<h2>Usage (Windows)<a class="headerlink" href="#usage-windows" title="Link to this heading"></a></h2>
+<section id="general-usage">
+<h3>General Usage<a class="headerlink" href="#general-usage" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
-<li><p>Start <code class="docutils literal notranslate"><span class="pre">ComVisu.exe</span></code></p></li>
-<li><p>Press <code class="docutils literal notranslate"><span class="pre">Verbinden</span></code></p></li>
-<li><p>Move to <code class="docutils literal notranslate"><span class="pre">Startseite</span></code> sheet</p></li>
-<li><p>Start <code class="docutils literal notranslate"><span class="pre">START</span> <span class="pre">Measurement</span> <span class="pre">System.bat</span></code></p></li>
-<li><p>Make sure a USB drive is plugged in</p></li>
-<li><p>Press <code class="docutils literal notranslate"><span class="pre">Mess-System:</span> <span class="pre">START</span></code></p></li>
-<li><p>Execute the tests</p></li>
-<li><p>Press <code class="docutils literal notranslate"><span class="pre">Mess-System:</span> <span class="pre">STOP</span></code> to stop and save the data to the USB drive</p></li>
+<li><p>Start the ComVisu software: <code class="docutils literal notranslate"><span class="pre">others/ComVisu/ComvisuV180Win64.exe</span></code></p></li>
 </ol>
-<section id="troubleshooting">
-<h3>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h3>
+<blockquote>
+<div><img alt="ComVisu_Exe" src="_images/ComVisu_Exe.png" />
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>Switch to run tab and connect the interface</p></li>
+</ol>
+<blockquote>
+<div><img alt="ComVisu_InterfaceConnect" src="_images/ComVisu_InterfaceConnect.png" />
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>Move to main sheet: <code class="docutils literal notranslate"><span class="pre">Startseite</span></code></p></li>
+</ol>
+<blockquote>
+<div><img alt="ComVisu_MainSheet" src="_images/ComVisu_MainSheet.png" />
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li><p>Run the batchfile to start the measurement system: <code class="docutils literal notranslate"><span class="pre">others/ComVisu/START</span> <span class="pre">Measurement</span> <span class="pre">System.bat</span></code></p></li>
+</ol>
+<blockquote>
+<div><img alt="MeasurementSystem_StartBat" src="_images/MeasurementSystem_StartBat.png" />
+</div></blockquote>
+<ol class="arabic" start="5">
+<li><p>Enter password for the Raspberry Pi and press enter</p>
+<blockquote>
+<div><img alt="MeasurementSystem_Connected" src="_images/MeasurementSystem_Connected.png" />
+</div></blockquote>
+</li>
+<li><p>Check the <em>keep-alive</em> indicator in the ComVisu GUI. If it is repeatedly flashing green, the connection is established.</p>
+<blockquote>
+<div><img alt="ComVisu_KeepAlive" src="_images/ComVisu_KeepAlive.png" />
+</div></blockquote>
+</li>
+<li><p>Ensure a USB drive is connected to the Raspberry Pi.</p></li>
+<li><p>Start the measurement system by prinning <code class="docutils literal notranslate"><span class="pre">Mess-System:</span> <span class="pre">START</span></code></p></li>
+</ol>
+<blockquote>
+<div><img alt="ComVisu_StartMeasurementSystem" src="_images/ComVisu_StartMeasurementSystem.png" />
+</div></blockquote>
+<ol class="arabic simple" start="9">
+<li><p>Perform the tests on the measurement system</p></li>
+<li><p>Once the tests are finished, press <code class="docutils literal notranslate"><span class="pre">Mess-System:</span> <span class="pre">STOP</span></code>. Data will be saved on the USB drive.</p></li>
+</ol>
+<blockquote>
+<div><img alt="ComVisu_StopMeasurementSystem" src="_images/ComVisu_StopMeasurementSystem.png" />
+</div></blockquote>
+<ol class="arabic simple" start="11">
+<li><p>Stop the measuremen system by pressing <code class="docutils literal notranslate"><span class="pre">CTRL+C</span></code> in the terminal.</p></li>
+</ol>
+<blockquote>
+<div><img alt="MeasurementSystem_Stop" src="_images/MeasurementSystem_Stop.png" />
+</div></blockquote>
+</section>
+<section id="channel-configuration">
+<h3>Channel Configuration<a class="headerlink" href="#channel-configuration" title="Link to this heading"></a></h3>
+<section id="modify-channel-configuration">
+<h4>Modify Channel Configuration<a class="headerlink" href="#modify-channel-configuration" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Repeat steps 1-6 from the General Usage section.</p></li>
+<li><p>Move to main sheet: <code class="docutils literal notranslate"><span class="pre">Konfiguration</span></code></p></li>
+</ol>
+<blockquote>
+<div><img alt="ComVisu_ConfigurationSheet" src="_images/ComVisu_ConfigurationSheet.png" />
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>Select the channel you want to configure</p></li>
+</ol>
+<blockquote>
+<div><img alt="ComVisu_ChannelConfiguration" src="_images/ComVisu_ChannelConfiguration.png" />
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li><p>Modify the channel settings (ON/OFF, model selection, or sample rate). After making a change, the channel will be deselected. Only one parameter can be adjusted at a time; reselect the channel to alter another parameter.</p></li>
+</ol>
+<blockquote>
+<div><img alt="ComVisu_ChannelConfiguration" src="_images/ComVisu_ChannelConfiguration.png" />
+</div></blockquote>
+<section id="models">
+<h5>Models<a class="headerlink" href="#models" title="Link to this heading"></a></h5>
+<p>The following models are available:</p>
 <ul class="simple">
-<li><p>On any issue, always check command line logs either in ComViso GUI or in the Terminal where the batch file was started.
-It gives mostly useful hints for debugging later on.</p></li>
-<li><p>The measurement system uses a lockfile to prevent double execution.
-When a 2nd start is recognized, the active process will be killed and the lockfile will be removed.
-The system is then ready for a new attempt. This also happens on reboot.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LinearModel</span></code>: A model for a linear expression.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NTCModel</span></code>: A model for a NTC thermistor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PTxModel</span></code>: A model for a PT100 or PT1000 or similar platinum resistance temperature sensor (PTx).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">KTYxModel</span></code>: A model for a KTY81-110 or similar silicon temperature sensor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">StackedModel</span></code>: It allows stacking multiple models in a specific order, where the output of each model is passed as input to the next.</p></li>
 </ul>
+<section id="references">
+<h6>References<a class="headerlink" href="#references" title="Link to this heading"></a></h6>
+<blockquote>
+<div><dl class="py class">
+<dt class="sig sig-object py" id="MeasurementSystem.core.common.Models.LinearModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LinearModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gain</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MeasurementSystem/core/common/Models.html#LinearModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MeasurementSystem.core.common.Models.LinearModel" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="reference.html#MeasurementSystem.core.common.Models.Model" title="MeasurementSystem.core.common.Models.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p>
+<p>A model for a linear expression.
+output = input * gain + offset</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>offset</strong> (<em>float</em>) – The offset of the linear model.</p></li>
+<li><p><strong>gain</strong> (<em>float</em>) – The gain of the linear model.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new LinearModel instance.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#MeasurementSystem.core.common.Models.LinearModel" title="MeasurementSystem.core.common.Models.LinearModel">LinearModel</a></p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="MeasurementSystem.core.common.Models.LinearModel.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/MeasurementSystem/core/common/Models.html#LinearModel.apply"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MeasurementSystem.core.common.Models.LinearModel.apply" title="Link to this definition"></a></dt>
+<dd><p>Apply the linear model to a value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>float</em>) – The value to apply the linear model to.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The result of applying the linear model to the given value.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MeasurementSystem.core.common.Models.LinearModel.to_string">
+<span class="sig-name descname"><span class="pre">to_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/MeasurementSystem/core/common/Models.html#LinearModel.to_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MeasurementSystem.core.common.Models.LinearModel.to_string" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A string representation of the LinearModel instance.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="MeasurementSystem.core.common.Models.NTCModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NTCModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">25</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MeasurementSystem/core/common/Models.html#NTCModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MeasurementSystem.core.common.Models.NTCModel" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="reference.html#MeasurementSystem.core.common.Models.Model" title="MeasurementSystem.core.common.Models.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p>
+<p>A model for an NTC thermistor.
+The model describes the mathematical relationship between the resistance and temperature.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r0</strong> (<em>float</em>) – The nominal resistance of the NTC thermistor at the reference temperature T0.</p></li>
+<li><p><strong>beta</strong> (<em>float</em>) – The beta value of the NTC thermistor.</p></li>
+<li><p><strong>t0</strong> – The reference temperature in Celsius. Defaults to 25 degrees Celsius.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new NTCModel instance.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#MeasurementSystem.core.common.Models.NTCModel" title="MeasurementSystem.core.common.Models.NTCModel">NTCModel</a></p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="MeasurementSystem.core.common.Models.NTCModel.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resistance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/MeasurementSystem/core/common/Models.html#NTCModel.apply"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MeasurementSystem.core.common.Models.NTCModel.apply" title="Link to this definition"></a></dt>
+<dd><p>Apply the NTCModel to a given resistance value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>resistance</strong> (<em>float</em>) – The resistance value to apply the NTCModel to.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The temperature in Celsius.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<section id="note">
+<h6 aria-level="7">Note<a class="headerlink" href="#note" title="Link to this heading"></a></h6>
+<p>The temperature is calculated using the formula
+T = 1 / (1 / T0 + 1 / beta * ln(R/R0))
+where T0 is the reference temperature in Kelvin, beta is the beta value
+of the NTC thermistor, R is the given resistance value, and R0 is the
+nominal resistance of the NTC thermistor at the reference temperature.
+The result is converted from Kelvin to Celsius before being returned.</p>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MeasurementSystem.core.common.Models.NTCModel.to_string">
+<span class="sig-name descname"><span class="pre">to_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/MeasurementSystem/core/common/Models.html#NTCModel.to_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MeasurementSystem.core.common.Models.NTCModel.to_string" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A string representation of the NTCModel instance.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="MeasurementSystem.core.common.Models.PTxModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PTxModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MeasurementSystem/core/common/Models.html#PTxModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MeasurementSystem.core.common.Models.PTxModel" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="reference.html#MeasurementSystem.core.common.Models.Model" title="MeasurementSystem.core.common.Models.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p>
+<p>A model for a PT100 or PT1000 or similar platinum resistance temperature sensor (PTx).
+The model describes the mathematical relationship between the resistance and temperature.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>r0</strong> (<em>float</em>) – The nominal resistance of the PTx thermistor at the reference temperature.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new PTxModel instance.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#MeasurementSystem.core.common.Models.PTxModel" title="MeasurementSystem.core.common.Models.PTxModel">PTxModel</a></p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="MeasurementSystem.core.common.Models.PTxModel.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resistance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/MeasurementSystem/core/common/Models.html#PTxModel.apply"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MeasurementSystem.core.common.Models.PTxModel.apply" title="Link to this definition"></a></dt>
+<dd><p>Apply the PTxModel to a given resistance value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>resistance</strong> (<em>float</em>) – The resistance value to apply the PTxModel to.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The temperature in Celsius.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<section id="id1">
+<h6 aria-level="7">Note<a class="headerlink" href="#id1" title="Link to this heading"></a></h6>
+<p>The temperature is calculated using the formula
+T = (R - R0) / (R0 * alpha)
+where R is the given resistance value, R0 is the nominal resistance of the
+PTx thermistor at the reference temperature, and alpha is the temperature
+coefficient of the PTx thermistor.</p>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MeasurementSystem.core.common.Models.PTxModel.to_string">
+<span class="sig-name descname"><span class="pre">to_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/MeasurementSystem/core/common/Models.html#PTxModel.to_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MeasurementSystem.core.common.Models.PTxModel.to_string" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A string representation of the PTxModel instance.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="MeasurementSystem.core.common.Models.KTYxModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">KTYxModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">7.88e-3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.937e-5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">25.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MeasurementSystem/core/common/Models.html#KTYxModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MeasurementSystem.core.common.Models.KTYxModel" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="reference.html#MeasurementSystem.core.common.Models.Model" title="MeasurementSystem.core.common.Models.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p>
+<p>A model for a KTY81-110 or similar silicon temperature sensor.
+The model describes the mathematical relationship between the sensor’s resistance and temperature.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r0</strong> (<em>float</em>) – The nominal resistance of the KTYx thermistor at the reference temperature T0.</p></li>
+<li><p><strong>alpha</strong> (<em>float</em>) – The temperature coefficient of the KTYx thermistor. Defaults to 7.88e-3.</p></li>
+<li><p><strong>beta</strong> (<em>float</em>) – The non-linear coefficient of the KTYx thermistor. Defaults to 1.937e-5.</p></li>
+<li><p><strong>t0</strong> – The reference temperature in Celsius. Defaults to 25 degrees Celsius.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new KTYxModel instance.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#MeasurementSystem.core.common.Models.KTYxModel" title="MeasurementSystem.core.common.Models.KTYxModel">KTYxModel</a></p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="MeasurementSystem.core.common.Models.KTYxModel.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resistance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/MeasurementSystem/core/common/Models.html#KTYxModel.apply"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MeasurementSystem.core.common.Models.KTYxModel.apply" title="Link to this definition"></a></dt>
+<dd><p>Apply the KTYxModel to a given resistance value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>resistance</strong> (<em>float</em>) – The resistance value to apply the KTYxModel to.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The temperature in Celsius.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<section id="id2">
+<h6 aria-level="7">Note<a class="headerlink" href="#id2" title="Link to this heading"></a></h6>
+<p>Calculation Info: <a class="reference external" href="https://docs.rs-online.com/2611/0900766b800910a6.pdf">https://docs.rs-online.com/2611/0900766b800910a6.pdf</a></p>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MeasurementSystem.core.common.Models.KTYxModel.to_string">
+<span class="sig-name descname"><span class="pre">to_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/MeasurementSystem/core/common/Models.html#KTYxModel.to_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MeasurementSystem.core.common.Models.KTYxModel.to_string" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A string representation of the KTYxModel instance.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="MeasurementSystem.core.common.Models.StackedModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">StackedModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">models</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="reference.html#MeasurementSystem.core.common.Models.Model" title="MeasurementSystem.core.common.Models.Model"><span class="pre">Model</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MeasurementSystem/core/common/Models.html#StackedModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MeasurementSystem.core.common.Models.StackedModel" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="reference.html#MeasurementSystem.core.common.Models.Model" title="MeasurementSystem.core.common.Models.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p>
+<p>A Model that consists of multiple sub-models stacked together.</p>
+<p>The StackedModel class is a type of Model that combines multiple sub-models to produce a final output.
+It provides a way to create complex models by stacking simpler models together.</p>
+<p>The order of the models in the list is important. The first defined model is the first to be applied to the input value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>models</strong> (<em>List</em><em>[</em><a class="reference internal" href="reference.html#MeasurementSystem.core.common.Models.Model" title="MeasurementSystem.core.common.Models.Model"><em>Model</em></a><em>]</em>) – A list of Model instances.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new StackedModel instance.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#MeasurementSystem.core.common.Models.StackedModel" title="MeasurementSystem.core.common.Models.StackedModel">StackedModel</a></p>
+</dd>
+</dl>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">MeasurementSystem.core.driver.Hardware</span><span class="w"> </span><span class="kn">import</span> <span class="n">Channel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">MeasurementSystem.core.driver.Hardware</span><span class="w"> </span><span class="kn">import</span> <span class="n">StackedModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">MeasurementSystem.core.driver.Hardware</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearModel</span>
+<span class="n">channel</span> <span class="o">=</span> <span class="n">Channel</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">LinearModel</span><span class="p">(</span><span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">gain</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">channel</span><span class="o">.</span><span class="n">set_model_from_str</span><span class="p">(</span><span class="s2">&quot;StackedModel([LinearModel(offset=100, gain=1), LinearModel(offset=0, gain=10)])&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<dl class="py method">
+<dt class="sig sig-object py" id="MeasurementSystem.core.common.Models.StackedModel.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/MeasurementSystem/core/common/Models.html#StackedModel.apply"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MeasurementSystem.core.common.Models.StackedModel.apply" title="Link to this definition"></a></dt>
+<dd><p>Apply the stacked models to a value in order of the models in the list. The result
+of each model is passed as the input to the next model in the stack.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>float</em>) – The value to apply the stacked models to.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The result of applying the stacked models to the given value.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MeasurementSystem.core.common.Models.StackedModel.to_string">
+<span class="sig-name descname"><span class="pre">to_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/MeasurementSystem/core/common/Models.html#StackedModel.to_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MeasurementSystem.core.common.Models.StackedModel.to_string" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A string representation of the StackedModel instance.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div></blockquote>
+</section>
+</section>
+<section id="sample-rate">
+<h5>Sample Rate<a class="headerlink" href="#sample-rate" title="Link to this heading"></a></h5>
+<p>Sample rate in <em>Hz</em> or <em>samples per second</em>.</p>
+<p>A value of &lt;= 0 will lead to full system speed. This is not recommended as it will lead also to a high CPU load and/or overflows and data loss.
+Also a communication overflows can happen, which may lead to a system crash.</p>
+<p><strong>Note:</strong> The maximum value has to be evaluated, especially with a high number of channels enabled. Not done yet.</p>
+</section>
+</section>
+</section>
+<section id="configuration-files">
+<h3>Configuration Files<a class="headerlink" href="#configuration-files" title="Link to this heading"></a></h3>
+<p>The configuration files are located in the <code class="docutils literal notranslate"><span class="pre">src/MeasurementSystem/config</span></code> directory.</p>
+<img alt="MeasurementSystem_ConfigurationFiles" src="_images/MeasurementSystem_ConfigurationFiles.png" />
+<p><strong>Important:</strong> Changes in channel configurations will be applied immediately, but the file is not saved without manual intervention.</p>
+<img alt="ComVisu_ConfigFileControls" src="_images/ComVisu_ConfigFileControls.png" />
+<ul class="simple">
+<li><p>Save/Load User: Save or load the current configuration to/from a file. Files saved as <code class="docutils literal notranslate"><span class="pre">*_user.json</span></code>.</p></li>
+<li><p>Load Default: Load the pre-configured default configuration from a file. Files saved as <code class="docutils literal notranslate"><span class="pre">*_default.json</span></code>.</p></li>
+</ul>
+<p>Configuration files are stored in three diffrent levels: <em>hardware</em>, <em>channel</em> and <em>module</em></p>
+<ul class="simple">
+<li><p><em>hardware</em>: Contains the configuration for the hardware.</p></li>
+<li><p><em>channel</em>: Contains the configuration for channels and its parent hardware.</p></li>
+<li><p><em>module</em>: Contains the configuration for modules, its parent hardware and its channels.</p></li>
+</ul>
+<img alt="MeasurementSystem_ConfigurationConcept" src="_images/MeasurementSystem_ConfigurationConcept.png" />
+</section>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<section id="id3">
+<h3>Software<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p>On any issue, always check command line logs either in <em>ComVisu GUI</em> or in the <em>Terminal</em> where the batch file was started.</p>
+<section id="measurement-system-lockfile">
+<h4>Measurement System Lockfile<a class="headerlink" href="#measurement-system-lockfile" title="Link to this heading"></a></h4>
+<p>The measurement system uses a lockfile to prevent double execution.
+This could happen if the system is started twice or the system is not stopped correctly.</p>
+<p>The lockfile is located in <code class="docutils literal notranslate"><span class="pre">/tmp/MeasurementSystem.lock</span></code>.</p>
+<p>When the lockfile is present and the system is started, the active process will be killed and the lockfile will be removed.
+The system is then ready for a new attempt. This also happens on reboot.</p>
+</section>
 </section>
 </section>
 </section>
