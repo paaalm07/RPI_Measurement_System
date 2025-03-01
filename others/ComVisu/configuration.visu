@@ -130,8 +130,8 @@ denom "Konsole"
 source "#999"
 showName true
 showSource true
-position x=0 y=90
-size x=720 y=160
+position x=0 y=0
+size x=650 y=160
 maxLineQty 200
 ordinal false
 timestamp false
@@ -167,8 +167,8 @@ curve8Color $008000FF
 curve9Color $00FF8000
 curve1Strength 1
 unit ""
-position x=0 y=250
-size x=720 y=500
+position x=0 y=90
+size x=725 y=500
 showName true
 showUnit false
 controlSource "#700"
@@ -247,332 +247,13 @@ onTime 0,25
 font name="default" size=11 color=$00000000
 frameColor $00C0C0C0
 framewidth 6
-CVANALOGDISP
-disabled false
-denom "Schieber Test In"
-outDenom "Schieber Test Out"
-source "#511"
-outSource "#510"
-unit ""
-showName true
-showOutName true
-showSource true
-showOutSource true
-showUnit false
-mode inOut
-orientation horz
-showNumeric true
-scaleLabeling true
-position x=7 y=933
-size x=600 y=105
-decimal 2
-fixedDecimal false
-minScale 0
-maxScale 100
-spacing 4
-subspacing 5
-thickness 2
-subThickness 1
-slideSpacing 100
-font name="default" size=11 color=$20000000
-bckGndColor $00F0F0F0
-scaleBckGndColor $00FFFFFF
-needleColor $000000FF
-scaleColor $00000000
-frameColor $00C0C0C0
-framewidth 6
-showAnim true
-CVXYCHART
-disabled false
-denom "Diagram 2 (#720-730)"
-sourceX "#730"
-curveQty 9
-sourceY1 "#721"
-sourceY2 "#722"
-sourceY3 "#723"
-sourceY4 "#724"
-sourceY5 "#725"
-sourceY6 "#726"
-sourceY7 "#727"
-sourceY8 "#728"
-sourceY9 "#729"
-curve1Color $001C46F0
-curve2Color $00926221
-curve3Color $000F8815
-curve4Color $004E34A7
-curve5Color $0005CCFE
-curve6Color $00000040
-curve7Color $006A6A6A
-curve8Color $008000FF
-curve9Color $00FF8000
-curve1Strength 1
-unit ""
-position x=750 y=0
-size x=500 y=445
-showName true
-showUnit false
-controlSource "#720"
-font name="default" size=11 color=$20000000
-bckGndColor $00F0F0F0
-curveBackColor $00FFFFFF
-frameColor $00C0C0C0
-framewidth 6
-xAxisTitle ""
-showXAchsLabel false
-scaleXMin 0
-scaleXMax 48,0627303123474
-spacingX 5
-axisXDecimal 20
-axisXFixDecimal false
-lineVisible true
-xAxisColor $00000000
-xAxisLabelFont name="default" size=0 color=$20000000
-xAxisTitleFont name="default" size=0 color=$20000000
-axisQty 1
-axis1Titel ""
-axis1ShowLabel false
-axis1Left true
-axis1YMin 43,96
-axis1YMax 47,04
-axis1YSpacing 5
-axis1Decimal 20
-axis1FixDecimal false
-axis1color $00000000
-axis1ScaleFont name="default" size=0 color=$20000000
-axis1TitelFont name="default" size=0 color=$20000000
-curve1axis 1
-curve2axis 1
-curve3axis 1
-curve4axis 1
-curve5axis 1
-curve6axis 1
-curve7axis 1
-curve8axis 1
-curve9axis 1
-CVXYCHART
-disabled false
-denom "Diagram 3 (#740-750)"
-sourceX "#750"
-curveQty 9
-sourceY1 "#741"
-sourceY2 "#742"
-sourceY3 "#743"
-sourceY4 "#744"
-sourceY5 "#745"
-sourceY6 "#746"
-sourceY7 "#747"
-sourceY8 "#748"
-sourceY9 "#749"
-curve1Color $001C46F0
-curve2Color $00926221
-curve3Color $000F8815
-curve4Color $004E34A7
-curve5Color $0005CCFE
-curve6Color $00000040
-curve7Color $006A6A6A
-curve8Color $008000FF
-curve9Color $00FF8000
-curve1Strength 1
-unit ""
-position x=750 y=445
-size x=500 y=445
-showName true
-showUnit false
-controlSource "#740"
-font name="default" size=11 color=$20000000
-bckGndColor $00F0F0F0
-curveBackColor $00FFFFFF
-frameColor $00C0C0C0
-framewidth 6
-xAxisTitle ""
-showXAchsLabel false
-scaleXMin 0
-scaleXMax 40,5851812362671
-spacingX 5
-axisXDecimal 20
-axisXFixDecimal false
-lineVisible true
-xAxisColor $00000000
-xAxisLabelFont name="default" size=0 color=$20000000
-xAxisTitleFont name="default" size=0 color=$20000000
-axisQty 1
-axis1Titel ""
-axis1ShowLabel false
-axis1Left true
-axis1YMin -203,2
-axis1YMax 267,2
-axis1YSpacing 5
-axis1Decimal 20
-axis1FixDecimal false
-axis1color $00000000
-axis1ScaleFont name="default" size=0 color=$20000000
-axis1TitelFont name="default" size=0 color=$20000000
-curve1axis 1
-curve2axis 1
-curve3axis 1
-curve4axis 1
-curve5axis 1
-curve6axis 1
-curve7axis 1
-curve8axis 1
-curve9axis 1
-CVXYCHART
-disabled false
-denom "Diagram 4 (#760-770)"
-sourceX "#770"
-curveQty 9
-sourceY1 "#761"
-sourceY2 "#762"
-sourceY3 "#763"
-sourceY4 "#764"
-sourceY5 "#765"
-sourceY6 "#766"
-sourceY7 "#767"
-sourceY8 "#768"
-sourceY9 "#769"
-curve1Color $001C46F0
-curve2Color $00926221
-curve3Color $000F8815
-curve4Color $004E34A7
-curve5Color $0005CCFE
-curve6Color $00000040
-curve7Color $006A6A6A
-curve8Color $008000FF
-curve9Color $00FF8000
-curve1Strength 1
-unit ""
-position x=1475 y=0
-size x=500 y=445
-showName true
-showUnit false
-controlSource "#760"
-font name="default" size=11 color=$20000000
-bckGndColor $00F0F0F0
-curveBackColor $00FFFFFF
-frameColor $00C0C0C0
-framewidth 6
-xAxisTitle ""
-showXAchsLabel false
-scaleXMin 0
-scaleXMax 44,5302639007568
-spacingX 5
-axisXDecimal 20
-axisXFixDecimal false
-lineVisible true
-xAxisColor $00000000
-xAxisLabelFont name="default" size=0 color=$20000000
-xAxisTitleFont name="default" size=0 color=$20000000
-axisQty 1
-axis1Titel ""
-axis1ShowLabel false
-axis1Left true
-axis1YMin 0,996965803327597
-axis1YMax 1,01123306163419
-axis1YSpacing 5
-axis1Decimal 20
-axis1FixDecimal false
-axis1color $00000000
-axis1ScaleFont name="default" size=0 color=$20000000
-axis1TitelFont name="default" size=0 color=$20000000
-curve1axis 1
-curve2axis 1
-curve3axis 1
-curve4axis 1
-curve5axis 1
-curve6axis 1
-curve7axis 1
-curve8axis 1
-curve9axis 1
-CVXYCHART
-disabled false
-denom "Diagram 5 (#780-790)"
-sourceX "#790"
-curveQty 9
-sourceY1 "#781"
-sourceY2 "#782"
-sourceY3 "#783"
-sourceY4 "#784"
-sourceY5 "#785"
-sourceY6 "#786"
-sourceY7 "#787"
-sourceY8 "#788"
-sourceY9 "#789"
-curve1Color $001C46F0
-curve2Color $00926221
-curve3Color $000F8815
-curve4Color $004E34A7
-curve5Color $0005CCFE
-curve6Color $00000040
-curve7Color $006A6A6A
-curve8Color $008000FF
-curve9Color $00FF8000
-curve1Strength 1
-unit ""
-position x=1475 y=445
-size x=500 y=445
-showName true
-showUnit false
-controlSource "#780"
-font name="default" size=11 color=$20000000
-bckGndColor $00F0F0F0
-curveBackColor $00FFFFFF
-frameColor $00C0C0C0
-framewidth 6
-xAxisTitle ""
-showXAchsLabel false
-scaleXMin 0
-scaleXMax 48,0097930431366
-spacingX 5
-axisXDecimal 20
-axisXFixDecimal false
-lineVisible true
-xAxisColor $00000000
-xAxisLabelFont name="default" size=0 color=$20000000
-xAxisTitleFont name="default" size=0 color=$20000000
-axisQty 1
-axis1Titel ""
-axis1ShowLabel false
-axis1Left true
-axis1YMin 3,00950646580733
-axis1YMax 3,0381058074359
-axis1YSpacing 5
-axis1Decimal 20
-axis1FixDecimal false
-axis1color $00000000
-axis1ScaleFont name="default" size=0 color=$20000000
-axis1TitelFont name="default" size=0 color=$20000000
-curve1axis 1
-curve2axis 1
-curve3axis 1
-curve4axis 1
-curve5axis 1
-curve6axis 1
-curve7axis 1
-curve8axis 1
-curve9axis 1
 CVNUMERICDISP
 disabled false
 denom "D1.Y1"
 source "#701"
 unit ""
-position x=0 y=750
+position x=0 y=590
 size x=240 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $001C46F0
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D2.Y1"
-source "#721"
-unit ""
-position x=1250 y=0
-size x=200 y=35
 showName true
 showSource true
 showUnit false
@@ -587,7 +268,7 @@ disabled false
 denom "D1.Y2"
 source "#702"
 unit ""
-position x=0 y=785
+position x=0 y=625
 size x=240 y=35
 showName true
 showSource true
@@ -603,7 +284,7 @@ disabled false
 denom "D1.Y3"
 source "#703"
 unit ""
-position x=0 y=820
+position x=0 y=660
 size x=240 y=35
 showName true
 showSource true
@@ -619,7 +300,7 @@ disabled false
 denom "D1.Y4"
 source "#704"
 unit ""
-position x=240 y=750
+position x=240 y=590
 size x=240 y=35
 showName true
 showSource true
@@ -635,7 +316,7 @@ disabled false
 denom "D1.Y5"
 source "#705"
 unit ""
-position x=240 y=785
+position x=240 y=625
 size x=240 y=35
 showName true
 showSource true
@@ -651,7 +332,7 @@ disabled false
 denom "D1.Y6"
 source "#706"
 unit ""
-position x=240 y=820
+position x=240 y=660
 size x=240 y=35
 showName true
 showSource true
@@ -667,7 +348,7 @@ disabled false
 denom "D1.Y7"
 source "#707"
 unit ""
-position x=480 y=750
+position x=480 y=590
 size x=240 y=35
 showName true
 showSource true
@@ -683,7 +364,7 @@ disabled false
 denom "D1.Y8"
 source "#708"
 unit ""
-position x=480 y=785
+position x=480 y=625
 size x=240 y=35
 showName true
 showSource true
@@ -699,7 +380,7 @@ disabled false
 denom "D1.Y9"
 source "#709"
 unit ""
-position x=480 y=820
+position x=480 y=660
 size x=240 y=35
 showName true
 showSource true
@@ -712,635 +393,11 @@ frameColor $00FF8000
 framewidth 6
 CVNUMERICDISP
 disabled false
-denom "D2.Y2"
-source "#722"
-unit ""
-position x=1250 y=35
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $00926221
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D2.Y3"
-source "#723"
-unit ""
-position x=1250 y=70
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $000F8815
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D2.Y4"
-source "#724"
-unit ""
-position x=1250 y=105
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $004E34A7
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D2.Y5"
-source "#725"
-unit ""
-position x=1250 y=140
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $0005CCFE
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D2.Y6"
-source "#726"
-unit ""
-position x=1250 y=175
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $00000040
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D2.Y7"
-source "#727"
-unit ""
-position x=1250 y=210
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $006A6A6A
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D2.Y8"
-source "#728"
-unit ""
-position x=1250 y=245
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $008000FF
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D2.Y9"
-source "#729"
-unit ""
-position x=1250 y=280
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $00FF8000
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D3.Y1"
-source "#741"
-unit ""
-position x=1250 y=445
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $001C46F0
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D3.Y2"
-source "#742"
-unit ""
-position x=1250 y=480
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $00926221
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D3.Y3"
-source "#743"
-unit ""
-position x=1250 y=515
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $000F8815
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D3.Y4"
-source "#744"
-unit ""
-position x=1250 y=550
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $004E34A7
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D3.Y5"
-source "#745"
-unit ""
-position x=1250 y=585
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $0005CCFE
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D3.Y6"
-source "#746"
-unit ""
-position x=1250 y=620
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $00000040
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D3.Y9"
-source "#749"
-unit ""
-position x=1250 y=725
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $00FF8000
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D3.Y8"
-source "#748"
-unit ""
-position x=1250 y=690
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $008000FF
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D3.Y7"
-source "#747"
-unit ""
-position x=1250 y=655
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $006A6A6A
-framewidth 6
-CVNUMERICDISP
-disabled false
 denom "D1.X"
 source "#710"
 unit ""
-position x=0 y=855
+position x=0 y=695
 size x=720 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $00C0C0C0
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D2.X"
-source "#730"
-unit ""
-position x=1250 y=330
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $00C0C0C0
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D3.X"
-source "#750"
-unit ""
-position x=1250 y=775
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $00C0C0C0
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D4.Y1"
-source "#761"
-unit ""
-position x=1975 y=0
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $001C46F0
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D4.Y2"
-source "#762"
-unit ""
-position x=1975 y=35
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $00926221
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D4.Y3"
-source "#763"
-unit ""
-position x=1975 y=70
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $000F8815
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D4.Y4"
-source "#764"
-unit ""
-position x=1975 y=105
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $004E34A7
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D4.Y5"
-source "#765"
-unit ""
-position x=1975 y=140
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $0005CCFE
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D4.Y6"
-source "#766"
-unit ""
-position x=1975 y=175
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $00000040
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D5.Y6"
-source "#786"
-unit ""
-position x=1975 y=620
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $00000040
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D5.Y7"
-source "#787"
-unit ""
-position x=1975 y=655
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $006A6A6A
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D4.Y7"
-source "#767"
-unit ""
-position x=1975 y=210
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $006A6A6A
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D5.Y1"
-source "#781"
-unit ""
-position x=1975 y=445
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $001C46F0
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D5.Y2"
-source "#782"
-unit ""
-position x=1975 y=480
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $00926221
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D5.Y3"
-source "#783"
-unit ""
-position x=1975 y=515
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $000F8815
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D5.Y4"
-source "#784"
-unit ""
-position x=1975 y=550
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $004E34A7
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D5.Y5"
-source "#785"
-unit ""
-position x=1975 y=585
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $0005CCFE
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D5.Y8"
-source "#788"
-unit ""
-position x=1975 y=690
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $008000FF
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D4.Y8"
-source "#768"
-unit ""
-position x=1975 y=245
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $008000FF
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D5.Y9"
-source "#789"
-unit ""
-position x=1975 y=725
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $00FF8000
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D4.Y9"
-source "#769"
-unit ""
-position x=1975 y=280
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $00FF8000
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D5.X"
-source "#790"
-unit ""
-position x=1975 y=775
-size x=200 y=35
-showName true
-showSource true
-showUnit false
-decimal 3
-fixedDecimal false
-font name="default" size=12 color=$20000000
-bckGndColor $00FFFFFF
-frameColor $00C0C0C0
-framewidth 6
-CVNUMERICDISP
-disabled false
-denom "D4.X"
-source "#770"
-unit ""
-position x=1975 y=330
-size x=200 y=35
 showName true
 showSource true
 showUnit false
@@ -1580,7 +637,7 @@ channelQty 1
 source "#999"
 showDenom true
 showSource true
-position x=800 y=0
+position x=760 y=0
 size x=250 y=75
 file "record_console999.csv"
 ordinal true
@@ -1608,106 +665,6 @@ showSource true
 position x=500 y=0
 size x=250 y=75
 file "record_diagram1.csv"
-ordinal true
-timestamp false
-timeMode relative
-writeBuffered true
-csvfile true
-hideInRun false
-CVFILEREC
-disabled false
-denom "Diagram2 Rekorder"
-channelQty 10
-source "#730"
-source2 "#721"
-source3 "#722"
-source4 "#723"
-source5 "#724"
-source6 "#725"
-source7 "#726"
-source8 "#727"
-source9 "#728"
-source10 "#729"
-showDenom true
-showSource true
-position x=500 y=75
-size x=250 y=75
-file "record_diagram2.csv"
-ordinal true
-timestamp false
-timeMode relative
-writeBuffered true
-csvfile true
-hideInRun false
-CVFILEREC
-disabled false
-denom "Diagram3 Rekorder"
-channelQty 10
-source "#750"
-source2 "#741"
-source3 "#742"
-source4 "#743"
-source5 "#744"
-source6 "#745"
-source7 "#746"
-source8 "#747"
-source9 "#748"
-source10 "#749"
-showDenom true
-showSource true
-position x=500 y=150
-size x=250 y=75
-file "record_diagram3.csv"
-ordinal true
-timestamp false
-timeMode relative
-writeBuffered true
-csvfile true
-hideInRun false
-CVFILEREC
-disabled false
-denom "Diagram4 Rekorder"
-channelQty 10
-source "#770"
-source2 "#761"
-source3 "#762"
-source4 "#763"
-source5 "#764"
-source6 "#765"
-source7 "#766"
-source8 "#767"
-source9 "#768"
-source10 "#769"
-showDenom true
-showSource true
-position x=500 y=225
-size x=250 y=75
-file "record_diagram4.csv"
-ordinal true
-timestamp false
-timeMode relative
-writeBuffered true
-csvfile true
-hideInRun false
-CVFILEREC
-disabled false
-denom "Diagram5 Rekorder"
-channelQty 10
-source "#790"
-source2 "#781"
-source3 "#782"
-source4 "#783"
-source5 "#784"
-source6 "#785"
-source7 "#786"
-source8 "#787"
-source9 "#788"
-source10 "#789"
-showDenom true
-showSource true
-position x=500 y=300
-size x=250 y=75
-file "record_diagram5.csv"
 ordinal true
 timestamp false
 timeMode relative
