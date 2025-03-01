@@ -551,8 +551,26 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">KTYxModel</span></code>: A model for a KTY81-110 or similar silicon temperature sensor.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">StackedModel</span></code>: It allows stacking multiple models in a specific order, where the output of each model is passed as input to the next.</p></li>
 </ul>
-<section id="references">
-<h6>References<a class="headerlink" href="#references" title="Link to this heading"></a></h6>
+<section id="model-usage-example">
+<h6>Model Usage Example<a class="headerlink" href="#model-usage-example" title="Link to this heading"></a></h6>
+<p>The following example shows how to connect and configure a NTC thermistor to a voltage measurement channel (e.g. MCC 118).</p>
+<img alt="Example_NTC_Schematics" src="_images/Example_NTC_Schematics.png" />
+<p>To determine the temperature of the measured voltage, the NTC model is utilized.
+The NTC model requires a resistance as input, so the voltage must be converted to resistance first:</p>
+<p><cite>R_meas = (V_meas / V_supply) * R</cite>.</p>
+<p>The converstion from voltage to resistance is achieved by using a linear model with a gain of 2000 (<cite>= 10k / 5V</cite>) and an offset of 0.</p>
+<ul class="simple">
+<li><p>V_supply: 5V</p></li>
+<li><p>R: 10kOhm</p></li>
+<li><p>NTC: 10kOhm, Beta=4300, r0=25degC</p></li>
+</ul>
+<p>The correct channel configuration according this example is as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">StackedModel</span><span class="p">([</span><span class="n">LinearModel</span><span class="p">(</span><span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">gain</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">NTCModel</span><span class="p">(</span><span class="n">r0</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mi">4300</span><span class="p">,</span> <span class="n">t0</span><span class="o">=</span><span class="mi">25</span><span class="p">))])</span>
+</pre></div>
+</div>
+</section>
+<section id="code-references">
+<h6>Code References<a class="headerlink" href="#code-references" title="Link to this heading"></a></h6>
 <blockquote>
 <div><dl class="py class">
 <dt class="sig sig-object py" id="MeasurementSystem.core.common.Models.LinearModel">

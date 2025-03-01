@@ -92,8 +92,35 @@ The following models are available:
 - ``KTYxModel``: A model for a KTY81-110 or similar silicon temperature sensor.
 - ``StackedModel``: It allows stacking multiple models in a specific order, where the output of each model is passed as input to the next.
 
-References
-""""""""""
+Model Usage Example
+"""""""""""""""""""
+
+The following example shows how to connect and configure a NTC thermistor to a voltage measurement channel (e.g. MCC 118).
+
+.. image:: _static/docu_images/Example_NTC_Schematics.png
+    :alt: Example_NTC_Schematics
+
+To determine the temperature of the measured voltage, the NTC model is utilized.
+The NTC model requires a resistance as input, so the voltage must be converted to resistance first:
+
+`R_meas = (V_meas / V_supply) * R`.
+
+The converstion from voltage to resistance is achieved by using a linear model with a gain of 2000 (`= 10k / 5V`) and an offset of 0.
+
+- V_supply: 5V
+- R: 10kOhm
+- NTC: 10kOhm, Beta=4300, r0=25degC
+
+The correct channel configuration according this example is as follows:
+
+.. code-block:: python
+
+    StackedModel([LinearModel(offset=0, gain=2000, NTCModel(r0=10000, beta=4300, t0=25))])
+
+
+
+Code References
+"""""""""""""""
 
   .. autoclass:: MeasurementSystem.core.common.Models.LinearModel
     :members: __init__
