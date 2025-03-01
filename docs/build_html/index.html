@@ -71,13 +71,17 @@
 <li class="toctree-l3"><a class="reference internal" href="user_guide.html#general-usage">General Usage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="user_guide.html#channel-configuration">Channel Configuration</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="user_guide.html#modify-channel-configuration">Modify Channel Configuration</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="user_guide.html#on-off">ON/OFF</a></li>
 <li class="toctree-l5"><a class="reference internal" href="user_guide.html#models">Models</a></li>
 <li class="toctree-l5"><a class="reference internal" href="user_guide.html#sample-rate">Sample Rate</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="user_guide.html#configuration-files">Configuration Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guide.html#configuration-files">Configuration Files</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guide.html#new-channel-configuration">New Channel Configuration</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="user_guide.html#troubleshooting">Troubleshooting</a><ul>
@@ -488,32 +492,50 @@ Measurement-System based on RaspberryPi 5 hardware.</p>
 <p>Use any hatch command to sync dependencies.</p>
 </section>
 </section>
+<section id="table-of-contents">
+<h1>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading"></a></h1>
 <section id="prerequisites">
-<h1>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h1>
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="prerequisites.html">Prerequisites</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="prerequisites.html#hardware">Hardware</a></li>
-<li class="toctree-l2"><a class="reference internal" href="prerequisites.html#software">Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prerequisites.html#hardware">Hardware</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="prerequisites.html#connections">Connections</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="prerequisites.html#software">Software</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="prerequisites.html#repository">Repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="prerequisites.html#daqhats-shared-library">Daqhats Shared Library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="prerequisites.html#hatch">Hatch</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </div>
 </section>
 <section id="user-guide">
-<h1>User Guide<a class="headerlink" href="#user-guide" title="Link to this heading"></a></h1>
+<h2>User Guide<a class="headerlink" href="#user-guide" title="Link to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="user_guide.html#usage-windows">Usage (Windows)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_guide.html#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#usage-windows">Usage (Windows)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guide.html#general-usage">General Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guide.html#channel-configuration">Channel Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guide.html#configuration-files">Configuration Files</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guide.html#software">Software</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </div>
 </section>
 <section id="developement-guide">
-<h1>Developement Guide<a class="headerlink" href="#developement-guide" title="Link to this heading"></a></h1>
+<h2>Developement Guide<a class="headerlink" href="#developement-guide" title="Link to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="dev_guide.html">Developement Guide</a><ul>
@@ -524,18 +546,39 @@ Measurement-System based on RaspberryPi 5 hardware.</p>
 </div>
 </section>
 <section id="reference">
-<h1>Reference<a class="headerlink" href="#reference" title="Link to this heading"></a></h1>
+<h2>Reference<a class="headerlink" href="#reference" title="Link to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="reference.html">Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="reference.html#main-application">Main Application</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference.html#common-utilities">Common Utilities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference.html#driver">Driver</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference.html#communication-visualization">Communication &amp; Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#main-application">Main Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#module-MeasurementSystem.measurement_server">Measurement Server</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#common-utilities">Common Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#module-MeasurementSystem.core.common.Utils">Utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#module-MeasurementSystem.core.common.Config">Config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#module-MeasurementSystem.core.common.Data">Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#module-MeasurementSystem.core.common.Models">Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#module-MeasurementSystem.core.common.BaseClasses">BaseClasses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#module-MeasurementSystem.core.common.Ceda">Ceda</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#driver">Driver</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#module-MeasurementSystem.core.driver.RaspberryPi">RaspberryPi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#module-MeasurementSystem.core.driver.DigilentMCC118">Digilent MCC118</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#module-MeasurementSystem.core.driver.DigilentMCC134">Digilent MCC134</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#communication-visualization">Communication &amp; Visualization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#module-MeasurementSystem.core.comvisu.Command">Command Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#module-MeasurementSystem.core.comvisu.ServerUtils">Server Utilities</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </div>
+</section>
 </section>
 
 

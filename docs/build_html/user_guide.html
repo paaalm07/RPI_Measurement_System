@@ -72,13 +72,17 @@
 <li class="toctree-l3"><a class="reference internal" href="#general-usage">General Usage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#channel-configuration">Channel Configuration</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#modify-channel-configuration">Modify Channel Configuration</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#on-off">ON/OFF</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#models">Models</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#sample-rate">Sample Rate</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#configuration-files">Configuration Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-files">Configuration Files</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#new-channel-configuration">New Channel Configuration</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
@@ -535,6 +539,14 @@
 <blockquote>
 <div><img alt="ComVisu_ChannelConfiguration" src="_images/ComVisu_ChannelConfiguration.png" />
 </div></blockquote>
+<section id="on-off">
+<h5>ON/OFF<a class="headerlink" href="#on-off" title="Link to this heading"></a></h5>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ON</span></code>: The channel is enabled and will be measured.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OFF</span></code>: The channel is disabled and will not be measured.</p></li>
+</ul>
+<p>A disabled channel will not be removed from the configuration files.</p>
+</section>
 <section id="models">
 <h5>Models<a class="headerlink" href="#models" title="Link to this heading"></a></h5>
 <p>The following models are available:</p>
@@ -865,7 +877,10 @@ of each model is passed as the input to the next model in the stack.</p>
 <p>Sample rate in <em>Hz</em> or <em>samples per second</em>.</p>
 <p>A value of &lt;= 0 will lead to full system speed. This is not recommended as it will lead also to a high CPU load and/or overflows and data loss.
 Also a communication overflows can happen, which may lead to a system crash.</p>
-<p><strong>Note:</strong> The maximum value has to be evaluated, especially with a high number of channels enabled. Not done yet.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The maximum value has to be evaluated, especially with a high number of channels enabled. Not done yet.</p>
+</div>
 </section>
 </section>
 </section>
@@ -873,7 +888,10 @@ Also a communication overflows can happen, which may lead to a system crash.</p>
 <h3>Configuration Files<a class="headerlink" href="#configuration-files" title="Link to this heading"></a></h3>
 <p>The configuration files are located in the <code class="docutils literal notranslate"><span class="pre">src/MeasurementSystem/config</span></code> directory.</p>
 <img alt="MeasurementSystem_ConfigurationFiles" src="_images/MeasurementSystem_ConfigurationFiles.png" />
-<p><strong>Important:</strong> Changes in channel configurations will be applied immediately, but the file is not saved without manual intervention.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Changes in channel configurations will be applied immediately, but the file is not saved without manual intervention.</p>
+</div>
 <img alt="ComVisu_ConfigFileControls" src="_images/ComVisu_ConfigFileControls.png" />
 <ul class="simple">
 <li><p>Save/Load User: Save or load the current configuration to/from a file. Files saved as <code class="docutils literal notranslate"><span class="pre">*_user.json</span></code>.</p></li>
@@ -886,6 +904,11 @@ Also a communication overflows can happen, which may lead to a system crash.</p>
 <li><p><em>module</em>: Contains the configuration for modules, its parent hardware and its channels.</p></li>
 </ul>
 <img alt="MeasurementSystem_ConfigurationConcept" src="_images/MeasurementSystem_ConfigurationConcept.png" />
+<section id="new-channel-configuration">
+<h4>New Channel Configuration<a class="headerlink" href="#new-channel-configuration" title="Link to this heading"></a></h4>
+<p>To add a new channel configuration, implement it in the <code class="docutils literal notranslate"><span class="pre">src/MeasurementSystem/measurement_server.py:HardwareInterface.initialize</span></code> method and save the configuration via the ComVisu GUI.</p>
+<p>Another option would be to manually add it to the configuration files. This is not recommended.</p>
+</section>
 </section>
 </section>
 <section id="troubleshooting">

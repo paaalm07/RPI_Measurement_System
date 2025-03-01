@@ -75,6 +75,14 @@ Modify Channel Configuration
   .. image:: _static/docu_images/ComVisu_ChannelConfiguration.png
       :alt: ComVisu_ChannelConfiguration
 
+ON/OFF
+^^^^^^
+
+- ``ON``: The channel is enabled and will be measured.
+- ``OFF``: The channel is disabled and will not be measured.
+
+A disabled channel will not be removed from the configuration files.
+
 
 Models
 ^^^^^^
@@ -141,7 +149,7 @@ Sample rate in *Hz* or *samples per second*.
 A value of <= 0 will lead to full system speed. This is not recommended as it will lead also to a high CPU load and/or overflows and data loss.
 Also a communication overflows can happen, which may lead to a system crash.
 
-**Note:** The maximum value has to be evaluated, especially with a high number of channels enabled. Not done yet.
+.. Note:: The maximum value has to be evaluated, especially with a high number of channels enabled. Not done yet.
 
 
 Configuration Files
@@ -152,7 +160,7 @@ The configuration files are located in the ``src/MeasurementSystem/config`` dire
 .. image:: _static/docu_images/MeasurementSystem_ConfigurationFiles.png
     :alt: MeasurementSystem_ConfigurationFiles
 
-**Important:** Changes in channel configurations will be applied immediately, but the file is not saved without manual intervention.
+.. Important:: Changes in channel configurations will be applied immediately, but the file is not saved without manual intervention.
 
 .. image:: _static/docu_images/ComVisu_ConfigFileControls.png
     :alt: ComVisu_ConfigFileControls
@@ -168,6 +176,14 @@ Configuration files are stored in three diffrent levels: *hardware*, *channel* a
 
 .. image:: _static/docu_images/MeasurementSystem_ConfigurationConcept.png
     :alt: MeasurementSystem_ConfigurationConcept
+
+
+New Channel Configuration
+-------------------------
+
+To add a new channel configuration, implement it in the ``src/MeasurementSystem/measurement_server.py:HardwareInterface.initialize`` method and save the configuration via the ComVisu GUI.
+
+Another option would be to manually add it to the configuration files. This is not recommended.
 
 
 Troubleshooting
