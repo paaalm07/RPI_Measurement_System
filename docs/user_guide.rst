@@ -39,7 +39,7 @@ General Usage
 
 7. Ensure a USB drive is connected to the Raspberry Pi.
 
-8. Start the measurement system by prinning ``Mess-System: START``
+8. Start the measurement system by pressing ``Mess-System: START``
 
   .. image:: _static/docu_images/ComVisu_StartMeasurementSystem.png
       :alt: ComVisu_StartMeasurementSystem
@@ -70,12 +70,7 @@ Modify Channel Configuration
   .. image:: _static/docu_images/ComVisu_ConfigurationSheet.png
       :alt: ComVisu_ConfigurationSheet
 
-3. Select the channel you want to configure
-
-  .. image:: _static/docu_images/ComVisu_ChannelConfiguration.png
-      :alt: ComVisu_ChannelConfiguration
-
-4. Modify the channel settings (ON/OFF, model selection, or sample rate). After making a change, the channel will be deselected. Only one parameter can be adjusted at a time; reselect the channel to alter another parameter.
+3. Select the channel you want to configure and modify the channel settings (ON/OFF, model selection, or sample rate). After making a change, the channel will be deselected. Only one parameter can be adjusted at a time; reselect the channel to alter another parameter.
 
   .. image:: _static/docu_images/ComVisu_ChannelConfiguration.png
       :alt: ComVisu_ChannelConfiguration
