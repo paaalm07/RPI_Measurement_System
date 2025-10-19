@@ -180,7 +180,7 @@ select = [
     "RET", # flake8-return
     "SIM", # flake8-simplify
     "TID252", # flake8-tidy-imports -> convert relative-imports
-    "TCH", # flake8-type-checking
+    "TC", # flake8-type-checking
     "PLE", # Pylint - errors
     "PLW", # Pylint - warnings
     "PLC", # Pylint - conventions
@@ -214,9 +214,9 @@ ignore = [
     "UP008",
     "UP028",
     "F841",
-    "TCH001",
-    "TCH002",
-    "TCH003",
+    "TC001",
+    "TC002",
+    "TC003",
 ]
 
 # https://docs.astral.sh/ruff/settings/#unfixable
